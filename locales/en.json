@@ -4,8 +4,62 @@
     "tagline": "Create your perfect running schedule",
     "description": "Create a personalized running schedule based on your goals, level and availability"
   },
+  "seo": {
+    "home": {
+      "title": "Running Schedule Tool - Create Your Perfect Running Schedule",
+      "description": "Validated by experienced coaches. Join +8,400 runners who achieved their goals this year with our proven running methodology."
+    },
+    "method": {
+      "title": "Our Method - Running Schedule Tool",
+      "description": "A roadmap based on experience. From the first step to the finish line. Discover how we translate the experience of thousands of successful runners into your personal plan."
+    },
+    "trainingTypes": {
+      "title": "Training Types - Running Schedule Tool",
+      "description": "No training is the same. Learn more about the different building blocks of your personal schedule: progression run, tempo run, fartlek and more."
+    },
+    "examples": {
+      "title": "Example Schedules - Running Schedule Tool",
+      "description": "View example schedules for different goals and levels. Get inspired by our proven training plans."
+    },
+    "createSchedule": {
+      "title": "Create Schedule - Running Schedule Tool",
+      "description": "Create your own personalized running schedule now. Fill in the form and receive a customized training plan."
+    }
+  },
+  "hero": {
+    "badge": "Professional Running Schedule",
+    "title": "Reach your",
+    "titleHighlight": "next milestone.",
+    "description": "Validated by experienced coaches. Join +8,400 runners who achieved their goals this year with our proven running methodology.",
+    "form": {
+      "label": "Choose your challenge",
+      "options": {
+        "5k": "5 kilometers",
+        "10k": "10 kilometers",
+        "15k": "15 kilometers",
+        "10m": "10 miles (16.1 kilometers)",
+        "halfMarathon": "Half marathon (21.1 kilometers)",
+        "30k": "30 kilometers",
+        "marathon": "Marathon (42.2 kilometers)",
+        "fitness": "Fitness / Health"
+      },
+      "button": "Start My Analysis",
+      "price": "Only €19.95"
+    },
+    "features": {
+      "professional": "✓ Professional Build-up",
+      "proven": "✓ Proven Methodology"
+    },
+    "active": "⚡ Now active: 142 runners building their schedule"
+  },
   "header": {
-    "toggleTheme": "Toggle theme"
+    "toggleTheme": "Toggle theme",
+    "nav": {
+      "method": "Our method",
+      "trainingTypes": "Training types",
+      "examples": "Example schedules",
+      "createSchedule": "Create schedule"
+    }
   },
   "features": {
     "personalized": {
@@ -63,12 +117,281 @@
     "submit": "Generate schedule"
   },
   "footer": {
-    "text": "Hardloopschematool.nl - Create your perfect running schedule"
+    "description": "We make professional running advice accessible to everyone through advanced methodologies.",
+    "navigation": {
+      "title": "Navigation",
+      "home": "Home",
+      "method": "Our Method",
+      "trainingTypes": "Training Types",
+      "examples": "Examples"
+    },
+    "copyright": "© 2026 Hardloopschematool.nl. All rights reserved."
+  },
+  "pages": {
+    "method": {
+      "badge": "Our Approach",
+      "title": "A roadmap",
+      "titleHighlight": "based on experience",
+      "description": "From the first step to the finish line. Discover how we translate the experience of thousands of successful runners into your personal plan.",
+      "step1": {
+        "number": "1",
+        "title": "Your Starting Point",
+        "description": "No runner is the same. We look at where you are now. Whether you're starting from scratch or have been racking up kilometers for years. We analyze your goals, available time, and current fitness.",
+        "points": {
+          "distance": "Choose your dream distance: from 5km to the marathon",
+          "schedule": "Plan based on your busy schedule",
+          "physical": "Take into account your unique physical status"
+        },
+        "visualization": "Visualization: Personal profile build-up"
+      },
+      "step2": {
+        "number": "2",
+        "title": "The Blueprint Matrix",
+        "description": "We use the 'best practices' of successful runners. We apply the <strong>80/20 method</strong>: 80% at a pace where you can talk, 20% where you challenge yourself. This is the path to speed without pain.",
+        "quote": "We prevent the most common mistake: too much, too fast. Our method builds an unbreakable foundation.",
+        "visualization": "Visualization: The optimal training balance"
+      },
+      "step3": {
+        "number": "3",
+        "title": "Direct Result",
+        "description": "No vague schedules. You receive a clear PDF with specific paces and recovery times. You know exactly what to do at every moment of the week.",
+        "focus": {
+          "label": "Focus",
+          "value": "Maximum Progression"
+        },
+        "output": {
+          "label": "Output",
+          "value": "PDF Blueprint"
+        },
+        "visualization": "Visualization: The completed training plan"
+      },
+      "cta": {
+        "title": "Ready to reach the finish?",
+        "description": "Start today with your personalized roadmap. The first step is the most important.",
+        "button": "Start My Analysis"
+      }
+    },
+    "trainingTypes": {
+      "title": "Our",
+      "titleHighlight": "Training Types",
+      "description": "No training is the same. Learn more about the different building blocks of your personal schedule.",
+      "viewDetails": "View explanation",
+      "back": "Back to Training Types",
+      "labels": {
+        "benefits": "Benefits",
+        "howTo": "How to train?",
+        "proTip": "Pro Tip"
+      },
+      "types": {
+        "progressionRun": {
+          "slug": "progression-run",
+          "title": "Progression Run",
+          "subtitle": "Start easy, finish strong at race pace.",
+          "description": "A progression run is a training where you gradually increase the pace during the session. You start at a very comfortable recovery pace and build up until you finish at your target race pace (e.g., 10km or half marathon pace).",
+          "benefits": [
+            "Improves your ability to resist fatigue",
+            "Teaches your body to use energy more efficiently",
+            "Builds mental confidence for the final phase of a race",
+            "Less taxing than a full tempo run"
+          ],
+          "howTo": [
+            "Start the first 1/3 of the run at your recovery pace (Z1)",
+            "Increase in the second 1/3 the pace to your easy long run pace (Z2)",
+            "Finish the last 1/3 at your target race pace (Z3/Z4)",
+            "Always cool down for 5-10 minutes afterwards"
+          ],
+          "proTip": "Focus on a smooth transition. Avoid sudden sprints; the acceleration should be almost imperceptible to an outsider."
+        },
+        "ladderWorkout": {
+          "slug": "ladder-workout",
+          "title": "Ladder Workout",
+          "subtitle": "Varying intervals for focus and speed.",
+          "description": "In a ladder interval, you change the duration or distance of each interval. For example: 1 minute, 2 minutes, 3 minutes, and then back to 2 and 1. This challenges both your anaerobic and aerobic system.",
+          "benefits": [
+            "Prevents boredom during hard intervals",
+            "Trains different energy systems in one session",
+            "Improves your ability to handle pace changes",
+            "High calorie burn"
+          ],
+          "howTo": [
+            "Warm up well for at least 15 minutes",
+            "Follow the \"rungs\" of the ladder precisely",
+            "Take the prescribed rest between each rung (usually jogging)",
+            "Keep the pace on the short rungs slightly higher than on the long rungs"
+          ],
+          "proTip": "The way \"down\" (e.g., from 3 to 2 to 1 minute) is where the real gain is. Try to maintain your technique well here despite the fatigue."
+        },
+        "tempoRun": {
+          "slug": "tempo-run",
+          "title": "Tempo Run",
+          "subtitle": "Raise your anaerobic threshold with constant speed.",
+          "description": "A Tempo Run is performed at your anaerobic threshold. This is the pace you can maintain for about an hour. The goal is to train your body to run faster without lactate accumulating.",
+          "benefits": [
+            "Increases your speed over longer distances",
+            "Improves your running economy",
+            "Strengthens your mental focus at constant high effort",
+            "Trains your body to clear lactate faster"
+          ],
+          "howTo": [
+            "Start with a 10-15 minute warm-up",
+            "Run 20-40 minutes at your threshold pace (Z4)",
+            "The effort should feel like a 7 or 8 on a scale of 10",
+            "End with a 10 minute cool-down"
+          ],
+          "proTip": "If you feel like you need to sprint to maintain the pace, you're going too fast. A tempo run should be hard, but controlled."
+        },
+        "aerobicThreshold": {
+          "slug": "aerobic-threshold",
+          "title": "Aerobic Threshold (AeT)",
+          "subtitle": "The foundation of your endurance.",
+          "description": "The aerobic threshold is the highest pace at which you still train fully aerobically (without significant lactate buildup). This pace feels \"comfortably challenging\". For marathon runners, this is the most important training type.",
+          "benefits": [
+            "Significantly increases your aerobic capacity",
+            "Teaches your body to burn fats more efficiently as fuel",
+            "Lowers your heart rate at a given pace in the long term",
+            "Shorter recovery time than anaerobic training"
+          ],
+          "howTo": [
+            "This pace is usually between Z2 and Z3",
+            "Maintain a pace where you can still speak short sentences, but no longer have full conversations",
+            "Focus on a constant heart rate",
+            "Sessions often last between 45 and 90 minutes"
+          ],
+          "proTip": "Use a heart rate monitor to prevent you from inadvertently going above your threshold. Less is more in this zone."
+        },
+        "fartlek": {
+          "slug": "fartlek",
+          "title": "Fartlek",
+          "subtitle": "Playing with speed in an unstructured way.",
+          "description": "Fartlek is Swedish for \"speed play\". Unlike structured intervals, in fartlek you change your pace based on your environment or feeling.",
+          "benefits": [
+            "Makes training more fun and less monotonous",
+            "Trains both your aerobic and anaerobic system",
+            "Teaches you to listen to your body instead of the GPS",
+            "Ideal for trail runners and cross country runners"
+          ],
+          "howTo": [
+            "Run your normal long run route",
+            "Choose an object (e.g., a tree or lamppost) and sprint to it",
+            "Recover at a slow jog until you have your breath back",
+            "Repeat this as often as you like"
+          ],
+          "proTip": "Use fartlek in weeks when you feel mentally tired. The freedom of speed play often works refreshingly."
+        },
+        "steadyState": {
+          "slug": "steady-state-run",
+          "title": "Steady State Run",
+          "subtitle": "Slightly faster than long run, focus on rhythm.",
+          "description": "A Steady State run is a longer run at a constant pace that is slightly faster than your normal long run, but slower than a tempo run. It is the \"sweet spot\" for aerobic development.",
+          "benefits": [
+            "Improves your endurance at race pace",
+            "Builds physical and mental strength",
+            "Trains muscle fibers for long distances",
+            "Less tiring than a tempo run but more effective than Z2"
+          ],
+          "howTo": [
+            "Determine your target pace (often marathon or half marathon pace)",
+            "Maintain this pace constantly for 45 to 90 minutes",
+            "Focus on stable breathing and good technique",
+            "Warm up for 10 minutes and cool down for 10 minutes"
+          ],
+          "proTip": "Try to do this run on a flat course to keep your pace perfectly constant."
+        },
+        "yasso800s": {
+          "slug": "yasso-800s",
+          "title": "Yasso 800s",
+          "subtitle": "The ultimate predictor for your marathon time.",
+          "description": "A famous workout where you run 10x 800 meters. The theory is that the time you do over 800m (in minutes and seconds) predicts your marathon time in hours and minutes.",
+          "benefits": [
+            "Very accurate indication of your marathon fitness",
+            "Builds enormous speed and endurance",
+            "Provides a heavy physical stimulus in your peak weeks",
+            "Easy to measure progress"
+          ],
+          "howTo": [
+            "Warm up very well for 20 minutes",
+            "Run 800m at your target time (e.g., 3:30 for a 3:30 marathon)",
+            "Take as much rest as you ran (jogging)",
+            "Repeat until you reach 10 repetitions"
+          ],
+          "proTip": "Don't start your schedule with 10 repetitions. Start with 4 or 5 and build up to 10 every two weeks."
+        },
+        "hillRepeats": {
+          "slug": "hill-training",
+          "title": "Hill Training",
+          "subtitle": "Build explosive power and improve your technique.",
+          "description": "Hill sprints are one of the most effective ways to build running strength. By working against gravity, you force your muscles to maximum effort.",
+          "benefits": [
+            "Improves your push-off and running efficiency",
+            "Strengthens tendons and ligaments (fewer injuries)",
+            "Trains your heart to recover faster",
+            "Trains the correct knee drive and arm movement"
+          ],
+          "howTo": [
+            "Find a hill with a 4-6% gradient",
+            "Sprint 30-60 seconds uphill with focus on technique",
+            "Walk or jog very slowly back down as recovery",
+            "Repeat 6 to 12 times"
+          ],
+          "proTip": "Don't look at your feet, but keep your gaze about 15 meters ahead. Stay upright and don't let your hips drop."
+        },
+        "baseRun": {
+          "slug": "base-run",
+          "title": "Base Run",
+          "subtitle": "Simple long runs for a strong aerobic base.",
+          "description": "The Base Run is a short to medium long run at your natural, comfortable pace. It's not a recovery run, but also not a heavy effort. The goal is building volume.",
+          "benefits": [
+            "Improves your general aerobic fitness",
+            "Strengthens the heart and lungs",
+            "Prepares your tendons for heavier training",
+            "Increases capillary density in your muscles"
+          ],
+          "howTo": [
+            "Run at a pace where you can easily talk (Z2)",
+            "Focus on a relaxed posture",
+            "Keep the pace constant, even on slight inclines",
+            "These runs make up 60-70% of your weekly volume"
+          ],
+          "proTip": "Many runners do their Base Runs too fast. If you're exhausted afterwards, it wasn't a Base Run."
+        }
+      }
+    },
+    "examples": {
+      "title": "Example schedules",
+      "description": "View example schedules for different goals and levels.",
+      "content": "Here you'll find examples of schedules for different distances and levels. These examples give you an idea of what a well-structured schedule looks like."
+    },
+    "createSchedule": {
+      "title": "Create schedule",
+      "description": "Create your own personalized running schedule now.",
+      "content": "Fill in the form to generate your own personalized running schedule. We take into account your goals, level, and availability."
+    }
   },
   "language": {
     "select": "Select language",
     "nl": "Dutch",
     "en": "English",
     "de": "German"
+  },
+  "home": {
+    "features": {
+      "badge": "Expertise & Coaching",
+      "title": "Training with",
+      "titleHighlight": "pure precision.",
+      "bodyMonitoring": {
+        "title": "Body Monitoring",
+        "description": "Our method prevents 'overreaching' by dynamically adjusting volume based on your feedback."
+      },
+      "smartPlanning": {
+        "title": "Smart Planning",
+        "description": "Systematic build-up from base endurance to peak speed in 12-16 weeks."
+      }
+    },
+    "testimonial": {
+      "name": "Sander V.",
+      "role": "Marathon Rotterdam Finisher",
+      "quote": "I always trained too hard. This schedule taught me to run easy to get faster. Result? A 22-minute PR!",
+      "rating": "9.2"
+    }
   }
 }

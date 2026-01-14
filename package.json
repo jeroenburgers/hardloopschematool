@@ -13,11 +13,14 @@
     "build:de": "NEXT_PUBLIC_DEFAULT_LOCALE=de next build",
     "start": "next start",
     "lint": "pnpm exec eslint .",
+    "lint:fix": "pnpm exec eslint . --fix",
     "format": "pnpm exec prettier --write .",
     "format:check": "pnpm exec prettier --check .",
+    "fix": "pnpm exec eslint . --fix && pnpm exec prettier --write .",
     "prepare": "husky install"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-select": "^2.2.6",

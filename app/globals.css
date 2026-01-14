@@ -6,8 +6,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -111,7 +109,7 @@
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.269 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-border: oklch(1 0 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
 }
 
@@ -121,5 +119,53 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@keyframes slow-zoom {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite;
+}
+
+/* Custom mobile menu animation - simple fade */
+[data-slot="sheet-content"][side="right"] {
+  /* Reset any default transforms */
+  transform: translateX(0) !important;
+}
+
+[data-slot="sheet-content"][side="right"][data-state="open"] {
+  animation: menu-fade-in 0.25s ease-out forwards;
+  opacity: 1;
+}
+
+[data-slot="sheet-content"][side="right"][data-state="closed"] {
+  animation: menu-fade-out 0.2s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes menu-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menu-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { usePathname, useRouter } from "next/navigation"
 import {
   translations,
   type Locale,
@@ -9,6 +10,7 @@ import {
   getNestedValue,
   getDefaultLocale,
 } from "@/lib/i18n"
+import { getRouteKeyFromSlug, routeSlugs } from "@/lib/i18n/routes"
 
 interface LanguageContextType {
   locale: Locale
@@ -19,7 +21,10 @@ interface LanguageContextType {
 const LanguageContext = React.createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+  const router = useRouter()
   const defaultLocale = getDefaultLocale()
+
   const [locale, setLocaleState] = React.useState<Locale>(defaultLocale)
   const [isValidated, setIsValidated] = React.useState(false)
 
@@ -41,16 +46,40 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     if (savedLocale && (savedLocale === "nl" || savedLocale === "en" || savedLocale === "de")) {
       setLocaleState(savedLocale)
     } else {
-      // If no saved locale, use the default from environment
       setLocaleState(defaultLocale)
+      localStorage.setItem("locale", defaultLocale)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [defaultLocale])
 
-  const setLocale = React.useCallback((newLocale: Locale) => {
-    setLocaleState(newLocale)
-    localStorage.setItem("locale", newLocale)
-  }, [])
+  const setLocale = React.useCallback(
+    (newLocale: Locale) => {
+      setLocaleState(newLocale)
+      localStorage.setItem("locale", newLocale)
+
+      // Update URL to reflect new locale with correct slug (without locale prefix)
+      const pathSegments = pathname?.split("/").filter(Boolean) || []
+
+      if (pathSegments.length > 0) {
+        // We're on a page with a slug
+        const currentSlug = pathSegments[0]
+        // Find the route key from the current slug (checks all locales)
+        const routeKey = getRouteKeyFromSlug(currentSlug)
+
+        if (routeKey) {
+          // Get the correct slug for the new locale
+          const newSlug = routeSlugs[newLocale][routeKey]
+          router.push(`/${newSlug}`)
+        } else {
+          // If we can't find the route key, stay on the same page
+          // (might be a non-translatable route)
+        }
+      } else {
+        // Homepage - just reload to update content
+        router.refresh()
+      }
+    },
+    [pathname, router],
+  )
 
   const t = React.useCallback(
     (key: TranslationPath): string => {

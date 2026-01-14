@@ -4,8 +4,62 @@
     "tagline": "Erstellen Sie Ihren perfekten Laufplan",
     "description": "Erstellen Sie einen personalisierten Laufplan basierend auf Ihren Zielen, Niveau und Verfügbarkeit"
   },
+  "seo": {
+    "home": {
+      "title": "Laufplan-Tool - Erstellen Sie Ihren perfekten Laufplan",
+      "description": "Validiert von erfahrenen Trainern. Schließen Sie sich +8.400 Läufern an, die dieses Jahr ihre Ziele mit unserer bewährten Laufmethodik erreicht haben."
+    },
+    "method": {
+      "title": "Unsere Methode - Laufplan-Tool",
+      "description": "Eine Roadmap basierend auf Erfahrung. Vom ersten Schritt bis zur Ziellinie. Entdecken Sie, wie wir die Erfahrung Tausender erfolgreicher Läufer in Ihren persönlichen Plan übersetzen."
+    },
+    "trainingTypes": {
+      "title": "Trainingsformen - Laufplan-Tool",
+      "description": "Kein Training ist gleich. Erfahren Sie mehr über die verschiedenen Bausteine Ihres persönlichen Plans: Progressionslauf, Tempolauf, Fartlek und mehr."
+    },
+    "examples": {
+      "title": "Beispielpläne - Laufplan-Tool",
+      "description": "Sehen Sie sich Beispielpläne für verschiedene Ziele und Niveaus an. Lassen Sie sich von unseren bewährten Trainingsplänen inspirieren."
+    },
+    "createSchedule": {
+      "title": "Plan erstellen - Laufplan-Tool",
+      "description": "Erstellen Sie jetzt Ihren eigenen personalisierten Laufplan. Füllen Sie das Formular aus und erhalten Sie einen maßgeschneiderten Trainingsplan."
+    }
+  },
+  "hero": {
+    "badge": "Professioneller Laufplan",
+    "title": "Erreichen Sie Ihren",
+    "titleHighlight": "nächsten Meilenstein.",
+    "description": "Validiert von erfahrenen Trainern. Schließen Sie sich +8.400 Läufern an, die dieses Jahr ihre Ziele mit unserer bewährten Laufmethodik erreicht haben.",
+    "form": {
+      "label": "Wählen Sie Ihre Herausforderung",
+      "options": {
+        "5k": "5 Kilometer",
+        "10k": "10 Kilometer",
+        "15k": "15 Kilometer",
+        "10m": "10 Meilen (16,1 Kilometer)",
+        "halfMarathon": "Halbmarathon (21,1 Kilometer)",
+        "30k": "30 Kilometer",
+        "marathon": "Marathon (42,2 Kilometer)",
+        "fitness": "Fitness / Gesundheit"
+      },
+      "button": "Meine Analyse starten",
+      "price": "Nur €19,95"
+    },
+    "features": {
+      "professional": "✓ Professioneller Aufbau",
+      "proven": "✓ Bewährte Methodik"
+    },
+    "active": "⚡ Jetzt aktiv: 142 Läufer erstellen ihren Plan"
+  },
   "header": {
-    "toggleTheme": "Design wechseln"
+    "toggleTheme": "Design wechseln",
+    "nav": {
+      "method": "Unsere Methode",
+      "trainingTypes": "Trainingsformen",
+      "examples": "Beispielpläne",
+      "createSchedule": "Plan erstellen"
+    }
   },
   "features": {
     "personalized": {
@@ -63,12 +117,281 @@
     "submit": "Plan erstellen"
   },
   "footer": {
-    "text": "Hardloopschematool.nl - Erstellen Sie Ihren perfekten Laufplan"
+    "description": "Wir machen professionelle Laufberatung für jeden zugänglich durch fortgeschrittene Methodiken.",
+    "navigation": {
+      "title": "Navigation",
+      "home": "Startseite",
+      "method": "Unsere Methode",
+      "trainingTypes": "Trainingsformen",
+      "examples": "Beispiele"
+    },
+    "copyright": "© 2026 Hardloopschematool.nl. Alle Rechte vorbehalten."
+  },
+  "pages": {
+    "method": {
+      "badge": "Unser Ansatz",
+      "title": "Eine Roadmap",
+      "titleHighlight": "basierend auf Erfahrung",
+      "description": "Vom ersten Schritt bis zur Ziellinie. Entdecken Sie, wie wir die Erfahrung Tausender erfolgreicher Läufer in Ihren persönlichen Plan übersetzen.",
+      "step1": {
+        "number": "1",
+        "title": "Ihr Ausgangspunkt",
+        "description": "Kein Läufer ist gleich. Wir schauen, wo Sie jetzt stehen. Ob Sie von Grund auf beginnen oder seit Jahren Kilometer sammeln. Wir analysieren Ihre Ziele, verfügbare Zeit und aktuelle Fitness.",
+        "points": {
+          "distance": "Wählen Sie Ihre Traumdistanz: von 5 km bis zum Marathon",
+          "schedule": "Planen Sie basierend auf Ihrem vollen Terminkalender",
+          "physical": "Berücksichtigen Sie Ihren einzigartigen körperlichen Status"
+        },
+        "visualization": "Visualisierung: Persönlicher Profilaufbau"
+      },
+      "step2": {
+        "number": "2",
+        "title": "Die Blaupausen-Matrix",
+        "description": "Wir verwenden die 'Best Practices' erfolgreicher Läufer. Wir wenden die <strong>80/20-Methode</strong> an: 80% in einem Tempo, in dem Sie sprechen können, 20%, in dem Sie sich selbst herausfordern. Dies ist der Weg zur Geschwindigkeit ohne Schmerzen.",
+        "quote": "Wir verhindern den häufigsten Fehler: zu viel, zu schnell. Unsere Methode baut ein unzerbrechliches Fundament.",
+        "visualization": "Visualisierung: Das optimale Trainingsgleichgewicht"
+      },
+      "step3": {
+        "number": "3",
+        "title": "Direktes Ergebnis",
+        "description": "Keine vagen Pläne. Sie erhalten ein klares PDF mit spezifischen Tempos und Erholungszeiten. Sie wissen genau, was Sie zu jedem Zeitpunkt der Woche tun müssen.",
+        "focus": {
+          "label": "Fokus",
+          "value": "Maximale Progression"
+        },
+        "output": {
+          "label": "Output",
+          "value": "PDF-Blaupause"
+        },
+        "visualization": "Visualisierung: Der fertige Trainingsplan"
+      },
+      "cta": {
+        "title": "Bereit, das Ziel zu erreichen?",
+        "description": "Beginnen Sie noch heute mit Ihrer personalisierten Roadmap. Der erste Schritt ist der wichtigste.",
+        "button": "Meine Analyse starten"
+      }
+    },
+    "trainingTypes": {
+      "title": "Unsere",
+      "titleHighlight": "Trainingsformen",
+      "description": "Kein Training ist gleich. Erfahren Sie mehr über die verschiedenen Bausteine Ihres persönlichen Plans.",
+      "viewDetails": "Erklärung ansehen",
+      "back": "Zurück zu Trainingsformen",
+      "labels": {
+        "benefits": "Vorteile",
+        "howTo": "Wie zu trainieren?",
+        "proTip": "Pro Tip"
+      },
+      "types": {
+        "progressionRun": {
+          "slug": "progressionslauf",
+          "title": "Progressionslauf",
+          "subtitle": "Beginnen Sie ruhig, enden Sie stark im Renntempo.",
+          "description": "Ein Progressionslauf ist ein Training, bei dem Sie das Tempo während der Session allmählich erhöhen. Sie beginnen in einem sehr komfortablen Erholungstempo und steigern es, bis Sie in Ihrem Zielrenntempo enden (z.B. 10km oder Halbmarathon-Tempo).",
+          "benefits": [
+            "Verbessert Ihre Fähigkeit, Müdigkeit zu widerstehen",
+            "Lehrt Ihren Körper, Energie effizienter zu nutzen",
+            "Baut mentales Vertrauen für die Endphase eines Rennens auf",
+            "Weniger belastend als ein vollständiger Tempolauf"
+          ],
+          "howTo": [
+            "Beginnen Sie das erste 1/3 des Laufs in Ihrem Erholungstempo (Z1)",
+            "Erhöhen Sie im zweiten 1/3 das Tempo auf Ihr ruhiges Dauerlauftempo (Z2)",
+            "Beenden Sie das letzte 1/3 in Ihrem Zielrenntempo (Z3/Z4)",
+            "Kühlen Sie danach immer 5-10 Minuten ab"
+          ],
+          "proTip": "Konzentrieren Sie sich auf einen flüssigen Übergang. Vermeiden Sie plötzliche Sprints; die Beschleunigung sollte für einen Außenstehenden fast unmerklich sein."
+        },
+        "ladderWorkout": {
+          "slug": "leiter-workout",
+          "title": "Leiter-Workout",
+          "subtitle": "Variierende Intervalle für Fokus und Geschwindigkeit.",
+          "description": "Bei einem Leiter-Intervall ändern Sie die Dauer oder Distanz jedes Intervalls. Zum Beispiel: 1 Minute, 2 Minuten, 3 Minuten und dann zurück zu 2 und 1. Dies fordert sowohl Ihr anaerobes als auch aerobes System heraus.",
+          "benefits": [
+            "Verhindert Langeweile bei harten Intervallen",
+            "Trainiert verschiedene Energiesysteme in einer Session",
+            "Verbessert Ihre Fähigkeit, Tempowechsel zu bewältigen",
+            "Hoher Kalorienverbrauch"
+          ],
+          "howTo": [
+            "Wärmen Sie sich mindestens 15 Minuten gut auf",
+            "Folgen Sie den \"Sprossen\" der Leiter genau",
+            "Nehmen Sie zwischen jeder Sprosse die vorgeschriebene Pause (meist Traben)",
+            "Halten Sie das Tempo auf den kurzen Sprossen etwas höher als auf den langen Sprossen"
+          ],
+          "proTip": "Der Weg \"nach unten\" (z.B. von 3 zu 2 zu 1 Minute) ist, wo der echte Gewinn liegt. Versuchen Sie hier, Ihre Technik trotz der Müdigkeit gut zu halten."
+        },
+        "tempoRun": {
+          "slug": "tempolauf",
+          "title": "Tempolauf",
+          "subtitle": "Erhöhen Sie Ihre anaerobe Schwelle mit konstanter Geschwindigkeit.",
+          "description": "Ein Tempolauf wird an Ihrer anaeroben Schwelle durchgeführt. Dies ist das Tempo, das Sie etwa eine Stunde aufrechterhalten können. Das Ziel ist, Ihren Körper zu trainieren, schneller zu laufen, ohne dass sich Laktat ansammelt.",
+          "benefits": [
+            "Erhöht Ihre Geschwindigkeit über längere Distanzen",
+            "Verbessert Ihre Laufökonomie",
+            "Stärkt Ihren mentalen Fokus bei konstanter hoher Anstrengung",
+            "Trainiert Ihren Körper, Laktat schneller abzubauen"
+          ],
+          "howTo": [
+            "Beginnen Sie mit einem 10-15-minütigen Aufwärmen",
+            "Laufen Sie 20-40 Minuten in Ihrem Schwellentempo (Z4)",
+            "Die Anstrengung sollte sich wie eine 7 oder 8 auf einer Skala von 10 anfühlen",
+            "Beenden Sie mit einem 10-minütigen Abkühlen"
+          ],
+          "proTip": "Wenn Sie das Gefühl haben, sprinten zu müssen, um das Tempo zu halten, gehen Sie zu schnell. Ein Tempolauf sollte hart, aber kontrolliert sein."
+        },
+        "aerobicThreshold": {
+          "slug": "aerobe-schwelle",
+          "title": "Aerobe Schwelle (AeT)",
+          "subtitle": "Das Fundament Ihrer Ausdauer.",
+          "description": "Die aerobe Schwelle ist das höchste Tempo, bei dem Sie noch vollständig aerob trainieren (ohne nennenswerten Laktataufbau). Dieses Tempo fühlt sich \"komfortabel herausfordernd\" an. Für Marathonläufer ist dies der wichtigste Trainingstyp.",
+          "benefits": [
+            "Erhöht Ihre aerobe Kapazität erheblich",
+            "Lehrt Ihren Körper, Fette effizienter als Brennstoff zu verbrennen",
+            "Senkt Ihre Herzfrequenz bei einem bestimmten Tempo langfristig",
+            "Kürzere Erholungszeit als anaerobes Training"
+          ],
+          "howTo": [
+            "Dieses Tempo liegt normalerweise zwischen Z2 und Z3",
+            "Halten Sie ein Tempo ein, bei dem Sie noch kurze Sätze sprechen können, aber keine ganzen Gespräche mehr führen",
+            "Konzentrieren Sie sich auf eine konstante Herzfrequenz",
+            "Sessions dauern oft zwischen 45 und 90 Minuten"
+          ],
+          "proTip": "Verwenden Sie einen Herzfrequenzmesser, um zu verhindern, dass Sie unbemerkt über Ihre Schwelle hinausgehen. Weniger ist mehr in dieser Zone."
+        },
+        "fartlek": {
+          "slug": "fartlek",
+          "title": "Fartlek",
+          "subtitle": "Spielen Sie mit Geschwindigkeit auf unstrukturierte Weise.",
+          "description": "Fartlek ist Schwedisch für \"Geschwindigkeitsspiel\". Im Gegensatz zu strukturierten Intervallen ändern Sie bei Fartlek Ihr Tempo basierend auf Ihrer Umgebung oder Ihrem Gefühl.",
+          "benefits": [
+            "Macht Training unterhaltsamer und weniger monoton",
+            "Trainiert sowohl Ihr aerobes als auch anaerobes System",
+            "Lehrt Sie, auf Ihren Körper zu hören, anstatt auf das GPS",
+            "Ideal für Trail- und Crossläufer"
+          ],
+          "howTo": [
+            "Laufen Sie Ihre normale Dauerlaufroute",
+            "Wählen Sie ein Objekt (z.B. einen Baum oder Laternenpfahl) und sprinten Sie dorthin",
+            "Erholen Sie sich in einem langsamen Trab, bis Sie wieder Atem haben",
+            "Wiederholen Sie dies so oft Sie möchten"
+          ],
+          "proTip": "Verwenden Sie Fartlek in Wochen, in denen Sie sich mental müde fühlen. Die Freiheit des Geschwindigkeitsspiels wirkt oft erfrischend."
+        },
+        "steadyState": {
+          "slug": "steady-state-run",
+          "title": "Steady State Run",
+          "subtitle": "Etwas schneller als Dauerlauf, Fokus auf Rhythmus.",
+          "description": "Ein Steady State Run ist ein längerer Lauf in einem konstanten Tempo, das etwas schneller ist als Ihr normaler Dauerlauf, aber langsamer als ein Tempolauf. Es ist der \"Sweet Spot\" für die aerobe Entwicklung.",
+          "benefits": [
+            "Verbessert Ihre Ausdauer im Renntempo",
+            "Baut körperliche und mentale Stärke auf",
+            "Trainiert Muskelfasern für lange Distanzen",
+            "Weniger ermüdend als ein Tempolauf, aber effektiver als Z2"
+          ],
+          "howTo": [
+            "Bestimmen Sie Ihr Zieltempo (oft Marathon- oder Halbmarathon-Tempo)",
+            "Halten Sie dieses Tempo konstant für 45 bis 90 Minuten",
+            "Konzentrieren Sie sich auf eine stabile Atmung und gute Technik",
+            "Wärmen Sie sich 10 Minuten auf und kühlen Sie 10 Minuten ab"
+          ],
+          "proTip": "Versuchen Sie, diesen Lauf auf einer flachen Strecke zu machen, um Ihr Tempo perfekt konstant zu halten."
+        },
+        "yasso800s": {
+          "slug": "yasso-800s",
+          "title": "Yasso 800s",
+          "subtitle": "Der ultimative Prädiktor für Ihre Marathonzeit.",
+          "description": "Ein berühmtes Workout, bei dem Sie 10x 800 Meter laufen. Die Theorie besagt, dass die Zeit, die Sie über 800m benötigen (in Minuten und Sekunden), Ihre Marathonzeit in Stunden und Minuten vorhersagt.",
+          "benefits": [
+            "Sehr genaue Indikation Ihrer Marathon-Fitness",
+            "Baut enorme Geschwindigkeit und Ausdauer auf",
+            "Bietet einen schweren physischen Reiz in Ihren Spitzenwochen",
+            "Einfach zu messender Fortschritt"
+          ],
+          "howTo": [
+            "Wärmen Sie sich 20 Minuten sehr gut auf",
+            "Laufen Sie 800m in Ihrer Zielzeit (z.B. 3:30 für einen 3:30 Marathon)",
+            "Nehmen Sie so viel Ruhe, wie Sie gelaufen sind (Traben)",
+            "Wiederholen Sie, bis Sie 10 Wiederholungen erreichen"
+          ],
+          "proTip": "Beginnen Sie Ihren Plan nicht mit 10 Wiederholungen. Beginnen Sie mit 4 oder 5 und bauen Sie alle zwei Wochen auf 10 auf."
+        },
+        "hillRepeats": {
+          "slug": "huegeltraining",
+          "title": "Hügeltraining",
+          "subtitle": "Bauen Sie explosive Kraft auf und verbessern Sie Ihre Technik.",
+          "description": "Hügelsprints sind eine der effektivsten Möglichkeiten, Laufkraft aufzubauen. Indem Sie gegen die Schwerkraft arbeiten, zwingen Sie Ihre Muskeln zu maximalem Einsatz.",
+          "benefits": [
+            "Verbessert Ihren Abdruck und Laufeffizienz",
+            "Stärkt Sehnen und Bänder (weniger Verletzungen)",
+            "Trainiert Ihr Herz, schneller zu erholen",
+            "Trainiert den richtigen Knieeinsatz und Armbewegung"
+          ],
+          "howTo": [
+            "Finden Sie einen Hügel mit einer Steigung von 4-6%",
+            "Sprinten Sie 30-60 Sekunden bergauf mit Fokus auf Technik",
+            "Gehen oder traben Sie sehr langsam zurück als Erholung",
+            "Wiederholen Sie 6 bis 12 Mal"
+          ],
+          "proTip": "Schauen Sie nicht auf Ihre Füße, sondern halten Sie Ihren Blick etwa 15 Meter vor sich. Bleiben Sie aufrecht und lassen Sie Ihre Hüften nicht sinken."
+        },
+        "baseRun": {
+          "slug": "base-run",
+          "title": "Base Run",
+          "subtitle": "Einfache Dauerläufe für eine starke aerobe Basis.",
+          "description": "Der Base Run ist ein kurzer bis mittlerer Dauerlauf in Ihrem natürlichen, komfortablen Tempo. Es ist kein Erholungslauf, aber auch keine schwere Anstrengung. Das Ziel ist der Aufbau von Volumen.",
+          "benefits": [
+            "Verbessert Ihre allgemeine aerobe Fitness",
+            "Stärkt Herz und Lungen",
+            "Bereitet Ihre Sehnen auf schwereres Training vor",
+            "Erhöht die Kapillardichte in Ihren Muskeln"
+          ],
+          "howTo": [
+            "Laufen Sie in einem Tempo, in dem Sie leicht sprechen können (Z2)",
+            "Konzentrieren Sie sich auf eine entspannte Haltung",
+            "Halten Sie das Tempo konstant, auch bei leichten Steigungen",
+            "Diese Läufe machen 60-70% Ihres wöchentlichen Volumens aus"
+          ],
+          "proTip": "Viele Läufer machen ihre Base Runs zu schnell. Wenn Sie danach erschöpft sind, war es kein Base Run."
+        }
+      }
+    },
+    "examples": {
+      "title": "Beispielpläne",
+      "description": "Sehen Sie sich Beispielpläne für verschiedene Ziele und Niveaus an.",
+      "content": "Hier finden Sie Beispiele für Pläne für verschiedene Distanzen und Niveaus. Diese Beispiele geben Ihnen eine Vorstellung davon, wie ein gut strukturierter Plan aussieht."
+    },
+    "createSchedule": {
+      "title": "Plan erstellen",
+      "description": "Erstellen Sie jetzt Ihren eigenen personalisierten Laufplan.",
+      "content": "Füllen Sie das Formular aus, um Ihren eigenen personalisierten Laufplan zu erstellen. Wir berücksichtigen Ihre Ziele, Ihr Niveau und Ihre Verfügbarkeit."
+    }
   },
   "language": {
     "select": "Sprache wählen",
     "nl": "Niederländisch",
     "en": "Englisch",
     "de": "Deutsch"
+  },
+  "home": {
+    "features": {
+      "badge": "Expertise & Coaching",
+      "title": "Training mit",
+      "titleHighlight": "reiner Präzision.",
+      "bodyMonitoring": {
+        "title": "Körperüberwachung",
+        "description": "Unsere Methode verhindert 'Overreaching', indem das Volumen dynamisch an Ihr Feedback angepasst wird."
+      },
+      "smartPlanning": {
+        "title": "Smart Planning",
+        "description": "Systematischer Aufbau von Grundausdauer zu Spitzengeschwindigkeit in 12-16 Wochen."
+      }
+    },
+    "testimonial": {
+      "name": "Sander V.",
+      "role": "Marathon Rotterdam Finisher",
+      "quote": "Ich habe immer zu hart trainiert. Dieser Plan lehrte mich, langsam zu laufen, um schneller zu werden. Ergebnis? Ein PR von 22 Minuten!",
+      "rating": "9.2"
+    }
   }
 }

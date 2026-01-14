@@ -4,8 +4,62 @@
     "tagline": "Maak je perfecte hardloopschema",
     "description": "Maak een gepersonaliseerd hardloopschema op basis van je doelen, niveau en beschikbaarheid"
   },
+  "seo": {
+    "home": {
+      "title": "Hardloopschematool - Maak je perfecte hardloopschema",
+      "description": "Gevalideerd door ervaren coaches. Sluit je aan bij +8.400 lopers die dit jaar hun doelen bereikten met onze beproefde loop-methodiek."
+    },
+    "method": {
+      "title": "Onze Methode - Hardloopschematool",
+      "description": "Een routekaart gebaseerd op ervaring. Van de eerste stap tot de finishlijn. Ontdek hoe wij de ervaring van duizenden succesvolle lopers vertalen naar jouw persoonlijke plan."
+    },
+    "trainingTypes": {
+      "title": "Trainingsvormen - Hardloopschematool",
+      "description": "Geen enkele training is hetzelfde. Leer meer over de verschillende bouwstenen van jouw persoonlijke schema: progressieloop, tempo run, fartlek en meer."
+    },
+    "examples": {
+      "title": "Voorbeeld Schema's - Hardloopschematool",
+      "description": "Bekijk voorbeeld schema's voor verschillende doelen en niveaus. Laat je inspireren door onze beproefde trainingsplannen."
+    },
+    "createSchedule": {
+      "title": "Schema Maken - Hardloopschematool",
+      "description": "Maak nu je eigen gepersonaliseerde hardloopschema. Vul het formulier in en ontvang een op maat gemaakt trainingsplan."
+    }
+  },
+  "hero": {
+    "badge": "Professioneel Hardloopschema",
+    "title": "Bereik jouw",
+    "titleHighlight": "volgende mijlpaal.",
+    "description": "Gevalideerd door ervaren coaches. Sluit je aan bij +8.400 lopers die dit jaar hun doelen bereikten met onze beproefde loop-methodiek.",
+    "form": {
+      "label": "Kies je uitdaging",
+      "options": {
+        "5k": "5 kilometer",
+        "10k": "10 kilometer",
+        "15k": "15 kilometer",
+        "10m": "10 mijl (16,1 kilometer)",
+        "halfMarathon": "Halve marathon (21,1 kilometer)",
+        "30k": "30 kilometer",
+        "marathon": "Marathon (42,2 kilometer)",
+        "fitness": "Conditie / Gezondheid"
+      },
+      "button": "Start Mijn Analyse",
+      "price": "Slechts €19,95"
+    },
+    "features": {
+      "professional": "✓ Professionele Opbouw",
+      "proven": "✓ Beproefde Methodiek"
+    },
+    "active": "⚡ Nu actief: 142 lopers bouwen hun schema"
+  },
   "header": {
-    "toggleTheme": "Thema wisselen"
+    "toggleTheme": "Thema wisselen",
+    "nav": {
+      "method": "Onze methode",
+      "trainingTypes": "Trainingsvormen",
+      "examples": "Voorbeeld schema's",
+      "createSchedule": "Schema maken"
+    }
   },
   "features": {
     "personalized": {
@@ -63,12 +117,281 @@
     "submit": "Schema genereren"
   },
   "footer": {
-    "text": "Hardloopschematool.nl - Maak je perfecte hardloopschema"
+    "description": "Wij maken professioneel hardloopadvies toegankelijk voor iedereen door middel van geavanceerde methodieken.",
+    "navigation": {
+      "title": "Navigatie",
+      "home": "Startpagina",
+      "method": "Onze Methode",
+      "trainingTypes": "Trainingsvormen",
+      "examples": "Voorbeelden"
+    },
+    "copyright": "© 2026 Hardloopschematool.nl. Alle rechten voorbehouden."
+  },
+  "pages": {
+    "method": {
+      "badge": "Onze Aanpak",
+      "title": "Een routekaart",
+      "titleHighlight": "gebaseerd op ervaring",
+      "description": "Van de eerste stap tot de finishlijn. Ontdek hoe wij de ervaring van duizenden succesvolle lopers vertalen naar jouw persoonlijke plan.",
+      "step1": {
+        "number": "1",
+        "title": "Jouw Uitgangspunt",
+        "description": "Geen loper is hetzelfde. We kijken naar waar je nu staat. Of je nu vanuit het niets begint of al jaren kilometers vreet. We analyseren je doelen, beschikbare tijd en huidige fitheid.",
+        "points": {
+          "distance": "Kies je droomafstand: van 5km tot de marathon",
+          "schedule": "Plan op basis van jouw drukke agenda",
+          "physical": "Houd rekening met jouw unieke fysieke status"
+        },
+        "visualization": "Visualisatie: Persoonlijk profiel opbouw"
+      },
+      "step2": {
+        "number": "2",
+        "title": "De Blauwdruk Matrix",
+        "description": "Wij gebruiken de 'best practices' van succesvolle lopers. We passen de <strong>80/20 methode</strong> toe: 80% op een tempo waarin je kunt praten, 20% waarin je jezelf uitdaagt. Dit is dé weg naar snelheid zonder pijntjes.",
+        "quote": "Wij voorkomen de meest gemaakte fout: te veel, te snel. Onze methode bouwt een onverwoestbaar fundament.",
+        "visualization": "Visualisatie: De optimale trainingsbalans"
+      },
+      "step3": {
+        "number": "3",
+        "title": "Direct Resultaat",
+        "description": "Geen vage schema's. Je ontvangt een heldere PDF met specifieke tempo's en hersteltijden. Je weet precies wat je moet doen op elk moment van de week.",
+        "focus": {
+          "label": "Focus",
+          "value": "Maximale Progressie"
+        },
+        "output": {
+          "label": "Output",
+          "value": "PDF Blauwdruk"
+        },
+        "visualization": "Visualisatie: Het voltooide trainingsplan"
+      },
+      "cta": {
+        "title": "Klaar om de finish te halen?",
+        "description": "Begin vandaag nog met jouw gepersonaliseerde routekaart. De eerste stap is de belangrijkste.",
+        "button": "Start Mijn Analyse"
+      }
+    },
+    "trainingTypes": {
+      "title": "Onze",
+      "titleHighlight": "Trainingsvormen",
+      "description": "Geen enkele training is hetzelfde. Leer meer over de verschillende bouwstenen van jouw persoonlijke schema.",
+      "viewDetails": "Uitleg bekijken",
+      "back": "Terug naar Trainingstypes",
+      "labels": {
+        "benefits": "Voordelen",
+        "howTo": "Hoe te trainen?",
+        "proTip": "Pro Tip"
+      },
+      "types": {
+        "progressionRun": {
+          "slug": "progressieloop",
+          "title": "Progressieloop",
+          "subtitle": "Begin rustig, eindig sterk op wedstrijttempo.",
+          "description": "Een progressieloop is een training waarbij je het tempo geleidelijk verhoogt tijdens de sessie. Je begint op een zeer comfortabel hersteltempo en bouwt dit op tot je eindigt op je streeftempo voor de wedstrijd (bijv. 10km of halve marathon tempo).",
+          "benefits": [
+            "Verbetert je vermogen om vermoeidheid te weerstaan",
+            "Leert je lichaam om efficiënter om te gaan met energie",
+            "Bouwt mentaal zelfvertrouwen op voor de slotfase van een race",
+            "Minder belastend dan een volledige tempo run"
+          ],
+          "howTo": [
+            "Begin de eerste 1/3 van de loop op je hersteltempo (Z1)",
+            "Verhoog in het tweede 1/3 het tempo naar je rustige duurloop tempo (Z2)",
+            "Eindig de laatste 1/3 op je doel-wedstrijttempo (Z3/Z4)",
+            "Koel daarna altijd 5-10 minuten uit"
+          ],
+          "proTip": "Focus op een vloeiende overgang. Vermijd plotselinge sprints; de versnelling moet bijna onmerkbaar gaan voor een buitenstaander."
+        },
+        "ladderWorkout": {
+          "slug": "ladder-workout",
+          "title": "Ladder Workout",
+          "subtitle": "Variërende intervals voor focus and snelheid.",
+          "description": "Bij een ladder-interval verander je de duur of afstand van elk interval. Bijvoorbeeld: 1 minuut, 2 minuten, 3 minuten, en dan weer terug naar 2 en 1. Dit daagt zowel je anaerobe als aerobe systeem uit.",
+          "benefits": [
+            "Voorkomt verveling tijdens zware intervals",
+            "Traint verschillende energiesystemen in één sessie",
+            "Verbetert je vermogen om tempowisselingen op te vangen",
+            "Hoge calorieverbranding"
+          ],
+          "howTo": [
+            "Warm minimaal 15 minuten goed op",
+            "Volg de \"treden\" van de ladder nauwkeurig",
+            "Neem tussen elke trede de voorgeschreven rust (meestal dribbelen)",
+            "Houd het tempo op the korte treden iets hoger dan op the lange treden"
+          ],
+          "proTip": "De weg \"omlaag\" (bijv. van 3 naar 2 naar 1 minuut) is waar de echte winst zit. Probeer hier je techniek goed vast te houden ondanks the vermoeidheid."
+        },
+        "tempoRun": {
+          "slug": "tempo-run",
+          "title": "Tempo Run",
+          "subtitle": "Verhoog je anaerobe drempel met constante snelheid.",
+          "description": "Een Tempo Run wordt uitgevoerd op je anaerobe drempel (Threshold). Dit is het tempo dat je ongeveer een uur kunt volhouden. Het doel is om je lichaam te trainen sneller te lopen zonder dat lactaat zich ophoopt.",
+          "benefits": [
+            "Verhoogt je snelheid over langere afstanden",
+            "Verbetert je loop-economie",
+            "Versterkt je mentale focus bij constante hoge inspanning",
+            "Traint je lichaam om sneller lactaat af te voeren"
+          ],
+          "howTo": [
+            "Begin met een warming-up van 10-15 minuten",
+            "Loop 20-40 minuten op je threshold tempo (Z4)",
+            "De inspanning moet aanvoelen als een 7 of 8 op een schaal van 10",
+            "Eindig met een cooling-down van 10 minuten"
+          ],
+          "proTip": "Als je het gevoel hebt dat je moet sprinten om het tempo vast te houden, ga je te snel. Een tempo run moet zwaar zijn, maar gecontroleerd."
+        },
+        "aerobicThreshold": {
+          "slug": "aerobic-threshold",
+          "title": "Aerobic Threshold",
+          "subtitle": "De fundering voor je uithoudingsvermogen.",
+          "description": "De aerobe drempel is het hoogste tempo waarbij je nog volledig aeroob traint (zonder noemenswaardige lactaatopbouw). Dit tempo voelt \"comfortabel uitdagend\" aan. Voor marathonlopers is dit de belangrijkste trainingstype.",
+          "benefits": [
+            "Vergroot je aerobe capaciteit aanzienlijk",
+            "Leert je lichaam vetten efficiënter te verbranden als brandstof",
+            "Verlaagt je hartslag bij een gegeven tempo op de lange termijn",
+            "Kortere hersteltijd dan anaerobe trainingen"
+          ],
+          "howTo": [
+            "Dit tempo ligt meestal tussen Z2 and Z3 in",
+            "Houd een tempo aan waarbij je nog korte zinnen kunt spreken, maar geen hele gesprekken meer voert",
+            "Focus op een constante hartslag",
+            "Sessies duren vaak tussen de 45 en 90 minuten"
+          ],
+          "proTip": "Gebruik een hartslagmeter om te voorkomen dat je ongemerkt boven je drempel uitkomt. Less is more in deze zone."
+        },
+        "fartlek": {
+          "slug": "fartlek",
+          "title": "Fartlek",
+          "subtitle": "Spelen met snelheid op een ongestructureerde manier.",
+          "description": "Fartlek is Zweeds voor \"vaartspel\". In tegenstelling tot gestructureerde intervals, verander je bij fartlek je tempo op basis van je omgeving of je gevoel.",
+          "benefits": [
+            "Maakt training leuker and minder monotoon",
+            "Traint zowel je aerobe als anaerobe systeem",
+            "Leert je te luisteren naar je lichaam in plaats van de GPS",
+            "Ideaal voor trailrunners and crossers"
+          ],
+          "howTo": [
+            "Loop je normale duurlooproute",
+            "Kies een object (bijv. een boom of lantaarnpaal) and sprint erheen",
+            "Herstel op een rustig drafje tot je weer adem hebt",
+            "Herhaal dit zo vaak als je wilt"
+          ],
+          "proTip": "Gebruik fartlek in weken waarin je je mentaal moe voelt. De vrijheid van het vaartspel werkt vaak verfrissend."
+        },
+        "steadyState": {
+          "slug": "steady-state-run",
+          "title": "Steady State Run",
+          "subtitle": "Iets sneller dan duurloop, focus op ritme.",
+          "description": "Een Steady State run is een langere loop op een constant tempo dat net iets sneller is dan je normale duurloop, maar langzamer dan een tempo run. Het is de \"sweet spot\" voor aerobe ontwikkeling.",
+          "benefits": [
+            "Verbetert je uithoudingsvermogen op wedstrijdsnelheid",
+            "Bouwt fysieke and mentale kracht op",
+            "Traint de spiervezels voor lange afstanden",
+            "Minder vermoeiend dan een tempo run maar effectiever dan Z2"
+          ],
+          "howTo": [
+            "Bepaal je streeftempo (vaak marathon- of halve marathon tempo)",
+            "Houd dit tempo 45 tot 90 minuten constant vast",
+            "Focus op een stabiele ademhaling and goede techniek",
+            "Warm 10 minuten op and koel 10 minuten af"
+          ],
+          "proTip": "Probeer deze loop op een vlak parcours te doen om je tempo perfect constant te kunnen houden."
+        },
+        "yasso800s": {
+          "slug": "yasso-800s",
+          "title": "Yasso 800s",
+          "subtitle": "De ultieme voorspeller voor je marathon tijd.",
+          "description": "Een beroemde workout waarbij je 10x 800 meter loopt. De theorie is dat de tijd die je doet over 800m (in minuten and seconden) je marathontijd in uren and minuten voorspelt.",
+          "benefits": [
+            "Zeer nauwkeurige indicatie van je marathon-fitheid",
+            "Bouwt enorme snelheid and uithoudingsvermogen op",
+            "Zorgt voor een zware fysieke prikkel in je piekweken",
+            "Eenvoudig te meten progressie"
+          ],
+          "howTo": [
+            "Warm 20 minuten zeer goed op",
+            "Loop 800m op je streeftijd (bijv. 3:30 voor een 3:30 marathon)",
+            "Neem evenveel rust als je gelopen hebt (dribbelen)",
+            "Herhaal tot je aan 10 herhalingen zit"
+          ],
+          "proTip": "Begin je schema niet met 10 herhalingen. Begin met 4 of 5 and bouw elke twee weken uit tot 10."
+        },
+        "hillRepeats": {
+          "slug": "heuveltraining",
+          "title": "Heuveltraining",
+          "subtitle": "Bouw explosieve kracht en verbeter je techniek.",
+          "description": "Heuvelsprints zijn een van de meest effectieve manieren om loopkracht op te bouwen. Door tegen de zwaartekracht in te werken, dwing je je spieren tot maximale inzet.",
+          "benefits": [
+            "Verbetert je afzet and loop-efficiëntie",
+            "Versterkt pezen and gewrichtsbanden (minder blessures)",
+            "Traint je hart om sneller te herstellen",
+            "Traint de juiste knie-inzet and armbeweging"
+          ],
+          "howTo": [
+            "Zoek een heuvel met een stijging van 4-6%",
+            "Sprint 30-60 seconden bergop met focus op techniek",
+            "Wandel of dribbel heel rustig terug naar beneden als herstel",
+            "Herhaal 6 tot 12 keer"
+          ],
+          "proTip": "Kijk niet naar je voeten, maar houd je blik ongeveer 15 meter voor je uit. Blijf rechtop lopen and laat je heupen niet zakken."
+        },
+        "baseRun": {
+          "slug": "base-run",
+          "title": "Base Run",
+          "subtitle": "Eenvoudige duurlopen voor een sterke aerobe basis.",
+          "description": "De Base Run is een korte tot middellange duurloop op je natuurlijke, comfortabele tempo. Het is geen herstelloop, maar ook geen zware inspanning. Het doel is het opbouwen van volume.",
+          "benefits": [
+            "Verbetert je algemene aerobe fitheid",
+            "Versterkt het hart and de longen",
+            "Bereidt je pezen voor op zwaardere trainingen",
+            "Verhoogt de capillaire dichtheid in je spieren"
+          ],
+          "howTo": [
+            "Loop op een tempo waarbij je gemakkelijk kunt praten (Z2)",
+            "Focus op een ontspannen houding",
+            "Houd het tempo constant, ook bij lichte hellingen",
+            "Deze lopen vormen 60-70% van je wekelijkse volume"
+          ],
+          "proTip": "Veel lopers doen hun Base Runs te snel. Als je na afloop uitgeput bent, was het geen Base Run."
+        }
+      }
+    },
+    "examples": {
+      "title": "Voorbeeld schema's",
+      "description": "Bekijk voorbeeld schema's voor verschillende doelen en niveaus.",
+      "content": "Hier vind je voorbeelden van schema's voor verschillende afstanden en niveaus. Deze voorbeelden geven je een idee van hoe een goed opgebouwd schema eruit ziet."
+    },
+    "createSchedule": {
+      "title": "Schema maken",
+      "description": "Maak nu je eigen gepersonaliseerde hardloopschema.",
+      "content": "Vul het formulier in om je eigen gepersonaliseerde hardloopschema te genereren. We houden rekening met je doelen, niveau en beschikbaarheid."
+    }
   },
   "language": {
     "select": "Selecteer taal",
     "nl": "Nederlands",
     "en": "Engels",
     "de": "Duits"
+  },
+  "home": {
+    "features": {
+      "badge": "Expertise & Coaching",
+      "title": "Training met",
+      "titleHighlight": "pure precisie.",
+      "bodyMonitoring": {
+        "title": "Lichaamsbewaking",
+        "description": "Onze methode voorkomt 'overreaching' door volume dynamisch aan te passen op jouw feedback."
+      },
+      "smartPlanning": {
+        "title": "Smart Planning",
+        "description": "Systematische opbouw van basis-uithouding naar pieksnelheid in 12-16 weken."
+      }
+    },
+    "testimonial": {
+      "name": "Sander V.",
+      "role": "Finisher Marathon Rotterdam",
+      "quote": "Ik trainde altijd te hard. Dit schema leerde me rustig te lopen om sneller te worden. Resultaat? Een PR van 22 minuten!",
+      "rating": "9.2"
+    }
   }
 }

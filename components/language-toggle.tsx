@@ -16,11 +16,12 @@ const languageConfig: Record<
   {
     flag: string
     name: string
+    code: string
   }
 > = {
-  nl: { flag: "🇳🇱", name: "Nederlands" },
-  en: { flag: "🇬🇧", name: "English" },
-  de: { flag: "🇩🇪", name: "Deutsch" },
+  nl: { flag: "🇳🇱", name: "Nederlands", code: "nl" },
+  en: { flag: "🇬🇧", name: "English", code: "en" },
+  de: { flag: "🇩🇪", name: "Deutsch", code: "de" },
 }
 
 export function LanguageToggle() {
@@ -29,9 +30,15 @@ export function LanguageToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon">
-          <span className="text-xl" aria-label={t("language.select")}>
-            {languageConfig[locale].flag}
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-9 w-auto min-w-[3.5rem] px-2.5 flex items-center justify-center gap-1.5 bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 rounded-full"
+          aria-label={t("language.select")}
+        >
+          <span className="text-sm leading-none">{languageConfig[locale].flag}</span>
+          <span className="text-[10px] font-bold uppercase tracking-tighter leading-none">
+            {languageConfig[locale].code}
           </span>
         </Button>
       </DropdownMenuTrigger>
