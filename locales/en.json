@@ -1,0 +1,74 @@
+{
+  "common": {
+    "appName": "Running Schedule Tool",
+    "tagline": "Create your perfect running schedule",
+    "description": "Create a personalized running schedule based on your goals, level and availability"
+  },
+  "header": {
+    "toggleTheme": "Toggle theme"
+  },
+  "features": {
+    "personalized": {
+      "title": "Personalized",
+      "description": "Schedules tailored to your goals and level"
+    },
+    "progressive": {
+      "title": "Progressive",
+      "description": "Gradually build up to your end goal"
+    },
+    "flexible": {
+      "title": "Flexible",
+      "description": "Adjust your schedule based on your availability"
+    }
+  },
+  "form": {
+    "title": "Create your running schedule",
+    "description": "Fill in the details below to generate a schedule",
+    "goal": {
+      "label": "What is your main goal?",
+      "placeholder": "Select your goal",
+      "options": {
+        "5k": "Run 5 kilometers",
+        "10k": "Run 10 kilometers",
+        "halfMarathon": "Half marathon (21.1 km)",
+        "marathon": "Marathon (42.2 km)",
+        "fitness": "Improve general fitness",
+        "weightLoss": "Weight loss"
+      }
+    },
+    "level": {
+      "label": "What is your current level?",
+      "placeholder": "Select your level",
+      "options": {
+        "beginner": "Beginner (never run before)",
+        "intermediate": "Slightly advanced (can run 2-3 km)",
+        "advanced": "Advanced (can run 5+ km)",
+        "expert": "Very advanced (regularly 10+ km)"
+      }
+    },
+    "frequency": {
+      "label": "How many days per week do you want to run?",
+      "placeholder": "Select number of days",
+      "options": {
+        "2": "2 days per week",
+        "3": "3 days per week",
+        "4": "4 days per week",
+        "5": "5 days per week",
+        "6": "6 days per week"
+      }
+    },
+    "startDate": {
+      "label": "When do you want to start?"
+    },
+    "submit": "Generate schedule"
+  },
+  "footer": {
+    "text": "Hardloopschematool.nl - Create your perfect running schedule"
+  },
+  "language": {
+    "select": "Select language",
+    "nl": "Dutch",
+    "en": "English",
+    "de": "German"
+  }
+}

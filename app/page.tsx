@@ -1,65 +1,179 @@
-import Image from "next/image";
+"use client"
+
+import { useState } from "react"
+import { Header } from "@/components/header"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
+import { Calendar, Target, TrendingUp, Zap } from "lucide-react"
+import { useLanguage } from "@/components/language-provider"
 
 export default function Home() {
+  const { t } = useLanguage()
+  const [formData, setFormData] = useState({
+    doel: "",
+    niveau: "",
+    dagenPerWeek: "",
+    startDatum: "",
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // TODO: Implementeer schema generatie logica
+    console.log("Formulier ingediend:", formData)
+  }
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      <Header />
+      <div className="container mx-auto px-4 py-12 max-w-6xl">
+        {/* Hero Section */}
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            {t("common.appName")}
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            {t("common.description")}
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <Card>
+            <CardHeader>
+              <Target className="h-8 w-8 text-blue-600 mb-2" />
+              <CardTitle>{t("features.personalized.title")}</CardTitle>
+              <CardDescription>{t("features.personalized.description")}</CardDescription>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+              <TrendingUp className="h-8 w-8 text-purple-600 mb-2" />
+              <CardTitle>{t("features.progressive.title")}</CardTitle>
+              <CardDescription>{t("features.progressive.description")}</CardDescription>
+            </CardHeader>
+          </Card>
+          <Card>
+            <CardHeader>
+              <Zap className="h-8 w-8 text-orange-600 mb-2" />
+              <CardTitle>{t("features.flexible.title")}</CardTitle>
+              <CardDescription>{t("features.flexible.description")}</CardDescription>
+            </CardHeader>
+          </Card>
         </div>
-      </main>
+
+        {/* Main Form Card */}
+        <Card className="max-w-2xl mx-auto">
+          <CardHeader>
+            <CardTitle className="text-2xl">{t("form.title")}</CardTitle>
+            <CardDescription>{t("form.description")}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="doel">{t("form.goal.label")}</Label>
+                <Select
+                  value={formData.doel}
+                  onValueChange={(value) => setFormData({ ...formData, doel: value })}
+                >
+                  <SelectTrigger id="doel">
+                    <SelectValue placeholder={t("form.goal.placeholder")} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="5k">{t("form.goal.options.5k")}</SelectItem>
+                    <SelectItem value="10k">{t("form.goal.options.10k")}</SelectItem>
+                    <SelectItem value="halve-marathon">
+                      {t("form.goal.options.halfMarathon")}
+                    </SelectItem>
+                    <SelectItem value="marathon">{t("form.goal.options.marathon")}</SelectItem>
+                    <SelectItem value="conditie">{t("form.goal.options.fitness")}</SelectItem>
+                    <SelectItem value="gewichtsverlies">
+                      {t("form.goal.options.weightLoss")}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="niveau">{t("form.level.label")}</Label>
+                <Select
+                  value={formData.niveau}
+                  onValueChange={(value) => setFormData({ ...formData, niveau: value })}
+                >
+                  <SelectTrigger id="niveau">
+                    <SelectValue placeholder={t("form.level.placeholder")} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="beginner">{t("form.level.options.beginner")}</SelectItem>
+                    <SelectItem value="licht-gevorderd">
+                      {t("form.level.options.intermediate")}
+                    </SelectItem>
+                    <SelectItem value="gevorderd">{t("form.level.options.advanced")}</SelectItem>
+                    <SelectItem value="zeer-gevorderd">{t("form.level.options.expert")}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="dagenPerWeek">{t("form.frequency.label")}</Label>
+                <Select
+                  value={formData.dagenPerWeek}
+                  onValueChange={(value) => setFormData({ ...formData, dagenPerWeek: value })}
+                >
+                  <SelectTrigger id="dagenPerWeek">
+                    <SelectValue placeholder={t("form.frequency.placeholder")} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="2">{t("form.frequency.options.2")}</SelectItem>
+                    <SelectItem value="3">{t("form.frequency.options.3")}</SelectItem>
+                    <SelectItem value="4">{t("form.frequency.options.4")}</SelectItem>
+                    <SelectItem value="5">{t("form.frequency.options.5")}</SelectItem>
+                    <SelectItem value="6">{t("form.frequency.options.6")}</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="startDatum">{t("form.startDate.label")}</Label>
+                <Input
+                  id="startDatum"
+                  type="date"
+                  value={formData.startDatum}
+                  onChange={(e) => setFormData({ ...formData, startDatum: e.target.value })}
+                />
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full"
+                size="lg"
+                disabled={
+                  !formData.doel ||
+                  !formData.niveau ||
+                  !formData.dagenPerWeek ||
+                  !formData.startDatum
+                }
+              >
+                <Calendar className="mr-2 h-4 w-4" />
+                {t("form.submit")}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+
+        {/* Footer */}
+        <div className="text-center mt-12 text-muted-foreground">
+          <p>{t("footer.text")}</p>
+        </div>
+      </div>
     </div>
-  );
+  )
 }

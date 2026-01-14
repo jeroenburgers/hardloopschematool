@@ -1,0 +1,74 @@
+{
+  "common": {
+    "appName": "Laufplan-Tool",
+    "tagline": "Erstellen Sie Ihren perfekten Laufplan",
+    "description": "Erstellen Sie einen personalisierten Laufplan basierend auf Ihren Zielen, Niveau und Verfügbarkeit"
+  },
+  "header": {
+    "toggleTheme": "Design wechseln"
+  },
+  "features": {
+    "personalized": {
+      "title": "Personalisiert",
+      "description": "Pläne angepasst an Ihre Ziele und Ihr Niveau"
+    },
+    "progressive": {
+      "title": "Progressiv",
+      "description": "Schrittweise aufbauen zu Ihrem Endziel"
+    },
+    "flexible": {
+      "title": "Flexibel",
+      "description": "Passen Sie Ihren Plan an Ihre Verfügbarkeit an"
+    }
+  },
+  "form": {
+    "title": "Erstellen Sie Ihren Laufplan",
+    "description": "Füllen Sie die folgenden Angaben aus, um einen Plan zu erstellen",
+    "goal": {
+      "label": "Was ist Ihr Hauptziel?",
+      "placeholder": "Wählen Sie Ihr Ziel",
+      "options": {
+        "5k": "5 Kilometer laufen",
+        "10k": "10 Kilometer laufen",
+        "halfMarathon": "Halbmarathon (21,1 km)",
+        "marathon": "Marathon (42,2 km)",
+        "fitness": "Allgemeine Fitness verbessern",
+        "weightLoss": "Gewichtsverlust"
+      }
+    },
+    "level": {
+      "label": "Was ist Ihr aktuelles Niveau?",
+      "placeholder": "Wählen Sie Ihr Niveau",
+      "options": {
+        "beginner": "Anfänger (noch nie gelaufen)",
+        "intermediate": "Leicht fortgeschritten (kann 2-3 km laufen)",
+        "advanced": "Fortgeschritten (kann 5+ km laufen)",
+        "expert": "Sehr fortgeschritten (regelmäßig 10+ km)"
+      }
+    },
+    "frequency": {
+      "label": "Wie viele Tage pro Woche möchten Sie laufen?",
+      "placeholder": "Wählen Sie die Anzahl der Tage",
+      "options": {
+        "2": "2 Tage pro Woche",
+        "3": "3 Tage pro Woche",
+        "4": "4 Tage pro Woche",
+        "5": "5 Tage pro Woche",
+        "6": "6 Tage pro Woche"
+      }
+    },
+    "startDate": {
+      "label": "Wann möchten Sie beginnen?"
+    },
+    "submit": "Plan erstellen"
+  },
+  "footer": {
+    "text": "Hardloopschematool.nl - Erstellen Sie Ihren perfekten Laufplan"
+  },
+  "language": {
+    "select": "Sprache wählen",
+    "nl": "Niederländisch",
+    "en": "Englisch",
+    "de": "Deutsch"
+  }
+}

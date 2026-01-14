@@ -1,0 +1,74 @@
+{
+  "common": {
+    "appName": "Hardloopschematool",
+    "tagline": "Maak je perfecte hardloopschema",
+    "description": "Maak een gepersonaliseerd hardloopschema op basis van je doelen, niveau en beschikbaarheid"
+  },
+  "header": {
+    "toggleTheme": "Thema wisselen"
+  },
+  "features": {
+    "personalized": {
+      "title": "Gepersonaliseerd",
+      "description": "Schema's aangepast aan jouw doelen en niveau"
+    },
+    "progressive": {
+      "title": "Progressief",
+      "description": "Bouw geleidelijk op naar je einddoel"
+    },
+    "flexible": {
+      "title": "Flexibel",
+      "description": "Pas je schema aan op basis van je beschikbaarheid"
+    }
+  },
+  "form": {
+    "title": "Maak je hardloopschema",
+    "description": "Vul de onderstaande gegevens in om een schema te genereren",
+    "goal": {
+      "label": "Wat is je hoofddoel?",
+      "placeholder": "Selecteer je doel",
+      "options": {
+        "5k": "5 kilometer hardlopen",
+        "10k": "10 kilometer hardlopen",
+        "halfMarathon": "Halve marathon (21.1 km)",
+        "marathon": "Marathon (42.2 km)",
+        "fitness": "Algemene conditie verbeteren",
+        "weightLoss": "Gewichtsverlies"
+      }
+    },
+    "level": {
+      "label": "Wat is je huidige niveau?",
+      "placeholder": "Selecteer je niveau",
+      "options": {
+        "beginner": "Beginner (nog niet hardgelopen)",
+        "intermediate": "Licht gevorderd (kan 2-3 km hardlopen)",
+        "advanced": "Gevorderd (kan 5+ km hardlopen)",
+        "expert": "Zeer gevorderd (regelmatig 10+ km)"
+      }
+    },
+    "frequency": {
+      "label": "Hoeveel dagen per week wil je hardlopen?",
+      "placeholder": "Selecteer aantal dagen",
+      "options": {
+        "2": "2 dagen per week",
+        "3": "3 dagen per week",
+        "4": "4 dagen per week",
+        "5": "5 dagen per week",
+        "6": "6 dagen per week"
+      }
+    },
+    "startDate": {
+      "label": "Wanneer wil je beginnen?"
+    },
+    "submit": "Schema genereren"
+  },
+  "footer": {
+    "text": "Hardloopschematool.nl - Maak je perfecte hardloopschema"
+  },
+  "language": {
+    "select": "Selecteer taal",
+    "nl": "Nederlands",
+    "en": "Engels",
+    "de": "Duits"
+  }
+}
