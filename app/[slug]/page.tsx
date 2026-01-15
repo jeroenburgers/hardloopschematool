@@ -1,12 +1,12 @@
 import type { Metadata } from "next"
-import { getRouteKeyFromSlug } from "@/lib/i18n/routes"
-import { getMetadata } from "@/lib/seo"
+import { getRouteKeyBySlug } from "@/lib/i18n/routes"
+import { getPageMetadata, type PageType } from "@/lib/seo"
 import { getDefaultLocale } from "@/lib/i18n/config"
 import { SlugPageClient } from "@/components/pages/slug-page-client"
 
 const defaultLocale = getDefaultLocale()
 
-const routeToSeoPage: Record<string, "method" | "trainingTypes" | "examples" | "createSchedule"> = {
+const routeToSeoPage: Record<string, PageType> = {
   method: "method",
   trainingTypes: "trainingTypes",
   examples: "examples",
@@ -19,15 +19,15 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const routeKey = getRouteKeyFromSlug(slug)
+  const routeKey = getRouteKeyBySlug(slug)
 
   if (!routeKey) {
-    return getMetadata(defaultLocale, "home")
+    return getPageMetadata(defaultLocale, "home")
   }
 
   const seoPage = routeToSeoPage[routeKey]
   if (!seoPage) {
-    return getMetadata(defaultLocale, "home")
+    return getPageMetadata(defaultLocale, "home")
   }
 
   // Try to detect locale from slug by checking routeSlugs
@@ -54,7 +54,7 @@ export async function generateMetadata({
     }
   }
 
-  return getMetadata(locale, seoPage, {
+  return getPageMetadata(locale, seoPage, {
     path: `/${slug}`,
   })
 }

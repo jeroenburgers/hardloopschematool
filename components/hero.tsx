@@ -2,19 +2,24 @@
 
 import { useLanguage } from "./language-provider"
 import Image from "next/image"
+import { Badge } from "./ui/badge"
 
 export function Hero() {
   const { t } = useLanguage()
 
   return (
     <div className="flex flex-col items-center">
-      <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-950 dark:bg-zinc-900 text-white border border-zinc-800 dark:border-zinc-700 rounded-full mb-8 animate-in fade-in slide-in-from-top-4 duration-1000 shadow-xl">
+      <Badge
+        variant="dark"
+        size="lg"
+        className="mb-8 animate-in fade-in slide-in-from-top-4 duration-1000 shadow-xl"
+      >
         <span className="flex h-2 w-2 relative">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
         </span>
-        <span className="text-[10px] font-black uppercase tracking-[0.2em]">{t("hero.badge")}</span>
-      </div>
+        <span>{t("hero.badge")}</span>
+      </Badge>
       <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-8 text-center animate-in fade-in slide-in-from-bottom-6 duration-700 drop-shadow-2xl">
         {t("hero.title")} <br />
         <span className="text-orange-500 italic">{t("hero.titleHighlight")}</span>

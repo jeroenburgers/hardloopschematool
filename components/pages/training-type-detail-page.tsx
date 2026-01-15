@@ -5,8 +5,9 @@ import { Footer } from "@/components/footer"
 import { useLanguage } from "@/components/language-provider"
 import { getRoutes } from "@/lib/i18n/routes"
 import { translations } from "@/lib/i18n"
-import Link from "next/link"
-import { ArrowLeft, CheckCircle, Clock, Lightbulb } from "lucide-react"
+import { BackLink } from "@/components/ui/back-link"
+import { ProTipCard } from "@/components/ui/pro-tip-card"
+import { CheckCircle, Clock } from "lucide-react"
 
 interface TrainingTypeDetailPageProps {
   typeKey: string
@@ -39,13 +40,7 @@ export function TrainingTypeDetailPage({ typeKey }: TrainingTypeDetailPageProps)
       <Header />
       <div className="pt-32 pb-24 animate-in fade-in duration-500">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link
-            href={routes.trainingTypes}
-            className="flex items-center gap-2 text-gray-500 dark:text-zinc-400 hover:text-orange-600 dark:hover:text-orange-500 transition-colors mb-12 font-semibold group"
-          >
-            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            {t("pages.trainingTypes.back")}
-          </Link>
+          <BackLink href={routes.trainingTypes}>{t("pages.trainingTypes.back")}</BackLink>
 
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-zinc-50 mb-4">
@@ -96,16 +91,7 @@ export function TrainingTypeDetailPage({ typeKey }: TrainingTypeDetailPageProps)
 
           {/* Pro Tip */}
           {proTip && (
-            <div className="bg-orange-50 dark:bg-orange-900/20 border border-orange-100 dark:border-orange-800 p-8 rounded-3xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-orange-200/20 dark:bg-orange-800/20 rounded-full blur-2xl -mr-16 -mt-16"></div>
-              <h4 className="text-lg font-bold text-orange-900 dark:text-orange-200 mb-3 flex items-center gap-2 relative z-10">
-                <Lightbulb className="w-5 h-5" />
-                {t("pages.trainingTypes.labels.proTip")}
-              </h4>
-              <p className="text-orange-900 dark:text-orange-200 leading-relaxed relative z-10">
-                {proTip}
-              </p>
-            </div>
+            <ProTipCard title={t("pages.trainingTypes.labels.proTip")}>{proTip}</ProTipCard>
           )}
         </div>
       </div>

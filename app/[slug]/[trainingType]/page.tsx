@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { getRouteKeyFromSlug, getTrainingTypeKeyFromSlug } from "@/lib/i18n/routes"
+import { getRouteKeyBySlug, getTrainingTypeKeyFromSlug } from "@/lib/i18n/routes"
 import { translations, type Locale } from "@/lib/i18n"
 import { getTrainingTypeMetadata } from "@/lib/seo"
 import { getDefaultLocale } from "@/lib/i18n/config"
@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { slug, trainingType } = await params
 
   // Check if this is the training types page
-  const routeKey = getRouteKeyFromSlug(slug)
+  const routeKey = getRouteKeyBySlug(slug)
   if (routeKey !== "trainingTypes") {
     return getTrainingTypeMetadata(defaultLocale, "", trainingType)
   }

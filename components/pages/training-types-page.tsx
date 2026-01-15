@@ -7,6 +7,7 @@ import { getRoutes } from "@/lib/i18n/routes"
 import { translations } from "@/lib/i18n"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
+import { SectionHeader } from "@/components/ui/section-header"
 
 const trainingTypes = [
   {
@@ -75,17 +76,17 @@ export function TrainingTypesPage() {
       <Header />
       <div className="pt-32 pb-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-zinc-950 dark:text-zinc-50 mb-6">
-              {t("pages.trainingTypes.title")}{" "}
-              <span className="text-orange-600 dark:text-orange-500">
-                {t("pages.trainingTypes.titleHighlight")}
-              </span>
-            </h1>
-            <p className="text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-              {t("pages.trainingTypes.description")}
-            </p>
-          </div>
+          <SectionHeader
+            title={
+              <>
+                {t("pages.trainingTypes.title")}{" "}
+                <span className="text-orange-600 dark:text-orange-500">
+                  {t("pages.trainingTypes.titleHighlight")}
+                </span>
+              </>
+            }
+            description={t("pages.trainingTypes.description")}
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {trainingTypes.map((type) => {
               const typeData =

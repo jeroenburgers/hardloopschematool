@@ -10,7 +10,10 @@ import {
   getNestedValue,
   getDefaultLocale,
 } from "@/lib/i18n"
-import { getRouteKeyFromSlug, routeSlugs } from "@/lib/i18n/routes"
+import { getRouteKeyBySlug, routeSlugs } from "@/lib/i18n/routes"
+import type { LocaleStorage } from "@/lib/i18n/storage/storage-interface"
+import { localStorageAdapter } from "@/lib/i18n/storage/local-storage"
+import type { Router } from "@/lib/i18n/routing/router-interface"
 
 interface LanguageContextType {
   locale: Locale
@@ -20,10 +23,29 @@ interface LanguageContextType {
 
 const LanguageContext = React.createContext<LanguageContextType | undefined>(undefined)
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
+interface LanguageProviderProps {
+  children: React.ReactNode
+  storage?: LocaleStorage
+  router?: Router
+}
+
+export function LanguageProvider({
+  children,
+  storage = localStorageAdapter,
+  router: routerProp,
+}: LanguageProviderProps) {
   const pathname = usePathname()
-  const router = useRouter()
+  const nextRouter = useRouter()
   const defaultLocale = getDefaultLocale()
+
+  const router = React.useMemo(
+    () =>
+      routerProp || {
+        push: (path: string) => nextRouter.push(path),
+        refresh: () => nextRouter.refresh(),
+      },
+    [routerProp, nextRouter],
+  )
 
   const [locale, setLocaleState] = React.useState<Locale>(defaultLocale)
   const [isValidated, setIsValidated] = React.useState(false)
@@ -40,21 +62,21 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
   }, [isValidated])
 
-  // Load locale from localStorage on mount
+  // Load locale from storage on mount
   React.useEffect(() => {
-    const savedLocale = localStorage.getItem("locale") as Locale | null
+    const savedLocale = storage.get("locale") as Locale | null
     if (savedLocale && (savedLocale === "nl" || savedLocale === "en" || savedLocale === "de")) {
       setLocaleState(savedLocale)
     } else {
       setLocaleState(defaultLocale)
-      localStorage.setItem("locale", defaultLocale)
+      storage.set("locale", defaultLocale)
     }
-  }, [defaultLocale])
+  }, [defaultLocale, storage])
 
   const setLocale = React.useCallback(
     (newLocale: Locale) => {
       setLocaleState(newLocale)
-      localStorage.setItem("locale", newLocale)
+      storage.set("locale", newLocale)
 
       // Update URL to reflect new locale with correct slug (without locale prefix)
       const pathSegments = pathname?.split("/").filter(Boolean) || []
@@ -63,7 +85,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         // We're on a page with a slug
         const currentSlug = pathSegments[0]
         // Find the route key from the current slug (checks all locales)
-        const routeKey = getRouteKeyFromSlug(currentSlug)
+        const routeKey = getRouteKeyBySlug(currentSlug)
 
         if (routeKey) {
           // Get the correct slug for the new locale
@@ -78,7 +100,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         router.refresh()
       }
     },
-    [pathname, router],
+    [pathname, router, storage],
   )
 
   const t = React.useCallback(

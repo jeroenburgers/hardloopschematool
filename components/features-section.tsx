@@ -3,6 +3,7 @@
 import { useLanguage } from "./language-provider"
 import { Shield, Zap } from "lucide-react"
 import Image from "next/image"
+import { Badge } from "./ui/badge"
 
 export function FeaturesSection() {
   const { t } = useLanguage()
@@ -12,9 +13,9 @@ export function FeaturesSection() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-500 rounded-full text-[9px] font-black uppercase tracking-widest mb-6">
+            <Badge variant="orange" className="mb-6">
               {t("home.features.badge")}
-            </div>
+            </Badge>
             <h2 className="text-5xl md:text-7xl font-black text-zinc-950 dark:text-zinc-50 tracking-tighter leading-none mb-8">
               {t("home.features.title")} <br />
               <span className="text-orange-600 dark:text-orange-500 italic">
