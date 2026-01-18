@@ -1,6 +1,7 @@
-import { Goal } from "lucide-react"
-import { TimeInput } from "../time-input"
+import { AlertCircle } from "lucide-react"
 import type { Goal as GoalType } from "@/lib/types/schedule"
+import { RadioButton } from "@/components/ui/radio-button"
+import { StepTargetTime } from "./step-target-time"
 
 /**
  * Step Performance component
@@ -12,6 +13,8 @@ interface StepPerformanceProps {
   availableGoals: GoalType[]
   recentDistLabel: string
   recentTimeLabel: string
+  errorDistance?: boolean
+  errorTime?: boolean
   onDistanceChange: (distance: string) => void
   onTimeChange: (time: string) => void
 }
@@ -22,33 +25,64 @@ export function StepPerformance({
   availableGoals,
   recentDistLabel,
   recentTimeLabel,
+  errorDistance = false,
+  errorTime = false,
   onDistanceChange,
   onTimeChange,
 }: StepPerformanceProps) {
+  // Filter out "Conditie / Gezondheid" from available goals
+  const filteredGoals = availableGoals.filter(
+    (goal) => goal !== "Conditie / Gezondheid" && !goal.includes("Conditie / Gezondheid"),
+  )
+
   return (
-    <div className="space-y-12">
-      <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-2">
-          <div className="text-orange-600">
-            <Goal className="w-6 h-6" />
-          </div>
-          <label className="text-[11px] font-black uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-            {recentDistLabel}
-          </label>
-        </div>
-        <select
-          value={recentDistance}
-          onChange={(e) => onDistanceChange(e.target.value)}
-          className="w-full bg-white dark:bg-zinc-900/50 border-4 border-zinc-100 dark:border-zinc-800 rounded-[2rem] px-8 py-6 text-3xl font-black outline-none focus:border-zinc-950 dark:focus:border-zinc-600 transition-all appearance-none cursor-pointer text-zinc-950 dark:text-zinc-50"
-        >
-          {availableGoals.map((goal) => (
-            <option key={goal} value={goal}>
-              {goal}
-            </option>
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          {recentDistLabel}
+        </label>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {filteredGoals.map((goal) => (
+            <RadioButton
+              key={goal}
+              checked={recentDistance === goal}
+              onChange={() => onDistanceChange(goal)}
+              error={errorDistance && recentDistance !== goal}
+            >
+              <div className="flex flex-col items-start justify-center w-full min-h-[60px]">
+                <span className="text-sm font-semibold">{goal}</span>
+              </div>
+            </RadioButton>
           ))}
-        </select>
+        </div>
+        {errorDistance && (
+          <div className="flex items-start gap-2 mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+            <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-red-600 dark:text-red-400 font-medium">
+              Selecteer een afstand om door te gaan.
+            </p>
+          </div>
+        )}
       </div>
-      <TimeInput label={recentTimeLabel} value={recentTime} onChange={onTimeChange} />
+      <div className="space-y-4">
+        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          {recentTimeLabel}
+        </label>
+        <StepTargetTime
+          value={recentTime || ""}
+          placeholder="00:00:00"
+          onChange={onTimeChange}
+          error={errorTime}
+        />
+        {errorTime && (
+          <div className="flex items-start gap-2 mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+            <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-red-600 dark:text-red-400 font-medium">
+              Vul een tijd in om door te gaan.
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

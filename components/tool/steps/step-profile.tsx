@@ -1,5 +1,6 @@
-import { CoachInsight } from "../coach-insight"
+import { AlertCircle } from "lucide-react"
 import type { ScheduleFormData } from "@/lib/types/schedule"
+import { RadioButton } from "@/components/ui/radio-button"
 
 /**
  * Step Profile component
@@ -17,88 +18,79 @@ interface StepProfileProps {
   onGenderChange: (gender: ScheduleFormData["gender"]) => void
   onAgeGroupChange: (ageGroup: string) => void
   onSkip: () => void
+  errorGender?: boolean
+  errorAgeGroup?: boolean
 }
 
 export function StepProfile({
   formData,
-  optionalNote,
   genders,
   ageGroups,
   genderLabel,
   ageGroupLabel,
-  profileSubtitle,
-  skipStepLabel,
   onGenderChange,
   onAgeGroupChange,
-  onSkip,
+  errorGender = false,
+  errorAgeGroup = false,
 }: StepProfileProps) {
   return (
-    <div className="grid grid-cols-1 gap-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
-      <div className="relative group">
-        <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-zinc-950 rounded-[3.5rem] blur opacity-10 group-hover:opacity-20 transition duration-1000" />
-        <div className="relative p-10 bg-white dark:bg-zinc-900/50 border-2 border-zinc-100 dark:border-zinc-800 rounded-[3.5rem] flex flex-col md:flex-row justify-between items-center gap-10">
-          <div className="max-w-md">
-            <p className="text-zinc-400 dark:text-zinc-500 text-[10px] font-black uppercase tracking-widest leading-relaxed">
-              {profileSubtitle}
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          {genderLabel}
+        </label>
+        <div
+          className="grid gap-3"
+          style={{ gridTemplateColumns: `repeat(${genders.length}, minmax(0, 1fr))` }}
+        >
+          {genders.map((gender) => (
+            <RadioButton
+              key={gender}
+              checked={formData.gender === gender}
+              onChange={() => onGenderChange(gender as ScheduleFormData["gender"])}
+              error={errorGender && formData.gender !== gender}
+            >
+              <span className="text-sm font-semibold">{gender}</span>
+            </RadioButton>
+          ))}
+        </div>
+        {errorGender && (
+          <div className="flex items-start gap-2 mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+            <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-red-600 dark:text-red-400 font-medium">
+              Selecteer een geslacht om door te gaan.
             </p>
           </div>
-          <div className="w-full md:w-auto">
-            <CoachInsight message={optionalNote} />
-          </div>
-        </div>
+        )}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        <div className="p-10 bg-zinc-50 dark:bg-zinc-900/50 rounded-[3rem] border-2 border-zinc-100 dark:border-zinc-800">
-          <label className="text-[11px] font-black uppercase tracking-[0.3em] text-zinc-400 dark:text-zinc-500 block mb-8 flex items-center gap-2">
-            <span className="w-2 h-2 bg-orange-600 rounded-full" /> {genderLabel}
-          </label>
-          <div className="flex flex-wrap gap-4">
-            {genders.map((gender) => (
-              <button
-                key={gender}
-                onClick={() => onGenderChange(gender as ScheduleFormData["gender"])}
-                className={`flex-1 px-8 py-5 rounded-2xl border-4 font-black text-sm transition-all shadow-sm ${
-                  formData.gender === gender
-                    ? "bg-zinc-950 dark:bg-zinc-900 border-zinc-950 dark:border-zinc-800 text-white shadow-xl scale-105"
-                    : "bg-white dark:bg-zinc-900/50 border-zinc-100 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 active:scale-95"
-                }`}
-              >
-                {gender}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="p-10 bg-zinc-50 dark:bg-zinc-900/50 rounded-[3rem] border-2 border-zinc-100 dark:border-zinc-800">
-          <label className="text-[11px] font-black uppercase tracking-[0.3em] text-zinc-400 dark:text-zinc-500 block mb-8 flex items-center gap-2">
-            <span className="w-2 h-2 bg-zinc-950 dark:bg-zinc-600 rounded-full" /> {ageGroupLabel}
-          </label>
-          <div className="grid grid-cols-3 gap-4">
-            {ageGroups.map((age) => (
-              <button
-                key={age}
-                onClick={() => onAgeGroupChange(age)}
-                className={`py-5 rounded-2xl border-4 font-black text-sm transition-all shadow-sm ${
-                  formData.ageGroup === age
-                    ? "bg-zinc-950 dark:bg-zinc-900 border-zinc-950 dark:border-zinc-800 text-white shadow-xl scale-105"
-                    : "bg-white dark:bg-zinc-900/50 border-zinc-100 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700 active:scale-95"
-                }`}
-              >
-                {age}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={onSkip}
-          className="px-8 py-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-400 dark:text-zinc-500 font-black text-[10px] uppercase tracking-[0.3em] hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:text-zinc-950 dark:hover:text-zinc-50 transition-all rounded-full border-2 border-zinc-200 dark:border-zinc-700"
+      <div className="space-y-4">
+        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          {ageGroupLabel}
+        </label>
+        <div
+          className="grid gap-3"
+          style={{ gridTemplateColumns: `repeat(${ageGroups.length}, minmax(0, 1fr))` }}
         >
-          {skipStepLabel}
-        </button>
+          {ageGroups.map((age) => (
+            <RadioButton
+              key={age}
+              checked={formData.ageGroup === age}
+              onChange={() => onAgeGroupChange(age)}
+              error={errorAgeGroup && formData.ageGroup !== age}
+            >
+              <span className="text-sm font-semibold">{age}</span>
+            </RadioButton>
+          ))}
+        </div>
+        {errorAgeGroup && (
+          <div className="flex items-start gap-2 mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+            <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-red-600 dark:text-red-400 font-medium">
+              Selecteer een leeftijdsgroep om door te gaan.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   )

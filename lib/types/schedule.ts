@@ -41,10 +41,10 @@ export interface PersonalInfo {
 }
 
 export interface ScheduleFormData {
-  goal: Goal
+  goal: Goal | ""
   focus: "Recreatief" | "Prestatiegericht"
   targetTime?: string
-  level: Level
+  level: Level | ""
   frequency: string
   health: string
   recentDistance: string

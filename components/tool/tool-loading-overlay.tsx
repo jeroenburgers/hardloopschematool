@@ -18,12 +18,12 @@ export function ToolLoadingOverlay({ loading }: ToolLoadingOverlayProps) {
   if (!loading) return null
 
   return (
-    <div className="absolute inset-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center text-center p-12 rounded-[3rem] animate-in fade-in">
-      <div className="w-24 h-24 border-8 border-zinc-100 dark:border-zinc-800 border-t-orange-600 rounded-full animate-spin mb-10" />
-      <h3 className="text-3xl font-black text-zinc-950 dark:text-zinc-50 mb-4 tracking-tighter">
+    <div className="absolute inset-0 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl z-50 flex flex-col items-center justify-center text-center p-8 rounded-lg">
+      <div className="w-16 h-16 border-4 border-zinc-100 dark:border-zinc-800 border-t-orange-600 rounded-full animate-spin mb-6" />
+      <h3 className="text-xl font-bold text-zinc-950 dark:text-zinc-50 mb-2">
         Analyse Voltooien...
       </h3>
-      <p className="text-zinc-400 dark:text-zinc-500 font-black text-[11px] uppercase tracking-[0.4em]">
+      <p className="text-zinc-400 dark:text-zinc-500 font-medium text-xs uppercase tracking-wide">
         {toolTranslations.coachLoading}
       </p>
     </div>

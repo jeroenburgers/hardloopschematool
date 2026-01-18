@@ -106,7 +106,8 @@ export function LanguageProvider({
   const t = React.useCallback(
     (key: TranslationPath): string => {
       try {
-        return getNestedValue(translations[locale], key)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return getNestedValue(translations[locale] as any, key)
       } catch (error) {
         console.error(`Translation error for key "${key}":`, error)
         return key

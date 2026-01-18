@@ -1,4 +1,5 @@
-import type { PersonalInfo } from "@/lib/types/schedule"
+import { AlertCircle } from "lucide-react"
+import type { PersonalInfo, ScheduleFormData } from "@/lib/types/schedule"
 
 /**
  * Step Checkout component
@@ -14,106 +15,304 @@ interface CheckoutTranslations {
   anchorPrice: string
   price: string
   vat: string
-  guarantee: string
   investment: string
+  comparison: string
+  summaryGoal: string
+  summaryFocus: string
+  summaryTargetTime: string
+  summaryLevel: string
+  summaryFrequency: string
+  summaryHealth: string
+  summaryRecentPerformance: string
+  summaryDays: string
+  summaryStartDate: string
+  summaryPlanningMode: string
 }
 
 interface StepCheckoutProps {
   personalInfo: PersonalInfo
+  formData: ScheduleFormData
   translations: CheckoutTranslations
+  toolTranslations: {
+    goals: string[]
+    levels: Array<{ id: string; label: string }>
+    frequencyOptions: string[]
+    planningModeOptions: string[]
+    daysOfWeek: string[]
+    focusOptions: string[]
+    healthOptions: string[]
+    genders: string[]
+    ageGroups: string[]
+  }
+  nextMondays: Array<{ val: string; label: string }>
+  errorFirstName?: boolean
+  errorLastName?: boolean
+  errorEmail?: boolean
+  errorAddress?: boolean
   onPersonalInfoChange: (info: Partial<PersonalInfo>) => void
 }
 
 export function StepCheckout({
   personalInfo,
+  formData,
   translations,
+  toolTranslations,
+  nextMondays,
+  errorFirstName = false,
+  errorLastName = false,
+  errorEmail = false,
+  errorAddress = false,
   onPersonalInfoChange,
 }: StepCheckoutProps) {
+  // Helper to get display value from formData
+  const getGoalDisplay = () => {
+    if (!formData.goal) return "-"
+    return formData.goal
+  }
+
+  const getLevelDisplay = () => {
+    if (!formData.level) return "-"
+    const level = toolTranslations.levels.find((l) => l.id === formData.level)
+    return level?.label || formData.level
+  }
+
+  const getFrequencyDisplay = () => {
+    if (!formData.frequency) return "-"
+    return formData.frequency
+  }
+
+  const getFocusDisplay = () => {
+    if (!formData.focus) return "-"
+    return formData.focus
+  }
+
+  const getTargetTimeDisplay = () => {
+    if (!formData.targetTime) return "-"
+    return formData.targetTime
+  }
+
+  const getHealthDisplay = () => {
+    if (!formData.health) return "-"
+    return formData.health
+  }
+
+  const getRecentPerformanceDisplay = () => {
+    if (!formData.recentDistance || !formData.recentTime) return "-"
+    return `${formData.recentDistance} in ${formData.recentTime}`
+  }
+
+  const getPlanningModeDisplay = () => {
+    if (!formData.planningMode) return "-"
+    return formData.planningMode
+  }
+
+  const getDaysDisplay = () => {
+    if (formData.planningMode === "Automatisch") {
+      const mondayOption = nextMondays.find((m) => m.val === formData.startDate)
+      const dateLabel =
+        mondayOption?.label ||
+        (formData.startDate
+          ? new Date(formData.startDate).toLocaleDateString("nl-NL", {
+              day: "numeric",
+              month: "short",
+            })
+          : "-")
+      return `${formData.targetDays}x per week (${dateLabel})`
+    }
+    if (formData.planningMode === "Zelf inplannen" && formData.selectedDays.length > 0) {
+      const dayAbbreviations: Record<string, string> = {
+        Maandag: "Ma",
+        Dinsdag: "Di",
+        Woensdag: "Wo",
+        Donderdag: "Do",
+        Vrijdag: "Vr",
+        Zaterdag: "Za",
+        Zondag: "Zo",
+      }
+      const daysAbbr = formData.selectedDays.map((day) => dayAbbreviations[day] || day).join(", ")
+      return `${formData.targetDays}x per week (${daysAbbr})`
+    }
+    return `${formData.targetDays}x per week`
+  }
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 p-10 bg-zinc-50 dark:bg-zinc-900/50 border-2 border-zinc-100 dark:border-zinc-800 rounded-[3rem]">
-        <div className="flex flex-col gap-3">
-          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+    <div className="space-y-6">
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
             {translations.firstName}
           </label>
-          <input
-            type="text"
-            placeholder="Jan"
-            value={personalInfo.firstName}
-            onChange={(e) => onPersonalInfoChange({ ...personalInfo, firstName: e.target.value })}
-            className="bg-white dark:bg-zinc-900/50 border-2 border-zinc-100 dark:border-zinc-800 rounded-2xl px-6 py-4 text-sm font-bold outline-none focus:border-zinc-950 dark:focus:border-zinc-600 transition-all shadow-sm text-zinc-950 dark:text-zinc-50"
-          />
+          <div
+            className={`relative p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
+              errorFirstName
+                ? "border-red-500 dark:border-red-500 focus-within:border-red-600 dark:focus-within:border-red-400"
+                : "border-zinc-200 dark:border-zinc-800 focus-within:border-zinc-950 dark:focus-within:border-zinc-600"
+            }`}
+          >
+            <input
+              type="text"
+              placeholder="Jan"
+              value={personalInfo.firstName}
+              onChange={(e) => onPersonalInfoChange({ firstName: e.target.value })}
+              className="w-full bg-transparent text-sm outline-none text-zinc-950 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+            />
+          </div>
         </div>
-        <div className="flex flex-col gap-3">
-          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+
+        <div className="space-y-2">
+          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
             {translations.lastName}
           </label>
-          <input
-            type="text"
-            placeholder="Jansen"
-            value={personalInfo.lastName}
-            onChange={(e) => onPersonalInfoChange({ ...personalInfo, lastName: e.target.value })}
-            className="bg-white dark:bg-zinc-900/50 border-2 border-zinc-100 dark:border-zinc-800 rounded-2xl px-6 py-4 text-sm font-bold outline-none focus:border-zinc-950 dark:focus:border-zinc-600 transition-all shadow-sm text-zinc-950 dark:text-zinc-50"
-          />
+          <div
+            className={`relative p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
+              errorLastName
+                ? "border-red-500 dark:border-red-500 focus-within:border-red-600 dark:focus-within:border-red-400"
+                : "border-zinc-200 dark:border-zinc-800 focus-within:border-zinc-950 dark:focus-within:border-zinc-600"
+            }`}
+          >
+            <input
+              type="text"
+              placeholder="Jansen"
+              value={personalInfo.lastName}
+              onChange={(e) => onPersonalInfoChange({ lastName: e.target.value })}
+              className="w-full bg-transparent text-sm outline-none text-zinc-950 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+            />
+          </div>
         </div>
-        <div className="lg:col-span-2 flex flex-col gap-3">
-          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+
+        <div className="space-y-2">
+          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
             {translations.email}
           </label>
-          <input
-            type="email"
-            placeholder="jan@voorbeeld.nl"
-            value={personalInfo.email}
-            onChange={(e) => onPersonalInfoChange({ ...personalInfo, email: e.target.value })}
-            className="bg-white dark:bg-zinc-900/50 border-2 border-zinc-100 dark:border-zinc-800 rounded-2xl px-6 py-4 text-sm font-bold outline-none focus:border-zinc-950 dark:focus:border-zinc-600 transition-all shadow-sm text-zinc-950 dark:text-zinc-50"
-          />
+          <div
+            className={`relative p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
+              errorEmail
+                ? "border-red-500 dark:border-red-500 focus-within:border-red-600 dark:focus-within:border-red-400"
+                : "border-zinc-200 dark:border-zinc-800 focus-within:border-zinc-950 dark:focus-within:border-zinc-600"
+            }`}
+          >
+            <input
+              type="email"
+              placeholder="jan@voorbeeld.nl"
+              value={personalInfo.email}
+              onChange={(e) => onPersonalInfoChange({ email: e.target.value })}
+              className="w-full bg-transparent text-sm outline-none text-zinc-950 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+            />
+          </div>
         </div>
-        <div className="lg:col-span-2 flex flex-col gap-3">
-          <label className="text-[10px] font-black uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+
+        <div className="space-y-2">
+          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
             {translations.address}
           </label>
-          <input
-            type="text"
-            placeholder="Hoofdstraat 1"
-            value={personalInfo.address}
-            onChange={(e) => onPersonalInfoChange({ ...personalInfo, address: e.target.value })}
-            className="bg-white dark:bg-zinc-900/50 border-2 border-zinc-100 dark:border-zinc-800 rounded-2xl px-6 py-4 text-sm font-bold outline-none focus:border-zinc-950 dark:focus:border-zinc-600 transition-all shadow-sm text-zinc-950 dark:text-zinc-50"
-          />
+          <div
+            className={`relative p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
+              errorAddress
+                ? "border-red-500 dark:border-red-500 focus-within:border-red-600 dark:focus-within:border-red-400"
+                : "border-zinc-200 dark:border-zinc-800 focus-within:border-zinc-950 dark:focus-within:border-zinc-600"
+            }`}
+          >
+            <input
+              type="text"
+              placeholder="Hoofdstraat 1"
+              value={personalInfo.address}
+              onChange={(e) => onPersonalInfoChange({ address: e.target.value })}
+              className="w-full bg-transparent text-sm outline-none text-zinc-950 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
+            />
+          </div>
         </div>
+
+        {(errorFirstName || errorLastName || errorEmail || errorAddress) && (
+          <div className="flex items-start gap-2 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+            <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+            <p className="text-sm text-red-600 dark:text-red-400 font-medium">
+              Vul alle velden correct in om door te gaan.
+            </p>
+          </div>
+        )}
       </div>
 
-      <div className="lg:col-span-5 p-12 bg-zinc-950 dark:bg-zinc-900 text-white rounded-[3rem] flex flex-col justify-between shadow-2xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-32 h-32 bg-orange-600/20 dark:bg-orange-500/20 blur-[80px] rounded-full -mr-16 -mt-16" />
-        <div>
-          <h3 className="text-2xl font-black mb-8 border-b border-white/10 pb-6 tracking-tighter">
+      <div className="p-6 bg-zinc-950 dark:bg-zinc-900 text-white rounded-xl shadow-lg relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-24 h-24 bg-orange-600/10 dark:bg-orange-500/10 blur-2xl rounded-full -mr-12 -mt-12" />
+        <div className="relative space-y-6">
+          <h3 className="text-lg font-bold border-b border-white/10 pb-3">
             {translations.summary}
           </h3>
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-xs text-zinc-400 font-bold uppercase tracking-widest">
-              {translations.product}
-            </span>
-            <span className="text-base font-black line-through text-zinc-600 italic">
-              {translations.anchorPrice}
-            </span>
-          </div>
-          <div className="flex justify-between items-end mb-8">
-            <span className="text-sm text-zinc-100 font-bold">{translations.investment}</span>
-            <div className="flex flex-col items-end">
-              <span className="text-4xl font-black text-orange-500 leading-none">
-                {translations.price}
-              </span>
-              <span className="text-[9px] font-bold text-zinc-500 mt-2 uppercase tracking-widest">
-                {translations.vat}
-              </span>
+
+          {/* Form Summary */}
+          <div className="space-y-3 text-sm">
+            <div className="flex justify-between items-center">
+              <span className="text-zinc-400">{translations.summaryGoal}:</span>
+              <span className="text-zinc-200 font-semibold">{getGoalDisplay()}</span>
+            </div>
+            {formData.focus && formData.goal !== "Conditie / Gezondheid" && (
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">{translations.summaryFocus}:</span>
+                <span className="text-zinc-200 font-semibold">{getFocusDisplay()}</span>
+              </div>
+            )}
+            {formData.targetTime && formData.focus === "Prestatiegericht" && (
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">{translations.summaryTargetTime}:</span>
+                <span className="text-zinc-200 font-semibold">{getTargetTimeDisplay()}</span>
+              </div>
+            )}
+            <div className="flex justify-between items-center">
+              <span className="text-zinc-400">{translations.summaryLevel}:</span>
+              <span className="text-zinc-200 font-semibold">{getLevelDisplay()}</span>
+            </div>
+            {formData.frequency && (
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">{translations.summaryFrequency}:</span>
+                <span className="text-zinc-200 font-semibold">{getFrequencyDisplay()}</span>
+              </div>
+            )}
+            {formData.health && (
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">{translations.summaryHealth}:</span>
+                <span className="text-zinc-200 font-semibold">{getHealthDisplay()}</span>
+              </div>
+            )}
+            {formData.recentDistance && formData.recentTime && (
+              <div className="flex justify-between items-center">
+                <span className="text-zinc-400">{translations.summaryRecentPerformance}:</span>
+                <span className="text-zinc-200 font-semibold">{getRecentPerformanceDisplay()}</span>
+              </div>
+            )}
+            <div className="flex justify-between items-center">
+              <span className="text-zinc-400">{translations.summaryPlanningMode}:</span>
+              <span className="text-zinc-200 font-semibold">{getPlanningModeDisplay()}</span>
+            </div>
+            <div className="flex justify-between items-center">
+              <span className="text-zinc-400">{translations.summaryDays}:</span>
+              <span className="text-zinc-200 font-semibold">{getDaysDisplay()}</span>
             </div>
           </div>
-        </div>
-        <div className="space-y-4">
-          <div className="flex items-center gap-4 p-5 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-            <div className="text-orange-500 text-2xl">🛡️</div>
-            <p className="text-[10px] font-black text-zinc-300 uppercase tracking-widest leading-relaxed">
-              {translations.guarantee}
-            </p>
+
+          <div className="pt-3 border-t border-white/10">
+            <div className="flex justify-between items-center">
+              <span className="text-xs text-zinc-400 font-medium uppercase">
+                {translations.product}
+              </span>
+              <span className="text-sm font-semibold line-through text-zinc-600">
+                {translations.anchorPrice}
+              </span>
+            </div>
+            <div className="flex justify-between items-end mt-4">
+              <span className="text-sm text-zinc-200 font-medium">{translations.investment}</span>
+              <div className="flex flex-col items-end">
+                <span className="text-2xl font-bold text-orange-500 leading-none">
+                  {translations.price}
+                </span>
+                <span className="text-[10px] font-medium text-zinc-500 mt-1 uppercase">
+                  {translations.vat}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="pt-3 border-t border-white/10">
+            <p className="text-xs text-zinc-300 leading-relaxed">{translations.comparison}</p>
           </div>
         </div>
       </div>

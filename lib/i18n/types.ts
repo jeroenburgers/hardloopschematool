@@ -11,12 +11,12 @@ export type Locale = "nl" | "en" | "de"
 // Translation object type
 export type Translations = Record<Locale, TranslationKeys>
 
-// All translations
-export const translations: Translations = {
+// All translations - use type assertion to allow for language-specific keys in nested objects
+export const translations = {
   nl,
   en,
   de,
-}
+} as unknown as Translations
 
 // Helper type for nested object paths
 type PathImpl<T, Key extends keyof T> = Key extends string

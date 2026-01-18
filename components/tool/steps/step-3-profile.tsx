@@ -11,16 +11,22 @@ import { StepProfile } from "./step-profile"
  * SOLAR: Autonomous Component - fully self-contained step rendering
  */
 interface Step3ProfileProps {
-  onSkip: () => void
+  showValidation?: boolean
 }
 
-export function Step3Profile({ onSkip }: Step3ProfileProps) {
+export function Step3Profile({ showValidation = false }: Step3ProfileProps) {
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
   const { formData, updateFormData } = useScheduleFormContext()
 
+  // Get validation errors for step 3
+  const errors = {
+    gender: showValidation && !formData.gender,
+    ageGroup: showValidation && !formData.ageGroup,
+  }
+
   return (
-    <div className="grid grid-cols-1 gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+    <div className="space-y-6">
       <StepHeader locale={locale} titleKey="coachProfile" />
       <StepProfile
         formData={formData}
@@ -33,7 +39,9 @@ export function Step3Profile({ onSkip }: Step3ProfileProps) {
         skipStepLabel={toolTranslations.skipStep}
         onGenderChange={(gender) => updateFormData({ gender })}
         onAgeGroupChange={(ageGroup) => updateFormData({ ageGroup })}
-        onSkip={onSkip}
+        onSkip={() => {}}
+        errorGender={errors.gender}
+        errorAgeGroup={errors.ageGroup}
       />
     </div>
   )

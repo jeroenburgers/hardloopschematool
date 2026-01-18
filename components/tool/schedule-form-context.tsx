@@ -12,6 +12,7 @@ interface ScheduleFormContextValue {
   formData: ScheduleFormData
   personalInfo: PersonalInfo
   planningOptions: number[]
+  recommendedDays: number
   nextMondays: Array<{ val: string; label: string }>
   updateFormData: (updates: Partial<ScheduleFormData>) => void
   updatePersonalInfo: (updates: Partial<PersonalInfo>) => void

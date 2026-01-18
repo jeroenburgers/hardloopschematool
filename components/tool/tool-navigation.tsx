@@ -28,11 +28,11 @@ export function ToolNavigation({
   const toolTranslations = translations[locale].tool
 
   return (
-    <div className="mt-20 grid grid-cols-1 sm:grid-cols-12 gap-4 sticky bottom-8 z-40 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl p-5 rounded-[2.5rem] border-4 border-zinc-50 dark:border-zinc-900 shadow-2xl animate-in slide-in-from-bottom-8 duration-500">
+    <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row gap-3 justify-end sticky bottom-0 z-40 bg-white dark:bg-zinc-950">
       {currentStep > 1 && (
         <button
           onClick={onBack}
-          className="sm:col-span-4 px-10 py-6 bg-zinc-100 dark:bg-zinc-800 text-zinc-950 dark:text-zinc-50 rounded-[1.5rem] font-black text-xs uppercase tracking-widest border-2 border-zinc-200 dark:border-zinc-700 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-all active:scale-95"
+          className="px-6 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-950 dark:text-zinc-50 rounded-lg font-semibold text-sm hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
         >
           {toolTranslations.back}
         </button>
@@ -40,10 +40,7 @@ export function ToolNavigation({
       {currentStep < 7 ? (
         <button
           onClick={onNext}
-          disabled={!isValid}
-          className={`${
-            currentStep === 1 ? "sm:col-span-12" : "sm:col-span-8"
-          } px-10 py-7 bg-zinc-950 dark:bg-zinc-900 text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] disabled:opacity-20 hover:bg-zinc-800 dark:hover:bg-zinc-800 transition-all active:scale-95 shadow-xl`}
+          className="px-12 py-5 bg-orange-600 dark:bg-orange-500 text-white rounded-3xl font-black text-sm uppercase tracking-[0.1em] hover:bg-orange-700 dark:hover:bg-orange-600 hover:scale-[1.02] transition-all shadow-xl active:scale-95"
         >
           {toolTranslations.next}
         </button>
@@ -51,7 +48,7 @@ export function ToolNavigation({
         <button
           onClick={onGenerate}
           disabled={!isValid || loading}
-          className="sm:col-span-8 px-10 py-7 bg-orange-600 dark:bg-orange-500 text-white rounded-[1.5rem] font-black text-xs uppercase tracking-[0.2em] shadow-2xl shadow-orange-600/40 dark:shadow-orange-500/40 hover:bg-orange-700 dark:hover:bg-orange-600 transition-all active:scale-95"
+          className="px-12 py-5 bg-orange-600 dark:bg-orange-500 text-white rounded-3xl font-black text-sm uppercase tracking-[0.1em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-orange-700 dark:hover:bg-orange-600 hover:scale-[1.02] transition-all shadow-xl active:scale-95 disabled:hover:scale-100"
         >
           {toolTranslations.generate}
         </button>

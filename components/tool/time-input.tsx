@@ -1,4 +1,4 @@
-import { Activity } from "lucide-react"
+import { Clock } from "lucide-react"
 
 /**
  * Time Input component
@@ -22,23 +22,22 @@ export function TimeInput({ value, onChange, label }: TimeInputProps) {
   }
 
   return (
-    <div className="flex flex-col gap-4 w-full group">
-      <div className="flex items-center gap-2">
-        <div className="text-orange-600">
-          <Activity className="w-6 h-6" />
+    <div className="space-y-3">
+      <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-2 mb-6">
+        <Clock className="w-5 h-5 text-orange-600" />
+        {label}
+      </label>
+      <div className="relative p-4 bg-white dark:bg-zinc-900/50 border-2 border-zinc-200 dark:border-zinc-800 rounded-xl focus-within:border-zinc-950 dark:focus-within:border-zinc-600 transition-colors">
+        <div className="flex items-center gap-3">
+          <Clock className="w-5 h-5 text-zinc-400 dark:text-zinc-600 flex-shrink-0" />
+          <input
+            type="text"
+            placeholder="00:00:00"
+            value={value}
+            onChange={handleChange}
+            className="flex-1 bg-transparent text-2xl font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700"
+          />
         </div>
-        <label className="text-[11px] font-black uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 group-focus-within:text-orange-600 dark:group-focus-within:text-orange-500 transition-colors">
-          {label}
-        </label>
-      </div>
-      <div className="relative">
-        <input
-          type="text"
-          placeholder="00:00:00"
-          value={value}
-          onChange={handleChange}
-          className="w-full bg-white dark:bg-zinc-900/50 border-2 border-zinc-200 dark:border-zinc-800 rounded-3xl px-8 py-6 text-4xl sm:text-6xl font-black text-zinc-950 dark:text-zinc-50 focus:border-zinc-950 dark:focus:border-zinc-600 outline-none transition-all placeholder:text-zinc-100 dark:placeholder:text-zinc-800 shadow-sm"
-        />
       </div>
     </div>
   )

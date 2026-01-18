@@ -9,7 +9,6 @@
  * Requirements: sharp (npm install --save-dev sharp)
  */
 
-import fs from "fs"
 import path from "path"
 import { fileURLToPath } from "url"
 

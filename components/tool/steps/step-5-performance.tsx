@@ -11,13 +11,23 @@ import { StepPerformance } from "./step-performance"
  * Step 5: Recent Performance
  * SOLAR: Autonomous Component - fully self-contained step rendering
  */
-export function Step5Performance() {
+interface Step5PerformanceProps {
+  showValidation?: boolean
+}
+
+export function Step5Performance({ showValidation = false }: Step5PerformanceProps) {
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
   const { formData, updateFormData } = useScheduleFormContext()
 
+  // Get validation errors for step 5
+  const errors = {
+    recentDistance: showValidation && !formData.recentDistance,
+    recentTime: showValidation && (!formData.recentTime || formData.recentTime.length < 5),
+  }
+
   return (
-    <div className="grid grid-cols-1 gap-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
+    <div className="space-y-6">
       <StepHeader locale={locale} titleKey="coachRecent" subtitleKey="stepRecentSubtitle" />
       <StepPerformance
         recentDistance={formData.recentDistance}
@@ -25,6 +35,8 @@ export function Step5Performance() {
         availableGoals={toolTranslations.goals as GoalType[]}
         recentDistLabel={toolTranslations.recentDist}
         recentTimeLabel={toolTranslations.recentTime}
+        errorDistance={errors.recentDistance}
+        errorTime={errors.recentTime}
         onDistanceChange={(distance) => updateFormData({ recentDistance: distance })}
         onTimeChange={(time) => updateFormData({ recentTime: time })}
       />

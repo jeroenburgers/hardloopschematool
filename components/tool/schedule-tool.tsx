@@ -40,21 +40,43 @@ function ScheduleToolContent({ onComplete }: { onComplete?: ScheduleToolProps["o
 
   const [currentStep, setCurrentStep] = useState(1)
   const [loading, setLoading] = useState(false)
+  const [showValidation, setShowValidation] = useState(false)
 
-  const steps = useMemo(
-    () => [
-      { name: toolTranslations.steps?.[0] || "Doel", icon: Goal },
-      { name: toolTranslations.steps?.[1] || "Niveau", icon: BarChart3 },
-      { name: toolTranslations.steps?.[2] || "Profiel", icon: User },
-      { name: toolTranslations.steps?.[3] || "Gezondheid", icon: Heart },
-      { name: toolTranslations.steps?.[4] || "Prestaties", icon: TrendingUp },
-      { name: toolTranslations.steps?.[5] || "Planning", icon: Calendar },
-      { name: toolTranslations.steps?.[6] || "Afronding", icon: CreditCard },
-    ],
-    [toolTranslations.steps],
-  )
+  // Determine if step 5 (Performance) should be skipped
+  const shouldSkipStep5 = useMemo(() => {
+    const isFitnessGoal =
+      formData.goal === "Conditie / Gezondheid" || formData.goal?.includes("Conditie / Gezondheid")
+    const isRecreationalFocus = formData.focus === "Recreatief"
+    return isFitnessGoal || isRecreationalFocus
+  }, [formData.goal, formData.focus])
 
-  const isValid = useMemo(() => isValidStep(currentStep), [currentStep, isValidStep])
+  const steps = useMemo(() => {
+    const allSteps = [
+      { name: toolTranslations.steps?.[0] || "Doel", icon: Goal, logicalStep: 1 },
+      { name: toolTranslations.steps?.[1] || "Niveau", icon: BarChart3, logicalStep: 2 },
+      { name: toolTranslations.steps?.[2] || "Profiel", icon: User, logicalStep: 3 },
+      { name: toolTranslations.steps?.[3] || "Gezondheid", icon: Heart, logicalStep: 4 },
+      { name: toolTranslations.steps?.[4] || "Prestaties", icon: TrendingUp, logicalStep: 5 },
+      { name: toolTranslations.steps?.[5] || "Planning", icon: Calendar, logicalStep: 6 },
+      { name: toolTranslations.steps?.[6] || "Afronding", icon: CreditCard, logicalStep: 7 },
+    ]
+    // Filter out step 5 if it should be skipped
+    return shouldSkipStep5 ? allSteps.filter((step) => step.logicalStep !== 5) : allSteps
+  }, [toolTranslations.steps, shouldSkipStep5])
+
+  // Map physical step (1-based index in visible steps) to logical step (1-7)
+  const getLogicalStep = (physicalStep: number): number => {
+    if (!shouldSkipStep5) return physicalStep
+    // If step 5 is skipped, map physical steps to logical steps
+    if (physicalStep <= 4) return physicalStep
+    return physicalStep + 1 // Skip logical step 5
+  }
+
+  const isValid = useMemo(() => {
+    const logicalStep = getLogicalStep(currentStep)
+    return isValidStep(logicalStep)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentStep, isValidStep, shouldSkipStep5, getLogicalStep])
 
   const handleGenerate = async () => {
     setLoading(true)
@@ -74,14 +96,34 @@ function ScheduleToolContent({ onComplete }: { onComplete?: ScheduleToolProps["o
   }
 
   const handleNext = () => {
-    if (currentStep < 7 && isValid) {
-      setCurrentStep((s) => s + 1)
+    const maxStep = shouldSkipStep5 ? 6 : 7
+    if (currentStep < maxStep) {
+      if (isValid) {
+        setShowValidation(false)
+        const nextPhysicalStep = currentStep + 1
+        const nextLogicalStep = getLogicalStep(nextPhysicalStep)
+        // If next step is logical step 5 (which should be skipped), skip to step 6
+        if (shouldSkipStep5 && nextLogicalStep === 5) {
+          setCurrentStep(nextPhysicalStep + 1)
+        } else {
+          setCurrentStep(nextPhysicalStep)
+        }
+      } else {
+        setShowValidation(true)
+      }
     }
   }
 
   const handleBack = () => {
     if (currentStep > 1) {
-      setCurrentStep((s) => s - 1)
+      const prevPhysicalStep = currentStep - 1
+      const prevLogicalStep = getLogicalStep(prevPhysicalStep)
+      // If previous step is logical step 5 (which should be skipped), skip to step 4
+      if (shouldSkipStep5 && prevLogicalStep === 5) {
+        setCurrentStep(prevPhysicalStep - 1)
+      } else {
+        setCurrentStep(prevPhysicalStep)
+      }
     }
   }
 
@@ -91,19 +133,34 @@ function ScheduleToolContent({ onComplete }: { onComplete?: ScheduleToolProps["o
         steps={steps}
         currentStep={currentStep}
         celebrationTexts={toolTranslations.celebration}
+        getLogicalStep={getLogicalStep}
       />
 
-      <div className="relative min-h-[500px]">
+      <div className="relative min-h-[400px]">
         <ToolLoadingOverlay loading={loading} />
 
-        <div className="space-y-12">
-          {currentStep === 1 && <Step1Goal />}
-          {currentStep === 2 && <Step2Level />}
-          {currentStep === 3 && <Step3Profile onSkip={handleNext} />}
-          {currentStep === 4 && <Step4Health />}
-          {currentStep === 5 && <Step5Performance />}
-          {currentStep === 6 && <Step6Planning />}
-          {currentStep === 7 && <Step7Checkout />}
+        <div className="space-y-6">
+          {(() => {
+            const logicalStep = getLogicalStep(currentStep)
+            switch (logicalStep) {
+              case 1:
+                return <Step1Goal showValidation={showValidation} />
+              case 2:
+                return <Step2Level showValidation={showValidation} />
+              case 3:
+                return <Step3Profile showValidation={showValidation} />
+              case 4:
+                return <Step4Health />
+              case 5:
+                return <Step5Performance showValidation={showValidation} />
+              case 6:
+                return <Step6Planning showValidation={showValidation} />
+              case 7:
+                return <Step7Checkout showValidation={showValidation} />
+              default:
+                return null
+            }
+          })()}
         </div>
 
         <ToolNavigation

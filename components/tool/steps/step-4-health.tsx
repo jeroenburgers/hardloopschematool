@@ -16,13 +16,18 @@ export function Step4Health() {
   const { formData, updateFormData } = useScheduleFormContext()
 
   return (
-    <div className="grid grid-cols-1 gap-8 animate-in fade-in slide-in-from-bottom-8 duration-700">
+    <div className="space-y-6">
       <StepHeader locale={locale} titleKey="coachHealth" subtitleKey="stepHealthSubtitle" />
-      <StepHealth
-        selectedHealth={formData.health}
-        availableOptions={toolTranslations.healthOptions}
-        onHealthChange={(health) => updateFormData({ health })}
-      />
+      <div className="space-y-4">
+        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          {toolTranslations.coachHealth}
+        </label>
+        <StepHealth
+          selectedHealth={formData.health}
+          availableOptions={toolTranslations.healthOptions}
+          onHealthChange={(health) => updateFormData({ health })}
+        />
+      </div>
     </div>
   )
 }

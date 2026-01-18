@@ -1,4 +1,5 @@
 import type { Level } from "@/lib/types/schedule"
+import { RadioButton } from "@/components/ui/radio-button"
 
 /**
  * Step Level component
@@ -11,33 +12,32 @@ interface LevelOption {
 }
 
 interface StepLevelProps {
-  selectedLevel: Level
+  selectedLevel: Level | ""
   availableLevels: LevelOption[]
   onLevelChange: (level: Level) => void
+  error?: boolean
 }
 
-export function StepLevel({ selectedLevel, availableLevels, onLevelChange }: StepLevelProps) {
+export function StepLevel({
+  selectedLevel,
+  availableLevels,
+  onLevelChange,
+  error = false,
+}: StepLevelProps) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-5 gap-3">
       {availableLevels.map((level) => (
-        <button
+        <RadioButton
           key={level.id}
-          onClick={() => onLevelChange(level.id)}
-          className={`p-8 rounded-[2.5rem] border-4 text-left transition-all relative group ${
-            selectedLevel === level.id
-              ? "bg-zinc-950 dark:bg-zinc-900 border-zinc-950 dark:border-zinc-800 text-white shadow-2xl"
-              : "bg-white dark:bg-zinc-900/50 border-zinc-100 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:border-zinc-300 dark:hover:border-zinc-700"
-          }`}
+          checked={selectedLevel === level.id}
+          onChange={() => onLevelChange(level.id)}
+          error={error && selectedLevel !== level.id}
         >
-          <span className="text-xl font-black block mb-2">{level.label}</span>
-          <p
-            className={`text-xs font-bold leading-relaxed ${
-              selectedLevel === level.id ? "text-zinc-400" : "text-zinc-400"
-            }`}
-          >
-            {level.desc}
-          </p>
-        </button>
+          <div className="text-left">
+            <span className="text-sm font-semibold block mb-1">{level.label}</span>
+            <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">{level.desc}</p>
+          </div>
+        </RadioButton>
       ))}
     </div>
   )

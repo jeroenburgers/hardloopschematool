@@ -13,9 +13,15 @@ interface ProgressTrackerProps {
   steps: Step[]
   currentStep: number
   celebrationTexts: string[]
+  getLogicalStep?: (physicalStep: number) => number
 }
 
-export function ProgressTracker({ steps, currentStep, celebrationTexts }: ProgressTrackerProps) {
+export function ProgressTracker({
+  steps,
+  currentStep,
+  celebrationTexts,
+  getLogicalStep,
+}: ProgressTrackerProps) {
   return (
     <div className="mb-24 relative px-2 sm:px-12">
       <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full absolute top-1/2 -translate-y-1/2 left-0 overflow-hidden">
@@ -46,13 +52,18 @@ export function ProgressTracker({ steps, currentStep, celebrationTexts }: Progre
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                 )}
               </div>
-              {isActive && (
-                <div className="absolute -top-14 flex flex-col items-center animate-bounce z-30">
-                  <div className="px-5 py-2 bg-orange-600 text-white text-[9px] font-black rounded-full shadow-xl whitespace-nowrap border-2 border-white">
-                    {celebrationTexts[currentStep - 1]}
-                  </div>
-                </div>
-              )}
+              {isActive &&
+                (() => {
+                  const logicalStep = getLogicalStep ? getLogicalStep(currentStep) : currentStep
+                  const celebrationIndex = logicalStep - 1
+                  return celebrationIndex >= 0 && celebrationIndex < celebrationTexts.length ? (
+                    <div className="absolute -top-14 flex flex-col items-center animate-bounce z-30">
+                      <div className="px-5 py-2 bg-orange-600 text-white text-[9px] font-black rounded-full shadow-xl whitespace-nowrap border-2 border-white">
+                        {celebrationTexts[celebrationIndex]}
+                      </div>
+                    </div>
+                  ) : null
+                })()}
               <span
                 className={`absolute -bottom-10 text-[8px] font-black uppercase tracking-widest hidden lg:block ${
                   isActive ? "text-zinc-950 dark:text-zinc-50" : "text-zinc-300 dark:text-zinc-600"
