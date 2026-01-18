@@ -9,31 +9,27 @@ export function Hero() {
 
   return (
     <div className="flex flex-col items-center">
-      <Badge
-        variant="dark"
-        size="lg"
-        className="mb-8 animate-in fade-in slide-in-from-top-4 duration-1000 shadow-xl"
-      >
+      <Badge variant="dark" size="lg" className="mb-8 shadow-xl">
         <span className="flex h-2 w-2 relative">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
         </span>
         <span>{t("hero.badge")}</span>
       </Badge>
-      <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-8 text-center animate-in fade-in slide-in-from-bottom-6 duration-700 drop-shadow-2xl">
+      <h1 className="text-6xl md:text-8xl font-black text-white tracking-tighter leading-[0.9] mb-8 text-centerdrop-shadow-2xl">
         {t("hero.title")} <br />
         <span className="text-orange-500 italic">{t("hero.titleHighlight")}</span>
       </h1>
-      <p className="max-w-xl text-lg md:text-xl text-zinc-300 dark:text-zinc-400 font-medium leading-relaxed mb-12 text-center animate-in fade-in duration-1000 delay-200">
+      <p className="text-lg md:text-xl text-zinc-300 dark:text-zinc-400 font-medium leading-relaxed mb-12 text-center">
         {t("hero.description")}
       </p>
-      <div className="w-full max-w-lg animate-in fade-in zoom-in-95 duration-1000 delay-300 relative">
+      <div className="w-full max-w-lg relative">
         <div className="absolute -top-4 -right-4 bg-orange-600 text-white text-[9px] font-black px-3 py-1 rounded-full z-20 shadow-lg uppercase tracking-widest">
           {t("hero.form.price")}
         </div>
         <div className="p-3 bg-white dark:bg-zinc-800 rounded-[2.5rem] shadow-2xl flex flex-col sm:flex-row items-center gap-3">
           <div className="flex-1 w-full px-6 py-2">
-            <label className="block text-[9px] font-black uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-0.5">
+            <label className="block text-left text-[9px] font-black uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-0.5">
               {t("hero.form.label")}
             </label>
             <select className="w-full bg-transparent text-lg font-black text-zinc-950 dark:text-zinc-50 outline-none appearance-none cursor-pointer hover:text-orange-600 dark:hover:text-orange-500 transition-colors">

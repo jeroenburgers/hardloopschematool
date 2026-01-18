@@ -27,10 +27,10 @@
     }
   },
   "hero": {
-    "badge": "Professioneel Hardloopschema",
-    "title": "Bereik jouw",
-    "titleHighlight": "volgende mijlpaal.",
-    "description": "Gevalideerd door ervaren coaches. Sluit je aan bij +8.400 lopers die dit jaar hun doelen bereikten met onze beproefde loop-methodiek.",
+    "badge": "Professioneel hardloopschema",
+    "title": "Hardloopschema",
+    "titleHighlight": "op maat",
+    "description": "Stop met zoeken. Krijg binnen 2 minuten een hardloopschema op maat dat rekening houdt met jouw niveau, doel en agenda. Sluit je aan bij +8.400 lopers die dit jaar hun doelen bereikten met onze schema's.",
     "form": {
       "label": "Kies je uitdaging",
       "options": {
