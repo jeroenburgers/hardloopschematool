@@ -393,5 +393,94 @@
       "quote": "Ich habe immer zu hart trainiert. Dieser Plan lehrte mich, langsam zu laufen, um schneller zu werden. Ergebnis? Ein PR von 22 Minuten!",
       "rating": "9.2"
     }
+  },
+  "tool": {
+    "steps": ["Ziel", "Niveau", "Profil", "Gesundheit", "Leistung", "Planung", "Kasse"],
+    "celebration": [
+      "Perfekte Wahl!",
+      "Großartig!",
+      "Weiter so!",
+      "Perfekt!",
+      "Ausgezeichnet!",
+      "Fast geschafft!",
+      "Letzter Schritt!"
+    ],
+    "coachIntro": "Was ist Ihr Ziel?",
+    "expertTag": "Personalisiert Analyse v2.0",
+    "socialProofTag": "Bestseller",
+    "goals": [
+      "5 Kilometer",
+      "10 Kilometer",
+      "15 Kilometer",
+      "10 Meilen (16,1 Kilometer)",
+      "Halbmarathon (21,1 Kilometer)",
+      "30 Kilometer",
+      "Marathon (42,2 Kilometer)",
+      "Fitness / Gesundheit"
+    ],
+    "coachLevel": "Was ist Ihr Niveau?",
+    "levels": [
+      { "id": "Starter", "label": "Starter", "desc": "Anfänger-Läufer" },
+      { "id": "Beginner", "label": "Anfänger", "desc": "Etwas Lauf-Erfahrung" },
+      { "id": "Gemiddeld", "label": "Mittel", "desc": "Regelmäßiger Läufer" },
+      { "id": "Gevorderd", "label": "Fortgeschritten", "desc": "Erfahrener Läufer" },
+      { "id": "Expert", "label": "Experte", "desc": "Sehr erfahrener Läufer" }
+    ],
+    "coachProfile": "Persönliche Informationen",
+    "profileSubtitle": "Persönliche Biomechanik-Analyse",
+    "optionalNote": "Diese Informationen helfen uns, Ihren Plan noch persönlicher zu gestalten.",
+    "gender": "Geschlecht",
+    "genders": ["Mann", "Frau", "Keine Präferenz"],
+    "ageGroup": "Altersgruppe",
+    "ageGroups": ["18-25", "26-35", "36-45", "46-55", "56+"],
+    "skipStep": "Überspringen",
+    "coachHealth": "Wie ist Ihre Gesundheit?",
+    "healthOptions": ["Top fit", "Gut", "Gesund aber weniger fit", "Erholung von Verletzung"],
+    "coachRecent": "Aktuelle Leistung",
+    "recentDist": "Distanz",
+    "recentTime": "Zeit",
+    "coachPlanning": "Wann beginnen?",
+    "startDate": "Startdatum",
+    "targetDays": "Tage pro Woche",
+    "coachCheckout": "Kasse",
+    "checkout": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail-Adresse",
+      "address": "Adresse",
+      "summary": "Zusammenfassung",
+      "product": "Produkt",
+      "anchorPrice": "€49,95",
+      "price": "€19,95",
+      "vat": "inkl. MwSt.",
+      "guarantee": "30 Tage Geld-zurück-Garantie, wenn Sie nicht zufrieden sind",
+      "investment": "Investition von heute:"
+    },
+    "back": "Zurück",
+    "next": "Weiter",
+    "generate": "Plan Generieren",
+    "coachLoading": "Bitte warten, wir erstellen Ihre persönliche Roadmap...",
+    "pageTitle": "Ihr",
+    "pageTitleHighlight": "Bauplan",
+    "pageSubtitle": "Die Roadmap, die für 8.400+ Läufer funktioniert hat",
+    "stepLevelSubtitle": "Ehrlichkeit gibt die besten Ergebnisse",
+    "stepHealthSubtitle": "Ihre Sicherheit steht an erster Stelle",
+    "stepRecentSubtitle": "Der Ausgangspunkt für Ihren Bauplan",
+    "stepPlanningSubtitle": "Ihr Terminkalender, Ihr Erfolg",
+    "stepCheckoutSubtitle": "Letzter Schritt zum Ziel",
+    "usps": {
+      "safeTraining": {
+        "title": "Sicheres Training",
+        "description": "Optimierte Belastung für verletzungsfreie Progression"
+      },
+      "directPlan": {
+        "title": "Direkter Plan",
+        "description": "Ihre Roadmap direkt im PDF-Format geliefert"
+      },
+      "eliteLogic": {
+        "title": "Elite-Logik",
+        "description": "Basierend auf bewährten Coaching-Methodologien für Erfolg"
+      }
+    }
   }
 }

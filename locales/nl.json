@@ -393,5 +393,94 @@
       "quote": "Ik trainde altijd te hard. Dit schema leerde me rustig te lopen om sneller te worden. Resultaat? Een PR van 22 minuten!",
       "rating": "9.2"
     }
+  },
+  "tool": {
+    "steps": ["Doel", "Niveau", "Profiel", "Gezondheid", "Prestaties", "Planning", "Afronding"],
+    "celebration": [
+      "Perfect gekozen!",
+      "Geweldig!",
+      "Laten we doorgaan!",
+      "Prima!",
+      "Uitstekend!",
+      "Bijna klaar!",
+      "Laatste stap!"
+    ],
+    "coachIntro": "Wat is jouw doel?",
+    "expertTag": "Gepersonaliseerde Analyse v2.0",
+    "socialProofTag": "Bestseller",
+    "goals": [
+      "5 kilometer",
+      "10 kilometer",
+      "15 kilometer",
+      "10 mijl (16,1 kilometer)",
+      "Halve marathon (21,1 kilometer)",
+      "30 kilometer",
+      "Marathon (42,2 kilometer)",
+      "Conditie / Gezondheid"
+    ],
+    "coachLevel": "Wat is jouw niveau?",
+    "levels": [
+      { "id": "Starter", "label": "Starter", "desc": "Beginnend hardloper" },
+      { "id": "Beginner", "label": "Beginner", "desc": "Iets ervaring met hardlopen" },
+      { "id": "Gemiddeld", "label": "Gemiddeld", "desc": "Regelmatig hardlopen" },
+      { "id": "Gevorderd", "label": "Gevorderd", "desc": "Ervaren hardloper" },
+      { "id": "Expert", "label": "Expert", "desc": "Zeer ervaren hardloper" }
+    ],
+    "coachProfile": "Persoonlijke informatie",
+    "profileSubtitle": "Persoonlijke biomechanica analyse",
+    "optionalNote": "Deze informatie helpt ons jouw schema nog persoonlijker te maken.",
+    "gender": "Geslacht",
+    "genders": ["Man", "Vrouw", "Geen voorkeur"],
+    "ageGroup": "Leeftijdsgroep",
+    "ageGroups": ["18-25", "26-35", "36-45", "46-55", "56+"],
+    "skipStep": "Overslaan",
+    "coachHealth": "Hoe is jouw gezondheid?",
+    "healthOptions": ["Topfit", "Goed", "Gezond maar minder fit", "Herstel van blessure"],
+    "coachRecent": "Laatste prestatie",
+    "recentDist": "Afstand",
+    "recentTime": "Tijd",
+    "coachPlanning": "Wanneer beginnen?",
+    "startDate": "Startdatum",
+    "targetDays": "Dagen per week",
+    "coachCheckout": "Afronding",
+    "checkout": {
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "email": "E-mailadres",
+      "address": "Adres",
+      "summary": "Samenvatting",
+      "product": "Product",
+      "anchorPrice": "€49,95",
+      "price": "€19,95",
+      "vat": "incl. btw",
+      "guarantee": "30 dagen geld-terug-garantie als je niet tevreden bent",
+      "investment": "Investering van vandaag:"
+    },
+    "back": "Terug",
+    "next": "Volgende",
+    "generate": "Schema Genereren",
+    "coachLoading": "Even geduld, we maken jouw persoonlijke routekaart...",
+    "pageTitle": "Jouw",
+    "pageTitleHighlight": "Blauwdruk",
+    "pageSubtitle": "De routekaart die voor 8.400+ lopers heeft gewerkt",
+    "stepLevelSubtitle": "Eerlijkheid geeft de beste resultaten",
+    "stepHealthSubtitle": "Jouw veiligheid staat op nummer één",
+    "stepRecentSubtitle": "Het nulpunt voor jouw blueprint",
+    "stepPlanningSubtitle": "Jouw agenda, jouw succes",
+    "stepCheckoutSubtitle": "Laatste stap naar de finish",
+    "usps": {
+      "safeTraining": {
+        "title": "Veilig Trainen",
+        "description": "Geoptimaliseerde belasting voor blessurevrije progressie"
+      },
+      "directPlan": {
+        "title": "Direct Plan",
+        "description": "Jouw routekaart direct geleverd in PDF format"
+      },
+      "eliteLogic": {
+        "title": "Elite Logica",
+        "description": "Gebaseerd op bewezen coaching methodieken voor succes"
+      }
+    }
   }
 }

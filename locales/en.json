@@ -393,5 +393,94 @@
       "quote": "I always trained too hard. This schedule taught me to run easy to get faster. Result? A 22-minute PR!",
       "rating": "9.2"
     }
+  },
+  "tool": {
+    "steps": ["Goal", "Level", "Profile", "Health", "Performance", "Planning", "Checkout"],
+    "celebration": [
+      "Perfect choice!",
+      "Great!",
+      "Let's continue!",
+      "Perfect!",
+      "Excellent!",
+      "Almost there!",
+      "Final step!"
+    ],
+    "coachIntro": "What is your goal?",
+    "expertTag": "Personalized Analysis v2.0",
+    "socialProofTag": "Bestseller",
+    "goals": [
+      "5 kilometer",
+      "10 kilometer",
+      "15 kilometer",
+      "10 miles (16.1 kilometers)",
+      "Half marathon (21.1 kilometers)",
+      "30 kilometer",
+      "Marathon (42.2 kilometers)",
+      "Fitness / Health"
+    ],
+    "coachLevel": "What is your level?",
+    "levels": [
+      { "id": "Starter", "label": "Starter", "desc": "Beginning runner" },
+      { "id": "Beginner", "label": "Beginner", "desc": "Some running experience" },
+      { "id": "Gemiddeld", "label": "Intermediate", "desc": "Regular runner" },
+      { "id": "Gevorderd", "label": "Advanced", "desc": "Experienced runner" },
+      { "id": "Expert", "label": "Expert", "desc": "Very experienced runner" }
+    ],
+    "coachProfile": "Personal information",
+    "profileSubtitle": "Personal biomechanics analysis",
+    "optionalNote": "This information helps us make your schedule even more personal.",
+    "gender": "Gender",
+    "genders": ["Male", "Female", "No preference"],
+    "ageGroup": "Age group",
+    "ageGroups": ["18-25", "26-35", "36-45", "46-55", "56+"],
+    "skipStep": "Skip",
+    "coachHealth": "How is your health?",
+    "healthOptions": ["Top fit", "Good", "Healthy but less fit", "Recovering from injury"],
+    "coachRecent": "Recent performance",
+    "recentDist": "Distance",
+    "recentTime": "Time",
+    "coachPlanning": "When to start?",
+    "startDate": "Start date",
+    "targetDays": "Days per week",
+    "coachCheckout": "Checkout",
+    "checkout": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email address",
+      "address": "Address",
+      "summary": "Summary",
+      "product": "Product",
+      "anchorPrice": "€49.95",
+      "price": "€19.95",
+      "vat": "incl. VAT",
+      "guarantee": "30 day money-back guarantee if you're not satisfied",
+      "investment": "Today's investment:"
+    },
+    "back": "Back",
+    "next": "Next",
+    "generate": "Generate Schedule",
+    "coachLoading": "Please wait, we're creating your personal roadmap...",
+    "pageTitle": "Your",
+    "pageTitleHighlight": "Blueprint",
+    "pageSubtitle": "The roadmap that has worked for 8,400+ runners",
+    "stepLevelSubtitle": "Honesty gives the best results",
+    "stepHealthSubtitle": "Your safety comes first",
+    "stepRecentSubtitle": "The baseline for your blueprint",
+    "stepPlanningSubtitle": "Your agenda, your success",
+    "stepCheckoutSubtitle": "Final step to the finish",
+    "usps": {
+      "safeTraining": {
+        "title": "Safe Training",
+        "description": "Optimized load for injury-free progression"
+      },
+      "directPlan": {
+        "title": "Direct Plan",
+        "description": "Your roadmap delivered directly in PDF format"
+      },
+      "eliteLogic": {
+        "title": "Elite Logic",
+        "description": "Based on proven coaching methodologies for success"
+      }
+    }
   }
 }

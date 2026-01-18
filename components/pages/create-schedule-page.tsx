@@ -2,30 +2,23 @@
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { useLanguage } from "@/components/language-provider"
+import { ToolPage } from "./tool-page"
+import type { RunningSchedule, ScheduleFormData } from "@/lib/types/schedule"
 
+/**
+ * Create Schedule Page
+ * SOLAR: Separation of Concerns - page wrapper that includes header/footer
+ */
 export function CreateSchedulePage() {
-  const { t } = useLanguage()
+  const handleGenerated = (schedule: RunningSchedule, formData: ScheduleFormData) => {
+    // TODO: Handle schedule generation completion
+    console.log("Schedule generated:", schedule, formData)
+  }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen bg-white dark:bg-zinc-950">
       <Header />
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-3xl">{t("pages.createSchedule.title")}</CardTitle>
-            <CardDescription className="text-lg">
-              {t("pages.createSchedule.description")}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="prose dark:prose-invert max-w-none">
-              <p className="text-muted-foreground leading-7">{t("pages.createSchedule.content")}</p>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      <ToolPage onGenerated={handleGenerated} />
       <Footer />
     </div>
   )
