@@ -38,7 +38,7 @@ export function MobileNavigation({ menuItems, routes, open, onOpenChange }: Mobi
         <SheetTrigger asChild>
           <button
             className="relative p-2 -mr-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors flex-shrink-0"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t("header.closeMenu") : t("header.openMenu")}
           >
             <svg
               className={`w-6 h-6 transition-all duration-200 ${
@@ -74,7 +74,7 @@ export function MobileNavigation({ menuItems, routes, open, onOpenChange }: Mobi
                 <button
                   onClick={() => onOpenChange(false)}
                   className="p-2 -mr-2 rounded-full hover:bg-white/50 dark:hover:bg-zinc-700/50 transition-colors"
-                  aria-label="Close menu"
+                  aria-label={t("header.closeMenu")}
                 >
                   <X className="w-6 h-6 text-zinc-600 dark:text-zinc-400" />
                 </button>

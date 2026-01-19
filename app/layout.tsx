@@ -3,6 +3,8 @@ import { Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { LanguageProvider } from "@/components/language-provider"
+import { getPageMetadata } from "@/lib/seo"
+import { getDefaultLocale } from "@/lib/i18n/config"
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-sans",
@@ -11,9 +13,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
   display: "swap",
 })
 
+const defaultLocale = getDefaultLocale()
+
 export const metadata: Metadata = {
-  title: "Hardloopschematool - Maak je perfecte hardloopschema",
-  description: "Maak een gepersonaliseerd hardloopschema op basis van je doelen en niveau",
+  ...getPageMetadata(defaultLocale, "home"),
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -31,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="nl" suppressHydrationWarning>
+    <html lang={defaultLocale} suppressHydrationWarning>
       <body className={`${plusJakartaSans.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"

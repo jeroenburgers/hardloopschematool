@@ -25,7 +25,10 @@ export function RadioButton({
     <button
       type="button"
       onClick={onChange}
-      className={`group relative flex items-center gap-4 p-4 rounded-xl border-2 text-left transition-all ${
+      role="radio"
+      aria-checked={checked}
+      aria-invalid={error && !checked ? true : undefined}
+      className={`group relative flex items-center gap-4 p-4 rounded-xl border-2 text-left transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950 ${
         error && !checked
           ? "bg-white dark:bg-zinc-900/50 border-red-500 dark:border-red-500 text-zinc-700 dark:text-zinc-300 hover:border-red-600 dark:hover:border-red-400 hover:bg-red-50 dark:hover:bg-red-900/10"
           : checked

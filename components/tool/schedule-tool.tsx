@@ -4,17 +4,19 @@ import { useState, useMemo } from "react"
 import { Goal, BarChart3, User, Heart, TrendingUp, Calendar, CreditCard } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/i18n"
-import type {
-  ScheduleFormData,
-  RunningSchedule,
-  Level,
-  Goal as GoalType,
-} from "@/lib/types/schedule"
-import { generateScheduleFromFormData } from "@/lib/services/schedule/gemini-service"
+import type { Level, Goal as GoalType } from "@/lib/types/schedule"
 import { ScheduleFormProvider, useScheduleFormContext } from "./schedule-form-context"
 import { ProgressTracker } from "./progress-tracker"
 import { ToolLoadingOverlay } from "./tool-loading-overlay"
 import { ToolNavigation } from "./tool-navigation"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
 import { Step1Goal } from "./steps/step-1-goal"
 import { Step2Level } from "./steps/step-2-level"
 import { Step3Profile } from "./steps/step-3-profile"
@@ -30,17 +32,17 @@ import { Step7Checkout } from "./steps/step-7-checkout"
 interface ScheduleToolProps {
   initialGoal?: GoalType
   initialLevel?: Level
-  onComplete?: (schedule: RunningSchedule, formData: ScheduleFormData) => void
 }
 
-function ScheduleToolContent({ onComplete }: { onComplete?: ScheduleToolProps["onComplete"] }) {
+function ScheduleToolContent() {
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
   const { formData, isValidStep } = useScheduleFormContext()
 
   const [currentStep, setCurrentStep] = useState(1)
-  const [loading, setLoading] = useState(false)
+  const loading = false
   const [showValidation, setShowValidation] = useState(false)
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false)
 
   // Determine if step 5 (Performance) should be skipped
   const shouldSkipStep5 = useMemo(() => {
@@ -78,21 +80,9 @@ function ScheduleToolContent({ onComplete }: { onComplete?: ScheduleToolProps["o
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStep, isValidStep, shouldSkipStep5, getLogicalStep])
 
-  const handleGenerate = async () => {
-    setLoading(true)
-    try {
-      const schedule = await generateScheduleFromFormData({
-        ...formData,
-        language: locale,
-      })
-      if (onComplete) {
-        onComplete(schedule, formData)
-      }
-    } catch {
-      alert("Er is een fout opgetreden. Probeer het opnieuw.")
-    } finally {
-      setLoading(false)
-    }
+  const handleGenerate = () => {
+    // Tool is in preview: show informative modal instead of generating output.
+    setIsPreviewOpen(true)
   }
 
   const handleNext = () => {
@@ -163,6 +153,62 @@ function ScheduleToolContent({ onComplete }: { onComplete?: ScheduleToolProps["o
           })()}
         </div>
 
+        <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{toolTranslations.previewModal.title}</DialogTitle>
+              <DialogDescription>{toolTranslations.previewModal.lead}</DialogDescription>
+            </DialogHeader>
+
+            <div className="mt-5 space-y-4">
+              <div className="rounded-2xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-900/40">
+                <div className="text-xs font-black uppercase tracking-[0.2em] text-zinc-800 dark:text-zinc-200">
+                  {toolTranslations.previewModal.whatWorksTitle}
+                </div>
+                <ul className="mt-3 space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
+                  {toolTranslations.previewModal.whatWorksBullets.map((item: string) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-orange-500 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="rounded-2xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
+                <div className="text-xs font-black uppercase tracking-[0.2em] text-zinc-800 dark:text-zinc-200">
+                  {toolTranslations.previewModal.whatNextTitle}
+                </div>
+                <ul className="mt-3 space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
+                  {toolTranslations.previewModal.whatNextBullets.map((item: string) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600 flex-shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <DialogFooter>
+              <button
+                type="button"
+                onClick={() => setIsPreviewOpen(false)}
+                className="w-full sm:w-auto px-6 py-3 rounded-2xl border-2 border-zinc-200 dark:border-zinc-800 text-zinc-950 dark:text-zinc-50 bg-white dark:bg-zinc-950 font-black text-xs sm:text-sm uppercase tracking-[0.1em] hover:border-zinc-950 dark:hover:border-zinc-600 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
+              >
+                {toolTranslations.previewModal.ctaSecondary}
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsPreviewOpen(false)}
+                className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-orange-600 dark:bg-orange-500 text-white font-black text-xs sm:text-sm uppercase tracking-[0.1em] hover:bg-orange-700 dark:hover:bg-orange-600 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
+              >
+                {toolTranslations.previewModal.ctaPrimary}
+              </button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
         <ToolNavigation
           currentStep={currentStep}
           steps={steps}
@@ -177,10 +223,10 @@ function ScheduleToolContent({ onComplete }: { onComplete?: ScheduleToolProps["o
   )
 }
 
-export function ScheduleTool({ initialGoal, initialLevel, onComplete }: ScheduleToolProps) {
+export function ScheduleTool({ initialGoal, initialLevel }: ScheduleToolProps) {
   return (
     <ScheduleFormProvider initialGoal={initialGoal} initialLevel={initialLevel}>
-      <ScheduleToolContent onComplete={onComplete} />
+      <ScheduleToolContent />
     </ScheduleFormProvider>
   )
 }

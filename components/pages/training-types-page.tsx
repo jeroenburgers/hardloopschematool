@@ -106,7 +106,7 @@ export function TrainingTypesPage() {
                   <h3 className="text-2xl font-bold text-zinc-950 dark:text-zinc-50 mb-3">
                     {typeData?.title || ""}
                   </h3>
-                  <p className="text-zinc-500 dark:text-zinc-400 mb-8 font-medium leading-relaxed line-clamp-2">
+                  <p className="text-zinc-500 dark:text-zinc-300 mb-8 font-medium leading-relaxed line-clamp-2">
                     {typeData?.subtitle || ""}
                   </p>
                   <div className="flex items-center gap-2 text-orange-600 dark:text-orange-500 font-bold text-xs uppercase tracking-widest">

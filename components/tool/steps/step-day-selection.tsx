@@ -1,3 +1,8 @@
+"use client"
+
+import { useLanguage } from "@/components/language-provider"
+import { translations } from "@/lib/i18n"
+
 /**
  * Step Day Selection component
  * SOLAR: Autonomous Component - handles day selection independently
@@ -15,18 +20,18 @@ export function StepDaySelection({
   maxSelections,
   onDayToggle,
 }: StepDaySelectionProps) {
+  const { locale } = useLanguage()
+  const dayAbbreviations = translations[locale].tool.dayAbbreviations
+  const dayLabels = {
+    day: translations[locale].tool.day,
+    days: translations[locale].tool.days,
+  }
+
   // Map full day names to abbreviations
   const getDayAbbreviation = (day: string): string => {
-    const abbreviations: Record<string, string> = {
-      Maandag: "Ma",
-      Dinsdag: "Di",
-      Woensdag: "Wo",
-      Donderdag: "Do",
-      Vrijdag: "Vr",
-      Zaterdag: "Za",
-      Zondag: "Zo",
-    }
-    return abbreviations[day] || day
+    const idx = availableDays.indexOf(day)
+    if (idx < 0) return day
+    return dayAbbreviations[idx] || day
   }
 
   const handleToggle = (day: string) => {
@@ -46,7 +51,7 @@ export function StepDaySelection({
     <div className="space-y-3 sm:space-y-4">
       <div className="flex items-center gap-2 mb-2">
         <span className="text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300">
-          {maxSelections} {maxSelections === 1 ? "dag" : "dagen"}
+          {maxSelections} {maxSelections === 1 ? dayLabels.day : dayLabels.days}
         </span>
         <span className="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-[10px] sm:text-xs font-bold rounded-full border border-orange-200 dark:border-orange-800">
           {selectedDays.length}/{maxSelections}
@@ -67,7 +72,7 @@ export function StepDaySelection({
                 isSelected
                   ? "bg-zinc-950 dark:bg-zinc-900 border-zinc-950 dark:border-zinc-800 text-white shadow-md"
                   : "bg-white dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-zinc-50 dark:hover:bg-zinc-900"
-              } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
+              } ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer"} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950`}
             >
               <div className="flex-shrink-0">
                 <div

@@ -8,7 +8,7 @@ const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://hardloopschematool.
 /**
  * Page types for SEO
  */
-export type PageType = "home" | "method" | "trainingTypes" | "examples" | "createSchedule"
+export type PageType = "home" | "method" | "trainingTypes" | "createSchedule"
 
 /**
  * Options for page metadata

@@ -4,9 +4,18 @@
     "tagline": "Maak je hardloopschema op maat",
     "description": "Maak een gepersonaliseerd hardloopschema op basis van je doelen, niveau en beschikbaarheid",
     "prev": "Vorige",
-    "next": "Volgende"
+    "next": "Volgende",
+    "illustrations": {
+      "intake": "Intake illustratie",
+      "logic": "Logica illustratie",
+      "output": "Output illustratie"
+    }
   },
   "seo": {
+    "default": {
+      "title": "Hardloopschematool - Maak je perfecte hardloopschema",
+      "description": "Maak een gepersonaliseerd hardloopschema op basis van je doelen en niveau"
+    },
     "home": {
       "title": "Maak je hardloopschema op maat - Hardloopschematool",
       "description": "Gevalideerd door ervaren coaches. Sluit je aan bij +8.400 lopers die dit jaar hun doelen bereikten met onze beproefde loop-methodiek."
@@ -19,12 +28,8 @@
       "title": "Trainingsvormen - Hardloopschematool",
       "description": "Geen enkele training is hetzelfde. Leer meer over de verschillende bouwstenen van jouw persoonlijke schema: progressieloop, tempo run, fartlek en meer."
     },
-    "examples": {
-      "title": "Voorbeeld Schema's - Hardloopschematool",
-      "description": "Bekijk voorbeeld schema's voor verschillende doelen en niveaus. Laat je inspireren door onze beproefde trainingsplannen."
-    },
     "createSchedule": {
-      "title": "Schema Maken - Hardloopschematool",
+      "title": "Hardloopschema maken - Hardloopschematool",
       "description": "Maak nu je eigen gepersonaliseerde hardloopschema. Vul het formulier in en ontvang een op maat gemaakt trainingsplan."
     }
   },
@@ -86,67 +91,13 @@
   },
   "header": {
     "toggleTheme": "Thema wisselen",
+    "closeMenu": "Menu sluiten",
+    "openMenu": "Menu openen",
     "nav": {
       "method": "Onze methode",
       "trainingTypes": "Trainingsvormen",
-      "examples": "Voorbeeld schema's",
       "createSchedule": "Schema maken"
     }
-  },
-  "features": {
-    "personalized": {
-      "title": "Gepersonaliseerd",
-      "description": "Schema's aangepast aan jouw doelen en niveau"
-    },
-    "progressive": {
-      "title": "Progressief",
-      "description": "Bouw geleidelijk op naar je einddoel"
-    },
-    "flexible": {
-      "title": "Flexibel",
-      "description": "Pas je schema aan op basis van je beschikbaarheid"
-    }
-  },
-  "form": {
-    "title": "Maak je hardloopschema",
-    "description": "Vul de onderstaande gegevens in om een schema te genereren",
-    "goal": {
-      "label": "Wat is je hoofddoel?",
-      "placeholder": "Selecteer je doel",
-      "options": {
-        "5k": "5 kilometer hardlopen",
-        "10k": "10 kilometer hardlopen",
-        "halfMarathon": "Halve marathon (21.1 km)",
-        "marathon": "Marathon (42.2 km)",
-        "fitness": "Algemene conditie verbeteren",
-        "weightLoss": "Gewichtsverlies"
-      }
-    },
-    "level": {
-      "label": "Wat is je huidige niveau?",
-      "placeholder": "Selecteer je niveau",
-      "options": {
-        "beginner": "Beginner (nog niet hardgelopen)",
-        "intermediate": "Licht gevorderd (kan 2-3 km hardlopen)",
-        "advanced": "Gevorderd (kan 5+ km hardlopen)",
-        "expert": "Zeer gevorderd (regelmatig 10+ km)"
-      }
-    },
-    "frequency": {
-      "label": "Hoeveel dagen per week wil je hardlopen?",
-      "placeholder": "Selecteer aantal dagen",
-      "options": {
-        "2": "2 dagen per week",
-        "3": "3 dagen per week",
-        "4": "4 dagen per week",
-        "5": "5 dagen per week",
-        "6": "6 dagen per week"
-      }
-    },
-    "startDate": {
-      "label": "Wanneer wil je beginnen?"
-    },
-    "submit": "Schema genereren"
   },
   "footer": {
     "description": "Wij maken professioneel hardloopadvies toegankelijk voor iedereen door middel van geavanceerde methodieken.",
@@ -154,8 +105,7 @@
       "title": "Navigatie",
       "home": "Startpagina",
       "method": "Onze Methode",
-      "trainingTypes": "Trainingsvormen",
-      "examples": "Voorbeelden"
+      "trainingTypes": "Trainingsvormen"
     },
     "copyright": "© 2026 Hardloopschematool.nl. Alle rechten voorbehouden."
   },
@@ -388,13 +338,8 @@
         }
       }
     },
-    "examples": {
-      "title": "Voorbeeld schema's",
-      "description": "Bekijk voorbeeld schema's voor verschillende doelen en niveaus.",
-      "content": "Hier vind je voorbeelden van schema's voor verschillende afstanden en niveaus. Deze voorbeelden geven je een idee van hoe een goed opgebouwd schema eruit ziet."
-    },
     "createSchedule": {
-      "title": "Schema maken",
+      "title": "Hardloopschema maken",
       "description": "Maak nu je eigen gepersonaliseerde hardloopschema.",
       "content": "Vul het formulier in om je eigen gepersonaliseerde hardloopschema te genereren. We houden rekening met je doelen, niveau en beschikbaarheid."
     }
@@ -452,68 +397,6 @@
         "title": "Smart Planning",
         "description": "Systematische opbouw van basis-uithouding naar pieksnelheid in 12-16 weken."
       }
-    },
-    "sales": {
-      "badge": "Zo werkt het",
-      "title": "Van ingevuld naar",
-      "titleHighlight": "een schema dat klopt.",
-      "description": "Vul je doel, niveau en planning in. Daarna bouwen we een schema dat past bij jouw week en opbouw.",
-      "seoLead": "Hardloopschema op maat voor 5 km, 10 km, halve marathon of marathon — afgestemd op jouw niveau en beschikbaarheid.",
-      "seoBullets": {
-        "goal": "Kies je doel (bijv. 5 km, 10 km, halve marathon of marathon).",
-        "planning": "Bepaal je startdatum en hoeveel dagen per week je wilt trainen.",
-        "level": "Geef je niveau en (indien relevant) recente prestatie door voor een realistischer tempo-opbouw.",
-        "recovery": "We houden rekening met herstel en een veilige progressie richting je doel."
-      },
-      "seoFooter": "Meer details over trainingen en opbouw vind je bij onze trainingsvormen",
-      "seoLinkLabel": "trainingsvormen",
-      "primaryCta": "Start schema maken",
-      "secondaryCta": "Bekijk onze methode",
-      "pillarEyebrow": "Waarom dit werkt",
-      "pillarTitle": "Coach-logica, vertaald naar jouw situatie",
-      "cards": {
-        "inputs": {
-          "title": "Slimme intake",
-          "description": "Doel, niveau en gezondheid geven genoeg context om het schema logisch op te bouwen."
-        },
-        "planning": {
-          "title": "Planning die past",
-          "description": "Kies startdatum, dagen per week en weken tot je doel. Automatisch of zelf inplannen."
-        }
-      },
-      "bottomNoteEyebrow": "Resultaat",
-      "bottomNote": "Een helder schema met opbouw en herstel, zodat je consistent kunt trainen."
-    },
-    "testimonial": {
-      "name": "Sander V.",
-      "role": "Finisher Marathon Rotterdam",
-      "quote": "Ik trainde altijd te hard. Dit schema leerde me rustig te lopen om sneller te worden. Resultaat? Een PR van 22 minuten!",
-      "rating": "9.2"
-    },
-    "testimonials": {
-      "items": [
-        {
-          "name": "Sander V.",
-          "role": "Finisher Marathon Rotterdam",
-          "quote": "Ik trainde altijd te hard. Dit schema leerde me rustig te lopen om sneller te worden. Resultaat? Een PR van 22 minuten!",
-          "rating": "9.2",
-          "avatarSeed": "sander"
-        },
-        {
-          "name": "Nina K.",
-          "role": "10 km PR (na 12 weken)",
-          "quote": "De vragen waren precies goed. Daarna kreeg ik een schema dat écht paste bij mijn week. Geen gedoe, wel structuur.",
-          "rating": "9.4",
-          "avatarSeed": "nina"
-        },
-        {
-          "name": "Mark D.",
-          "role": "Terug na blessure",
-          "quote": "Omdat ik mijn gezondheid kon aangeven, voelde het schema veilig. Opbouw was duidelijk en de intensiteit klopte.",
-          "rating": "9.1",
-          "avatarSeed": "mark"
-        }
-      ]
     }
   },
   "tool": {
@@ -530,7 +413,6 @@
     ],
     "coachIntro": "Wat is jouw doel?",
     "expertTag": "Gepersonaliseerde Analyse v2.0",
-    "socialProofTag": "Bestseller",
     "socialProofText": "kies dit ook",
     "goalPercentages": {
       "5 kilometer": 15,
@@ -545,7 +427,11 @@
     "focus": "Wat is je focus?",
     "focusOptions": ["Recreatief", "Prestatiegericht"],
     "targetTime": "Wat is je streeftijd?",
-    "targetTimePlaceholder": "Bijv. 01:50:00",
+    "timeUnits": {
+      "hours": "uren",
+      "minutes": "min",
+      "seconds": "sec"
+    },
     "frequency": "Hoe vaak loop je hard in de week?",
     "frequencyOptions": [
       "Onregelmatig",
@@ -559,6 +445,9 @@
     "planningModeOptions": ["Automatisch", "Zelf inplannen"],
     "selectDays": "Selecteer dagen",
     "daysOfWeek": ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"],
+    "dayAbbreviations": ["Ma", "Di", "Wo", "Do", "Vr", "Za", "Zo"],
+    "day": "dag",
+    "days": "dagen",
     "goals": [
       "5 kilometer",
       "10 kilometer",
@@ -578,13 +467,10 @@
       { "id": "Expert", "label": "Expert", "desc": "Wedstrijdloper" }
     ],
     "coachProfile": "Persoonlijke informatie",
-    "profileSubtitle": "Persoonlijke biomechanica analyse",
-    "optionalNote": "Deze informatie helpt ons jouw schema nog persoonlijker te maken.",
     "gender": "Geslacht",
     "genders": ["Man", "Vrouw", "Geen voorkeur"],
     "ageGroup": "Leeftijdsgroep",
     "ageGroups": ["<18", "18-25", "26-35", "36-45", "46-55", "56-65", "66+"],
-    "skipStep": "Overslaan",
     "coachHealth": "Hoe voel jij je op dit moment?",
     "healthOptions": [
       "Topfit (geen klachten)",
@@ -599,6 +485,9 @@
     "startDate": "Startdatum",
     "targetDays": "Dagen per week",
     "trainingWeeks": "Hoeveel weken heb je tot je doel?",
+    "weeks": "weken",
+    "recommended": "Aanbevolen",
+    "until": "Tot",
     "coachCheckout": "Afronding",
     "checkout": {
       "firstName": "Voornaam",
@@ -621,24 +510,40 @@
       "summaryRecentPerformance": "Laatste prestatie",
       "summaryDays": "Dagen per week",
       "summaryStartDate": "Startdatum",
-      "summaryPlanningMode": "Planning"
+      "summaryPlanningMode": "Planning",
+      "placeholders": {
+        "firstName": "Jan",
+        "lastName": "Jansen",
+        "email": "jan@voorbeeld.nl",
+        "address": "Hoofdstraat 1"
+      },
+      "errorAllFields": "Vul alle velden correct in om door te gaan.",
+      "errorWeeks": "Selecteer het aantal weken om door te gaan.",
+      "perWeek": "x per week"
     },
     "back": "Terug",
     "next": "Volgende",
-    "generate": "Schema Genereren",
+    "generate": "Bekijk mijn schema",
+    "previewModal": {
+      "title": "We zijn nog in ontwikkeling",
+      "lead": "Deze tool is een preview. Het formulier helpt ons te toetsen of de vragen duidelijk genoeg zijn.",
+      "whatWorksTitle": "Wat je wél krijgt",
+      "whatWorksBullets": [
+        "Een heldere intake die jouw situatie goed samenvat",
+        "Logische stappen (doel → niveau → planning) in één flow",
+        "Een richtinggevend overzicht in de afronding"
+      ],
+      "whatNextTitle": "Wat er nog aankomt",
+      "whatNextBullets": [
+        "Automatische schema-output (PDF) op basis van je antwoorden",
+        "Tempo’s en weekopbouw per trainingsdag",
+        "Export en print"
+      ],
+      "ctaPrimary": "Oké, duidelijk",
+      "ctaSecondary": "Terug naar aanpassen"
+    },
     "navigation": {
-      "nextTo": "Verder naar:",
-      "reassurance": "Je zit nog nergens aan vast",
-      "reassuranceByStep": {
-        "1": "Gratis en zonder verplichting",
-        "2": "Je zit nog nergens aan vast",
-        "3": "Slechts 2 minuten",
-        "4": "Bijna klaar",
-        "5": "Laatste stap",
-        "6": "Bijna klaar",
-        "7": "Geen automatische verlenging",
-        "default": "Je zit nog nergens aan vast"
-      }
+      "nextTo": "Verder naar:"
     },
     "coachLoading": "Even geduld, we maken jouw persoonlijke routekaart...",
     "pageTitle": "Jouw",

@@ -23,27 +23,6 @@ export function useScheduleForm({
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
 
-  // Also try to read from sessionStorage as fallback (only once on mount)
-  const goalFromStorage = useMemo(() => {
-    if (initialGoal) return initialGoal
-    if (typeof window === "undefined") return undefined
-    return (sessionStorage.getItem("initialGoal") as GoalType) || undefined
-  }, [initialGoal])
-
-  const levelFromStorage = useMemo(() => {
-    if (initialLevel) return initialLevel
-    if (typeof window === "undefined") return undefined
-    return (sessionStorage.getItem("initialLevel") as Level) || undefined
-  }, [initialLevel])
-
-  const trainingWeeksFromStorage = useMemo(() => {
-    if (typeof window === "undefined") return undefined
-    if (typeof initialTrainingWeeks === "number") return initialTrainingWeeks
-    const raw = sessionStorage.getItem("initialTrainingWeeks")
-    const parsed = raw ? Number(raw) : NaN
-    return Number.isFinite(parsed) ? parsed : undefined
-  }, [initialTrainingWeeks])
-
   const [personalInfo, setPersonalInfo] = useState<PersonalInfo>({
     firstName: "",
     lastName: "",
@@ -54,32 +33,23 @@ export function useScheduleForm({
 
   const defaultHealth = toolTranslations.healthOptions?.[0] || "Topfit (geen klachten)"
 
-  // Use goalFromStorage if available, otherwise use initialGoal
-  const effectiveGoal = goalFromStorage || initialGoal
-  const effectiveLevel = levelFromStorage || initialLevel
-
   // Track if we've already applied the initial goal to prevent overwriting user selections
   const hasAppliedInitialGoal = useRef(false)
   const hasUserSetTrainingWeeks = useRef(false)
 
   const [formData, setFormData] = useState<ScheduleFormData>(() => {
-    const initialGoalValue = effectiveGoal || ""
-    // Mark that we've applied the initial goal if it exists
-    if (initialGoalValue) {
-      hasAppliedInitialGoal.current = true
-    }
     return {
-      goal: initialGoalValue,
+      goal: initialGoal || "",
       focus: "Recreatief",
       targetTime: "",
-      level: effectiveLevel || "",
+      level: initialLevel || "",
       frequency: "",
       health: defaultHealth,
       recentDistance: "",
       recentTime: "",
       startDate: "",
       targetDays: 3,
-      trainingWeeks: trainingWeeksFromStorage || 6,
+      trainingWeeks: typeof initialTrainingWeeks === "number" ? initialTrainingWeeks : 6,
       planningMode: "Automatisch",
       selectedDays: [],
       language: locale,
@@ -88,41 +58,50 @@ export function useScheduleForm({
     }
   })
 
-  // Update formData when effectiveGoal or initialLevel changes (e.g., from sessionStorage)
-  // Only apply if we haven't already applied it and formData.goal is empty
-  // This prevents overwriting user selections
+  // Apply presets from sessionStorage AFTER mount to avoid SSR/client hydration mismatch.
   useEffect(() => {
-    // Only apply initial goal if formData.goal is empty (first time only)
-    if (effectiveGoal && !formData.goal && !hasAppliedInitialGoal.current) {
-      setFormData((prev) => ({ ...prev, goal: effectiveGoal }))
-      hasAppliedInitialGoal.current = true
-      // Clear from sessionStorage after we've used it
-      if (typeof window !== "undefined") {
-        sessionStorage.removeItem("initialGoal")
-      }
-    }
-    // Only apply initial level if formData.level is empty (first time only)
-    if (effectiveLevel && !formData.level) {
-      setFormData((prev) => ({ ...prev, level: effectiveLevel }))
-      if (typeof window !== "undefined") {
-        sessionStorage.removeItem("initialLevel")
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [effectiveGoal, effectiveLevel]) // Only run when effectiveGoal or effectiveLevel changes, not when formData changes
+    if (typeof window === "undefined") return
 
-  // Apply trainingWeeks preset once (if provided via props or sessionStorage), without overwriting user choice.
-  useEffect(() => {
-    if (!trainingWeeksFromStorage) return
-    if (hasUserSetTrainingWeeks.current) return
-    if (!formData.trainingWeeks || formData.trainingWeeks === 6) {
-      setFormData((prev) => ({ ...prev, trainingWeeks: trainingWeeksFromStorage }))
-      if (typeof window !== "undefined") {
-        sessionStorage.removeItem("initialTrainingWeeks")
-      }
+    const storedGoal = sessionStorage.getItem("initialGoal") as GoalType | null
+    const storedLevel = sessionStorage.getItem("initialLevel") as Level | null
+    const rawWeeks = sessionStorage.getItem("initialTrainingWeeks")
+    const parsedWeeks = rawWeeks ? Number(rawWeeks) : NaN
+    const storedWeeks = Number.isFinite(parsedWeeks) ? parsedWeeks : null
+
+    if (storedGoal && !formData.goal && !hasAppliedInitialGoal.current) {
+      setFormData((prev) => ({ ...prev, goal: storedGoal }))
+      hasAppliedInitialGoal.current = true
+      sessionStorage.removeItem("initialGoal")
+    }
+
+    if (storedLevel && !formData.level) {
+      setFormData((prev) => ({ ...prev, level: storedLevel }))
+      sessionStorage.removeItem("initialLevel")
+    }
+
+    if (
+      storedWeeks &&
+      !hasUserSetTrainingWeeks.current &&
+      (!formData.trainingWeeks || formData.trainingWeeks === 6)
+    ) {
+      setFormData((prev) => ({ ...prev, trainingWeeks: storedWeeks }))
+      sessionStorage.removeItem("initialTrainingWeeks")
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [trainingWeeksFromStorage])
+  }, [])
+
+  // Update formData when initialGoal/initialLevel props change (e.g. driven from parent), without overwriting user selections.
+  useEffect(() => {
+    if (initialGoal && !formData.goal && !hasAppliedInitialGoal.current) {
+      setFormData((prev) => ({ ...prev, goal: initialGoal }))
+      hasAppliedInitialGoal.current = true
+    }
+
+    if (initialLevel && !formData.level) {
+      setFormData((prev) => ({ ...prev, level: initialLevel }))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialGoal, initialLevel])
 
   const updateFormData = (updates: Partial<ScheduleFormData>) => {
     if (Object.prototype.hasOwnProperty.call(updates, "trainingWeeks")) {

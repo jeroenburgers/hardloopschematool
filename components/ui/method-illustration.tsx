@@ -2,6 +2,8 @@
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import { useLanguage } from "@/components/language-provider"
+import { translations } from "@/lib/i18n"
 
 type MethodIllustrationVariant = "intake" | "logic" | "output"
 
@@ -11,14 +13,9 @@ interface MethodIllustrationProps {
   className?: string
 }
 
-function SvgIntake() {
+function SvgIntake({ ariaLabel }: { ariaLabel: string }) {
   return (
-    <svg
-      viewBox="0 0 640 360"
-      role="img"
-      aria-label="Intake illustration"
-      className="w-full h-full"
-    >
+    <svg viewBox="0 0 640 360" role="img" aria-label={ariaLabel} className="w-full h-full">
       <defs>
         <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0" stopColor="rgb(244 244 245)" />
@@ -66,9 +63,9 @@ function SvgIntake() {
   )
 }
 
-function SvgLogic() {
+function SvgLogic({ ariaLabel }: { ariaLabel: string }) {
   return (
-    <svg viewBox="0 0 640 360" role="img" aria-label="Logic illustration" className="w-full h-full">
+    <svg viewBox="0 0 640 360" role="img" aria-label={ariaLabel} className="w-full h-full">
       <rect
         x="24"
         y="24"
@@ -128,14 +125,9 @@ function SvgLogic() {
   )
 }
 
-function SvgOutput() {
+function SvgOutput({ ariaLabel }: { ariaLabel: string }) {
   return (
-    <svg
-      viewBox="0 0 640 360"
-      role="img"
-      aria-label="Output illustration"
-      className="w-full h-full"
-    >
+    <svg viewBox="0 0 640 360" role="img" aria-label={ariaLabel} className="w-full h-full">
       <rect
         x="24"
         y="24"
@@ -170,11 +162,20 @@ function SvgOutput() {
 }
 
 export function MethodIllustration({ variant, caption, className }: MethodIllustrationProps) {
+  const { locale } = useLanguage()
+  const illustrations = translations[locale].common.illustrations
+
   const Illustration = React.useMemo(() => {
     if (variant === "intake") return SvgIntake
     if (variant === "logic") return SvgLogic
     return SvgOutput
   }, [variant])
+
+  const ariaLabel = React.useMemo(() => {
+    if (variant === "intake") return illustrations.intake
+    if (variant === "logic") return illustrations.logic
+    return illustrations.output
+  }, [variant, illustrations])
 
   return (
     <figure
@@ -184,7 +185,7 @@ export function MethodIllustration({ variant, caption, className }: MethodIllust
       )}
     >
       <div className="aspect-video w-full overflow-hidden rounded-[2.25rem] bg-white dark:bg-zinc-950 border border-zinc-200/70 dark:border-zinc-800/70">
-        <Illustration />
+        <Illustration ariaLabel={ariaLabel} />
       </div>
       {caption ? (
         <figcaption className="mt-4 text-xs text-zinc-500 dark:text-zinc-400 font-medium">

@@ -30,16 +30,12 @@ export function Step3Profile({ showValidation = false }: Step3ProfileProps) {
       <StepHeader locale={locale} titleKey="coachProfile" />
       <StepProfile
         formData={formData}
-        optionalNote={toolTranslations.optionalNote}
         genders={toolTranslations.genders}
         ageGroups={toolTranslations.ageGroups}
         genderLabel={toolTranslations.gender}
         ageGroupLabel={toolTranslations.ageGroup}
-        profileSubtitle={toolTranslations.profileSubtitle || ""}
-        skipStepLabel={toolTranslations.skipStep}
         onGenderChange={(gender) => updateFormData({ gender })}
         onAgeGroupChange={(ageGroup) => updateFormData({ ageGroup })}
-        onSkip={() => {}}
         errorGender={errors.gender}
         errorAgeGroup={errors.ageGroup}
       />

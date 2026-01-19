@@ -53,65 +53,58 @@ function getTimeSlotRanges(slot: "morning" | "daytime" | "evening" | "night"): {
 export function useActiveRunners() {
   const { locale } = useLanguage()
 
-  // Calculate time slot synchronously to avoid layout shift
-  const timeSlotData = useMemo(() => {
+  // IMPORTANT (Hydration): first render must be deterministic and identical on server + client.
+  // So we start with a static, translated fallback and only compute the dynamic message after mount.
+  const staticFallbackMessage = useMemo(() => translations[locale].hero.active, [locale])
+
+  const [currentCount, setCurrentCount] = useState<number | null>(null)
+  const [emoji, setEmoji] = useState<string>("")
+  const [message, setMessage] = useState<string>(staticFallbackMessage)
+
+  useEffect(() => {
     const now = new Date()
     const hour = now.getHours()
     const timeSlotKey = getTimeSlotKey(hour)
-    const timeSlotRanges = getTimeSlotRanges(timeSlotKey)
+    const { min, max } = getTimeSlotRanges(timeSlotKey)
     const timeSlotTranslations = translations[locale].hero.activeRunners[timeSlotKey]
 
-    return {
-      timeSlotKey,
-      timeSlotRanges,
-      timeSlotTranslations,
-    }
-  }, [locale])
+    const initialCount = generateCount(min, max)
+    const selectedMessageIndex = Math.floor(Math.random() * timeSlotTranslations.messages.length)
+    const selectedMessage =
+      timeSlotTranslations.messages[selectedMessageIndex] || timeSlotTranslations.messages[0]
 
-  // Initialize state with pre-calculated values to prevent layout shift
-  // Use function initializer to calculate random values only once
-  // All calculations are synchronous, so we can mark as ready immediately
-  const [currentCount, setCurrentCount] = useState<number>(() =>
-    generateCount(timeSlotData.timeSlotRanges.min, timeSlotData.timeSlotRanges.max),
-  )
-  const [selectedMessageIndex] = useState<number>(() =>
-    Math.floor(Math.random() * timeSlotData.timeSlotTranslations.messages.length),
-  )
-  const isReady = true // All data is calculated synchronously, so ready immediately
+    // Avoid setState synchronously in effect body (eslint react-hooks/set-state-in-effect)
+    const kickoff = setTimeout(() => {
+      setEmoji(timeSlotTranslations.emoji)
+      setCurrentCount(initialCount)
+      setMessage(selectedMessage.replace("{aantal}", initialCount.toString()))
+    }, 0)
 
-  // Update count periodically
-  useEffect(() => {
     // Update count every 30-60 seconds with small variation
     const interval = setInterval(
       () => {
         setCurrentCount((prev) => {
+          const basePrev = prev ?? initialCount
           const variation = Math.floor(Math.random() * 7) - 3 // -3 to +3
-          const newCount = prev + variation
-          // Keep within bounds
-          return Math.max(
-            timeSlotData.timeSlotRanges.min - 3,
-            Math.min(timeSlotData.timeSlotRanges.max + 3, newCount),
-          )
+          const next = basePrev + variation
+          const bounded = Math.max(min - 3, Math.min(max + 3, next))
+          setMessage(selectedMessage.replace("{aantal}", bounded.toString()))
+          return bounded
         })
       },
       30000 + Math.random() * 30000,
-    ) // 30-60 seconds
+    )
 
-    return () => clearInterval(interval)
-  }, [timeSlotData.timeSlotRanges.min, timeSlotData.timeSlotRanges.max])
-
-  // Select message based on selected index
-  const message = useMemo(() => {
-    const selectedMessage =
-      timeSlotData.timeSlotTranslations.messages[selectedMessageIndex] ||
-      timeSlotData.timeSlotTranslations.messages[0]
-    return selectedMessage.replace("{aantal}", currentCount.toString())
-  }, [timeSlotData.timeSlotTranslations.messages, selectedMessageIndex, currentCount])
+    return () => {
+      clearTimeout(kickoff)
+      clearInterval(interval)
+    }
+  }, [locale])
 
   return {
-    emoji: timeSlotData.timeSlotTranslations.emoji,
+    emoji,
     message,
-    count: currentCount,
-    isReady,
+    count: currentCount ?? undefined,
+    isReady: true,
   }
 }

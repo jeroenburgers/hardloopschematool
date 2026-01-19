@@ -136,6 +136,26 @@
   animation: slow-zoom 20s ease-in-out infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-slow-zoom {
+    animation: none !important;
+  }
+
+  [data-slot="sheet-content"][side="right"][data-state="open"],
+  [data-slot="sheet-content"][side="right"][data-state="closed"] {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
 /* Custom mobile menu animation - simple fade */
 [data-slot="sheet-content"][side="right"] {
   /* Reset any default transforms */

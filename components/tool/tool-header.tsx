@@ -21,7 +21,7 @@ export function ToolHeader() {
           {toolTranslations.pageTitleHighlight}
         </span>
       </h1>
-      <p className="text-zinc-400 dark:text-zinc-500 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] px-2">
+      <p className="text-zinc-400 dark:text-zinc-300 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] px-2">
         {toolTranslations.pageSubtitle}
       </p>
     </div>

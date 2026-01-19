@@ -33,7 +33,7 @@ export function ToolUSPs() {
                 <h4 className="text-xs sm:text-sm font-bold text-zinc-950 dark:text-zinc-50">
                   {item.title}
                 </h4>
-                <p className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                <p className="text-[10px] sm:text-xs text-zinc-500 dark:text-zinc-300 leading-relaxed">
                   {item.description}
                 </p>
               </div>

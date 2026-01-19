@@ -44,6 +44,12 @@ export function Step7Checkout({ showValidation = false }: Step7CheckoutProps) {
           healthOptions: toolTranslations.healthOptions as string[],
           genders: toolTranslations.genders as string[],
           ageGroups: toolTranslations.ageGroups as string[],
+          dayAbbreviations: toolTranslations.dayAbbreviations as string[],
+          checkout: {
+            perWeek: toolTranslations.checkout.perWeek,
+            placeholders: toolTranslations.checkout.placeholders,
+            errorAllFields: toolTranslations.checkout.errorAllFields,
+          },
         }}
         nextMondays={nextMondays}
         errorFirstName={errors.firstName}

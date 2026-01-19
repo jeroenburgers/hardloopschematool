@@ -112,8 +112,8 @@ export function Step6Planning({ showValidation = false }: Step6PlanningProps) {
               <div className="flex items-start gap-2 mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
                 <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
                 <p className="text-sm text-red-600 dark:text-red-400 font-medium">
-                  Selecteer {formData.targetDays} {formData.targetDays === 1 ? "dag" : "dagen"} om
-                  door te gaan.
+                  {toolTranslations.selectDays}: {formData.targetDays}{" "}
+                  {formData.targetDays === 1 ? toolTranslations.day : toolTranslations.days}
                 </p>
               </div>
             )}

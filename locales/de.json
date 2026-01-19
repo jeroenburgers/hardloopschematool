@@ -4,9 +4,18 @@
     "tagline": "Erstellen Sie Ihren perfekten Laufplan",
     "description": "Erstellen Sie einen personalisierten Laufplan basierend auf Ihren Zielen, Niveau und Verfügbarkeit",
     "prev": "Zurück",
-    "next": "Weiter"
+    "next": "Weiter",
+    "illustrations": {
+      "intake": "Intake-Illustration",
+      "logic": "Logik-Illustration",
+      "output": "Output-Illustration"
+    }
   },
   "seo": {
+    "default": {
+      "title": "Laufplan-Tool - Erstellen Sie Ihren perfekten Laufplan",
+      "description": "Erstellen Sie einen personalisierten Laufplan basierend auf Ihren Zielen und Niveau"
+    },
     "home": {
       "title": "Laufplan-Tool - Erstellen Sie Ihren perfekten Laufplan",
       "description": "Validiert von erfahrenen Trainern. Schließen Sie sich +8.400 Läufern an, die dieses Jahr ihre Ziele mit unserer bewährten Laufmethodik erreicht haben."
@@ -18,10 +27,6 @@
     "trainingTypes": {
       "title": "Trainingsformen - Laufplan-Tool",
       "description": "Kein Training ist gleich. Erfahren Sie mehr über die verschiedenen Bausteine Ihres persönlichen Plans: Progressionslauf, Tempolauf, Fartlek und mehr."
-    },
-    "examples": {
-      "title": "Beispielpläne - Laufplan-Tool",
-      "description": "Sehen Sie sich Beispielpläne für verschiedene Ziele und Niveaus an. Lassen Sie sich von unseren bewährten Trainingsplänen inspirieren."
     },
     "createSchedule": {
       "title": "Plan erstellen - Laufplan-Tool",
@@ -86,67 +91,13 @@
   },
   "header": {
     "toggleTheme": "Design wechseln",
+    "closeMenu": "Menü schließen",
+    "openMenu": "Menü öffnen",
     "nav": {
       "method": "Unsere Methode",
       "trainingTypes": "Trainingsformen",
-      "examples": "Beispielpläne",
       "createSchedule": "Plan erstellen"
     }
-  },
-  "features": {
-    "personalized": {
-      "title": "Personalisiert",
-      "description": "Pläne angepasst an Ihre Ziele und Ihr Niveau"
-    },
-    "progressive": {
-      "title": "Progressiv",
-      "description": "Schrittweise aufbauen zu Ihrem Endziel"
-    },
-    "flexible": {
-      "title": "Flexibel",
-      "description": "Passen Sie Ihren Plan an Ihre Verfügbarkeit an"
-    }
-  },
-  "form": {
-    "title": "Erstellen Sie Ihren Laufplan",
-    "description": "Füllen Sie die folgenden Angaben aus, um einen Plan zu erstellen",
-    "goal": {
-      "label": "Was ist Ihr Hauptziel?",
-      "placeholder": "Wählen Sie Ihr Ziel",
-      "options": {
-        "5k": "5 Kilometer laufen",
-        "10k": "10 Kilometer laufen",
-        "halfMarathon": "Halbmarathon (21,1 km)",
-        "marathon": "Marathon (42,2 km)",
-        "fitness": "Allgemeine Fitness verbessern",
-        "weightLoss": "Gewichtsverlust"
-      }
-    },
-    "level": {
-      "label": "Was ist Ihr aktuelles Niveau?",
-      "placeholder": "Wählen Sie Ihr Niveau",
-      "options": {
-        "beginner": "Anfänger (noch nie gelaufen)",
-        "intermediate": "Leicht fortgeschritten (kann 2-3 km laufen)",
-        "advanced": "Fortgeschritten (kann 5+ km laufen)",
-        "expert": "Sehr fortgeschritten (regelmäßig 10+ km)"
-      }
-    },
-    "frequency": {
-      "label": "Wie viele Tage pro Woche möchten Sie laufen?",
-      "placeholder": "Wählen Sie die Anzahl der Tage",
-      "options": {
-        "2": "2 Tage pro Woche",
-        "3": "3 Tage pro Woche",
-        "4": "4 Tage pro Woche",
-        "5": "5 Tage pro Woche",
-        "6": "6 Tage pro Woche"
-      }
-    },
-    "startDate": {
-      "label": "Wann möchten Sie beginnen?"
-    },
-    "submit": "Plan erstellen"
   },
   "footer": {
     "description": "Wir machen professionelle Laufberatung für jeden zugänglich durch fortgeschrittene Methodiken.",
@@ -154,8 +105,7 @@
       "title": "Navigation",
       "home": "Startseite",
       "method": "Unsere Methode",
-      "trainingTypes": "Trainingsformen",
-      "examples": "Beispiele"
+      "trainingTypes": "Trainingsformen"
     },
     "copyright": "© 2026 Hardloopschematool.nl. Alle Rechte vorbehalten."
   },
@@ -388,11 +338,6 @@
         }
       }
     },
-    "examples": {
-      "title": "Beispielpläne",
-      "description": "Sehen Sie sich Beispielpläne für verschiedene Ziele und Niveaus an.",
-      "content": "Hier finden Sie Beispiele für Pläne für verschiedene Distanzen und Niveaus. Diese Beispiele geben Ihnen eine Vorstellung davon, wie ein gut strukturierter Plan aussieht."
-    },
     "createSchedule": {
       "title": "Plan erstellen",
       "description": "Erstellen Sie jetzt Ihren eigenen personalisierten Laufplan.",
@@ -452,68 +397,6 @@
         "title": "Smart Planning",
         "description": "Systematischer Aufbau von Grundausdauer zu Spitzengeschwindigkeit in 12-16 Wochen."
       }
-    },
-    "sales": {
-      "badge": "So funktioniert’s",
-      "title": "Von Antworten zu",
-      "titleHighlight": "einem Plan, der passt.",
-      "description": "Gib Ziel, Niveau und Planung an. Danach erstellen wir einen Plan, der zu deiner Woche und deinem Aufbau passt.",
-      "seoLead": "Ein personalisierter Laufplan für 5 km, 10 km, Halbmarathon oder Marathon — abgestimmt auf dein Niveau und deine Zeit.",
-      "seoBullets": {
-        "goal": "Wähle dein Ziel (z. B. 5 km, 10 km, Halbmarathon oder Marathon).",
-        "planning": "Lege Startdatum und Trainingstage pro Woche fest.",
-        "level": "Gib dein Niveau und (falls relevant) eine aktuelle Leistung an, damit das Tempo realistischer wird.",
-        "recovery": "Wir berücksichtigen Erholung und eine sichere Progression bis zum Ziel."
-      },
-      "seoFooter": "Mehr Details zu Trainingsformen und Aufbau findest du unter unseren Trainingsformen",
-      "seoLinkLabel": "Trainingsformen",
-      "primaryCta": "Plan erstellen",
-      "secondaryCta": "Unsere Methode",
-      "pillarEyebrow": "Warum das funktioniert",
-      "pillarTitle": "Coach-Logik, angepasst an deine Situation",
-      "cards": {
-        "inputs": {
-          "title": "Smarter Check-in",
-          "description": "Ziel, Niveau und Gesundheit geben genug Kontext für einen sinnvollen Aufbau."
-        },
-        "planning": {
-          "title": "Planung, die passt",
-          "description": "Startdatum, Trainingstage pro Woche und Wochen bis zum Ziel. Automatisch oder manuell."
-        }
-      },
-      "bottomNoteEyebrow": "Ergebnis",
-      "bottomNote": "Ein klarer Plan mit Steigerung und Erholung — für konstantes Training."
-    },
-    "testimonial": {
-      "name": "Sander V.",
-      "role": "Marathon Rotterdam Finisher",
-      "quote": "Ich habe immer zu hart trainiert. Dieser Plan lehrte mich, langsam zu laufen, um schneller zu werden. Ergebnis? Ein PR von 22 Minuten!",
-      "rating": "9.2"
-    },
-    "testimonials": {
-      "items": [
-        {
-          "name": "Sander V.",
-          "role": "Marathon Rotterdam Finisher",
-          "quote": "Ich habe immer zu hart trainiert. Dieser Plan lehrte mich, langsam zu laufen, um schneller zu werden. Ergebnis? Ein PR von 22 Minuten!",
-          "rating": "9.2",
-          "avatarSeed": "sander"
-        },
-        {
-          "name": "Nina K.",
-          "role": "10 km PR (nach 12 Wochen)",
-          "quote": "Die Fragen waren genau richtig. Danach bekam ich einen Plan, der wirklich in meine Woche passte. Klar, machbar und strukturiert.",
-          "rating": "9.4",
-          "avatarSeed": "nina"
-        },
-        {
-          "name": "Mark D.",
-          "role": "Zurück nach Verletzung",
-          "quote": "Dass ich meinen Gesundheitszustand angeben konnte, hat sich sicher angefühlt. Aufbau klar – Intensität endlich logisch.",
-          "rating": "9.1",
-          "avatarSeed": "mark"
-        }
-      ]
     }
   },
   "tool": {
@@ -530,7 +413,6 @@
     ],
     "coachIntro": "Was ist Ihr Ziel?",
     "expertTag": "Personalisiert Analyse v2.0",
-    "socialProofTag": "Bestseller",
     "socialProofText": "wählen dies auch",
     "goalPercentages": {
       "5 kilometer": 15,
@@ -561,13 +443,10 @@
       { "id": "Expert", "label": "Experte", "desc": "Sehr erfahrener Läufer" }
     ],
     "coachProfile": "Persönliche Informationen",
-    "profileSubtitle": "Persönliche Biomechanik-Analyse",
-    "optionalNote": "Diese Informationen helfen uns, Ihren Plan noch persönlicher zu gestalten.",
     "gender": "Geschlecht",
     "genders": ["Mann", "Frau", "Keine Präferenz"],
     "ageGroup": "Altersgruppe",
     "ageGroups": ["<18", "18-25", "26-35", "36-45", "46-55", "56-65", "66+"],
-    "skipStep": "Überspringen",
     "coachHealth": "Wie fühlen Sie sich gerade?",
     "healthOptions": [
       "Top fit (keine Beschwerden)",
@@ -578,7 +457,11 @@
     "focus": "Was ist Ihr Fokus?",
     "focusOptions": ["Recreativ", "Leistungsorientiert"],
     "targetTime": "Was ist Ihre Zielzeit?",
-    "targetTimePlaceholder": "Z.B. 01:50:00",
+    "timeUnits": {
+      "hours": "Stunden",
+      "minutes": "Min",
+      "seconds": "Sek"
+    },
     "frequency": "Wie ist Ihre aktuelle Häufigkeit?",
     "frequencyOptions": [
       "Unregelmäßig",
@@ -592,6 +475,9 @@
     "planningModeOptions": ["Automatisch", "Selbst planen"],
     "selectDays": "Tage auswählen",
     "daysOfWeek": ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"],
+    "dayAbbreviations": ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
+    "day": "Tag",
+    "days": "Tage",
     "coachRecent": "Aktuelle Leistung",
     "recentDist": "Distanz",
     "recentTime": "Zeit",
@@ -599,6 +485,9 @@
     "startDate": "Startdatum",
     "targetDays": "Tage pro Woche",
     "trainingWeeks": "Wie viele Wochen haben Sie bis zu Ihrem Ziel?",
+    "weeks": "Wochen",
+    "recommended": "Empfohlen",
+    "until": "Bis",
     "coachCheckout": "Kasse",
     "checkout": {
       "firstName": "Vorname",
@@ -621,24 +510,41 @@
       "summaryRecentPerformance": "Aktuelle Leistung",
       "summaryDays": "Tage pro Woche",
       "summaryStartDate": "Startdatum",
-      "summaryPlanningMode": "Planung"
+      "summaryPlanningMode": "Planung",
+      "placeholders": {
+        "firstName": "Max",
+        "lastName": "Mustermann",
+        "email": "max@beispiel.de",
+        "address": "Hauptstraße 1"
+      },
+      "errorAllFields": "Füllen Sie alle Felder korrekt aus, um fortzufahren.",
+      "errorWeeks": "Wählen Sie die Anzahl der Wochen aus, um fortzufahren.",
+      "perWeek": "x pro Woche"
     },
     "back": "Zurück",
     "next": "Weiter",
-    "generate": "Plan Generieren",
+    "generate": "Meinen Plan ansehen",
+    "previewModal": {
+      "title": "Wir sind noch in Entwicklung",
+      "lead": "Dieses Tool ist eine Vorschau. Das Formular hilft uns zu prüfen, ob die Fragen klar genug sind.",
+      "whatWorksTitle": "Was du schon bekommst",
+      "whatWorksBullets": [
+        "Ein klarer Check-in, der deine Situation gut zusammenfasst",
+        "Logische Schritte (Ziel → Niveau → Planung) in einem Ablauf",
+        "Eine orientierende Zusammenfassung im Checkout"
+      ],
+      "whatNextTitle": "Was als Nächstes kommt",
+      "whatNextBullets": [
+        "Automatische Plan-Ausgabe (PDF) basierend auf deinen Antworten",
+        "Tempi und Wochenstruktur pro Trainingstag",
+        "Export und Druck"
+      ],
+      "ctaPrimary": "Alles klar",
+      "ctaSecondary": "Zurück und ändern"
+    },
     "navigation": {
       "nextTo": "Weiter zu:",
-      "reassurance": "Noch keine Verpflichtung",
-      "reassuranceByStep": {
-        "1": "Kostenlos und unverbindlich",
-        "2": "Noch keine Verpflichtung",
-        "3": "Nur 2 Minuten",
-        "4": "Fast fertig",
-        "5": "Letzter Schritt",
-        "6": "Fast fertig",
-        "7": "Keine automatische Verlängerung",
-        "default": "Noch keine Verpflichtung"
-      }
+      "nextTo": "Weiter zu:"
     },
     "coachLoading": "Bitte warten, wir erstellen Ihre persönliche Roadmap...",
     "pageTitle": "Ihr",

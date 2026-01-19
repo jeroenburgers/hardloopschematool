@@ -1,3 +1,8 @@
+"use client"
+
+import { useLanguage } from "@/components/language-provider"
+import { translations } from "@/lib/i18n"
+
 /**
  * Step Target Time component
  * SOLAR: Autonomous Component - handles target time input independently
@@ -9,6 +14,8 @@ interface StepTargetTimeProps {
 }
 
 export function StepTargetTime({ value, onChange, error = false }: StepTargetTimeProps) {
+  const { locale } = useLanguage()
+  const timeUnits = translations[locale].tool.timeUnits
   // Parse "HH:MM:SS" format to individual values
   const parseTime = (timeStr: string): { hours: number; minutes: number; seconds: number } => {
     if (!timeStr) return { hours: 0, minutes: 0, seconds: 0 }
@@ -71,7 +78,7 @@ export function StepTargetTime({ value, onChange, error = false }: StepTargetTim
             className="w-12 sm:w-16 bg-transparent text-center text-base sm:text-lg font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
           <span className="text-[10px] sm:text-xs text-zinc-400 dark:text-zinc-600 mt-0.5 sm:mt-1">
-            uren
+            {timeUnits.hours}
           </span>
         </div>
         <span className="text-base sm:text-lg font-semibold text-zinc-400 dark:text-zinc-600 self-start mt-1 sm:mt-1.5">
@@ -88,7 +95,7 @@ export function StepTargetTime({ value, onChange, error = false }: StepTargetTim
             className="w-12 sm:w-16 bg-transparent text-center text-base sm:text-lg font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
           <span className="text-[10px] sm:text-xs text-zinc-400 dark:text-zinc-600 mt-0.5 sm:mt-1">
-            min
+            {timeUnits.minutes}
           </span>
         </div>
         <span className="text-base sm:text-lg font-semibold text-zinc-400 dark:text-zinc-600 self-start mt-1 sm:mt-1.5">
@@ -105,7 +112,7 @@ export function StepTargetTime({ value, onChange, error = false }: StepTargetTim
             className="w-12 sm:w-16 bg-transparent text-center text-base sm:text-lg font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
           <span className="text-[10px] sm:text-xs text-zinc-400 dark:text-zinc-600 mt-0.5 sm:mt-1">
-            sec
+            {timeUnits.seconds}
           </span>
         </div>
       </div>

@@ -8,16 +8,12 @@ import { RadioButton } from "@/components/ui/radio-button"
  */
 interface StepProfileProps {
   formData: ScheduleFormData
-  optionalNote: string
   genders: string[]
   ageGroups: string[]
   genderLabel: string
   ageGroupLabel: string
-  profileSubtitle: string
-  skipStepLabel: string
   onGenderChange: (gender: ScheduleFormData["gender"]) => void
   onAgeGroupChange: (ageGroup: string) => void
-  onSkip: () => void
   errorGender?: boolean
   errorAgeGroup?: boolean
 }

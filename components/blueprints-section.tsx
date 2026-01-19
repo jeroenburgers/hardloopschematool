@@ -92,7 +92,7 @@ export function BlueprintsSection() {
           <h2 className="text-4xl md:text-6xl font-black text-zinc-950 dark:text-zinc-50 tracking-tighter mb-4">
             {t("home.blueprints.title")}
           </h2>
-          <p className="text-lg text-zinc-500 dark:text-zinc-400 max-w-xl mx-auto font-medium">
+          <p className="text-lg text-zinc-500 dark:text-zinc-300 max-w-xl mx-auto font-medium">
             {t("home.blueprints.subtitle")}
           </p>
         </div>
@@ -101,7 +101,7 @@ export function BlueprintsSection() {
           {blueprints.map((bp) => (
             <div
               key={bp.key}
-              className="bg-zinc-50 dark:bg-zinc-900/40 rounded-[2.5rem] p-8 border border-zinc-200/70 dark:border-zinc-800/70 hover:bg-white dark:hover:bg-zinc-900/60 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors duration-300 group flex flex-col relative overflow-hidden"
+              className="bg-zinc-50 dark:bg-zinc-900/50 rounded-[2.5rem] p-8 border border-zinc-200/70 dark:border-zinc-800/80 hover:bg-white dark:hover:bg-zinc-900/70 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors duration-300 group flex flex-col relative overflow-hidden"
             >
               {bp.tag && (
                 <div className="absolute top-0 right-0 bg-orange-600 text-white text-[9px] font-semibold px-4 py-1.5 tracking-wide rounded-bl-2xl">
@@ -118,18 +118,18 @@ export function BlueprintsSection() {
               <h3 className="text-xl font-bold text-zinc-950 dark:text-zinc-50 mb-2 leading-tight">
                 {bp.title}
               </h3>
-              <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium leading-relaxed mb-6 flex-1">
+              <p className="text-sm text-zinc-500 dark:text-zinc-300 font-medium leading-relaxed mb-6 flex-1">
                 {bp.description}
               </p>
 
               <div className="space-y-3 mb-8">
-                <div className="flex justify-between items-center text-[10px] font-semibold tracking-wide text-zinc-500 dark:text-zinc-400 border-b border-zinc-200/70 dark:border-zinc-800/70 pb-2">
+                <div className="flex justify-between items-center text-[10px] font-semibold tracking-wide text-zinc-500 dark:text-zinc-300 border-b border-zinc-200/70 dark:border-zinc-800/70 pb-2">
                   <span>{t("home.blueprints.meta.duration")}</span>
                   <span className="text-zinc-950 dark:text-zinc-50">
                     {bp.weeks} {t("home.blueprints.meta.weeks")}
                   </span>
                 </div>
-                <div className="flex justify-between items-center text-[10px] font-semibold tracking-wide text-zinc-500 dark:text-zinc-400">
+                <div className="flex justify-between items-center text-[10px] font-semibold tracking-wide text-zinc-500 dark:text-zinc-300">
                   <span>{t("home.blueprints.meta.success")}</span>
                   <span className="text-emerald-600 dark:text-emerald-500 font-semibold">
                     {bp.success}
@@ -141,14 +141,14 @@ export function BlueprintsSection() {
                 <button
                   type="button"
                   onClick={() => handleStart(bp.preset)}
-                  className="w-full py-4 bg-zinc-950 dark:bg-zinc-50 text-white dark:text-zinc-950 rounded-2xl font-semibold text-sm hover:bg-orange-600 dark:hover:bg-orange-500 transition-colors active:scale-[0.99]"
+                  className="w-full py-4 bg-zinc-950 dark:bg-zinc-50 text-white dark:text-zinc-950 rounded-2xl font-semibold text-sm hover:bg-orange-600 dark:hover:bg-orange-500 transition-colors active:scale-[0.99] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
                 >
                   {t("home.blueprints.primaryCta")}
                 </button>
                 {bp.showDetails && (
                   <a
                     href={methodHref}
-                    className="block w-full text-center py-4 bg-white dark:bg-zinc-950 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 rounded-2xl font-semibold text-sm hover:text-zinc-950 dark:hover:text-zinc-50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors"
+                    className="block w-full text-center py-4 bg-white dark:bg-zinc-950 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 rounded-2xl font-semibold text-sm hover:text-zinc-950 dark:hover:text-zinc-50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
                   >
                     {t("home.blueprints.secondaryCta")}
                   </a>

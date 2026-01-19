@@ -1,7 +1,11 @@
+"use client"
+
 import { AlertCircle } from "lucide-react"
 import { RadioButton } from "@/components/ui/radio-button"
 import type { Goal } from "@/lib/types/schedule"
 import { calculatePrice, formatPrice } from "@/lib/utils/pricing"
+import { useLanguage } from "@/components/language-provider"
+import { translations } from "@/lib/i18n"
 
 /**
  * Step Training Weeks component
@@ -43,10 +47,15 @@ export function StepTrainingWeeks({
   label,
   goal,
   startDate,
-  locale = "nl",
   error = false,
   onWeeksChange,
 }: StepTrainingWeeksProps) {
+  const { locale: currentLocale } = useLanguage()
+  const toolTranslations = translations[currentLocale].tool
+  const weeksLabel = toolTranslations.weeks
+  const recommendedLabel = toolTranslations.recommended
+  const untilLabel = toolTranslations.until
+  const errorMessage = toolTranslations.checkout.errorWeeks
   const weeksColsClass =
     availableOptions.length >= 5
       ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5"
@@ -65,15 +74,21 @@ export function StepTrainingWeeks({
           const isRecommended = recommendedWeeks === weeks
           const endDate = startDate ? calculateEndDate(startDate, weeks) : null
           const endDateFormatted = endDate
-            ? new Date(endDate).toLocaleDateString(locale, {
-                day: "numeric",
-                month: "short",
-                year: "numeric",
-              })
+            ? new Date(endDate).toLocaleDateString(
+                currentLocale === "nl" ? "nl-NL" : currentLocale === "de" ? "de-DE" : "en-US",
+                {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                },
+              )
             : null
           const price = calculatePrice(goal, weeks)
           const formattedPrice = price
-            ? formatPrice(price, locale === "nl" ? "nl-NL" : locale === "de" ? "de-DE" : "en-US")
+            ? formatPrice(
+                price,
+                currentLocale === "nl" ? "nl-NL" : currentLocale === "de" ? "de-DE" : "en-US",
+              )
             : null
 
           return (
@@ -85,7 +100,9 @@ export function StepTrainingWeeks({
             >
               <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[60px]">
                 <div className="flex items-center justify-between gap-2 sm:gap-3 w-full">
-                  <span className="text-xs sm:text-sm font-semibold">{weeks} weken</span>
+                  <span className="text-xs sm:text-sm font-semibold">
+                    {weeks} {weeksLabel}
+                  </span>
                   {formattedPrice && (
                     <span
                       className={`text-[10px] sm:text-xs font-bold ${
@@ -102,7 +119,7 @@ export function StepTrainingWeeks({
                       isSelected ? "text-orange-400" : "text-zinc-400 dark:text-zinc-600"
                     }`}
                   >
-                    Aanbevolen
+                    {recommendedLabel}
                   </span>
                 )}
                 {endDateFormatted && (
@@ -113,7 +130,7 @@ export function StepTrainingWeeks({
                         : "text-zinc-400 dark:text-zinc-600"
                     }`}
                   >
-                    Tot {endDateFormatted}
+                    {untilLabel} {endDateFormatted}
                   </span>
                 )}
               </div>
@@ -124,9 +141,7 @@ export function StepTrainingWeeks({
       {error && (
         <div className="flex items-start gap-2 mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
           <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
-          <p className="text-sm text-red-600 dark:text-red-400 font-medium">
-            Selecteer het aantal weken om door te gaan.
-          </p>
+          <p className="text-sm text-red-600 dark:text-red-400 font-medium">{errorMessage}</p>
         </div>
       )}
     </div>

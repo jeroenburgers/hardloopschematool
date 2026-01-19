@@ -4,9 +4,18 @@
     "tagline": "Create your perfect running schedule",
     "description": "Create a personalized running schedule based on your goals, level and availability",
     "prev": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "illustrations": {
+      "intake": "Intake illustration",
+      "logic": "Logic illustration",
+      "output": "Output illustration"
+    }
   },
   "seo": {
+    "default": {
+      "title": "Running Schedule Tool - Create Your Perfect Running Schedule",
+      "description": "Create a personalized running schedule based on your goals and level"
+    },
     "home": {
       "title": "Running Schedule Tool - Create Your Perfect Running Schedule",
       "description": "Validated by experienced coaches. Join +8,400 runners who achieved their goals this year with our proven running methodology."
@@ -18,10 +27,6 @@
     "trainingTypes": {
       "title": "Training Types - Running Schedule Tool",
       "description": "No training is the same. Learn more about the different building blocks of your personal schedule: progression run, tempo run, fartlek and more."
-    },
-    "examples": {
-      "title": "Example Schedules - Running Schedule Tool",
-      "description": "View example schedules for different goals and levels. Get inspired by our proven training plans."
     },
     "createSchedule": {
       "title": "Create Schedule - Running Schedule Tool",
@@ -86,67 +91,13 @@
   },
   "header": {
     "toggleTheme": "Toggle theme",
+    "closeMenu": "Close menu",
+    "openMenu": "Open menu",
     "nav": {
       "method": "Our method",
       "trainingTypes": "Training types",
-      "examples": "Example schedules",
       "createSchedule": "Create schedule"
     }
-  },
-  "features": {
-    "personalized": {
-      "title": "Personalized",
-      "description": "Schedules tailored to your goals and level"
-    },
-    "progressive": {
-      "title": "Progressive",
-      "description": "Gradually build up to your end goal"
-    },
-    "flexible": {
-      "title": "Flexible",
-      "description": "Adjust your schedule based on your availability"
-    }
-  },
-  "form": {
-    "title": "Create your running schedule",
-    "description": "Fill in the details below to generate a schedule",
-    "goal": {
-      "label": "What is your main goal?",
-      "placeholder": "Select your goal",
-      "options": {
-        "5k": "Run 5 kilometers",
-        "10k": "Run 10 kilometers",
-        "halfMarathon": "Half marathon (21.1 km)",
-        "marathon": "Marathon (42.2 km)",
-        "fitness": "Improve general fitness",
-        "weightLoss": "Weight loss"
-      }
-    },
-    "level": {
-      "label": "What is your current level?",
-      "placeholder": "Select your level",
-      "options": {
-        "beginner": "Beginner (never run before)",
-        "intermediate": "Slightly advanced (can run 2-3 km)",
-        "advanced": "Advanced (can run 5+ km)",
-        "expert": "Very advanced (regularly 10+ km)"
-      }
-    },
-    "frequency": {
-      "label": "How many days per week do you want to run?",
-      "placeholder": "Select number of days",
-      "options": {
-        "2": "2 days per week",
-        "3": "3 days per week",
-        "4": "4 days per week",
-        "5": "5 days per week",
-        "6": "6 days per week"
-      }
-    },
-    "startDate": {
-      "label": "When do you want to start?"
-    },
-    "submit": "Generate schedule"
   },
   "footer": {
     "description": "We make professional running advice accessible to everyone through advanced methodologies.",
@@ -155,7 +106,7 @@
       "home": "Home",
       "method": "Our Method",
       "trainingTypes": "Training Types",
-      "examples": "Examples"
+      "trainingTypes": "Training Types"
     },
     "copyright": "© 2026 Hardloopschematool.nl. All rights reserved."
   },
@@ -388,11 +339,6 @@
         }
       }
     },
-    "examples": {
-      "title": "Example schedules",
-      "description": "View example schedules for different goals and levels.",
-      "content": "Here you'll find examples of schedules for different distances and levels. These examples give you an idea of what a well-structured schedule looks like."
-    },
     "createSchedule": {
       "title": "Create schedule",
       "description": "Create your own personalized running schedule now.",
@@ -452,68 +398,6 @@
         "title": "Smart Planning",
         "description": "Systematic build-up from base endurance to peak speed in 12-16 weeks."
       }
-    },
-    "sales": {
-      "badge": "How it works",
-      "title": "From answers to",
-      "titleHighlight": "a plan that makes sense.",
-      "description": "Enter your goal, level and planning. Then we build a schedule that fits your week and progression.",
-      "seoLead": "A personalized running plan for 5K, 10K, half marathon or marathon — tailored to your level and availability.",
-      "seoBullets": {
-        "goal": "Pick your goal (e.g. 5K, 10K, half marathon or marathon).",
-        "planning": "Choose a start date and how many days per week you want to train.",
-        "level": "Share your level and (if relevant) a recent performance for more realistic pacing.",
-        "recovery": "We account for recovery and a safe progression towards your goal."
-      },
-      "seoFooter": "For more detail on workouts and structure, see our training types",
-      "seoLinkLabel": "training types",
-      "primaryCta": "Create my schedule",
-      "secondaryCta": "See our method",
-      "pillarEyebrow": "Why this works",
-      "pillarTitle": "Coach logic, tailored to your situation",
-      "cards": {
-        "inputs": {
-          "title": "Smart intake",
-          "description": "Goal, level and health provide enough context to build the schedule logically."
-        },
-        "planning": {
-          "title": "Planning that fits",
-          "description": "Choose a start date, days per week and weeks to your goal. Automatic or manual planning."
-        }
-      },
-      "bottomNoteEyebrow": "Outcome",
-      "bottomNote": "A clear schedule with progression and recovery, designed for consistent training."
-    },
-    "testimonial": {
-      "name": "Sander V.",
-      "role": "Marathon Rotterdam Finisher",
-      "quote": "I always trained too hard. This schedule taught me to run easy to get faster. Result? A 22-minute PR!",
-      "rating": "9.2"
-    },
-    "testimonials": {
-      "items": [
-        {
-          "name": "Sander V.",
-          "role": "Marathon Rotterdam Finisher",
-          "quote": "I always trained too hard. This schedule taught me to run easy to get faster. Result? A 22-minute PR!",
-          "rating": "9.2",
-          "avatarSeed": "sander"
-        },
-        {
-          "name": "Nina K.",
-          "role": "10K PR (after 12 weeks)",
-          "quote": "The questions were spot on. Then I got a plan that actually fit my week. Simple, structured, and doable.",
-          "rating": "9.4",
-          "avatarSeed": "nina"
-        },
-        {
-          "name": "Mark D.",
-          "role": "Back after injury",
-          "quote": "Being able to indicate my health made it feel safe. Clear build-up, the intensity finally made sense.",
-          "rating": "9.1",
-          "avatarSeed": "mark"
-        }
-      ]
     }
   },
   "tool": {
@@ -530,7 +414,6 @@
     ],
     "coachIntro": "What is your goal?",
     "expertTag": "Personalized Analysis v2.0",
-    "socialProofTag": "Bestseller",
     "socialProofText": "also choose this",
     "goalPercentages": {
       "5 kilometer": 15,
@@ -561,13 +444,10 @@
       { "id": "Expert", "label": "Expert", "desc": "Very experienced runner" }
     ],
     "coachProfile": "Personal information",
-    "profileSubtitle": "Personal biomechanics analysis",
-    "optionalNote": "This information helps us make your schedule even more personal.",
     "gender": "Gender",
     "genders": ["Male", "Female", "No preference"],
     "ageGroup": "Age group",
     "ageGroups": ["<18", "18-25", "26-35", "36-45", "46-55", "56-65", "66+"],
-    "skipStep": "Skip",
     "coachHealth": "How do you feel right now?",
     "healthOptions": [
       "Top fit (no complaints)",
@@ -578,13 +458,20 @@
     "focus": "What is your focus?",
     "focusOptions": ["Recreational", "Performance-oriented"],
     "targetTime": "What is your target time?",
-    "targetTimePlaceholder": "E.g. 01:50:00",
+    "timeUnits": {
+      "hours": "hours",
+      "minutes": "min",
+      "seconds": "sec"
+    },
     "frequency": "What is your current frequency?",
     "frequencyOptions": ["Irregular", "2 days", "3 days", "4 days", "5 days", "6 days or more"],
     "planningMode": "On which days do you want to train?",
     "planningModeOptions": ["Automatic", "Plan yourself"],
     "selectDays": "Select days",
     "daysOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "dayAbbreviations": ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+    "day": "day",
+    "days": "days",
     "coachRecent": "Recent performance",
     "recentDist": "Distance",
     "recentTime": "Time",
@@ -592,6 +479,9 @@
     "startDate": "Start date",
     "targetDays": "Days per week",
     "trainingWeeks": "How many weeks do you have until your goal?",
+    "weeks": "weeks",
+    "recommended": "Recommended",
+    "until": "Until",
     "coachCheckout": "Checkout",
     "checkout": {
       "firstName": "First name",
@@ -614,24 +504,41 @@
       "summaryRecentPerformance": "Recent performance",
       "summaryDays": "Days per week",
       "summaryStartDate": "Start date",
-      "summaryPlanningMode": "Planning"
+      "summaryPlanningMode": "Planning",
+      "placeholders": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "email": "john@example.com",
+        "address": "Main Street 1"
+      },
+      "errorAllFields": "Fill in all fields correctly to continue.",
+      "errorWeeks": "Select the number of weeks to continue.",
+      "perWeek": "x per week"
     },
     "back": "Back",
     "next": "Next",
-    "generate": "Generate Schedule",
+    "generate": "View my schedule",
+    "previewModal": {
+      "title": "We’re still in development",
+      "lead": "This tool is a preview. The form helps us validate whether the questions are clear enough.",
+      "whatWorksTitle": "What you do get",
+      "whatWorksBullets": [
+        "A clear intake that summarizes your situation",
+        "Logical steps (goal → level → planning) in one flow",
+        "A guiding overview in the checkout step"
+      ],
+      "whatNextTitle": "What’s coming next",
+      "whatNextBullets": [
+        "Automatic schedule output (PDF) based on your answers",
+        "Paces and week structure per training day",
+        "Export and print"
+      ],
+      "ctaPrimary": "Got it",
+      "ctaSecondary": "Go back and edit"
+    },
     "navigation": {
       "nextTo": "Continue to:",
-      "reassurance": "No commitment yet",
-      "reassuranceByStep": {
-        "1": "Free and no obligation",
-        "2": "No commitment yet",
-        "3": "Just 2 minutes",
-        "4": "Almost done",
-        "5": "Final step",
-        "6": "Almost done",
-        "7": "No auto-renewal",
-        "default": "No commitment yet"
-      }
+      "nextTo": "Continue to:"
     },
     "coachLoading": "Please wait, we're creating your personal roadmap...",
     "pageTitle": "Your",

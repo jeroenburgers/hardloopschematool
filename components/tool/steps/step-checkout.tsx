@@ -45,6 +45,17 @@ interface StepCheckoutProps {
     healthOptions: string[]
     genders: string[]
     ageGroups: string[]
+    dayAbbreviations: string[]
+    checkout: {
+      perWeek: string
+      placeholders: {
+        firstName: string
+        lastName: string
+        email: string
+        address: string
+      }
+      errorAllFields: string
+    }
   }
   nextMondays: Array<{ val: string; label: string }>
   errorFirstName?: boolean
@@ -67,6 +78,10 @@ export function StepCheckout({
   onPersonalInfoChange,
 }: StepCheckoutProps) {
   const { locale } = useLanguage()
+  const dayAbbreviations = toolTranslations.dayAbbreviations
+  const perWeekLabel = toolTranslations.checkout.perWeek
+  const placeholders = toolTranslations.checkout.placeholders
+  const errorAllFields = toolTranslations.checkout.errorAllFields
 
   // Calculate dynamic price based on goal and training weeks
   const calculatedPrice = calculatePrice(formData.goal, formData.trainingWeeks)
@@ -119,32 +134,35 @@ export function StepCheckout({
   }
 
   const getDaysDisplay = () => {
-    if (formData.planningMode === "Automatisch") {
+    const planningModeAuto = toolTranslations.planningModeOptions[0]
+    const planningModeManual = toolTranslations.planningModeOptions[1]
+
+    if (formData.planningMode === planningModeAuto) {
       const mondayOption = nextMondays.find((m) => m.val === formData.startDate)
       const dateLabel =
         mondayOption?.label ||
         (formData.startDate
-          ? new Date(formData.startDate).toLocaleDateString("nl-NL", {
-              day: "numeric",
-              month: "short",
-            })
+          ? new Date(formData.startDate).toLocaleDateString(
+              locale === "nl" ? "nl-NL" : locale === "de" ? "de-DE" : "en-US",
+              {
+                day: "numeric",
+                month: "short",
+              },
+            )
           : "-")
-      return `${formData.targetDays}x per week (${dateLabel})`
+      return `${formData.targetDays}${perWeekLabel} (${dateLabel})`
     }
-    if (formData.planningMode === "Zelf inplannen" && formData.selectedDays.length > 0) {
-      const dayAbbreviations: Record<string, string> = {
-        Maandag: "Ma",
-        Dinsdag: "Di",
-        Woensdag: "Wo",
-        Donderdag: "Do",
-        Vrijdag: "Vr",
-        Zaterdag: "Za",
-        Zondag: "Zo",
-      }
-      const daysAbbr = formData.selectedDays.map((day) => dayAbbreviations[day] || day).join(", ")
-      return `${formData.targetDays}x per week (${daysAbbr})`
+    if (formData.planningMode === planningModeManual && formData.selectedDays.length > 0) {
+      const daysAbbr = formData.selectedDays
+        .map((day) => {
+          const idx = toolTranslations.daysOfWeek.indexOf(day)
+          if (idx < 0) return day
+          return dayAbbreviations[idx] || day
+        })
+        .join(", ")
+      return `${formData.targetDays}${perWeekLabel} (${daysAbbr})`
     }
-    return `${formData.targetDays}x per week`
+    return `${formData.targetDays}${perWeekLabel}`
   }
 
   return (
@@ -163,7 +181,7 @@ export function StepCheckout({
           >
             <input
               type="text"
-              placeholder="Jan"
+              placeholder={placeholders.firstName}
               value={personalInfo.firstName}
               onChange={(e) => onPersonalInfoChange({ firstName: e.target.value })}
               className="w-full bg-transparent text-sm outline-none text-zinc-950 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
@@ -184,7 +202,7 @@ export function StepCheckout({
           >
             <input
               type="text"
-              placeholder="Jansen"
+              placeholder={placeholders.lastName}
               value={personalInfo.lastName}
               onChange={(e) => onPersonalInfoChange({ lastName: e.target.value })}
               className="w-full bg-transparent text-sm outline-none text-zinc-950 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
@@ -205,7 +223,7 @@ export function StepCheckout({
           >
             <input
               type="email"
-              placeholder="jan@voorbeeld.nl"
+              placeholder={placeholders.email}
               value={personalInfo.email}
               onChange={(e) => onPersonalInfoChange({ email: e.target.value })}
               className="w-full bg-transparent text-sm outline-none text-zinc-950 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
@@ -226,7 +244,7 @@ export function StepCheckout({
           >
             <input
               type="text"
-              placeholder="Hoofdstraat 1"
+              placeholder={placeholders.address}
               value={personalInfo.address}
               onChange={(e) => onPersonalInfoChange({ address: e.target.value })}
               className="w-full bg-transparent text-sm outline-none text-zinc-950 dark:text-zinc-50 placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
@@ -237,9 +255,7 @@ export function StepCheckout({
         {(errorFirstName || errorLastName || errorEmail || errorAddress) && (
           <div className="flex items-start gap-2 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
             <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-red-600 dark:text-red-400 font-medium">
-              Vul alle velden correct in om door te gaan.
-            </p>
+            <p className="text-sm text-red-600 dark:text-red-400 font-medium">{errorAllFields}</p>
           </div>
         )}
       </div>
@@ -257,13 +273,14 @@ export function StepCheckout({
               <span className="text-zinc-400">{translations.summaryGoal}:</span>
               <span className="text-zinc-200 font-semibold">{getGoalDisplay()}</span>
             </div>
-            {formData.focus && formData.goal !== "Conditie / Gezondheid" && (
-              <div className="flex justify-between items-center">
-                <span className="text-zinc-400">{translations.summaryFocus}:</span>
-                <span className="text-zinc-200 font-semibold">{getFocusDisplay()}</span>
-              </div>
-            )}
-            {formData.targetTime && formData.focus === "Prestatiegericht" && (
+            {formData.focus &&
+              formData.goal !== toolTranslations.goals[toolTranslations.goals.length - 1] && (
+                <div className="flex justify-between items-center">
+                  <span className="text-zinc-400">{translations.summaryFocus}:</span>
+                  <span className="text-zinc-200 font-semibold">{getFocusDisplay()}</span>
+                </div>
+              )}
+            {formData.targetTime && formData.focus === toolTranslations.focusOptions[1] && (
               <div className="flex justify-between items-center">
                 <span className="text-zinc-400">{translations.summaryTargetTime}:</span>
                 <span className="text-zinc-200 font-semibold">{getTargetTimeDisplay()}</span>

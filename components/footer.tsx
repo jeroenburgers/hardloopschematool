@@ -35,7 +35,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="bg-gray-900 dark:bg-zinc-950 text-gray-400 dark:text-zinc-500 py-16 border-t border-gray-800 dark:border-zinc-800 no-print">
+    <footer className="bg-gray-900 dark:bg-zinc-950 text-gray-400 dark:text-zinc-300 py-16 border-t border-gray-800 dark:border-zinc-800 no-print">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Logo and Description */}
@@ -46,7 +46,7 @@ export function Footer() {
               </div>
               <span className="text-xl font-bold tracking-tight text-white">{renderText()}</span>
             </div>
-            <p className="max-w-sm text-gray-400 dark:text-zinc-500 leading-relaxed">
+            <p className="max-w-sm text-gray-400 dark:text-zinc-300 leading-relaxed">
               {t("footer.description")}
             </p>
           </div>

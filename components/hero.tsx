@@ -85,7 +85,7 @@ export function Hero() {
           <button
             type="button"
             onClick={handleStart}
-            className="w-full sm:w-auto px-12 py-5 bg-orange-600 text-white rounded-3xl font-black text-sm uppercase tracking-[0.1em] hover:bg-orange-700 hover:scale-[1.02] transition-all shadow-xl active:scale-95"
+            className="w-full sm:w-auto px-12 py-5 bg-orange-600 text-white rounded-3xl font-black text-sm uppercase tracking-[0.1em] hover:bg-orange-700 hover:scale-[1.02] transition-all shadow-xl active:scale-95 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
           >
             {t("hero.form.button")}
           </button>
@@ -128,7 +128,8 @@ export function Hero() {
               </div>
             </div>
             <div className="text-[11px] font-black text-orange-500 uppercase tracking-widest animate-pulse whitespace-nowrap">
-              {emoji} {message}
+              {emoji ? `${emoji} ` : ""}
+              {message}
             </div>
           </div>
         )}
