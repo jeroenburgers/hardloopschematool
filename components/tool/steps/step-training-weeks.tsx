@@ -10,8 +10,27 @@ interface StepTrainingWeeksProps {
   availableOptions: number[]
   recommendedWeeks?: number
   label: string
+  startDate?: string
+  locale?: string
   error?: boolean
   onWeeksChange: (weeks: number) => void
+}
+
+/**
+ * Calculate end date (Sunday) based on start date (Monday) and number of weeks
+ * Weeks are inclusive of the start week, so end date = start + (weeks * 7) - 1
+ */
+function calculateEndDate(startDate: string, weeks: number): string | null {
+  if (!startDate) return null
+  try {
+    const start = new Date(startDate)
+    // Add weeks (weeks * 7 days) and subtract 1 day to get Sunday of the last week
+    const end = new Date(start)
+    end.setDate(start.getDate() + weeks * 7 - 1)
+    return end.toISOString().split("T")[0]
+  } catch {
+    return null
+  }
 }
 
 export function StepTrainingWeeks({
@@ -19,6 +38,8 @@ export function StepTrainingWeeks({
   availableOptions,
   recommendedWeeks,
   label,
+  startDate,
+  locale = "nl",
   error = false,
   onWeeksChange,
 }: StepTrainingWeeksProps) {
@@ -34,6 +55,14 @@ export function StepTrainingWeeks({
         {availableOptions.map((weeks) => {
           const isSelected = selectedWeeks === weeks
           const isRecommended = recommendedWeeks === weeks
+          const endDate = startDate ? calculateEndDate(startDate, weeks) : null
+          const endDateFormatted = endDate
+            ? new Date(endDate).toLocaleDateString(locale, {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })
+            : null
 
           return (
             <RadioButton
@@ -51,6 +80,17 @@ export function StepTrainingWeeks({
                     }`}
                   >
                     Aanbevolen
+                  </span>
+                )}
+                {endDateFormatted && (
+                  <span
+                    className={`text-[9px] font-medium mt-1 ${
+                      isSelected
+                        ? "text-zinc-300 dark:text-zinc-400"
+                        : "text-zinc-400 dark:text-zinc-600"
+                    }`}
+                  >
+                    Tot {endDateFormatted}
                   </span>
                 )}
               </div>
