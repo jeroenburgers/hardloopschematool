@@ -14,26 +14,12 @@ interface CreateSchedulePageProps {
   initialLevel?: Level
 }
 
-/**
- * Read initial goal from sessionStorage
- */
-function getInitialGoalFromStorage(propInitialGoal?: Goal): Goal | undefined {
-  if (propInitialGoal) return propInitialGoal
-  if (typeof window === "undefined") return undefined
-  const storedGoal = sessionStorage.getItem("initialGoal")
-  if (storedGoal) {
-    sessionStorage.removeItem("initialGoal")
-    return storedGoal as Goal
-  }
-  return undefined
-}
-
 export function CreateSchedulePage({
   initialGoal: propInitialGoal,
   initialLevel: propInitialLevel,
 }: CreateSchedulePageProps = {}) {
-  // Read from sessionStorage synchronously during initialization
-  const initialGoal = getInitialGoalFromStorage(propInitialGoal)
+  // Pass propInitialGoal directly - useScheduleForm will read from sessionStorage if needed
+  // This avoids setState in useEffect and lets useScheduleForm handle the sessionStorage logic
 
   const handleGenerated = (schedule: RunningSchedule, formData: ScheduleFormData) => {
     // TODO: Handle schedule generation completion
@@ -44,7 +30,7 @@ export function CreateSchedulePage({
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       <Header />
       <ToolPage
-        initialGoal={initialGoal}
+        initialGoal={propInitialGoal}
         initialLevel={propInitialLevel}
         onGenerated={handleGenerated}
       />

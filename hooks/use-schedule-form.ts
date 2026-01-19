@@ -18,6 +18,13 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
 
+  // Also try to read from sessionStorage as fallback
+  const goalFromStorage = useMemo(() => {
+    if (initialGoal) return initialGoal
+    if (typeof window === "undefined") return undefined
+    return (sessionStorage.getItem("initialGoal") as GoalType) || undefined
+  }, [initialGoal])
+
   const [personalInfo, setPersonalInfo] = useState<PersonalInfo>({
     firstName: "",
     lastName: "",
@@ -28,8 +35,11 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
 
   const defaultHealth = toolTranslations.healthOptions?.[0] || "Topfit (geen klachten)"
 
+  // Use goalFromStorage if available, otherwise use initialGoal
+  const effectiveGoal = goalFromStorage || initialGoal
+
   const [formData, setFormData] = useState<ScheduleFormData>(() => ({
-    goal: initialGoal || "",
+    goal: effectiveGoal || "",
     focus: "Recreatief",
     targetTime: "",
     level: initialLevel || "",
@@ -47,15 +57,19 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
     ageGroup: undefined,
   }))
 
-  // Update formData when initialGoal or initialLevel changes (e.g., from sessionStorage)
+  // Update formData when effectiveGoal or initialLevel changes (e.g., from sessionStorage)
   useEffect(() => {
-    if (initialGoal && initialGoal !== formData.goal) {
-      setFormData((prev) => ({ ...prev, goal: initialGoal }))
+    if (effectiveGoal && effectiveGoal !== formData.goal) {
+      setFormData((prev) => ({ ...prev, goal: effectiveGoal }))
+      // Clear from sessionStorage after we've used it
+      if (typeof window !== "undefined") {
+        sessionStorage.removeItem("initialGoal")
+      }
     }
     if (initialLevel && initialLevel !== formData.level) {
       setFormData((prev) => ({ ...prev, level: initialLevel }))
     }
-  }, [initialGoal, initialLevel, formData.goal, formData.level])
+  }, [effectiveGoal, initialLevel, formData.goal, formData.level])
 
   const updateFormData = (updates: Partial<ScheduleFormData>) => {
     setFormData((prev) => ({ ...prev, ...updates }))
