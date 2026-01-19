@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect, useRef, useCallback } from "react"
 import { Goal, BarChart3, User, Heart, TrendingUp, Calendar, CreditCard } from "lucide-react"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/i18n"
@@ -24,6 +24,7 @@ import { Step4Health } from "./steps/step-4-health"
 import { Step5Performance } from "./steps/step-5-performance"
 import { Step6Planning } from "./steps/step-6-planning"
 import { Step7Checkout } from "./steps/step-7-checkout"
+import { useAnalytics } from "@/hooks/use-analytics"
 
 /**
  * Schedule Tool Orchestrator
@@ -38,11 +39,13 @@ function ScheduleToolContent() {
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
   const { formData, isValidStep } = useScheduleFormContext()
+  const { trackStep, trackModalOpened, trackModalClosed, trackCompleted } = useAnalytics()
 
   const [currentStep, setCurrentStep] = useState(1)
   const loading = false
   const [showValidation, setShowValidation] = useState(false)
   const [isPreviewOpen, setIsPreviewOpen] = useState(false)
+  const trackedStepsRef = useRef<Set<number>>(new Set())
 
   // Determine if step 5 (Performance) should be skipped
   const shouldSkipStep5 = useMemo(() => {
@@ -67,12 +70,15 @@ function ScheduleToolContent() {
   }, [toolTranslations.steps, shouldSkipStep5])
 
   // Map physical step (1-based index in visible steps) to logical step (1-7)
-  const getLogicalStep = (physicalStep: number): number => {
-    if (!shouldSkipStep5) return physicalStep
-    // If step 5 is skipped, map physical steps to logical steps
-    if (physicalStep <= 4) return physicalStep
-    return physicalStep + 1 // Skip logical step 5
-  }
+  const getLogicalStep = useCallback(
+    (physicalStep: number): number => {
+      if (!shouldSkipStep5) return physicalStep
+      // If step 5 is skipped, map physical steps to logical steps
+      if (physicalStep <= 4) return physicalStep
+      return physicalStep + 1 // Skip logical step 5
+    },
+    [shouldSkipStep5],
+  )
 
   const isValid = useMemo(() => {
     const logicalStep = getLogicalStep(currentStep)
@@ -80,9 +86,28 @@ function ScheduleToolContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentStep, isValidStep, shouldSkipStep5, getLogicalStep])
 
+  // Track step navigation
+  useEffect(() => {
+    const logicalStep = getLogicalStep(currentStep)
+    const stepName = steps.find((s) => s.logicalStep === logicalStep)?.name || `Step ${logicalStep}`
+
+    // Only track each step once per session
+    if (!trackedStepsRef.current.has(logicalStep)) {
+      trackedStepsRef.current.add(logicalStep)
+      const isSkipped = shouldSkipStep5 && logicalStep === 5
+      trackStep(logicalStep, stepName, isSkipped)
+
+      // Track form completion when reaching checkout (step 7)
+      if (logicalStep === 7) {
+        trackCompleted()
+      }
+    }
+  }, [currentStep, getLogicalStep, steps, shouldSkipStep5, trackStep, trackCompleted])
+
   const handleGenerate = () => {
     // Tool is in preview: show informative modal instead of generating output.
     setIsPreviewOpen(true)
+    trackModalOpened()
   }
 
   const handleNext = () => {
@@ -153,7 +178,16 @@ function ScheduleToolContent() {
           })()}
         </div>
 
-        <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
+        <Dialog
+          open={isPreviewOpen}
+          onOpenChange={(open) => {
+            setIsPreviewOpen(open)
+            if (!open) {
+              // Track when modal is closed via backdrop/ESC
+              trackModalClosed("backdrop")
+            }
+          }}
+        >
           <DialogContent>
             <DialogHeader>
               <DialogTitle>{toolTranslations.previewModal.title}</DialogTitle>
@@ -193,14 +227,20 @@ function ScheduleToolContent() {
             <DialogFooter>
               <button
                 type="button"
-                onClick={() => setIsPreviewOpen(false)}
+                onClick={() => {
+                  setIsPreviewOpen(false)
+                  trackModalClosed("button_secondary")
+                }}
                 className="w-full sm:w-auto px-6 py-3 rounded-2xl border-2 border-zinc-200 dark:border-zinc-800 text-zinc-950 dark:text-zinc-50 bg-white dark:bg-zinc-950 font-black text-xs sm:text-sm uppercase tracking-[0.1em] hover:border-zinc-950 dark:hover:border-zinc-600 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
               >
                 {toolTranslations.previewModal.ctaSecondary}
               </button>
               <button
                 type="button"
-                onClick={() => setIsPreviewOpen(false)}
+                onClick={() => {
+                  setIsPreviewOpen(false)
+                  trackModalClosed("button_primary")
+                }}
                 className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-orange-600 dark:bg-orange-500 text-white font-black text-xs sm:text-sm uppercase tracking-[0.1em] hover:bg-orange-700 dark:hover:bg-orange-600 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
               >
                 {toolTranslations.previewModal.ctaPrimary}
@@ -224,6 +264,13 @@ function ScheduleToolContent() {
 }
 
 export function ScheduleTool({ initialGoal, initialLevel }: ScheduleToolProps) {
+  const { trackStarted } = useAnalytics()
+
+  // Track when tool is started
+  useEffect(() => {
+    trackStarted(initialGoal)
+  }, [initialGoal, trackStarted])
+
   return (
     <ScheduleFormProvider initialGoal={initialGoal} initialLevel={initialLevel}>
       <ScheduleToolContent />

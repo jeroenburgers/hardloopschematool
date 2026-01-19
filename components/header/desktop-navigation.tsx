@@ -47,9 +47,9 @@ export function DesktopNavigation({ menuItems, routes }: DesktopNavigationProps)
       {/* Controls */}
       <div className="flex items-center gap-3 lg:gap-4 ml-2">
         {/* Language Toggle */}
-        <div className="relative flex-shrink-0">
+        {/* <div className="relative flex-shrink-0">
           <LanguageToggle />
-        </div>
+        </div> */}
 
         {/* Dark Mode Toggle */}
         <div className="flex-shrink-0">

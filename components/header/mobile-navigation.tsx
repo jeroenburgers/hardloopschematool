@@ -31,7 +31,7 @@ export function MobileNavigation({ menuItems, routes, open, onOpenChange }: Mobi
   return (
     <div className="md:hidden flex items-center gap-2 flex-shrink-0">
       <div className="flex items-center gap-1.5">
-        <LanguageToggle />
+        {/* <LanguageToggle /> */}
         <ModeToggle />
       </div>
       <Sheet open={open} onOpenChange={onOpenChange}>
@@ -134,7 +134,7 @@ export function MobileNavigation({ menuItems, routes, open, onOpenChange }: Mobi
               <div className="flex flex-col gap-3">
                 {/* Controls */}
                 <div className="flex items-center justify-center gap-3 pb-3">
-                  <LanguageToggle />
+                  {/* <LanguageToggle /> */}
                   <ModeToggle />
                 </div>
                 {/* CTA Button */}

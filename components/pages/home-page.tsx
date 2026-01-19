@@ -23,7 +23,7 @@ export function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/50 to-zinc-950/90"></div>
         </div>
 
-        <div className="max-w-4xl mx-auto text-center relative z-10 px-6">
+        <div className="max-w-4xl mx-auto text-center relative z-10 w-full px-4 sm:px-6">
           <Hero />
         </div>
       </div>
