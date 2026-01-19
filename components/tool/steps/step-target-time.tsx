@@ -53,13 +53,13 @@ export function StepTargetTime({ value, onChange, error = false }: StepTargetTim
 
   return (
     <div
-      className={`relative p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
+      className={`relative p-3 sm:p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
         error
           ? "border-red-500 dark:border-red-500 focus-within:border-red-600 dark:focus-within:border-red-400"
           : "border-zinc-200 dark:border-zinc-800 focus-within:border-zinc-950 dark:focus-within:border-zinc-600"
       }`}
     >
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5 sm:gap-2">
         <div className="flex flex-col items-center">
           <input
             type="number"
@@ -68,11 +68,13 @@ export function StepTargetTime({ value, onChange, error = false }: StepTargetTim
             placeholder="0"
             value={hours || ""}
             onChange={handleHoursChange}
-            className="w-16 bg-transparent text-center text-lg font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="w-12 sm:w-16 bg-transparent text-center text-base sm:text-lg font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
-          <span className="text-xs text-zinc-400 dark:text-zinc-600 mt-1">uren</span>
+          <span className="text-[10px] sm:text-xs text-zinc-400 dark:text-zinc-600 mt-0.5 sm:mt-1">
+            uren
+          </span>
         </div>
-        <span className="text-lg font-semibold text-zinc-400 dark:text-zinc-600 self-start mt-1.5">
+        <span className="text-base sm:text-lg font-semibold text-zinc-400 dark:text-zinc-600 self-start mt-1 sm:mt-1.5">
           :
         </span>
         <div className="flex flex-col items-center">
@@ -83,11 +85,13 @@ export function StepTargetTime({ value, onChange, error = false }: StepTargetTim
             placeholder="00"
             value={minutes || ""}
             onChange={handleMinutesChange}
-            className="w-16 bg-transparent text-center text-lg font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="w-12 sm:w-16 bg-transparent text-center text-base sm:text-lg font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
-          <span className="text-xs text-zinc-400 dark:text-zinc-600 mt-1">min</span>
+          <span className="text-[10px] sm:text-xs text-zinc-400 dark:text-zinc-600 mt-0.5 sm:mt-1">
+            min
+          </span>
         </div>
-        <span className="text-lg font-semibold text-zinc-400 dark:text-zinc-600 self-start mt-1.5">
+        <span className="text-base sm:text-lg font-semibold text-zinc-400 dark:text-zinc-600 self-start mt-1 sm:mt-1.5">
           :
         </span>
         <div className="flex flex-col items-center">
@@ -98,9 +102,11 @@ export function StepTargetTime({ value, onChange, error = false }: StepTargetTim
             placeholder="00"
             value={seconds || ""}
             onChange={handleSecondsChange}
-            className="w-16 bg-transparent text-center text-lg font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="w-12 sm:w-16 bg-transparent text-center text-base sm:text-lg font-semibold text-zinc-950 dark:text-zinc-50 outline-none placeholder:text-zinc-300 dark:placeholder:text-zinc-700 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
-          <span className="text-xs text-zinc-400 dark:text-zinc-600 mt-1">sec</span>
+          <span className="text-[10px] sm:text-xs text-zinc-400 dark:text-zinc-600 mt-0.5 sm:mt-1">
+            sec
+          </span>
         </div>
       </div>
     </div>

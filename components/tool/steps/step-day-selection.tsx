@@ -43,19 +43,16 @@ export function StepDaySelection({
     !selectedDays.includes(day) && selectedDays.length >= maxSelections
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 sm:space-y-4">
       <div className="flex items-center gap-2 mb-2">
-        <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
+        <span className="text-xs sm:text-sm font-semibold text-zinc-700 dark:text-zinc-300">
           {maxSelections} {maxSelections === 1 ? "dag" : "dagen"}
         </span>
-        <span className="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-xs font-bold rounded-full border border-orange-200 dark:border-orange-800">
+        <span className="px-2 py-0.5 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 text-[10px] sm:text-xs font-bold rounded-full border border-orange-200 dark:border-orange-800">
           {selectedDays.length}/{maxSelections}
         </span>
       </div>
-      <div
-        className="grid gap-3"
-        style={{ gridTemplateColumns: `repeat(${availableDays.length}, minmax(0, 1fr))` }}
-      >
+      <div className="grid gap-2 sm:gap-3 grid-cols-3 md:grid-cols-7">
         {availableDays.map((day) => {
           const isSelected = selectedDays.includes(day)
           const disabled = isDisabled(day)
@@ -66,7 +63,7 @@ export function StepDaySelection({
               type="button"
               onClick={() => !disabled && handleToggle(day)}
               disabled={disabled}
-              className={`group relative flex items-center gap-4 p-4 rounded-xl border-2 text-left transition-all ${
+              className={`group relative flex items-center gap-2 sm:gap-4 p-3 sm:p-4 rounded-xl border-2 text-left transition-all ${
                 isSelected
                   ? "bg-zinc-950 dark:bg-zinc-900 border-zinc-950 dark:border-zinc-800 text-white shadow-md"
                   : "bg-white dark:bg-zinc-900/50 border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 hover:border-zinc-400 dark:hover:border-zinc-600 hover:bg-zinc-50 dark:hover:bg-zinc-900"
@@ -86,7 +83,7 @@ export function StepDaySelection({
                 </div>
               </div>
               <div className="flex-1 min-w-0 text-center">
-                <span className="text-sm font-semibold">{getDayAbbreviation(day)}</span>
+                <span className="text-xs sm:text-sm font-semibold">{getDayAbbreviation(day)}</span>
               </div>
             </button>
           )

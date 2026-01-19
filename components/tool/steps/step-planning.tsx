@@ -37,16 +37,24 @@ export function StepPlanning({
   onStartDateChange,
   onTargetDaysChange,
 }: StepPlanningProps) {
+  const mondayColsClass =
+    mondayOptions.length >= 4
+      ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
+      : "grid-cols-1 sm:grid-cols-3"
+  const targetDaysColsClass =
+    planningOptions.length >= 5
+      ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5"
+      : planningOptions.length === 4
+        ? "grid-cols-2 sm:grid-cols-4"
+        : "grid-cols-2 sm:grid-cols-3"
+
   return (
-    <div className="space-y-6">
-      <div className="space-y-4">
-        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="space-y-3 sm:space-y-4">
+        <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
           {startDateLabel}
         </label>
-        <div
-          className="grid gap-3"
-          style={{ gridTemplateColumns: `repeat(${mondayOptions.length}, minmax(0, 1fr))` }}
-        >
+        <div className={`grid gap-2 sm:gap-3 ${mondayColsClass}`}>
           {mondayOptions.map((monday) => (
             <RadioButton
               key={monday.val}
@@ -54,7 +62,7 @@ export function StepPlanning({
               onChange={() => onStartDateChange(monday.val)}
               error={errorStartDate && startDate !== monday.val}
             >
-              <span className="text-sm font-semibold">{monday.label}</span>
+              <span className="text-xs sm:text-sm font-semibold">{monday.label}</span>
             </RadioButton>
           ))}
         </div>
@@ -68,14 +76,11 @@ export function StepPlanning({
         )}
       </div>
 
-      <div className="space-y-4">
-        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+      <div className="space-y-3 sm:space-y-4">
+        <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
           {targetDaysLabel}
         </label>
-        <div
-          className="grid gap-3"
-          style={{ gridTemplateColumns: `repeat(${planningOptions.length}, minmax(0, 1fr))` }}
-        >
+        <div className={`grid gap-2 sm:gap-3 ${targetDaysColsClass}`}>
           {planningOptions.map((num) => {
             const isSelected = targetDays === num
             const isRecommended = recommendedDays === num
@@ -87,11 +92,11 @@ export function StepPlanning({
                 onChange={() => onTargetDaysChange(num)}
                 error={errorTargetDays && !isSelected}
               >
-                <div className="flex flex-col items-start justify-center w-full min-h-[60px]">
-                  <span className="text-sm font-semibold">{num}x per week</span>
+                <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[60px]">
+                  <span className="text-xs sm:text-sm font-semibold">{num}x per week</span>
                   {isRecommended && (
                     <span
-                      className={`text-[10px] font-medium uppercase tracking-wide mt-1 ${
+                      className={`text-[9px] sm:text-[10px] font-medium uppercase tracking-wide mt-0.5 sm:mt-1 ${
                         isSelected ? "text-orange-400" : "text-zinc-400 dark:text-zinc-600"
                       }`}
                     >

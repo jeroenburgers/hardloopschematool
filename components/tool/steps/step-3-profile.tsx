@@ -26,7 +26,7 @@ export function Step3Profile({ showValidation = false }: Step3ProfileProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <StepHeader locale={locale} titleKey="coachProfile" />
       <StepProfile
         formData={formData}

@@ -18,7 +18,7 @@ export function StepFocus({
   error = false,
 }: StepFocusProps) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
       {availableOptions.map((option) => (
         <RadioButton
           key={option}
@@ -26,7 +26,7 @@ export function StepFocus({
           onChange={() => onFocusChange(option as "Recreatief" | "Prestatiegericht")}
           error={error && selectedFocus !== option}
         >
-          <span className="text-sm font-semibold">{option}</span>
+          <span className="text-xs sm:text-sm font-semibold">{option}</span>
         </RadioButton>
       ))}
     </div>

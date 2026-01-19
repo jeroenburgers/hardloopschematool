@@ -50,10 +50,10 @@ export function Step6Planning({ showValidation = false }: Step6PlanningProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <StepHeader locale={locale} titleKey="coachPlanning" subtitleKey="stepPlanningSubtitle" />
 
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         <StepPlanning
           startDate={formData.startDate}
           targetDays={formData.targetDays}
@@ -80,9 +80,9 @@ export function Step6Planning({ showValidation = false }: Step6PlanningProps) {
         />
       </div>
 
-      <div className="space-y-6">
-        <div className="space-y-4">
-          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+      <div className="space-y-4 sm:space-y-6">
+        <div className="space-y-3 sm:space-y-4">
+          <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
             {toolTranslations.planningMode}
           </label>
           <StepPlanningMode
@@ -98,8 +98,8 @@ export function Step6Planning({ showValidation = false }: Step6PlanningProps) {
         </div>
 
         {formData.planningMode === "Zelf inplannen" && formData.targetDays > 0 && (
-          <div className="space-y-4">
-            <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          <div className="space-y-3 sm:space-y-4">
+            <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
               {toolTranslations.selectDays}
             </label>
             <StepDaySelection

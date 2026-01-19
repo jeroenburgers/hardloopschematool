@@ -33,16 +33,22 @@ export function StepProfile({
   errorGender = false,
   errorAgeGroup = false,
 }: StepProfileProps) {
+  const genderColsClass =
+    genders.length >= 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2 sm:grid-cols-3"
+  const ageColsClass =
+    ageGroups.length >= 8
+      ? "grid-cols-2 sm:grid-cols-4 lg:grid-cols-8"
+      : ageGroups.length >= 6
+        ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
+        : "grid-cols-2 sm:grid-cols-3"
+
   return (
-    <div className="space-y-6">
-      <div className="space-y-4">
-        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="space-y-3 sm:space-y-4">
+        <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
           {genderLabel}
         </label>
-        <div
-          className="grid gap-3"
-          style={{ gridTemplateColumns: `repeat(${genders.length}, minmax(0, 1fr))` }}
-        >
+        <div className={`grid gap-2 sm:gap-3 ${genderColsClass}`}>
           {genders.map((gender) => (
             <RadioButton
               key={gender}
@@ -50,7 +56,7 @@ export function StepProfile({
               onChange={() => onGenderChange(gender as ScheduleFormData["gender"])}
               error={errorGender && formData.gender !== gender}
             >
-              <span className="text-sm font-semibold">{gender}</span>
+              <span className="text-xs sm:text-sm font-semibold">{gender}</span>
             </RadioButton>
           ))}
         </div>
@@ -64,14 +70,11 @@ export function StepProfile({
         )}
       </div>
 
-      <div className="space-y-4">
-        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+      <div className="space-y-3 sm:space-y-4">
+        <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
           {ageGroupLabel}
         </label>
-        <div
-          className="grid gap-3"
-          style={{ gridTemplateColumns: `repeat(${ageGroups.length}, minmax(0, 1fr))` }}
-        >
+        <div className={`grid gap-2 sm:gap-3 ${ageColsClass}`}>
           {ageGroups.map((age) => (
             <RadioButton
               key={age}
@@ -79,7 +82,7 @@ export function StepProfile({
               onChange={() => onAgeGroupChange(age)}
               error={errorAgeGroup && formData.ageGroup !== age}
             >
-              <span className="text-sm font-semibold">{age}</span>
+              <span className="text-xs sm:text-sm font-semibold">{age}</span>
             </RadioButton>
           ))}
         </div>

@@ -17,8 +17,13 @@ export function StepPlanningMode({
 }: StepPlanningModeProps) {
   return (
     <div
-      className="grid gap-3"
-      style={{ gridTemplateColumns: `repeat(${availableOptions.length}, minmax(0, 1fr))` }}
+      className="grid gap-2 sm:gap-3 grid-cols-1 sm:grid-cols-2"
+      style={{
+        gridTemplateColumns:
+          availableOptions.length <= 2
+            ? undefined
+            : `repeat(${availableOptions.length}, minmax(0, 1fr))`,
+      }}
     >
       {availableOptions.map((option) => (
         <RadioButton
@@ -26,7 +31,7 @@ export function StepPlanningMode({
           checked={selectedMode === option}
           onChange={() => onModeChange(option as "Automatisch" | "Zelf inplannen")}
         >
-          <span className="text-sm font-semibold">{option}</span>
+          <span className="text-xs sm:text-sm font-semibold">{option}</span>
         </RadioButton>
       ))}
     </div>

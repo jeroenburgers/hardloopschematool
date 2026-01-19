@@ -27,7 +27,7 @@ export function Step5Performance({ showValidation = false }: Step5PerformancePro
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <StepHeader locale={locale} titleKey="coachRecent" subtitleKey="stepRecentSubtitle" />
       <StepPerformance
         recentDistance={formData.recentDistance}

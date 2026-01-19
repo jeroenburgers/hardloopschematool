@@ -47,15 +47,19 @@ export function StepTrainingWeeks({
   error = false,
   onWeeksChange,
 }: StepTrainingWeeksProps) {
+  const weeksColsClass =
+    availableOptions.length >= 5
+      ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5"
+      : availableOptions.length === 4
+        ? "grid-cols-2 sm:grid-cols-4"
+        : "grid-cols-2 sm:grid-cols-3"
+
   return (
-    <div className="space-y-4">
-      <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+    <div className="space-y-3 sm:space-y-4">
+      <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
         {label}
       </label>
-      <div
-        className="grid gap-3"
-        style={{ gridTemplateColumns: `repeat(${availableOptions.length}, minmax(0, 1fr))` }}
-      >
+      <div className={`grid gap-2 sm:gap-3 ${weeksColsClass}`}>
         {availableOptions.map((weeks) => {
           const isSelected = selectedWeeks === weeks
           const isRecommended = recommendedWeeks === weeks
@@ -79,12 +83,12 @@ export function StepTrainingWeeks({
               onChange={() => onWeeksChange(weeks)}
               error={error && !isSelected}
             >
-              <div className="flex flex-col items-start justify-center w-full min-h-[60px]">
-                <div className="flex items-center justify-between gap-3 w-full">
-                  <span className="text-sm font-semibold">{weeks} weken</span>
+              <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[60px]">
+                <div className="flex items-center justify-between gap-2 sm:gap-3 w-full">
+                  <span className="text-xs sm:text-sm font-semibold">{weeks} weken</span>
                   {formattedPrice && (
                     <span
-                      className={`text-xs font-bold ${
+                      className={`text-[10px] sm:text-xs font-bold ${
                         isSelected ? "text-orange-400" : "text-zinc-500 dark:text-zinc-500"
                       }`}
                     >
@@ -94,7 +98,7 @@ export function StepTrainingWeeks({
                 </div>
                 {isRecommended && (
                   <span
-                    className={`text-[10px] font-medium uppercase tracking-wide mt-1 ${
+                    className={`text-[9px] sm:text-[10px] font-medium uppercase tracking-wide mt-0.5 sm:mt-1 ${
                       isSelected ? "text-orange-400" : "text-zinc-400 dark:text-zinc-600"
                     }`}
                   >
@@ -103,7 +107,7 @@ export function StepTrainingWeeks({
                 )}
                 {endDateFormatted && (
                   <span
-                    className={`text-[9px] font-medium mt-1 ${
+                    className={`text-[8px] sm:text-[9px] font-medium mt-0.5 sm:mt-1 ${
                       isSelected
                         ? "text-zinc-300 dark:text-zinc-400"
                         : "text-zinc-400 dark:text-zinc-600"

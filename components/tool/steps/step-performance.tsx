@@ -36,12 +36,12 @@ export function StepPerformance({
   )
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-4">
-        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="space-y-3 sm:space-y-4">
+        <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
           {recentDistLabel}
         </label>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
           {filteredGoals.map((goal) => (
             <RadioButton
               key={goal}
@@ -49,8 +49,8 @@ export function StepPerformance({
               onChange={() => onDistanceChange(goal)}
               error={errorDistance && recentDistance !== goal}
             >
-              <div className="flex flex-col items-start justify-center w-full min-h-[60px]">
-                <span className="text-sm font-semibold">{goal}</span>
+              <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[60px]">
+                <span className="text-xs sm:text-sm font-semibold leading-tight">{goal}</span>
               </div>
             </RadioButton>
           ))}
@@ -64,8 +64,8 @@ export function StepPerformance({
           </div>
         )}
       </div>
-      <div className="space-y-4">
-        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+      <div className="space-y-3 sm:space-y-4">
+        <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
           {recentTimeLabel}
         </label>
         <StepTargetTime value={recentTime || ""} onChange={onTimeChange} error={errorTime} />

@@ -33,11 +33,11 @@ export function Step1Goal({ showValidation = false }: Step1GoalProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <StepHeader locale={locale} titleKey="coachIntro" showExpertTag />
 
-      <div className="space-y-4">
-        <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+      <div className="space-y-3 sm:space-y-4">
+        <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
           {toolTranslations.coachIntro}
         </label>
         <StepGoal
@@ -72,8 +72,8 @@ export function Step1Goal({ showValidation = false }: Step1GoalProps) {
       {formData.goal &&
         formData.goal !== "Conditie / Gezondheid" &&
         !formData.goal.includes("Conditie / Gezondheid") && (
-          <div className="space-y-4">
-            <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          <div className="space-y-3 sm:space-y-4">
+            <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
               {toolTranslations.focus}
             </label>
             <StepFocus
@@ -99,8 +99,8 @@ export function Step1Goal({ showValidation = false }: Step1GoalProps) {
         )}
 
       {formData.focus === "Prestatiegericht" && (
-        <div className="space-y-4">
-          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+        <div className="space-y-3 sm:space-y-4">
+          <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
             {toolTranslations.targetTime}
           </label>
           <StepTargetTime

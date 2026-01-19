@@ -148,14 +148,14 @@ export function StepCheckout({
   }
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-4">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="space-y-3 sm:space-y-4">
         <div className="space-y-2">
-          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
             {translations.firstName}
           </label>
           <div
-            className={`relative p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
+            className={`relative p-3 sm:p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
               errorFirstName
                 ? "border-red-500 dark:border-red-500 focus-within:border-red-600 dark:focus-within:border-red-400"
                 : "border-zinc-200 dark:border-zinc-800 focus-within:border-zinc-950 dark:focus-within:border-zinc-600"
@@ -172,11 +172,11 @@ export function StepCheckout({
         </div>
 
         <div className="space-y-2">
-          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
             {translations.lastName}
           </label>
           <div
-            className={`relative p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
+            className={`relative p-3 sm:p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
               errorLastName
                 ? "border-red-500 dark:border-red-500 focus-within:border-red-600 dark:focus-within:border-red-400"
                 : "border-zinc-200 dark:border-zinc-800 focus-within:border-zinc-950 dark:focus-within:border-zinc-600"
@@ -193,11 +193,11 @@ export function StepCheckout({
         </div>
 
         <div className="space-y-2">
-          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
             {translations.email}
           </label>
           <div
-            className={`relative p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
+            className={`relative p-3 sm:p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
               errorEmail
                 ? "border-red-500 dark:border-red-500 focus-within:border-red-600 dark:focus-within:border-red-400"
                 : "border-zinc-200 dark:border-zinc-800 focus-within:border-zinc-950 dark:focus-within:border-zinc-600"
@@ -214,11 +214,11 @@ export function StepCheckout({
         </div>
 
         <div className="space-y-2">
-          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
             {translations.address}
           </label>
           <div
-            className={`relative p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
+            className={`relative p-3 sm:p-4 bg-white dark:bg-zinc-900/50 border-2 rounded-xl transition-colors ${
               errorAddress
                 ? "border-red-500 dark:border-red-500 focus-within:border-red-600 dark:focus-within:border-red-400"
                 : "border-zinc-200 dark:border-zinc-800 focus-within:border-zinc-950 dark:focus-within:border-zinc-600"
@@ -244,15 +244,15 @@ export function StepCheckout({
         )}
       </div>
 
-      <div className="p-6 bg-zinc-950 dark:bg-zinc-900 text-white rounded-xl shadow-lg relative overflow-hidden">
+      <div className="p-4 sm:p-6 bg-zinc-950 dark:bg-zinc-900 text-white rounded-xl shadow-lg relative overflow-hidden">
         <div className="absolute top-0 right-0 w-24 h-24 bg-orange-600/10 dark:bg-orange-500/10 blur-2xl rounded-full -mr-12 -mt-12" />
-        <div className="relative space-y-6">
-          <h3 className="text-lg font-bold border-b border-white/10 pb-3">
+        <div className="relative space-y-4 sm:space-y-6">
+          <h3 className="text-base sm:text-lg font-bold border-b border-white/10 pb-2 sm:pb-3">
             {translations.summary}
           </h3>
 
           {/* Form Summary */}
-          <div className="space-y-3 text-sm">
+          <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm">
             <div className="flex justify-between items-center">
               <span className="text-zinc-400">{translations.summaryGoal}:</span>
               <span className="text-zinc-200 font-semibold">{getGoalDisplay()}</span>
@@ -310,21 +310,23 @@ export function StepCheckout({
                 {translations.anchorPrice}
               </span>
             </div>
-            <div className="flex justify-between items-end mt-4">
-              <span className="text-sm text-zinc-200 font-medium">{translations.investment}</span>
+            <div className="flex justify-between items-end mt-3 sm:mt-4">
+              <span className="text-xs sm:text-sm text-zinc-200 font-medium">
+                {translations.investment}
+              </span>
               <div className="flex flex-col items-end">
-                <span className="text-2xl font-bold text-orange-500 leading-none">
+                <span className="text-xl sm:text-2xl font-bold text-orange-500 leading-none">
                   {displayPrice}
                 </span>
-                <span className="text-[10px] font-medium text-zinc-500 mt-1 uppercase">
+                <span className="text-[9px] sm:text-[10px] font-medium text-zinc-500 mt-0.5 sm:mt-1 uppercase">
                   {translations.vat}
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="pt-3 border-t border-white/10">
-            <p className="text-xs text-zinc-300 leading-relaxed">
+          <div className="pt-2 sm:pt-3 border-t border-white/10">
+            <p className="text-[10px] sm:text-xs text-zinc-300 leading-relaxed">
               {calculatedPrice
                 ? translations.comparison.replace(/€[\d,\.]+/, displayPrice)
                 : translations.comparison}

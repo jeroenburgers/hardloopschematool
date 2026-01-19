@@ -28,7 +28,7 @@ export function Step7Checkout({ showValidation = false }: Step7CheckoutProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <StepHeader locale={locale} titleKey="coachCheckout" subtitleKey="stepCheckoutSubtitle" />
       <StepCheckout
         personalInfo={personalInfo}

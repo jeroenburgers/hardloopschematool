@@ -54,12 +54,12 @@ export function Step2Level({ showValidation = false }: Step2LevelProps) {
   }, [formData.level, toolTranslations.frequencyOptions])
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <StepHeader locale={locale} titleKey="coachLevel" subtitleKey="stepLevelSubtitle" />
 
-      <div className="space-y-6">
-        <div className="space-y-4">
-          <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+      <div className="space-y-4 sm:space-y-6">
+        <div className="space-y-3 sm:space-y-4">
+          <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
             {toolTranslations.coachLevel}
           </label>
           <StepLevel
@@ -91,8 +91,8 @@ export function Step2Level({ showValidation = false }: Step2LevelProps) {
         </div>
 
         {formData.level && formData.level !== "Starter" && availableFrequencyOptions.length > 0 && (
-          <div className="space-y-4">
-            <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
+          <div className="space-y-3 sm:space-y-4">
+            <label className="text-sm sm:text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-4 sm:mb-6 block">
               {toolTranslations.frequency}
             </label>
             <StepFrequency
