@@ -50,7 +50,37 @@
       "professional": "✓ Professionele Opbouw",
       "proven": "✓ Beproefde Methodiek"
     },
-    "active": "⚡ Nu actief: 142 lopers bouwen hun schema"
+    "active": "⚡ Nu actief: 142 lopers bouwen hun schema",
+    "activeRunners": {
+      "morning": {
+        "emoji": "☀️",
+        "messages": [
+          "Nu actief: {aantal} lopers plannen hun training voor vandaag",
+          "Nu actief: {aantal} lopers stellen hun ochtendtraining samen"
+        ]
+      },
+      "daytime": {
+        "emoji": "🏃",
+        "messages": [
+          "Nu actief: {aantal} lopers stellen hun schema samen",
+          "Nu actief: {aantal} lopers werken aan hun trainingsplan"
+        ]
+      },
+      "evening": {
+        "emoji": "⚡",
+        "messages": [
+          "Nu actief: {aantal} lopers bouwen hun schema",
+          "Nu actief: {aantal} lopers creëren hun trainingsplan"
+        ]
+      },
+      "night": {
+        "emoji": "🌙",
+        "messages": [
+          "Nog wakker? {aantal} lopers bereiden hun schema voor morgen voor",
+          "Nog actief: {aantal} lopers plannen hun training voor morgen"
+        ]
+      }
+    }
   },
   "header": {
     "toggleTheme": "Thema wisselen",

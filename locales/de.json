@@ -50,7 +50,37 @@
       "professional": "✓ Professioneller Aufbau",
       "proven": "✓ Bewährte Methodik"
     },
-    "active": "⚡ Jetzt aktiv: 142 Läufer erstellen ihren Plan"
+    "active": "⚡ Jetzt aktiv: 142 Läufer erstellen ihren Plan",
+    "activeRunners": {
+      "morning": {
+        "emoji": "☀️",
+        "messages": [
+          "Jetzt aktiv: {aantal} Läufer planen ihr Training für heute",
+          "Jetzt aktiv: {aantal} Läufer richten ihr Morgentraining ein"
+        ]
+      },
+      "daytime": {
+        "emoji": "🏃",
+        "messages": [
+          "Jetzt aktiv: {aantal} Läufer erstellen ihren Plan",
+          "Jetzt aktiv: {aantal} Läufer arbeiten an ihrem Trainingsplan"
+        ]
+      },
+      "evening": {
+        "emoji": "⚡",
+        "messages": [
+          "Jetzt aktiv: {aantal} Läufer erstellen ihren Plan",
+          "Jetzt aktiv: {aantal} Läufer bauen ihren Trainingsplan"
+        ]
+      },
+      "night": {
+        "emoji": "🌙",
+        "messages": [
+          "Noch wach? {aantal} Läufer bereiten ihren Plan für morgen vor",
+          "Noch aktiv: {aantal} Läufer planen ihr Training für morgen"
+        ]
+      }
+    }
   },
   "header": {
     "toggleTheme": "Design wechseln",

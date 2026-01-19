@@ -3,9 +3,11 @@
 import { useLanguage } from "./language-provider"
 import Image from "next/image"
 import { Badge } from "./ui/badge"
+import { useActiveRunners } from "@/hooks/use-active-runners"
 
 export function Hero() {
   const { t } = useLanguage()
+  const { emoji, message, isReady } = useActiveRunners()
 
   return (
     <div className="flex flex-col items-center">
@@ -56,40 +58,42 @@ export function Hero() {
           <span className="flex items-center gap-2">{t("hero.features.professional")}</span>
           <span className="flex items-center gap-2">{t("hero.features.proven")}</span>
         </div>
-        <div className="flex items-center gap-3 px-6 py-3 bg-zinc-900/50 dark:bg-zinc-800/50 backdrop-blur-md rounded-2xl border border-white/5 dark:border-zinc-700/50 shadow-inner">
-          <div className="flex -space-x-2">
-            <div className="w-6 h-6 rounded-full border-2 border-zinc-900 dark:border-zinc-800 bg-zinc-800 dark:bg-zinc-700 overflow-hidden">
-              <Image
-                src="https://i.pravatar.cc/100?u=123"
-                alt="User"
-                width={24}
-                height={24}
-                className="w-full h-full object-cover"
-              />
+        {isReady && (
+          <div className="flex items-center gap-3 px-6 py-3 bg-zinc-900/50 dark:bg-zinc-800/50 backdrop-blur-md rounded-2xl border border-white/5 dark:border-zinc-700/50 shadow-inner">
+            <div className="flex -space-x-2 flex-shrink-0">
+              <div className="w-6 h-6 rounded-full border-2 border-zinc-900 dark:border-zinc-800 bg-zinc-800 dark:bg-zinc-700 overflow-hidden">
+                <Image
+                  src="https://i.pravatar.cc/100?u=123"
+                  alt="User"
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="w-6 h-6 rounded-full border-2 border-zinc-900 dark:border-zinc-800 bg-zinc-800 dark:bg-zinc-700 overflow-hidden">
+                <Image
+                  src="https://i.pravatar.cc/100?u=246"
+                  alt="User"
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="w-6 h-6 rounded-full border-2 border-zinc-900 dark:border-zinc-800 bg-zinc-800 dark:bg-zinc-700 overflow-hidden">
+                <Image
+                  src="https://i.pravatar.cc/100?u=369"
+                  alt="User"
+                  width={24}
+                  height={24}
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
-            <div className="w-6 h-6 rounded-full border-2 border-zinc-900 dark:border-zinc-800 bg-zinc-800 dark:bg-zinc-700 overflow-hidden">
-              <Image
-                src="https://i.pravatar.cc/100?u=246"
-                alt="User"
-                width={24}
-                height={24}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="w-6 h-6 rounded-full border-2 border-zinc-900 dark:border-zinc-800 bg-zinc-800 dark:bg-zinc-700 overflow-hidden">
-              <Image
-                src="https://i.pravatar.cc/100?u=369"
-                alt="User"
-                width={24}
-                height={24}
-                className="w-full h-full object-cover"
-              />
+            <div className="text-[11px] font-black text-orange-500 uppercase tracking-widest animate-pulse whitespace-nowrap">
+              {emoji} {message}
             </div>
           </div>
-          <div className="text-[11px] font-black text-orange-500 uppercase tracking-widest animate-pulse">
-            {t("hero.active")}
-          </div>
-        </div>
+        )}
       </div>
     </div>
   )

@@ -50,7 +50,37 @@
       "professional": "✓ Professional Build-up",
       "proven": "✓ Proven Methodology"
     },
-    "active": "⚡ Now active: 142 runners building their schedule"
+    "active": "⚡ Now active: 142 runners building their schedule",
+    "activeRunners": {
+      "morning": {
+        "emoji": "☀️",
+        "messages": [
+          "Now active: {aantal} runners planning their training for today",
+          "Now active: {aantal} runners setting up their morning training"
+        ]
+      },
+      "daytime": {
+        "emoji": "🏃",
+        "messages": [
+          "Now active: {aantal} runners creating their schedule",
+          "Now active: {aantal} runners working on their training plan"
+        ]
+      },
+      "evening": {
+        "emoji": "⚡",
+        "messages": [
+          "Now active: {aantal} runners building their schedule",
+          "Now active: {aantal} runners creating their training plan"
+        ]
+      },
+      "night": {
+        "emoji": "🌙",
+        "messages": [
+          "Still awake? {aantal} runners preparing their schedule for tomorrow",
+          "Still active: {aantal} runners planning their training for tomorrow"
+        ]
+      }
+    }
   },
   "header": {
     "toggleTheme": "Toggle theme",
