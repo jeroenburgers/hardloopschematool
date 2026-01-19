@@ -1,17 +1,19 @@
 {
   "common": {
     "appName": "Hardloopschematool",
-    "tagline": "Maak je perfecte hardloopschema",
-    "description": "Maak een gepersonaliseerd hardloopschema op basis van je doelen, niveau en beschikbaarheid"
+    "tagline": "Maak je hardloopschema op maat",
+    "description": "Maak een gepersonaliseerd hardloopschema op basis van je doelen, niveau en beschikbaarheid",
+    "prev": "Vorige",
+    "next": "Volgende"
   },
   "seo": {
     "home": {
-      "title": "Hardloopschematool - Maak je perfecte hardloopschema",
+      "title": "Maak je hardloopschema op maat - Hardloopschematool",
       "description": "Gevalideerd door ervaren coaches. Sluit je aan bij +8.400 lopers die dit jaar hun doelen bereikten met onze beproefde loop-methodiek."
     },
     "method": {
       "title": "Onze Methode - Hardloopschematool",
-      "description": "Een routekaart gebaseerd op ervaring. Van de eerste stap tot de finishlijn. Ontdek hoe wij de ervaring van duizenden succesvolle lopers vertalen naar jouw persoonlijke plan."
+      "description": "Een hardloopschema gebaseerd op ervaring. Van de eerste stap tot de finishlijn. Ontdek hoe wij de ervaring van duizenden succesvolle lopers vertalen naar jouw persoonlijke plan."
     },
     "trainingTypes": {
       "title": "Trainingsvormen - Hardloopschematool",
@@ -160,7 +162,7 @@
   "pages": {
     "method": {
       "badge": "Onze Aanpak",
-      "title": "Een routekaart",
+      "title": "Een hardloopschema",
       "titleHighlight": "gebaseerd op ervaring",
       "description": "Van de eerste stap tot de finishlijn. Ontdek hoe wij de ervaring van duizenden succesvolle lopers vertalen naar jouw persoonlijke plan.",
       "step1": {
@@ -197,7 +199,7 @@
       },
       "cta": {
         "title": "Klaar om de finish te halen?",
-        "description": "Begin vandaag nog met jouw gepersonaliseerde routekaart. De eerste stap is de belangrijkste.",
+        "description": "Begin vandaag nog met jouw gepersonaliseerde hardloopschema. De eerste stap is de belangrijkste.",
         "button": "Start Mijn Analyse"
       }
     },
@@ -404,6 +406,40 @@
     "de": "Duits"
   },
   "home": {
+    "blueprints": {
+      "title": "Populaire hardloopschema's",
+      "subtitle": "Ontdek hardloopschema's die veel lopers gebruiken als startpunt.",
+      "tagMostChosen": "Meest gekozen",
+      "meta": {
+        "duration": "Duur",
+        "weeks": "weken",
+        "success": "Succes"
+      },
+      "primaryCta": "Dit wil ik ook",
+      "secondaryCta": "Bekijk details",
+      "items": {
+        "startToRun5k": {
+          "title": "Start to Run 5K",
+          "description": "Rustige opbouw voor beginners, met focus op consistentie.",
+          "success": "98% finishers"
+        },
+        "fast5kPr": {
+          "title": "Snelle 5K PR",
+          "description": "Voor lopers die gerichter willen trainen richting een PR.",
+          "success": "92% haalt PR-doel"
+        },
+        "debut10k": {
+          "title": "Debuut 10K",
+          "description": "De logische stap van 5K naar 10K, met gecontroleerde opbouw.",
+          "success": "95% finisht"
+        },
+        "fullMarathon": {
+          "title": "De Hele Marathon",
+          "description": "Complete opbouw richting 42,2 km, met ruimte voor herstel.",
+          "success": "90% finisht"
+        }
+      }
+    },
     "features": {
       "badge": "Expertise & Coaching",
       "title": "Training met",
@@ -417,11 +453,67 @@
         "description": "Systematische opbouw van basis-uithouding naar pieksnelheid in 12-16 weken."
       }
     },
+    "sales": {
+      "badge": "Zo werkt het",
+      "title": "Van ingevuld naar",
+      "titleHighlight": "een schema dat klopt.",
+      "description": "Vul je doel, niveau en planning in. Daarna bouwen we een schema dat past bij jouw week en opbouw.",
+      "seoLead": "Hardloopschema op maat voor 5 km, 10 km, halve marathon of marathon — afgestemd op jouw niveau en beschikbaarheid.",
+      "seoBullets": {
+        "goal": "Kies je doel (bijv. 5 km, 10 km, halve marathon of marathon).",
+        "planning": "Bepaal je startdatum en hoeveel dagen per week je wilt trainen.",
+        "level": "Geef je niveau en (indien relevant) recente prestatie door voor een realistischer tempo-opbouw.",
+        "recovery": "We houden rekening met herstel en een veilige progressie richting je doel."
+      },
+      "seoFooter": "Meer details over trainingen en opbouw vind je bij onze trainingsvormen",
+      "seoLinkLabel": "trainingsvormen",
+      "primaryCta": "Start schema maken",
+      "secondaryCta": "Bekijk onze methode",
+      "pillarEyebrow": "Waarom dit werkt",
+      "pillarTitle": "Coach-logica, vertaald naar jouw situatie",
+      "cards": {
+        "inputs": {
+          "title": "Slimme intake",
+          "description": "Doel, niveau en gezondheid geven genoeg context om het schema logisch op te bouwen."
+        },
+        "planning": {
+          "title": "Planning die past",
+          "description": "Kies startdatum, dagen per week en weken tot je doel. Automatisch of zelf inplannen."
+        }
+      },
+      "bottomNoteEyebrow": "Resultaat",
+      "bottomNote": "Een helder schema met opbouw en herstel, zodat je consistent kunt trainen."
+    },
     "testimonial": {
       "name": "Sander V.",
       "role": "Finisher Marathon Rotterdam",
       "quote": "Ik trainde altijd te hard. Dit schema leerde me rustig te lopen om sneller te worden. Resultaat? Een PR van 22 minuten!",
       "rating": "9.2"
+    },
+    "testimonials": {
+      "items": [
+        {
+          "name": "Sander V.",
+          "role": "Finisher Marathon Rotterdam",
+          "quote": "Ik trainde altijd te hard. Dit schema leerde me rustig te lopen om sneller te worden. Resultaat? Een PR van 22 minuten!",
+          "rating": "9.2",
+          "avatarSeed": "sander"
+        },
+        {
+          "name": "Nina K.",
+          "role": "10 km PR (na 12 weken)",
+          "quote": "De vragen waren precies goed. Daarna kreeg ik een schema dat écht paste bij mijn week. Geen gedoe, wel structuur.",
+          "rating": "9.4",
+          "avatarSeed": "nina"
+        },
+        {
+          "name": "Mark D.",
+          "role": "Terug na blessure",
+          "quote": "Omdat ik mijn gezondheid kon aangeven, voelde het schema veilig. Opbouw was duidelijk en de intensiteit klopte.",
+          "rating": "9.1",
+          "avatarSeed": "mark"
+        }
+      ]
     }
   },
   "tool": {
@@ -551,7 +643,7 @@
     "coachLoading": "Even geduld, we maken jouw persoonlijke routekaart...",
     "pageTitle": "Jouw",
     "pageTitleHighlight": "hardloopschema",
-    "pageSubtitle": "De routekaart die voor 8.400+ lopers heeft gewerkt",
+    "pageSubtitle": "Het hardloopschema die voor 8.400+ lopers heeft gewerkt",
     "stepLevelSubtitle": "Eerlijkheid geeft de beste resultaten",
     "stepHealthSubtitle": "Jouw veiligheid staat op nummer één",
     "stepRecentSubtitle": "Het nulpunt voor jouw blueprint",

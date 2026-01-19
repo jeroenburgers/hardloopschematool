@@ -6,7 +6,7 @@ import { useLanguage } from "@/components/language-provider"
 import { getRoutes } from "@/lib/i18n/routes"
 import { CTAButton } from "@/components/ui/cta-button"
 import { StepNumber } from "@/components/ui/step-number"
-import { VisualizationPlaceholder } from "@/components/ui/visualization-placeholder"
+import { MethodIllustration } from "@/components/ui/method-illustration"
 import { CheckListItem } from "@/components/ui/check-list-item"
 import { SectionHeader } from "@/components/ui/section-header"
 
@@ -53,7 +53,10 @@ export function MethodPage() {
                   <CheckListItem>{t("pages.method.step1.points.physical")}</CheckListItem>
                 </ul>
               </div>
-              <VisualizationPlaceholder text={t("pages.method.step1.visualization")} />
+              <MethodIllustration
+                variant="intake"
+                caption={t("pages.method.step1.visualization")}
+              />
             </div>
 
             {/* Step 2 */}
@@ -80,7 +83,10 @@ export function MethodPage() {
                 </div>
               </div>
               <div className="lg:order-1">
-                <VisualizationPlaceholder text={t("pages.method.step2.visualization")} />
+                <MethodIllustration
+                  variant="logic"
+                  caption={t("pages.method.step2.visualization")}
+                />
               </div>
             </div>
 
@@ -117,7 +123,10 @@ export function MethodPage() {
                   </div>
                 </div>
               </div>
-              <VisualizationPlaceholder text={t("pages.method.step3.visualization")} />
+              <MethodIllustration
+                variant="output"
+                caption={t("pages.method.step3.visualization")}
+              />
             </div>
           </div>
 

@@ -2,7 +2,9 @@
   "common": {
     "appName": "Laufplan-Tool",
     "tagline": "Erstellen Sie Ihren perfekten Laufplan",
-    "description": "Erstellen Sie einen personalisierten Laufplan basierend auf Ihren Zielen, Niveau und Verfügbarkeit"
+    "description": "Erstellen Sie einen personalisierten Laufplan basierend auf Ihren Zielen, Niveau und Verfügbarkeit",
+    "prev": "Zurück",
+    "next": "Weiter"
   },
   "seo": {
     "home": {
@@ -404,6 +406,40 @@
     "de": "Deutsch"
   },
   "home": {
+    "blueprints": {
+      "title": "Beliebte Blaupausen",
+      "subtitle": "Entdecke Vorlagen, die viele Läufer als Startpunkt nutzen.",
+      "tagMostChosen": "Am beliebtesten",
+      "meta": {
+        "duration": "Dauer",
+        "weeks": "Wochen",
+        "success": "Erfolg"
+      },
+      "primaryCta": "Das will ich auch",
+      "secondaryCta": "Details ansehen",
+      "items": {
+        "startToRun5k": {
+          "title": "Start to Run 5K",
+          "description": "Ruhiger Aufbau für Einsteiger, mit Fokus auf Konstanz.",
+          "success": "98% Finisher"
+        },
+        "fast5kPr": {
+          "title": "Schnelle 5K Bestzeit",
+          "description": "Für Läufer, die gezielt auf eine Bestzeit trainieren wollen.",
+          "success": "92% erreichen ihr Ziel"
+        },
+        "debut10k": {
+          "title": "10K Debüt",
+          "description": "Der logische Schritt von 5K zu 10K mit kontrollierter Progression.",
+          "success": "95% finishen"
+        },
+        "fullMarathon": {
+          "title": "Der volle Marathon",
+          "description": "Kompletter Aufbau Richtung 42,2 km mit Raum für Erholung.",
+          "success": "90% finishen"
+        }
+      }
+    },
     "features": {
       "badge": "Expertise & Coaching",
       "title": "Training mit",
@@ -417,11 +453,67 @@
         "description": "Systematischer Aufbau von Grundausdauer zu Spitzengeschwindigkeit in 12-16 Wochen."
       }
     },
+    "sales": {
+      "badge": "So funktioniert’s",
+      "title": "Von Antworten zu",
+      "titleHighlight": "einem Plan, der passt.",
+      "description": "Gib Ziel, Niveau und Planung an. Danach erstellen wir einen Plan, der zu deiner Woche und deinem Aufbau passt.",
+      "seoLead": "Ein personalisierter Laufplan für 5 km, 10 km, Halbmarathon oder Marathon — abgestimmt auf dein Niveau und deine Zeit.",
+      "seoBullets": {
+        "goal": "Wähle dein Ziel (z. B. 5 km, 10 km, Halbmarathon oder Marathon).",
+        "planning": "Lege Startdatum und Trainingstage pro Woche fest.",
+        "level": "Gib dein Niveau und (falls relevant) eine aktuelle Leistung an, damit das Tempo realistischer wird.",
+        "recovery": "Wir berücksichtigen Erholung und eine sichere Progression bis zum Ziel."
+      },
+      "seoFooter": "Mehr Details zu Trainingsformen und Aufbau findest du unter unseren Trainingsformen",
+      "seoLinkLabel": "Trainingsformen",
+      "primaryCta": "Plan erstellen",
+      "secondaryCta": "Unsere Methode",
+      "pillarEyebrow": "Warum das funktioniert",
+      "pillarTitle": "Coach-Logik, angepasst an deine Situation",
+      "cards": {
+        "inputs": {
+          "title": "Smarter Check-in",
+          "description": "Ziel, Niveau und Gesundheit geben genug Kontext für einen sinnvollen Aufbau."
+        },
+        "planning": {
+          "title": "Planung, die passt",
+          "description": "Startdatum, Trainingstage pro Woche und Wochen bis zum Ziel. Automatisch oder manuell."
+        }
+      },
+      "bottomNoteEyebrow": "Ergebnis",
+      "bottomNote": "Ein klarer Plan mit Steigerung und Erholung — für konstantes Training."
+    },
     "testimonial": {
       "name": "Sander V.",
       "role": "Marathon Rotterdam Finisher",
       "quote": "Ich habe immer zu hart trainiert. Dieser Plan lehrte mich, langsam zu laufen, um schneller zu werden. Ergebnis? Ein PR von 22 Minuten!",
       "rating": "9.2"
+    },
+    "testimonials": {
+      "items": [
+        {
+          "name": "Sander V.",
+          "role": "Marathon Rotterdam Finisher",
+          "quote": "Ich habe immer zu hart trainiert. Dieser Plan lehrte mich, langsam zu laufen, um schneller zu werden. Ergebnis? Ein PR von 22 Minuten!",
+          "rating": "9.2",
+          "avatarSeed": "sander"
+        },
+        {
+          "name": "Nina K.",
+          "role": "10 km PR (nach 12 Wochen)",
+          "quote": "Die Fragen waren genau richtig. Danach bekam ich einen Plan, der wirklich in meine Woche passte. Klar, machbar und strukturiert.",
+          "rating": "9.4",
+          "avatarSeed": "nina"
+        },
+        {
+          "name": "Mark D.",
+          "role": "Zurück nach Verletzung",
+          "quote": "Dass ich meinen Gesundheitszustand angeben konnte, hat sich sicher angefühlt. Aufbau klar – Intensität endlich logisch.",
+          "rating": "9.1",
+          "avatarSeed": "mark"
+        }
+      ]
     }
   },
   "tool": {

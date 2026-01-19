@@ -2,7 +2,9 @@
   "common": {
     "appName": "Running Schedule Tool",
     "tagline": "Create your perfect running schedule",
-    "description": "Create a personalized running schedule based on your goals, level and availability"
+    "description": "Create a personalized running schedule based on your goals, level and availability",
+    "prev": "Previous",
+    "next": "Next"
   },
   "seo": {
     "home": {
@@ -404,6 +406,40 @@
     "de": "German"
   },
   "home": {
+    "blueprints": {
+      "title": "Popular Blueprints",
+      "subtitle": "Explore routes many runners use as a starting point.",
+      "tagMostChosen": "Most chosen",
+      "meta": {
+        "duration": "Duration",
+        "weeks": "weeks",
+        "success": "Success"
+      },
+      "primaryCta": "I want this",
+      "secondaryCta": "View details",
+      "items": {
+        "startToRun5k": {
+          "title": "Start to Run 5K",
+          "description": "A calm build-up for beginners, focused on consistency.",
+          "success": "98% finishers"
+        },
+        "fast5kPr": {
+          "title": "Fast 5K PR",
+          "description": "For runners who want a sharper plan aimed at a PR.",
+          "success": "92% hit PR goal"
+        },
+        "debut10k": {
+          "title": "10K Debut",
+          "description": "A logical step from 5K to 10K with controlled progression.",
+          "success": "95% finish"
+        },
+        "fullMarathon": {
+          "title": "Full Marathon",
+          "description": "A complete build towards 42.2K with room for recovery.",
+          "success": "90% finish"
+        }
+      }
+    },
     "features": {
       "badge": "Expertise & Coaching",
       "title": "Training with",
@@ -417,11 +453,67 @@
         "description": "Systematic build-up from base endurance to peak speed in 12-16 weeks."
       }
     },
+    "sales": {
+      "badge": "How it works",
+      "title": "From answers to",
+      "titleHighlight": "a plan that makes sense.",
+      "description": "Enter your goal, level and planning. Then we build a schedule that fits your week and progression.",
+      "seoLead": "A personalized running plan for 5K, 10K, half marathon or marathon — tailored to your level and availability.",
+      "seoBullets": {
+        "goal": "Pick your goal (e.g. 5K, 10K, half marathon or marathon).",
+        "planning": "Choose a start date and how many days per week you want to train.",
+        "level": "Share your level and (if relevant) a recent performance for more realistic pacing.",
+        "recovery": "We account for recovery and a safe progression towards your goal."
+      },
+      "seoFooter": "For more detail on workouts and structure, see our training types",
+      "seoLinkLabel": "training types",
+      "primaryCta": "Create my schedule",
+      "secondaryCta": "See our method",
+      "pillarEyebrow": "Why this works",
+      "pillarTitle": "Coach logic, tailored to your situation",
+      "cards": {
+        "inputs": {
+          "title": "Smart intake",
+          "description": "Goal, level and health provide enough context to build the schedule logically."
+        },
+        "planning": {
+          "title": "Planning that fits",
+          "description": "Choose a start date, days per week and weeks to your goal. Automatic or manual planning."
+        }
+      },
+      "bottomNoteEyebrow": "Outcome",
+      "bottomNote": "A clear schedule with progression and recovery, designed for consistent training."
+    },
     "testimonial": {
       "name": "Sander V.",
       "role": "Marathon Rotterdam Finisher",
       "quote": "I always trained too hard. This schedule taught me to run easy to get faster. Result? A 22-minute PR!",
       "rating": "9.2"
+    },
+    "testimonials": {
+      "items": [
+        {
+          "name": "Sander V.",
+          "role": "Marathon Rotterdam Finisher",
+          "quote": "I always trained too hard. This schedule taught me to run easy to get faster. Result? A 22-minute PR!",
+          "rating": "9.2",
+          "avatarSeed": "sander"
+        },
+        {
+          "name": "Nina K.",
+          "role": "10K PR (after 12 weeks)",
+          "quote": "The questions were spot on. Then I got a plan that actually fit my week. Simple, structured, and doable.",
+          "rating": "9.4",
+          "avatarSeed": "nina"
+        },
+        {
+          "name": "Mark D.",
+          "role": "Back after injury",
+          "quote": "Being able to indicate my health made it feel safe. Clear build-up, the intensity finally made sense.",
+          "rating": "9.1",
+          "avatarSeed": "mark"
+        }
+      ]
     }
   },
   "tool": {

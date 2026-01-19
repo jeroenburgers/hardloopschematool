@@ -16,7 +16,6 @@ export function getRoutes(locale: Locale) {
   return {
     method: getLocalizedRoute(locale, "method"),
     trainingTypes: getLocalizedRoute(locale, "trainingTypes"),
-    examples: getLocalizedRoute(locale, "examples"),
     createSchedule: getLocalizedRoute(locale, "createSchedule"),
   }
 }

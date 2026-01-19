@@ -1,7 +1,6 @@
 import { type Locale } from "../types"
 import { MethodPage } from "@/components/pages/method-page"
 import { TrainingTypesPage } from "@/components/pages/training-types-page"
-import { ExamplesPage } from "@/components/pages/examples-page"
 import { CreateSchedulePage } from "@/components/pages/create-schedule-page"
 import type { ComponentType } from "react"
 import type { RouteKey, IRouteRegistry } from "./route-registry"
@@ -12,7 +11,6 @@ import type { RouteKey, IRouteRegistry } from "./route-registry"
 const routeComponents: Record<RouteKey, ComponentType> = {
   method: MethodPage,
   trainingTypes: TrainingTypesPage,
-  examples: ExamplesPage,
   createSchedule: CreateSchedulePage,
 }
 
@@ -23,19 +21,16 @@ const routeSlugsByLocale: Record<Locale, Record<RouteKey, string>> = {
   nl: {
     method: "onze-methode",
     trainingTypes: "trainingsvormen",
-    examples: "voorbeeld-schemas",
     createSchedule: "schema-maken",
   },
   en: {
     method: "our-method",
     trainingTypes: "training-types",
-    examples: "example-schedules",
     createSchedule: "create-schedule",
   },
   de: {
     method: "unsere-methode",
     trainingTypes: "trainingsformen",
-    examples: "beispielplaene",
     createSchedule: "plan-erstellen",
   },
 }

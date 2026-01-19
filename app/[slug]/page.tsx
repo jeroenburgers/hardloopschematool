@@ -9,7 +9,6 @@ const defaultLocale = getDefaultLocale()
 const routeToSeoPage: Record<string, PageType> = {
   method: "method",
   trainingTypes: "trainingTypes",
-  examples: "examples",
   createSchedule: "createSchedule",
 }
 
@@ -38,17 +37,10 @@ export async function generateMetadata({
     const nlSlug = loc === "nl" ? "onze-methode" : loc === "de" ? "unsere-methode" : "our-method"
     const trainingTypesSlug =
       loc === "nl" ? "trainingsvormen" : loc === "de" ? "trainingsformen" : "training-types"
-    const examplesSlug =
-      loc === "nl" ? "voorbeeld-schemas" : loc === "de" ? "beispielplaene" : "example-schedules"
     const createScheduleSlug =
       loc === "nl" ? "schema-maken" : loc === "de" ? "plan-erstellen" : "create-schedule"
 
-    if (
-      slug === nlSlug ||
-      slug === trainingTypesSlug ||
-      slug === examplesSlug ||
-      slug === createScheduleSlug
-    ) {
+    if (slug === nlSlug || slug === trainingTypesSlug || slug === createScheduleSlug) {
       locale = loc
       break
     }

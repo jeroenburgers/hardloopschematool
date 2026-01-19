@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { Header } from "@/components/header"
 import { Hero } from "@/components/hero"
-import { FeaturesSection } from "@/components/features-section"
+import { BlueprintsSection } from "@/components/blueprints-section"
 import { Footer } from "@/components/footer"
 
 export function HomePage() {
@@ -27,7 +27,7 @@ export function HomePage() {
           <Hero />
         </div>
       </div>
-      <FeaturesSection />
+      <BlueprintsSection />
       <Footer />
     </div>
   )

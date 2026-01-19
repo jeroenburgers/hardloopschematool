@@ -32,7 +32,6 @@ export function Footer() {
     { href: "/", label: t("footer.navigation.home") },
     { href: routes.method, label: t("footer.navigation.method") },
     { href: routes.trainingTypes, label: t("footer.navigation.trainingTypes") },
-    { href: routes.examples, label: t("footer.navigation.examples") },
   ]
 
   return (

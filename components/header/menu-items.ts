@@ -1,4 +1,4 @@
-import { BookOpen, Activity, FileText } from "lucide-react"
+import { BookOpen, Activity } from "lucide-react"
 import type { Locale } from "@/lib/i18n/types"
 import { getRoutes } from "@/lib/i18n/routes"
 import type { TranslationPath } from "@/lib/i18n/types"
@@ -18,6 +18,5 @@ export function getMenuItems(locale: Locale): MenuItem[] {
   return [
     { href: routes.method, labelKey: "header.nav.method", icon: BookOpen },
     { href: routes.trainingTypes, labelKey: "header.nav.trainingTypes", icon: Activity },
-    { href: routes.examples, labelKey: "header.nav.examples", icon: FileText },
   ]
 }

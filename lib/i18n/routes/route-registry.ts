@@ -4,7 +4,7 @@ import type { ComponentType } from "react"
 /**
  * Route key type - extensible for new routes
  */
-export type RouteKey = "method" | "trainingTypes" | "examples" | "createSchedule"
+export type RouteKey = "method" | "trainingTypes" | "createSchedule"
 
 /**
  * Interface for route configuration
