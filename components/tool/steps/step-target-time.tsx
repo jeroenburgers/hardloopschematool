@@ -4,17 +4,11 @@
  */
 interface StepTargetTimeProps {
   value: string // Format: "HH:MM:SS" or empty
-  placeholder?: string
   onChange: (value: string) => void
   error?: boolean
 }
 
-export function StepTargetTime({
-  value,
-  placeholder,
-  onChange,
-  error = false,
-}: StepTargetTimeProps) {
+export function StepTargetTime({ value, onChange, error = false }: StepTargetTimeProps) {
   // Parse "HH:MM:SS" format to individual values
   const parseTime = (timeStr: string): { hours: number; minutes: number; seconds: number } => {
     if (!timeStr) return { hours: 0, minutes: 0, seconds: 0 }

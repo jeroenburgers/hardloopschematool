@@ -1,13 +1,46 @@
 "use client"
 
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { useLanguage } from "./language-provider"
 import Image from "next/image"
 import { Badge } from "./ui/badge"
 import { useActiveRunners } from "@/hooks/use-active-runners"
+import { getRoutes } from "@/lib/i18n/routes"
+import type { Goal } from "@/lib/types/schedule"
+
+/**
+ * Map select value to Goal type
+ */
+function mapSelectValueToGoal(value: string): Goal {
+  const goalMap: Record<string, Goal> = {
+    "5k": "5 kilometer",
+    "10k": "10 kilometer",
+    "15k": "15 kilometer",
+    "10m": "10 mijl (16,1 kilometer)",
+    halfMarathon: "Halve marathon (21,1 kilometer)",
+    "30k": "30 kilometer",
+    marathon: "Marathon (42,2 kilometer)",
+    fitness: "Conditie / Gezondheid",
+  }
+  return goalMap[value] || "5 kilometer"
+}
 
 export function Hero() {
-  const { t } = useLanguage()
+  const { t, locale } = useLanguage()
+  const router = useRouter()
+  const routes = getRoutes(locale)
   const { emoji, message, isReady } = useActiveRunners()
+  const [selectedGoal, setSelectedGoal] = useState<string>("5k")
+
+  const handleStart = () => {
+    const goal = mapSelectValueToGoal(selectedGoal)
+    // Store goal in sessionStorage instead of URL
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("initialGoal", goal)
+    }
+    router.push(routes.createSchedule)
+  }
 
   return (
     <div className="flex flex-col items-center">
@@ -34,7 +67,11 @@ export function Hero() {
             <label className="block text-left text-[9px] font-black uppercase tracking-widest text-zinc-400 dark:text-zinc-500 mb-0.5">
               {t("hero.form.label")}
             </label>
-            <select className="w-full bg-transparent text-lg font-black text-zinc-950 dark:text-zinc-50 outline-none appearance-none cursor-pointer hover:text-orange-600 dark:hover:text-orange-500 transition-colors">
+            <select
+              value={selectedGoal}
+              onChange={(e) => setSelectedGoal(e.target.value)}
+              className="w-full bg-transparent text-lg font-black text-zinc-950 dark:text-zinc-50 outline-none appearance-none cursor-pointer hover:text-orange-600 dark:hover:text-orange-500 transition-colors"
+            >
               <option value="5k">{t("hero.form.options.5k")}</option>
               <option value="10k">{t("hero.form.options.10k")}</option>
               <option value="15k">{t("hero.form.options.15k")}</option>
@@ -47,6 +84,7 @@ export function Hero() {
           </div>
           <button
             type="button"
+            onClick={handleStart}
             className="w-full sm:w-auto px-12 py-5 bg-orange-600 text-white rounded-3xl font-black text-sm uppercase tracking-[0.1em] hover:bg-orange-700 hover:scale-[1.02] transition-all shadow-xl active:scale-95"
           >
             {t("hero.form.button")}

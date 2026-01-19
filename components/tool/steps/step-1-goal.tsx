@@ -103,7 +103,6 @@ export function Step1Goal({ showValidation = false }: Step1GoalProps) {
           </label>
           <StepTargetTime
             value={formData.targetTime || ""}
-            placeholder={toolTranslations.targetTimePlaceholder}
             error={errors.targetTime}
             onChange={(targetTime) => updateFormData({ targetTime })}
           />

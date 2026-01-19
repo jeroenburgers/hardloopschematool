@@ -68,12 +68,7 @@ export function StepPerformance({
         <label className="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-6 block">
           {recentTimeLabel}
         </label>
-        <StepTargetTime
-          value={recentTime || ""}
-          placeholder="00:00:00"
-          onChange={onTimeChange}
-          error={errorTime}
-        />
+        <StepTargetTime value={recentTime || ""} onChange={onTimeChange} error={errorTime} />
         {errorTime && (
           <div className="flex items-start gap-2 mt-3 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
             <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />

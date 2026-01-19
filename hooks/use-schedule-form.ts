@@ -47,6 +47,16 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
     ageGroup: undefined,
   }))
 
+  // Update formData when initialGoal or initialLevel changes (e.g., from sessionStorage)
+  useEffect(() => {
+    if (initialGoal && initialGoal !== formData.goal) {
+      setFormData((prev) => ({ ...prev, goal: initialGoal }))
+    }
+    if (initialLevel && initialLevel !== formData.level) {
+      setFormData((prev) => ({ ...prev, level: initialLevel }))
+    }
+  }, [initialGoal, initialLevel, formData.goal, formData.level])
+
   const updateFormData = (updates: Partial<ScheduleFormData>) => {
     setFormData((prev) => ({ ...prev, ...updates }))
   }
@@ -103,7 +113,7 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
 
   // Calculate training weeks options based on goal and health
   const trainingWeeksOptions = useMemo(() => {
-    const { goal, health } = formData
+    const { goal } = formData
     let min = 4
     let max = 12
     let step = 2
@@ -158,7 +168,7 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
     }
     return { options, recommended }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [formData.goal, formData.health])
+  }, [formData.goal])
 
   const recommendedWeeks = useMemo(() => {
     return trainingWeeksOptions.recommended
