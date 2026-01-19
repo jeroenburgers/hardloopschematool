@@ -44,7 +44,7 @@
         "fitness": "Fitness / Gesundheit"
       },
       "button": "Meine Analyse starten",
-      "price": "Nur €19,95"
+      "price": "Ab €9,95"
     },
     "features": {
       "professional": "✓ Professioneller Aufbau",
@@ -425,6 +425,7 @@
     }
   },
   "tool": {
+    "pricingFrom": "Ab",
     "steps": ["Ziel", "Niveau", "Profil", "Gesundheit", "Leistung", "Planung", "Kasse"],
     "celebration": [
       "Weiter so! Erster Schritt geschafft.",
@@ -533,6 +534,20 @@
     "back": "Zurück",
     "next": "Weiter",
     "generate": "Plan Generieren",
+    "navigation": {
+      "nextTo": "Weiter zu:",
+      "reassurance": "Noch keine Verpflichtung",
+      "reassuranceByStep": {
+        "1": "Kostenlos und unverbindlich",
+        "2": "Noch keine Verpflichtung",
+        "3": "Nur 2 Minuten",
+        "4": "Fast fertig",
+        "5": "Letzter Schritt",
+        "6": "Fast fertig",
+        "7": "Keine automatische Verlängerung",
+        "default": "Noch keine Verpflichtung"
+      }
+    },
     "coachLoading": "Bitte warten, wir erstellen Ihre persönliche Roadmap...",
     "pageTitle": "Ihr",
     "pageTitleHighlight": "Bauplan",
@@ -544,16 +559,20 @@
     "stepCheckoutSubtitle": "Letzter Schritt zum Ziel",
     "usps": {
       "safeTraining": {
-        "title": "Sicheres Training",
-        "description": "Optimierte Belastung für verletzungsfreie Progression"
+        "title": "Verletzungsbewusst",
+        "description": "Aufbau passend zu Ihrem Niveau und Ihrer Belastbarkeit"
       },
       "directPlan": {
-        "title": "Direkter Plan",
-        "description": "Ihre Roadmap direkt im PDF-Format geliefert"
+        "title": "Sofort klar",
+        "description": "In Minuten fertig: Sie sehen sofort Ihren Weg zum Ziel"
       },
       "eliteLogic": {
-        "title": "Elite-Logik",
-        "description": "Basierend auf bewährten Coaching-Methodologien für Erfolg"
+        "title": "Coach-Logik",
+        "description": "Auf Basis bewährter Trainingsprinzipien und Progression"
+      },
+      "adaptive": {
+        "title": "Passt sich an",
+        "description": "Preis & Dauer passen sich Distanz und Wochen an"
       }
     }
   }

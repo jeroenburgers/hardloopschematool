@@ -165,6 +165,7 @@ function ScheduleToolContent({ onComplete }: { onComplete?: ScheduleToolProps["o
 
         <ToolNavigation
           currentStep={currentStep}
+          steps={steps}
           isValid={isValid}
           loading={loading}
           onBack={handleBack}

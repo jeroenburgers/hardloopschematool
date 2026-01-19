@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useEffect } from "react"
+import { useState, useMemo, useEffect, useRef } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/i18n"
 import type { ScheduleFormData, Level, Goal as GoalType, PersonalInfo } from "@/lib/types/schedule"
@@ -18,7 +18,7 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
 
-  // Also try to read from sessionStorage as fallback
+  // Also try to read from sessionStorage as fallback (only once on mount)
   const goalFromStorage = useMemo(() => {
     if (initialGoal) return initialGoal
     if (typeof window === "undefined") return undefined
@@ -38,38 +38,54 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
   // Use goalFromStorage if available, otherwise use initialGoal
   const effectiveGoal = goalFromStorage || initialGoal
 
-  const [formData, setFormData] = useState<ScheduleFormData>(() => ({
-    goal: effectiveGoal || "",
-    focus: "Recreatief",
-    targetTime: "",
-    level: initialLevel || "",
-    frequency: "",
-    health: defaultHealth,
-    recentDistance: "",
-    recentTime: "",
-    startDate: "",
-    targetDays: 3,
-    trainingWeeks: 6,
-    planningMode: "Automatisch",
-    selectedDays: [],
-    language: locale,
-    gender: undefined,
-    ageGroup: undefined,
-  }))
+  // Track if we've already applied the initial goal to prevent overwriting user selections
+  const hasAppliedInitialGoal = useRef(false)
+
+  const [formData, setFormData] = useState<ScheduleFormData>(() => {
+    const initialGoalValue = effectiveGoal || ""
+    // Mark that we've applied the initial goal if it exists
+    if (initialGoalValue) {
+      hasAppliedInitialGoal.current = true
+    }
+    return {
+      goal: initialGoalValue,
+      focus: "Recreatief",
+      targetTime: "",
+      level: initialLevel || "",
+      frequency: "",
+      health: defaultHealth,
+      recentDistance: "",
+      recentTime: "",
+      startDate: "",
+      targetDays: 3,
+      trainingWeeks: 6,
+      planningMode: "Automatisch",
+      selectedDays: [],
+      language: locale,
+      gender: undefined,
+      ageGroup: undefined,
+    }
+  })
 
   // Update formData when effectiveGoal or initialLevel changes (e.g., from sessionStorage)
+  // Only apply if we haven't already applied it and formData.goal is empty
+  // This prevents overwriting user selections
   useEffect(() => {
-    if (effectiveGoal && effectiveGoal !== formData.goal) {
+    // Only apply initial goal if formData.goal is empty (first time only)
+    if (effectiveGoal && !formData.goal && !hasAppliedInitialGoal.current) {
       setFormData((prev) => ({ ...prev, goal: effectiveGoal }))
+      hasAppliedInitialGoal.current = true
       // Clear from sessionStorage after we've used it
       if (typeof window !== "undefined") {
         sessionStorage.removeItem("initialGoal")
       }
     }
-    if (initialLevel && initialLevel !== formData.level) {
+    // Only apply initial level if formData.level is empty (first time only)
+    if (initialLevel && !formData.level) {
       setFormData((prev) => ({ ...prev, level: initialLevel }))
     }
-  }, [effectiveGoal, initialLevel, formData.goal, formData.level])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [effectiveGoal, initialLevel]) // Only run when effectiveGoal or initialLevel changes, not when formData changes
 
   const updateFormData = (updates: Partial<ScheduleFormData>) => {
     setFormData((prev) => ({ ...prev, ...updates }))
@@ -78,6 +94,22 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
   const updatePersonalInfo = (updates: Partial<PersonalInfo>) => {
     setPersonalInfo((prev) => ({ ...prev, ...updates }))
   }
+
+  // If goal switches to "Conditie / Gezondheid", force focus to Recreatief and clear targetTime
+  useEffect(() => {
+    const isFitnessGoal =
+      formData.goal === "Conditie / Gezondheid" ||
+      (typeof formData.goal === "string" && formData.goal.includes("Conditie / Gezondheid"))
+    if (!isFitnessGoal) return
+
+    if (formData.focus !== "Recreatief" || formData.targetTime) {
+      setFormData((prev) => ({
+        ...prev,
+        focus: "Recreatief",
+        targetTime: "",
+      }))
+    }
+  }, [formData.goal, formData.focus, formData.targetTime])
 
   const planningOptions = useMemo(() => {
     const { goal } = formData

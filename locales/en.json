@@ -44,7 +44,7 @@
         "fitness": "Fitness / Health"
       },
       "button": "Start My Analysis",
-      "price": "Only €19.95"
+      "price": "From €9.95"
     },
     "features": {
       "professional": "✓ Professional Build-up",
@@ -425,6 +425,7 @@
     }
   },
   "tool": {
+    "pricingFrom": "From",
     "steps": ["Goal", "Level", "Profile", "Health", "Performance", "Planning", "Checkout"],
     "celebration": [
       "Keep it up! First step completed.",
@@ -526,6 +527,20 @@
     "back": "Back",
     "next": "Next",
     "generate": "Generate Schedule",
+    "navigation": {
+      "nextTo": "Continue to:",
+      "reassurance": "No commitment yet",
+      "reassuranceByStep": {
+        "1": "Free and no obligation",
+        "2": "No commitment yet",
+        "3": "Just 2 minutes",
+        "4": "Almost done",
+        "5": "Final step",
+        "6": "Almost done",
+        "7": "No auto-renewal",
+        "default": "No commitment yet"
+      }
+    },
     "coachLoading": "Please wait, we're creating your personal roadmap...",
     "pageTitle": "Your",
     "pageTitleHighlight": "Blueprint",
@@ -537,16 +552,20 @@
     "stepCheckoutSubtitle": "Final step to the finish",
     "usps": {
       "safeTraining": {
-        "title": "Safe Training",
-        "description": "Optimized load for injury-free progression"
+        "title": "Injury-aware",
+        "description": "Build-up that matches your level and load tolerance"
       },
       "directPlan": {
-        "title": "Direct Plan",
-        "description": "Your roadmap delivered directly in PDF format"
+        "title": "Instant clarity",
+        "description": "Ready in minutes: see your route to the goal immediately"
       },
       "eliteLogic": {
-        "title": "Elite Logic",
-        "description": "Based on proven coaching methodologies for success"
+        "title": "Coach logic",
+        "description": "Built on proven training principles and progression"
+      },
+      "adaptive": {
+        "title": "Adapts to you",
+        "description": "Pricing & duration adapt to your distance and weeks"
       }
     }
   }

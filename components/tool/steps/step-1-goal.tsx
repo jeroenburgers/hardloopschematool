@@ -45,6 +45,8 @@ export function Step1Goal({ showValidation = false }: Step1GoalProps) {
           availableGoals={toolTranslations.goals as GoalType[]}
           goalPercentages={toolTranslations.goalPercentages as Record<string, number>}
           socialProofText={toolTranslations.socialProofText}
+          fromLabel={toolTranslations.pricingFrom}
+          locale={locale === "nl" ? "nl-NL" : locale === "de" ? "de-DE" : "en-US"}
           error={errors.goal}
           onGoalChange={(goal) => {
             // Automatically set focus to "Recreatief" when "Conditie / Gezondheid" is selected

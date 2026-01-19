@@ -44,7 +44,7 @@
         "fitness": "Conditie / Gezondheid"
       },
       "button": "Start Mijn Analyse",
-      "price": "Slechts €19,95"
+      "price": "Vanaf €9,95"
     },
     "features": {
       "professional": "✓ Professionele Opbouw",
@@ -425,6 +425,7 @@
     }
   },
   "tool": {
+    "pricingFrom": "Vanaf",
     "steps": ["Doel", "Niveau", "Profiel", "Gezondheid", "Prestaties", "Planning", "Afronding"],
     "celebration": [
       "Lekker bezig! Eerste stap gezet.",
@@ -533,9 +534,23 @@
     "back": "Terug",
     "next": "Volgende",
     "generate": "Schema Genereren",
+    "navigation": {
+      "nextTo": "Verder naar:",
+      "reassurance": "Je zit nog nergens aan vast",
+      "reassuranceByStep": {
+        "1": "Gratis en zonder verplichting",
+        "2": "Je zit nog nergens aan vast",
+        "3": "Slechts 2 minuten",
+        "4": "Bijna klaar",
+        "5": "Laatste stap",
+        "6": "Bijna klaar",
+        "7": "Geen automatische verlenging",
+        "default": "Je zit nog nergens aan vast"
+      }
+    },
     "coachLoading": "Even geduld, we maken jouw persoonlijke routekaart...",
     "pageTitle": "Jouw",
-    "pageTitleHighlight": "Blauwdruk",
+    "pageTitleHighlight": "hardloopschema",
     "pageSubtitle": "De routekaart die voor 8.400+ lopers heeft gewerkt",
     "stepLevelSubtitle": "Eerlijkheid geeft de beste resultaten",
     "stepHealthSubtitle": "Jouw veiligheid staat op nummer één",
@@ -544,16 +559,20 @@
     "stepCheckoutSubtitle": "Laatste stap naar de finish",
     "usps": {
       "safeTraining": {
-        "title": "Veilig Trainen",
-        "description": "Geoptimaliseerde belasting voor blessurevrije progressie"
+        "title": "Blessurebewust",
+        "description": "Opbouw die rekening houdt met je niveau en belastbaarheid"
       },
       "directPlan": {
-        "title": "Direct Plan",
-        "description": "Jouw routekaart direct geleverd in PDF format"
+        "title": "Direct duidelijk",
+        "description": "In minuten klaar: jij ziet meteen je route naar je doel"
       },
       "eliteLogic": {
-        "title": "Elite Logica",
-        "description": "Gebaseerd op bewezen coaching methodieken voor succes"
+        "title": "Coach-logica",
+        "description": "Gebaseerd op bewezen trainingsprincipes en progressie"
+      },
+      "adaptive": {
+        "title": "Past zich aan",
+        "description": "Prijs & planning bewegen mee met afstand en duur"
       }
     }
   }

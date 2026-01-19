@@ -9,6 +9,7 @@ import { translations } from "@/lib/i18n"
  */
 interface ToolNavigationProps {
   currentStep: number
+  steps: Array<{ name: string }>
   isValid: boolean
   loading: boolean
   onBack: () => void
@@ -18,6 +19,7 @@ interface ToolNavigationProps {
 
 export function ToolNavigation({
   currentStep,
+  steps,
   isValid,
   loading,
   onBack,
@@ -26,33 +28,45 @@ export function ToolNavigation({
 }: ToolNavigationProps) {
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
+  const maxStep = steps.length
+  const nextStepName = steps[currentStep]?.name // currentStep is 1-based
+  const nextLabel = nextStepName
+    ? `${toolTranslations.navigation?.nextTo || toolTranslations.next} ${nextStepName}`
+    : toolTranslations.next
 
   return (
-    <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row gap-3 justify-end sticky bottom-0 z-40 bg-white dark:bg-zinc-950">
-      {currentStep > 1 && (
-        <button
-          onClick={onBack}
-          className="px-6 py-2 bg-zinc-100 dark:bg-zinc-800 text-zinc-950 dark:text-zinc-50 rounded-lg font-semibold text-sm hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
-        >
-          {toolTranslations.back}
-        </button>
-      )}
-      {currentStep < 7 ? (
-        <button
-          onClick={onNext}
-          className="px-12 py-5 bg-orange-600 dark:bg-orange-500 text-white rounded-3xl font-black text-sm uppercase tracking-[0.1em] hover:bg-orange-700 dark:hover:bg-orange-600 hover:scale-[1.02] transition-all shadow-xl active:scale-95"
-        >
-          {toolTranslations.next}
-        </button>
-      ) : (
-        <button
-          onClick={onGenerate}
-          disabled={!isValid || loading}
-          className="px-12 py-5 bg-orange-600 dark:bg-orange-500 text-white rounded-3xl font-black text-sm uppercase tracking-[0.1em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-orange-700 dark:hover:bg-orange-600 hover:scale-[1.02] transition-all shadow-xl active:scale-95 disabled:hover:scale-100"
-        >
-          {toolTranslations.generate}
-        </button>
-      )}
+    <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sticky bottom-0 z-40 bg-white/95 dark:bg-zinc-950/95 backdrop-blur">
+      <div className="flex justify-start">
+        {currentStep > 1 && (
+          <button
+            onClick={onBack}
+            className="px-12 py-5 rounded-3xl font-black text-sm uppercase tracking-[0.1em] transition-colors border-2 border-zinc-200 dark:border-zinc-800 text-zinc-950 dark:text-zinc-50 hover:border-zinc-950 dark:hover:border-zinc-600 bg-white dark:bg-zinc-950 leading-none"
+          >
+            {toolTranslations.back}
+          </button>
+        )}
+      </div>
+
+      <div className="flex justify-end">
+        <div className="flex flex-col items-end">
+          {currentStep < maxStep ? (
+            <button
+              onClick={onNext}
+              className="px-12 py-5 bg-orange-600 dark:bg-orange-500 text-white rounded-3xl font-black text-sm uppercase tracking-[0.1em] hover:bg-orange-700 dark:hover:bg-orange-600 transition-colors shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)] active:translate-y-[1px]"
+            >
+              <span className="block leading-none">{nextLabel}</span>
+            </button>
+          ) : (
+            <button
+              onClick={onGenerate}
+              disabled={!isValid || loading}
+              className="px-12 py-5 bg-orange-600 dark:bg-orange-500 text-white rounded-3xl font-black text-sm uppercase tracking-[0.1em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-orange-700 dark:hover:bg-orange-600 transition-colors shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)] active:translate-y-[1px]"
+            >
+              <span className="block leading-none">{toolTranslations.generate}</span>
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   )
 }

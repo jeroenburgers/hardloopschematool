@@ -1,5 +1,7 @@
 import { AlertCircle } from "lucide-react"
 import { RadioButton } from "@/components/ui/radio-button"
+import type { Goal } from "@/lib/types/schedule"
+import { calculatePrice, formatPrice } from "@/lib/utils/pricing"
 
 /**
  * Step Training Weeks component
@@ -10,6 +12,7 @@ interface StepTrainingWeeksProps {
   availableOptions: number[]
   recommendedWeeks?: number
   label: string
+  goal: Goal | ""
   startDate?: string
   locale?: string
   error?: boolean
@@ -38,6 +41,7 @@ export function StepTrainingWeeks({
   availableOptions,
   recommendedWeeks,
   label,
+  goal,
   startDate,
   locale = "nl",
   error = false,
@@ -63,6 +67,10 @@ export function StepTrainingWeeks({
                 year: "numeric",
               })
             : null
+          const price = calculatePrice(goal, weeks)
+          const formattedPrice = price
+            ? formatPrice(price, locale === "nl" ? "nl-NL" : locale === "de" ? "de-DE" : "en-US")
+            : null
 
           return (
             <RadioButton
@@ -72,7 +80,18 @@ export function StepTrainingWeeks({
               error={error && !isSelected}
             >
               <div className="flex flex-col items-start justify-center w-full min-h-[60px]">
-                <span className="text-sm font-semibold">{weeks} weken</span>
+                <div className="flex items-center justify-between gap-3 w-full">
+                  <span className="text-sm font-semibold">{weeks} weken</span>
+                  {formattedPrice && (
+                    <span
+                      className={`text-xs font-bold ${
+                        isSelected ? "text-orange-400" : "text-zinc-500 dark:text-zinc-500"
+                      }`}
+                    >
+                      {formattedPrice}
+                    </span>
+                  )}
+                </div>
                 {isRecommended && (
                   <span
                     className={`text-[10px] font-medium uppercase tracking-wide mt-1 ${

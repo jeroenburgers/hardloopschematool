@@ -72,6 +72,7 @@ export function Step6Planning({ showValidation = false }: Step6PlanningProps) {
           availableOptions={trainingWeeksOptions}
           recommendedWeeks={recommendedWeeks}
           label={toolTranslations.trainingWeeks}
+          goal={formData.goal}
           startDate={formData.startDate}
           locale={locale}
           error={errors.trainingWeeks}

@@ -1,5 +1,7 @@
 import { AlertCircle } from "lucide-react"
 import type { PersonalInfo, ScheduleFormData } from "@/lib/types/schedule"
+import { calculatePrice, formatPrice } from "@/lib/utils/pricing"
+import { useLanguage } from "@/components/language-provider"
 
 /**
  * Step Checkout component
@@ -64,6 +66,16 @@ export function StepCheckout({
   errorAddress = false,
   onPersonalInfoChange,
 }: StepCheckoutProps) {
+  const { locale } = useLanguage()
+
+  // Calculate dynamic price based on goal and training weeks
+  const calculatedPrice = calculatePrice(formData.goal, formData.trainingWeeks)
+  const formattedPrice = formatPrice(
+    calculatedPrice,
+    locale === "nl" ? "nl-NL" : locale === "de" ? "de-DE" : "en-US",
+  )
+  const displayPrice = formattedPrice || translations.price // Fallback to static price if calculation fails
+
   // Helper to get display value from formData
   const getGoalDisplay = () => {
     if (!formData.goal) return "-"
@@ -302,7 +314,7 @@ export function StepCheckout({
               <span className="text-sm text-zinc-200 font-medium">{translations.investment}</span>
               <div className="flex flex-col items-end">
                 <span className="text-2xl font-bold text-orange-500 leading-none">
-                  {translations.price}
+                  {displayPrice}
                 </span>
                 <span className="text-[10px] font-medium text-zinc-500 mt-1 uppercase">
                   {translations.vat}
@@ -312,7 +324,11 @@ export function StepCheckout({
           </div>
 
           <div className="pt-3 border-t border-white/10">
-            <p className="text-xs text-zinc-300 leading-relaxed">{translations.comparison}</p>
+            <p className="text-xs text-zinc-300 leading-relaxed">
+              {calculatedPrice
+                ? translations.comparison.replace(/€[\d,\.]+/, displayPrice)
+                : translations.comparison}
+            </p>
           </div>
         </div>
       </div>

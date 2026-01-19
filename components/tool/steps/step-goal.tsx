@@ -1,5 +1,6 @@
 import type { Goal } from "@/lib/types/schedule"
 import { RadioButton } from "@/components/ui/radio-button"
+import { formatPrice, getMinPriceForGoal } from "@/lib/utils/pricing"
 
 /**
  * Step Goal component
@@ -10,6 +11,8 @@ interface StepGoalProps {
   availableGoals: Goal[]
   goalPercentages: Record<string, number>
   socialProofText: string
+  fromLabel: string
+  locale?: string
   onGoalChange: (goal: Goal) => void
   error?: boolean
 }
@@ -19,6 +22,8 @@ export function StepGoal({
   availableGoals,
   goalPercentages,
   socialProofText,
+  fromLabel,
+  locale = "nl-NL",
   onGoalChange,
   error = false,
 }: StepGoalProps) {
@@ -27,6 +32,8 @@ export function StepGoal({
       {availableGoals.map((goal) => {
         const percentage = (goalPercentages as Record<string, number>)[goal] || 0
         const isSelected = selectedGoal === goal
+        const minPrice = getMinPriceForGoal(goal)
+        const minPriceLabel = minPrice ? `${fromLabel} ${formatPrice(minPrice, locale)}` : null
 
         return (
           <RadioButton
@@ -37,6 +44,17 @@ export function StepGoal({
           >
             <div className="flex flex-col items-start justify-center w-full min-h-[60px]">
               <span className="text-sm font-semibold">{goal}</span>
+              {minPriceLabel && (
+                <span
+                  className={`text-[10px] font-medium uppercase tracking-wide mt-1 ${
+                    isSelected
+                      ? "text-zinc-300 dark:text-zinc-400"
+                      : "text-zinc-400 dark:text-zinc-600"
+                  }`}
+                >
+                  {minPriceLabel}
+                </span>
+              )}
               {isSelected && (
                 <span className="text-[10px] font-medium text-orange-400 uppercase tracking-wide mt-1">
                   {percentage}% {socialProofText}
