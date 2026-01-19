@@ -468,6 +468,7 @@
     "coachPlanning": "When to start?",
     "startDate": "Start date",
     "targetDays": "Days per week",
+    "trainingWeeks": "How many weeks do you have until your goal?",
     "coachCheckout": "Checkout",
     "checkout": {
       "firstName": "First name",

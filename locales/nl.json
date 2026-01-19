@@ -475,6 +475,7 @@
     "coachPlanning": "Wanneer beginnen?",
     "startDate": "Startdatum",
     "targetDays": "Dagen per week",
+    "trainingWeeks": "Hoeveel weken heb je tot je doel?",
     "coachCheckout": "Afronding",
     "checkout": {
       "firstName": "Voornaam",

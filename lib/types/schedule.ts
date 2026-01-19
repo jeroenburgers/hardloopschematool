@@ -51,6 +51,7 @@ export interface ScheduleFormData {
   recentTime: string
   startDate: string
   targetDays: number
+  trainingWeeks: number
   planningMode: "Automatisch" | "Zelf inplannen"
   selectedDays: string[]
   language: "nl" | "en" | "de"

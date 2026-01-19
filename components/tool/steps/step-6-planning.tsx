@@ -6,6 +6,7 @@ import { translations } from "@/lib/i18n"
 import { useScheduleFormContext } from "../schedule-form-context"
 import { StepHeader } from "../step-header"
 import { StepPlanning } from "./step-planning"
+import { StepTrainingWeeks } from "./step-training-weeks"
 import { StepPlanningMode } from "./step-planning-mode"
 import { StepDaySelection } from "./step-day-selection"
 
@@ -20,13 +21,21 @@ interface Step6PlanningProps {
 export function Step6Planning({ showValidation = false }: Step6PlanningProps) {
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
-  const { formData, planningOptions, recommendedDays, nextMondays, updateFormData } =
-    useScheduleFormContext()
+  const {
+    formData,
+    planningOptions,
+    recommendedDays,
+    trainingWeeksOptions,
+    recommendedWeeks,
+    nextMondays,
+    updateFormData,
+  } = useScheduleFormContext()
 
   // Get validation errors for step 6
   const errors = {
     startDate: showValidation && !formData.startDate,
     targetDays: showValidation && !formData.targetDays,
+    trainingWeeks: showValidation && !formData.trainingWeeks,
     selectedDays:
       showValidation &&
       formData.planningMode === "Zelf inplannen" &&
@@ -57,6 +66,14 @@ export function Step6Planning({ showValidation = false }: Step6PlanningProps) {
           errorTargetDays={errors.targetDays}
           onStartDateChange={(date) => updateFormData({ startDate: date })}
           onTargetDaysChange={(days) => updateFormData({ targetDays: days })}
+        />
+        <StepTrainingWeeks
+          selectedWeeks={formData.trainingWeeks}
+          availableOptions={trainingWeeksOptions}
+          recommendedWeeks={recommendedWeeks}
+          label={toolTranslations.trainingWeeks}
+          error={errors.trainingWeeks}
+          onWeeksChange={(weeks) => updateFormData({ trainingWeeks: weeks })}
         />
       </div>
 

@@ -39,6 +39,7 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
     recentTime: "",
     startDate: "",
     targetDays: 3,
+    trainingWeeks: 6,
     planningMode: "Automatisch",
     selectedDays: [],
     language: locale,
@@ -100,6 +101,69 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData.goal])
 
+  // Calculate training weeks options based on goal and health
+  const trainingWeeksOptions = useMemo(() => {
+    const { goal, health } = formData
+    let min = 4
+    let max = 12
+    let step = 2
+    let recommended = 6
+
+    // If health goal (Conditie / Gezondheid)
+    if (goal === "Conditie / Gezondheid" || goal?.includes("Conditie / Gezondheid")) {
+      min = 4
+      max = 12
+      step = 4
+      recommended = 6
+    } else if (goal.includes("5 kilometer")) {
+      min = 4
+      max = 12
+      step = 2
+      recommended = 6
+    } else if (goal.includes("10 kilometer")) {
+      min = 4
+      max = 12
+      step = 2
+      recommended = 10
+    } else if (goal.includes("15 kilometer")) {
+      min = 8
+      max = 14
+      step = 2
+      recommended = 12
+    } else if (goal.includes("10 mijl")) {
+      min = 8
+      max = 16
+      step = 2
+      recommended = 12
+    } else if (goal.includes("Halve marathon")) {
+      min = 12
+      max = 24
+      step = 4
+      recommended = 12
+    } else if (goal.includes("30 kilometer")) {
+      min = 12
+      max = 24
+      step = 4
+      recommended = 16
+    } else if (goal.includes("Marathon")) {
+      min = 12
+      max = 24
+      step = 4
+      recommended = 16
+    }
+
+    const options = []
+    for (let i = min; i <= max; i += step) {
+      options.push(i)
+    }
+    return { options, recommended }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData.goal, formData.health])
+
+  const recommendedWeeks = useMemo(() => {
+    return trainingWeeksOptions.recommended
+  }, [trainingWeeksOptions])
+
   const nextMondays = useMemo(() => {
     const mondays = []
     const d = new Date()
@@ -136,6 +200,21 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formData.goal, recommendedDays, planningOptions])
+
+  // Set trainingWeeks to recommendedWeeks when goal changes
+  useEffect(() => {
+    if (formData.goal && trainingWeeksOptions.options.includes(recommendedWeeks)) {
+      // Only update if trainingWeeks is not already set to recommendedWeeks
+      // or if it's not within the valid options
+      if (
+        formData.trainingWeeks !== recommendedWeeks ||
+        !trainingWeeksOptions.options.includes(formData.trainingWeeks)
+      ) {
+        updateFormData({ trainingWeeks: recommendedWeeks })
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData.goal, recommendedWeeks, trainingWeeksOptions])
 
   const isValidStep = (step: number): boolean => {
     if (step === 1) {
@@ -189,6 +268,8 @@ export function useScheduleForm({ initialGoal, initialLevel }: UseScheduleFormOp
     personalInfo,
     planningOptions,
     recommendedDays,
+    trainingWeeksOptions: trainingWeeksOptions.options,
+    recommendedWeeks,
     nextMondays,
     updateFormData,
     updatePersonalInfo,
