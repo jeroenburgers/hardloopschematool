@@ -60,7 +60,7 @@ export function ToolNavigation({
             <button
               onClick={onGenerate}
               disabled={!isValid || loading}
-              className="px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-5 bg-orange-600 dark:bg-orange-500 text-white rounded-2xl sm:rounded-3xl font-black text-xs sm:text-sm uppercase tracking-[0.1em] disabled:opacity-40 disabled:cursor-not-allowed hover:bg-orange-700 dark:hover:bg-orange-600 transition-colors shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)] active:translate-y-[1px] w-full sm:w-auto cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
+              className="px-6 py-3 sm:px-8 sm:py-4 md:px-12 md:py-5 bg-orange-600 dark:bg-orange-500 text-white rounded-2xl sm:rounded-3xl font-black text-xs sm:text-sm uppercase tracking-[0.1em] disabled:opacity-60 disabled:cursor-not-allowed hover:bg-orange-700 dark:hover:bg-orange-600 disabled:hover:bg-orange-600 disabled:hover:dark:bg-orange-500 transition-colors shadow-[0_18px_45px_-20px_rgba(0,0,0,0.35)] active:translate-y-[1px] w-full sm:w-auto cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
             >
               <span className="block leading-none">{toolTranslations.generate}</span>
             </button>

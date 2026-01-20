@@ -129,7 +129,7 @@
       "step2": {
         "number": "2",
         "title": "Die Blaupausen-Matrix",
-        "description": "Wir verwenden die 'Best Practices' erfolgreicher Läufer. Wir wenden die <strong>80/20-Methode</strong> an: 80% in einem Tempo, in dem Sie sprechen können, 20%, in dem Sie sich selbst herausfordern. Dies ist der Weg zur Geschwindigkeit ohne Schmerzen.",
+        "description": "In der Blaupausen‑Matrix wählen wir gemeinsam die <strong>Trainingsmethode</strong>, die am besten zu Ihnen passt. Sie geben Ihre Präferenzen an, und wir passen den Plan entsprechend an. Die Auswahl basiert auf Ihrem Ziel (Distanz), Ihrer Zielzeit, Ihrer aktuellen Erfahrung und Trainingsfrequenz sowie darauf, wie viele Wochen Sie haben und an wie vielen Tagen pro Woche Sie trainieren können. So entsteht ein Plan, der realistisch ist, zu Ihrem Alltag passt und Ihnen trotzdem Einfluss lässt.",
         "quote": "Wir verhindern den häufigsten Fehler: zu viel, zu schnell. Unsere Methode baut ein unzerbrechliches Fundament.",
         "visualization": "Visualisierung: Das optimale Trainingsgleichgewicht"
       },
@@ -335,6 +335,139 @@
             "Diese Läufe machen 60-70% Ihres wöchentlichen Volumens aus"
           ],
           "proTip": "Viele Läufer machen ihre Base Runs zu schnell. Wenn Sie danach erschöpft sind, war es kein Base Run."
+        },
+        "mafLowHeartRate": {
+          "slug": "maf-niedrige-herzfrequenz",
+          "title": "MAF (niedrige Herzfrequenz)",
+          "subtitle": "Basis aufbauen mit ruhigem, nachhaltigem Training.",
+          "description": "MAF steht für \"Maximum Aerobic Function\". Sie trainieren überwiegend bei niedriger Herzfrequenz (aerobe Zone), um Ausdauer aufzubauen und das Verletzungsrisiko zu senken. Das Tempo kann anfangs sehr ruhig wirken – die Fortschritte kommen über Konstanz.",
+          "benefits": [
+            "Starke aerobe Basis ohne Überlastung",
+            "Bessere Fettverbrennung und effizientere Energienutzung",
+            "Geringeres Verletzungsrisiko durch niedrige Intensität",
+            "Ideal für (Wieder-)Einstieg und ruhigen Aufbau"
+          ],
+          "howTo": [
+            "Schätzen Sie Ihre MAF-Herzfrequenz (grobe Richtlinie: 180 - Alter, mit Anpassungen)",
+            "Laufen Sie die meisten Einheiten bei oder unter dieser Herzfrequenz",
+            "Fügen Sie lieber 1-2 lockere Einheiten hinzu statt mehr Intensität",
+            "Testen Sie alle 3-4 Wochen: gleiche HF → schnelleres Tempo = Fortschritt"
+          ],
+          "proTip": "Nutzen Sie einen Pulsmesser und akzeptieren Sie ein langsames Starttempo. Mit einigen Wochen Konstanz wird es meist deutlich besser."
+        },
+        "polarized8020": {
+          "slug": "80-20-polarisiert",
+          "title": "80/20 (Polarisiert)",
+          "subtitle": "80% locker, 20% hart: smarte Balance für Fortschritt.",
+          "description": "Die 80/20 (polarisiert) Methode teilt Ihr Training in viel lockeres Laufen und einen kleineren Anteil hoher Intensität. Wenn die lockeren Tage wirklich locker bleiben, sind die harten Einheiten qualitativ besser und die Erholung schneller.",
+          "benefits": [
+            "Mehr Fortschritt bei weniger Müdigkeit",
+            "Bessere Qualität in Tempo-/Intervall-Einheiten",
+            "Klare Struktur: easy days easy, hard days hard",
+            "Funktioniert gut von 5 km bis Marathon"
+          ],
+          "howTo": [
+            "Halten Sie ~80% der Laufzeit locker (Sprechen sollte möglich sein)",
+            "Planen Sie 1-2 harte Einheiten pro Woche je nach Niveau",
+            "Fügen Sie einen langen Lauf hinzu für 10 Meilen, Halbmarathon oder Marathon",
+            "Prüfen Sie Ihr 'locker': viele laufen ihre lockeren Tage zu schnell"
+          ],
+          "proTip": "Im Zweifel: langsamer an den lockeren Tagen. Das ist oft der schnellste Weg, fitter zu werden."
+        },
+        "runWalkGalloway": {
+          "slug": "lauf-gehen-galloway",
+          "title": "Lauf-Gehen (Galloway)",
+          "subtitle": "Geplante Gehpausen für Kontrolle und Nachhaltigkeit.",
+          "description": "Die Lauf-Gehen Methode (Galloway) kombiniert Laufen mit geplanten Gehpausen, z.B. 3 Minuten laufen / 1 Minute gehen. Das hält die Belastung kontrollierbar, unterstützt die Erholung und macht lange Distanzen erreichbar – besonders beim (Wieder-)Einstieg oder bei langen Zielen.",
+          "benefits": [
+            "Weniger Belastung für Sehnen und Gelenke",
+            "Konstanteres Tempo und weniger Einbruch am Ende",
+            "Gut bei Aufbau, Neustart oder schneller Ermüdung",
+            "Effektiv für lange Läufe und Marathonziele"
+          ],
+          "howTo": [
+            "Wählen Sie ein einfaches Verhältnis (z.B. 3:1 oder 4:1) und halten Sie es konsequent ein",
+            "Starten Sie konservativ: lieber zu leicht als zu hart",
+            "Nutzen Sie Lauf-Gehen für lange Läufe und stressige Wochen",
+            "Steigern Sie schrittweise: länger laufen, kürzer gehen oder insgesamt länger"
+          ],
+          "proTip": "Gehen Sie, bevor Sie müde werden. Der Effekt liegt im vorausschauenden Dosieren."
+        },
+        "jackDanielsPaceZones": {
+          "slug": "jack-daniels-tempobereiche",
+          "title": "Jack Daniels (Tempobereiche)",
+          "subtitle": "Präzise Tempobereiche basierend auf Ihrer aktuellen Leistung.",
+          "description": "Jack Daniels arbeitet mit Trainingsbereichen (E, M, T, I, R), die aus Ihrer aktuellen Leistung abgeleitet werden. So trainieren Sie sehr gezielt: locker, wenn es locker sein soll, und spezifisch, wenn es hart sein muss.",
+          "benefits": [
+            "Sehr spezifisches Training mit klaren Tempi",
+            "Ideal für Bestzeit-Ziele",
+            "Gute Balance aus Umfang und Qualität",
+            "Hilft, nicht zu schnell zu laufen – dank konkreter Bereiche"
+          ],
+          "howTo": [
+            "Bestimmen Sie Ihre Bereiche über einen aktuellen Wettkampf oder Test (VDOT-ähnlich)",
+            "Planen Sie 1 Qualitätseinheit (T/I/R) und 1 langen Lauf (E/M) pro Woche",
+            "Halten Sie lockere Läufe wirklich locker (E) für Erholung",
+            "Aktualisieren Sie Bereiche nach klarer Verbesserung (z.B. alle 4-6 Wochen)"
+          ],
+          "proTip": "An guten Tagen wirken die Tempi manchmal 'zu leicht'. Bleiben Sie im Bereich – Konstanz schlägt Spitzen."
+        },
+        "lydiardPeriodized": {
+          "slug": "lydiard-phasenbasiert",
+          "title": "Lydiard (phasenbasiert)",
+          "subtitle": "Periodisierung: Basis → Kraft → Tempo → Taper.",
+          "description": "Lydiard arbeitet mit klaren Phasen. Zuerst bauen Sie eine starke aerobe Basis auf (viel lockerer Umfang), danach kommen Hügel/Kraft dazu, und erst später intensive Tempo- und Intervalleinheiten. Das passt besonders für Läufer, die strukturiert auf einen Peak hin trainieren wollen.",
+          "benefits": [
+            "Starke Basis bevor Intensität steigt",
+            "Logische Periodisierung bis zu den Peak-Wochen",
+            "Geringeres Überlastungsrisiko durch phasenweisen Aufbau",
+            "Sehr gut für mittlere und lange Distanzen"
+          ],
+          "howTo": [
+            "Phase 1: aerobe Basis (viel locker + langer Lauf)",
+            "Phase 2: Hügel/Kraft (Hügeltraining, Strides, Technik)",
+            "Phase 3: Tempo/Schnelligkeit (Intervalle und Schwellentempo)",
+            "Phase 4: Taper (Umfang reduzieren, Schärfe behalten)"
+          ],
+          "proTip": "Überspringen Sie die Basisphase nicht. Wenn sie zu kurz ist, merken Sie das später in den harten Wochen."
+        },
+        "hansonsMethod": {
+          "slug": "hansons",
+          "title": "Hansons",
+          "subtitle": "Konstanter Umfang mit relativ kürzerem langen Lauf.",
+          "description": "Hansons ist eine Marathon- (und Halbmarathon-) Methode mit hoher Konstanz: mehrere mittel-lange Läufe unter der Woche plus ein langer Lauf, der oft kürzer ist als in klassischen Plänen. Die Idee: den langen Lauf mit Vorermüdung absolvieren – näher an Rennbedingungen.",
+          "benefits": [
+            "Starke wettkampfspezifische Fitness durch konstanten Umfang",
+            "Weniger extreme lange Läufe als traditionelle Marathonpläne",
+            "Klare Struktur mit gut wiederholbaren Wochen",
+            "Passt gut bei 4-6 Trainingstagen pro Woche"
+          ],
+          "howTo": [
+            "Planen Sie mehrere mittel-lange Läufe unter der Woche",
+            "Fügen Sie 1 Tempo-/Schwelleneinheit und 1 Intervall-/Schnelligkeitseinheit hinzu",
+            "Halten Sie Erholungsläufe wirklich locker",
+            "Schützen Sie die Erholung: Schlaf und lockere Tage sind entscheidend"
+          ],
+          "proTip": "Hansons fühlt sich oft an wie 'immer ein bisschen müde'. Das ist normal – aber bei Schmerzen zuerst Intensität reduzieren."
+        },
+        "pfitzingerMethod": {
+          "slug": "pfitzinger",
+          "title": "Pfitzinger",
+          "subtitle": "Mehr Umfang und Qualität für erfahrene Marathonläufer.",
+          "description": "Pfitzinger (P&D) ist eine intensive Methode mit höherem Wochenumfang, langen Läufen und anspruchsvollen mittel-langen Läufen unter der Woche. Sie ist für erfahrene Läufer gedacht, die viele Trainingstage verkraften und gezielt für einen Marathon peaken wollen.",
+          "benefits": [
+            "Sehr starke aerobe Entwicklung durch Umfang",
+            "Rennspezifischer Reiz durch lange Läufe und \"medium long runs\"",
+            "Klare Progression bis zu den Peak-Wochen",
+            "Sehr gut für leistungsorientierte Marathonziele"
+          ],
+          "howTo": [
+            "Stellen Sie sicher, dass 5+ Trainingstage pro Woche realistisch sind",
+            "Planen Sie 1 langen Lauf, 1 mittel-langen Lauf und 1 Qualitätseinheit pro Woche",
+            "Nutzen Sie lockere Tage aktiv als Erholung (E-Tempo)",
+            "Nehmen Sie Entlastungswochen ernst, um Übertraining zu vermeiden"
+          ],
+          "proTip": "Das ist kein Plan zum 'Ausprobieren'. Wenn Ihre Erholung nicht stabil ist, wählen Sie besser eine nachhaltigere Methode."
         }
       }
     },
@@ -555,6 +688,57 @@
     "stepRecentSubtitle": "Der Ausgangspunkt für Ihren Bauplan",
     "stepPlanningSubtitle": "Ihr Terminkalender, Ihr Erfolg",
     "stepCheckoutSubtitle": "Letzter Schritt zum Ziel",
+    "trainingMethod": {
+      "question": "Welche Trainingsmethode möchten Sie befolgen?",
+      "subtitle": "Wählen Sie, was am besten zu Ihnen passt. Methoden, die nicht geeignet sind, werden grau angezeigt.",
+      "moreInfo": "Mehr Infos",
+      "moreInfoAriaLabel": "Mehr Infos über {method}",
+      "recommended": "Empfohlen",
+      "error": "Wählen Sie eine Trainingsmethode",
+      "disabled": {
+        "tooBeginner": "Erfordert mehr Erfahrung",
+        "tooAdvanced": "Nicht für Ihr Niveau geeignet",
+        "tooShortDistance": "Nicht für kurze Distanzen geeignet",
+        "tooIntense": "Zu intensiv für Ihren aktuellen Gesundheitszustand",
+        "needsPerformance": "Erfordert leistungsorientiertes Ziel",
+        "needsMoreDays": "Erfordert mehr Trainingstage pro Woche",
+        "recovering": "Nicht während der Genesung geeignet"
+      },
+      "methods": {
+        "gebalanceerd": {
+          "name": "Ausgewogen",
+          "description": "Eine ausgewogene Mischung aus langen Läufen, Tempo und Erholung. Geeignet für die meisten Läufer."
+        },
+        "eighty20polarized": {
+          "name": "80/20 (Polarisiert)",
+          "description": "80% leichte lange Läufe, 20% intensives Training. Bewährt effektiv für Leistungssteigerung."
+        },
+        "maflagehartslag": {
+          "name": "MAF (niedrige Herzfrequenz)",
+          "description": "Training bei niedriger Herzfrequenz für nachhaltige Ausdauer. Ideal für Anfänger und Erholung."
+        },
+        "runwalkgalloway": {
+          "name": "Lauf-Gehen (Galloway)",
+          "description": "Wechsel zwischen Laufen und Gehen. Perfekt für Anfänger und lange Distanzen."
+        },
+        "jackdanielstempozones": {
+          "name": "Jack Daniels (Tempobereiche)",
+          "description": "Strukturierte Tempobereiche für präzises Training. Für fortgeschrittene Läufer mit leistungsorientierten Zielen."
+        },
+        "lydiardfasegericht": {
+          "name": "Lydiard (phasenbasiert)",
+          "description": "Phasenbasiertes Aufbautraining mit Fokus auf Basis, Kraft und Spitze. Für erfahrene Langstreckenläufer."
+        },
+        "hansons": {
+          "name": "Hansons",
+          "description": "Hohe Trainingsfrequenz mit Fokus auf Konsistenz. Für fortgeschrittene Marathonläufer."
+        },
+        "pfitzinger": {
+          "name": "Pfitzinger",
+          "description": "Sehr intensive Marathontrainingsmethode mit hohem Volumen. Nur für erfahrene Läufer."
+        }
+      }
+    },
     "usps": {
       "safeTraining": {
         "title": "Verletzungsbewusst",

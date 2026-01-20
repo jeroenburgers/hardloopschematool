@@ -130,7 +130,7 @@
       "step2": {
         "number": "2",
         "title": "The Blueprint Matrix",
-        "description": "We use the 'best practices' of successful runners. We apply the <strong>80/20 method</strong>: 80% at a pace where you can talk, 20% where you challenge yourself. This is the path to speed without pain.",
+        "description": "In the Blueprint Matrix we help you choose the <strong>training method</strong> that fits you best. You share your preferences, and we tailor the plan accordingly. The choice is based on your goal (distance), your target time, your current experience and training frequency, and also on how many weeks you have and how many days per week you can train. This way you get a plan that’s realistic, fits your life, and still gives you control.",
         "quote": "We prevent the most common mistake: too much, too fast. Our method builds an unbreakable foundation.",
         "visualization": "Visualization: The optimal training balance"
       },
@@ -336,6 +336,139 @@
             "These runs make up 60-70% of your weekly volume"
           ],
           "proTip": "Many runners do their Base Runs too fast. If you're exhausted afterwards, it wasn't a Base Run."
+        },
+        "mafLowHeartRate": {
+          "slug": "maf-low-heart-rate",
+          "title": "MAF (low heart rate)",
+          "subtitle": "Build your base with easy, sustainable training.",
+          "description": "MAF stands for \"Maximum Aerobic Function\". You train mainly at a low heart rate (aerobic zone) to improve endurance and reduce injury risk. The pace can feel surprisingly easy at first, but consistency is where the long-term gains come from.",
+          "benefits": [
+            "Stronger aerobic base without overload",
+            "Improved fat oxidation and energy efficiency",
+            "Lower injury risk due to low intensity",
+            "Great for rebuilding fitness steadily"
+          ],
+          "howTo": [
+            "Estimate your MAF heart rate (rough guideline: 180 - age, with adjustments)",
+            "Keep most easy runs at or below that heart rate",
+            "Add 1-2 extra easy sessions instead of intensity",
+            "Re-test every 3-4 weeks: same HR → faster pace = progress"
+          ],
+          "proTip": "Use a heart-rate monitor and accept that the pace starts slow. It typically improves after a few consistent weeks."
+        },
+        "polarized8020": {
+          "slug": "80-20-polarized",
+          "title": "80/20 (Polarized)",
+          "subtitle": "80% easy, 20% hard: a smart balance for progress.",
+          "description": "The 80/20 (polarized) approach divides training into lots of easy running and a smaller dose of high intensity. By keeping easy days truly easy, you can execute the quality sessions better and recover faster.",
+          "benefits": [
+            "Better progress with less fatigue",
+            "Higher quality in tempo/interval sessions",
+            "Clear structure: easy days easy, hard days hard",
+            "Works well from 5K to marathon"
+          ],
+          "howTo": [
+            "Keep ~80% of total running time easy (you should be able to talk)",
+            "Schedule 1-2 hard sessions per week depending on experience",
+            "Add a long run when training for 10 miles, half marathon or marathon",
+            "Audit your easy pace: many runners run 'easy' too fast"
+          ],
+          "proTip": "When in doubt, slow down on easy days. It’s usually the fastest way to get fitter."
+        },
+        "runWalkGalloway": {
+          "slug": "run-walk-galloway",
+          "title": "Run-Walk (Galloway)",
+          "subtitle": "Planned walk breaks for control and durability.",
+          "description": "The Run-Walk method (Galloway) combines running with planned walk breaks, for example 3 minutes run / 1 minute walk. It keeps load manageable, helps recovery, and makes longer distances achievable—especially when (re)starting or building toward long goals.",
+          "benefits": [
+            "Lower impact on tendons and joints",
+            "More even pacing and fewer late-race blow-ups",
+            "Great for rebuilding or fatigue-sensitive runners",
+            "Effective for long runs and marathon goals"
+          ],
+          "howTo": [
+            "Pick a simple ratio (e.g., 3:1 or 4:1) and stick to it",
+            "Start conservative: easier is better than too hard",
+            "Use Run-Walk for long runs and high-stress weeks",
+            "Progress gradually: longer run blocks, shorter walk breaks, or longer total time"
+          ],
+          "proTip": "Walk before you’re tired. The magic is in proactive pacing, not reacting to fatigue."
+        },
+        "jackDanielsPaceZones": {
+          "slug": "jack-daniels-pace-zones",
+          "title": "Jack Daniels (pace zones)",
+          "subtitle": "Train with precise pace zones based on your current fitness.",
+          "description": "Jack Daniels’ method uses training zones (E, M, T, I, R) derived from your current performance. That makes training highly specific: easy when it should be easy, and targeted when it needs to be hard.",
+          "benefits": [
+            "Highly specific training with clear paces",
+            "Great for PR-oriented goals",
+            "Solid balance between volume and quality",
+            "Helps prevent going too hard by using concrete zones"
+          ],
+          "howTo": [
+            "Determine your zones from a recent race or test (VDOT-style)",
+            "Plan 1 quality session (T/I/R) and 1 long run (E/M) per week",
+            "Keep easy runs truly easy (E) for recovery",
+            "Update zones after clear progress (e.g., every 4-6 weeks)"
+          ],
+          "proTip": "On good days the paces can feel 'too easy'. Stick to the zone—consistency beats spikes."
+        },
+        "lydiardPeriodized": {
+          "slug": "lydiard-periodized",
+          "title": "Lydiard (periodized)",
+          "subtitle": "Periodization: base → strength → speed → taper.",
+          "description": "Lydiard uses distinct phases. You first build a strong aerobic base (lots of easy volume), then add hills/strength, and only later focus on hard speed work. This suits runners who want to peak in a structured, long-term way.",
+          "benefits": [
+            "Strong base before intensity increases",
+            "Logical periodization toward peak weeks",
+            "Lower overload risk thanks to phased build-up",
+            "Well suited for medium and long distances"
+          ],
+          "howTo": [
+            "Phase 1: aerobic base (lots of easy volume + long run)",
+            "Phase 2: hills/strength (hill sessions, strides, technique)",
+            "Phase 3: speed/tempo (intervals and threshold work)",
+            "Phase 4: taper (reduce volume, keep sharpness)"
+          ],
+          "proTip": "Don’t skip the base phase. If it’s too short, you’ll feel it in the hard weeks later."
+        },
+        "hansonsMethod": {
+          "slug": "hansons",
+          "title": "Hansons",
+          "subtitle": "Consistent volume with a relatively shorter long run.",
+          "description": "Hansons is a marathon (and half marathon) approach built around consistency: several medium-long runs during the week plus a long run that’s often shorter than in traditional plans. The idea is to train the long run with accumulated fatigue, closer to race conditions.",
+          "benefits": [
+            "Strong race-specific fitness through consistent volume",
+            "Less extreme long runs than classic marathon plans",
+            "Clear structure with repeatable weeks",
+            "Fits runners training 4-6 days per week"
+          ],
+          "howTo": [
+            "Schedule multiple medium-long runs during the week",
+            "Add 1 tempo/threshold session and 1 speed/interval session",
+            "Keep recovery runs truly easy",
+            "Protect recovery: sleep and easy days are non-negotiable"
+          ],
+          "proTip": "Hansons often feels like you’re 'a bit tired'. That’s normal—but if pains start, reduce intensity first."
+        },
+        "pfitzingerMethod": {
+          "slug": "pfitzinger",
+          "title": "Pfitzinger",
+          "subtitle": "Higher volume and quality for experienced marathoners.",
+          "description": "Pfitzinger (P&D) is an intensive approach with higher weekly volume, long runs, and demanding midweek medium-long runs. It’s designed for experienced runners who can handle many training days and want to peak for a marathon.",
+          "benefits": [
+            "Major aerobic gains through volume",
+            "Race-specific stimulus via long runs and medium-long runs",
+            "Clear progression toward peak weeks",
+            "Great for performance-oriented marathon goals"
+          ],
+          "howTo": [
+            "Make sure you can handle 5+ training days before starting",
+            "Plan 1 long run, 1 medium-long run, and 1 quality session per week",
+            "Use easy days actively as recovery (E pace)",
+            "Take cutback weeks seriously to prevent overtraining"
+          ],
+          "proTip": "This isn’t a plan to 'try out'. If recovery isn’t solid, choose a more sustainable method."
         }
       }
     },
@@ -549,6 +682,57 @@
     "stepRecentSubtitle": "The baseline for your blueprint",
     "stepPlanningSubtitle": "Your agenda, your success",
     "stepCheckoutSubtitle": "Final step to the finish",
+    "trainingMethod": {
+      "question": "Which training method would you like to follow?",
+      "subtitle": "Choose what suits you best. Methods that are not suitable will be shown in gray.",
+      "moreInfo": "More info",
+      "moreInfoAriaLabel": "More info about {method}",
+      "recommended": "Recommended",
+      "error": "Select a training method",
+      "disabled": {
+        "tooBeginner": "Requires more experience",
+        "tooAdvanced": "Not suitable for your level",
+        "tooShortDistance": "Not suitable for short distances",
+        "tooIntense": "Too intense for your current health",
+        "needsPerformance": "Requires performance-oriented goal",
+        "needsMoreDays": "Requires more training days per week",
+        "recovering": "Not suitable during recovery"
+      },
+      "methods": {
+        "gebalanceerd": {
+          "name": "Balanced",
+          "description": "A balanced mix of long runs, tempo and recovery. Suitable for most runners."
+        },
+        "eighty20polarized": {
+          "name": "80/20 (Polarized)",
+          "description": "80% easy long runs, 20% intensive training. Proven effective for performance improvement."
+        },
+        "maflagehartslag": {
+          "name": "MAF (low heart rate)",
+          "description": "Training at low heart rate for sustainable endurance. Ideal for beginners and recovery."
+        },
+        "runwalkgalloway": {
+          "name": "Run-Walk (Galloway)",
+          "description": "Alternating between running and walking. Perfect for beginners and long distances."
+        },
+        "jackdanielstempozones": {
+          "name": "Jack Daniels (tempo zones)",
+          "description": "Structured tempo zones for precise training. For advanced runners with performance-oriented goals."
+        },
+        "lydiardfasegericht": {
+          "name": "Lydiard (phase-based)",
+          "description": "Phase-based build-up with focus on base, strength and peak. For experienced long-distance runners."
+        },
+        "hansons": {
+          "name": "Hansons",
+          "description": "High training frequency with focus on consistency. For advanced marathon runners."
+        },
+        "pfitzinger": {
+          "name": "Pfitzinger",
+          "description": "Very intensive marathon method with high volume. Only for experienced runners."
+        }
+      }
+    },
     "usps": {
       "safeTraining": {
         "title": "Injury-aware",

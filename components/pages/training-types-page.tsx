@@ -11,6 +11,54 @@ import { SectionHeader } from "@/components/ui/section-header"
 
 const trainingTypes = [
   {
+    key: "baseRun",
+    icon: "🧱",
+    bgColor: "bg-zinc-950",
+    textColor: "text-white",
+  },
+  {
+    key: "mafLowHeartRate",
+    icon: "🫁",
+    bgColor: "bg-zinc-50",
+    textColor: "text-zinc-950",
+  },
+  {
+    key: "polarized8020",
+    icon: "⚪️",
+    bgColor: "bg-orange-50",
+    textColor: "text-orange-600",
+  },
+  {
+    key: "runWalkGalloway",
+    icon: "🚶‍♂️",
+    bgColor: "bg-zinc-950",
+    textColor: "text-white",
+  },
+  {
+    key: "jackDanielsPaceZones",
+    icon: "📊",
+    bgColor: "bg-zinc-50",
+    textColor: "text-zinc-950",
+  },
+  {
+    key: "lydiardPeriodized",
+    icon: "📅",
+    bgColor: "bg-orange-50",
+    textColor: "text-orange-600",
+  },
+  {
+    key: "hansonsMethod",
+    icon: "🧩",
+    bgColor: "bg-zinc-950",
+    textColor: "text-white",
+  },
+  {
+    key: "pfitzingerMethod",
+    icon: "📚",
+    bgColor: "bg-zinc-50",
+    textColor: "text-zinc-950",
+  },
+  {
     key: "progressionRun",
     icon: "📈",
     bgColor: "bg-zinc-50",
@@ -57,12 +105,6 @@ const trainingTypes = [
     icon: "⛰️",
     bgColor: "bg-orange-50",
     textColor: "text-orange-600",
-  },
-  {
-    key: "baseRun",
-    icon: "🧱",
-    bgColor: "bg-zinc-950",
-    textColor: "text-white",
   },
 ]
 

@@ -30,13 +30,15 @@ export function StepProfile({
   errorAgeGroup = false,
 }: StepProfileProps) {
   const genderColsClass =
-    genders.length >= 4 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-2 sm:grid-cols-3"
+    genders.length >= 4
+      ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+      : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
   const ageColsClass =
     ageGroups.length >= 8
-      ? "grid-cols-2 sm:grid-cols-4 lg:grid-cols-8"
+      ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-8"
       : ageGroups.length >= 6
-        ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
-        : "grid-cols-2 sm:grid-cols-3"
+        ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-6"
+        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 
   return (
     <div className="space-y-4 sm:space-y-6">
@@ -52,7 +54,11 @@ export function StepProfile({
               onChange={() => onGenderChange(gender as ScheduleFormData["gender"])}
               error={errorGender && formData.gender !== gender}
             >
-              <span className="text-xs sm:text-sm font-semibold">{gender}</span>
+              <div className="flex items-center justify-start w-full min-h-[50px] sm:min-h-[55px] md:min-h-[60px]">
+                <span className="text-xs sm:text-xs md:text-sm font-semibold text-left break-words">
+                  {gender}
+                </span>
+              </div>
             </RadioButton>
           ))}
         </div>
@@ -78,7 +84,9 @@ export function StepProfile({
               onChange={() => onAgeGroupChange(age)}
               error={errorAgeGroup && formData.ageGroup !== age}
             >
-              <span className="text-xs sm:text-sm font-semibold">{age}</span>
+              <div className="flex items-center justify-start w-full min-h-[50px] sm:min-h-[55px] md:min-h-[60px]">
+                <span className="text-xs sm:text-xs md:text-sm font-semibold text-left">{age}</span>
+              </div>
             </RadioButton>
           ))}
         </div>

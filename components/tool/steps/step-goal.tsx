@@ -28,7 +28,7 @@ export function StepGoal({
   error = false,
 }: StepGoalProps) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
       {availableGoals.map((goal) => {
         const percentage = (goalPercentages as Record<string, number>)[goal] || 0
         const isSelected = selectedGoal === goal
@@ -42,7 +42,7 @@ export function StepGoal({
             onChange={() => onGoalChange(goal)}
             error={error && !isSelected}
           >
-            <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[60px]">
+            <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[60px] md:min-h-[65px]">
               <span className="text-xs sm:text-sm font-semibold leading-tight">{goal}</span>
               {minPriceLabel && (
                 <span

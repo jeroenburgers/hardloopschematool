@@ -5,6 +5,7 @@ import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/i18n"
 import { useScheduleFormContext } from "../schedule-form-context"
 import { StepHeader } from "../step-header"
+import { StepTrainingMethod } from "./step-training-method"
 import { StepPlanning } from "./step-planning"
 import { StepTrainingWeeks } from "./step-training-weeks"
 import { StepPlanningMode } from "./step-planning-mode"
@@ -33,6 +34,7 @@ export function Step6Planning({ showValidation = false }: Step6PlanningProps) {
 
   // Get validation errors for step 6
   const errors = {
+    trainingMethod: showValidation && !formData.trainingMethod,
     startDate: showValidation && !formData.startDate,
     targetDays: showValidation && !formData.targetDays,
     trainingWeeks: showValidation && !formData.trainingWeeks,
@@ -119,6 +121,22 @@ export function Step6Planning({ showValidation = false }: Step6PlanningProps) {
             )}
           </div>
         )}
+      </div>
+
+      {/* Training Method Selection - Last in step */}
+      <div className="space-y-4 sm:space-y-6">
+        <StepTrainingMethod
+          selectedMethod={formData.trainingMethod || ""}
+          goal={formData.goal}
+          focus={formData.focus}
+          targetTime={formData.targetTime || ""}
+          level={formData.level}
+          health={formData.health}
+          targetDays={formData.targetDays}
+          trainingWeeks={formData.trainingWeeks}
+          onMethodChange={(method) => updateFormData({ trainingMethod: method })}
+          showValidation={showValidation}
+        />
       </div>
     </div>
   )

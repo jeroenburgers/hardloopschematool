@@ -55,6 +55,7 @@ export function useScheduleForm({
       language: locale,
       gender: undefined,
       ageGroup: undefined,
+      trainingMethod: "",
     }
   })
 
@@ -318,8 +319,8 @@ export function useScheduleForm({
     if (step === 4) return !!formData.health
     if (step === 5) return !!formData.recentDistance && formData.recentTime.length >= 5
     if (step === 6) {
-      // StartDate and targetDays required, selectedDays required if Zelf inplannen
-      if (!formData.startDate || !formData.targetDays) return false
+      // TrainingMethod, startDate and targetDays required, selectedDays required if Zelf inplannen
+      if (!formData.trainingMethod || !formData.startDate || !formData.targetDays) return false
       if (
         formData.planningMode === "Zelf inplannen" &&
         formData.selectedDays.length !== formData.targetDays

@@ -10,6 +10,16 @@ export type Goal =
   | "Marathon (42,2 kilometer)"
   | "Conditie / Gezondheid"
 
+export type TrainingMethod =
+  | "Gebalanceerd"
+  | "80/20 (Polarized)"
+  | "MAF (lage hartslag)"
+  | "Run-Walk (Galloway)"
+  | "Jack Daniels (tempozones)"
+  | "Lydiard (fasegericht)"
+  | "Hansons"
+  | "Pfitzinger"
+
 export interface TrainingDay {
   day: string
   date?: string
@@ -57,4 +67,5 @@ export interface ScheduleFormData {
   language: "nl" | "en" | "de"
   gender?: "Man" | "Vrouw" | "Geen voorkeur"
   ageGroup?: string
+  trainingMethod?: TrainingMethod | ""
 }

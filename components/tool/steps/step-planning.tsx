@@ -39,14 +39,14 @@ export function StepPlanning({
 }: StepPlanningProps) {
   const mondayColsClass =
     mondayOptions.length >= 4
-      ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-4"
-      : "grid-cols-1 sm:grid-cols-3"
+      ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+      : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
   const targetDaysColsClass =
     planningOptions.length >= 5
-      ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5"
+      ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
       : planningOptions.length === 4
-        ? "grid-cols-2 sm:grid-cols-4"
-        : "grid-cols-2 sm:grid-cols-3"
+        ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 
   return (
     <div className="space-y-4 sm:space-y-6">
@@ -62,7 +62,11 @@ export function StepPlanning({
               onChange={() => onStartDateChange(monday.val)}
               error={errorStartDate && startDate !== monday.val}
             >
-              <span className="text-xs sm:text-sm font-semibold">{monday.label}</span>
+              <div className="flex items-center justify-start w-full min-h-[50px] sm:min-h-[55px] md:min-h-[60px]">
+                <span className="text-xs sm:text-xs md:text-sm font-semibold text-left">
+                  {monday.label}
+                </span>
+              </div>
             </RadioButton>
           ))}
         </div>
@@ -92,8 +96,10 @@ export function StepPlanning({
                 onChange={() => onTargetDaysChange(num)}
                 error={errorTargetDays && !isSelected}
               >
-                <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[60px]">
-                  <span className="text-xs sm:text-sm font-semibold">{num}x per week</span>
+                <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[55px] md:min-h-[60px]">
+                  <span className="text-xs sm:text-xs md:text-sm font-semibold text-left">
+                    {num}x per week
+                  </span>
                   {isRecommended && (
                     <span
                       className={`text-[9px] sm:text-[10px] font-medium uppercase tracking-wide mt-0.5 sm:mt-1 ${

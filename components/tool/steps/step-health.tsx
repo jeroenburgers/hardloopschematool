@@ -13,10 +13,10 @@ interface StepHealthProps {
 export function StepHealth({ selectedHealth, availableOptions, onHealthChange }: StepHealthProps) {
   const colsClass =
     availableOptions.length >= 5
-      ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5"
+      ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
       : availableOptions.length === 4
-        ? "grid-cols-2 sm:grid-cols-4"
-        : "grid-cols-2 sm:grid-cols-3"
+        ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 
   return (
     <div className={`grid gap-2 sm:gap-3 ${colsClass}`}>
@@ -26,7 +26,11 @@ export function StepHealth({ selectedHealth, availableOptions, onHealthChange }:
           checked={selectedHealth === option}
           onChange={() => onHealthChange(option)}
         >
-          <span className="text-xs sm:text-sm font-semibold">{option}</span>
+          <div className="flex items-center justify-start w-full min-h-[50px] sm:min-h-[55px] md:min-h-[60px]">
+            <span className="text-xs sm:text-xs md:text-sm font-semibold text-left break-words">
+              {option}
+            </span>
+          </div>
         </RadioButton>
       ))}
     </div>

@@ -16,9 +16,13 @@ export function getTrainingTypeMetadata(locale: Locale, typeKey: string, slug: s
     ]
   const appName = translations[locale]?.common?.appName || "Hardloopschematool"
   const trainingTypesSlug = routeSlugs[locale].trainingTypes
+  const defaultDescription =
+    translations[locale]?.seo?.trainingTypes?.description ||
+    translations[locale]?.common?.description ||
+    ""
 
   const title = typeData?.title ? `${typeData.title} - ${appName}` : `${appName} - Training Type`
-  const description = typeData?.description || typeData?.subtitle || ""
+  const description = typeData?.description || typeData?.subtitle || defaultDescription
   const url = `${baseUrl}/${trainingTypesSlug}/${slug}`
 
   const content: MetadataContent = {

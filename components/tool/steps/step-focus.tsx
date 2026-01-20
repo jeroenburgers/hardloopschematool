@@ -26,7 +26,9 @@ export function StepFocus({
           onChange={() => onFocusChange(option as "Recreatief" | "Prestatiegericht")}
           error={error && selectedFocus !== option}
         >
-          <span className="text-xs sm:text-sm font-semibold">{option}</span>
+          <div className="flex items-center justify-start w-full min-h-[50px] sm:min-h-[55px] md:min-h-[60px]">
+            <span className="text-xs sm:text-xs md:text-sm font-semibold text-left">{option}</span>
+          </div>
         </RadioButton>
       ))}
     </div>

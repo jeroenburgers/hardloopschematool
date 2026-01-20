@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useLanguage } from "../language-provider"
-import { LanguageToggle } from "../language-toggle"
 import { ModeToggle } from "../mode-toggle"
 import { getRoutes } from "@/lib/i18n/routes"
 

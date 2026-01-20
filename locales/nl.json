@@ -129,7 +129,7 @@
       "step2": {
         "number": "2",
         "title": "De Blauwdruk Matrix",
-        "description": "Wij gebruiken de 'best practices' van succesvolle lopers. We passen de <strong>80/20 methode</strong> toe: 80% op een tempo waarin je kunt praten, 20% waarin je jezelf uitdaagt. Dit is dé weg naar snelheid zonder pijntjes.",
+        "description": "In de Blauwdruk Matrix kiezen we samen de <strong>trainingsmethode</strong> die het best bij jou past. Jij geeft je voorkeuren door, en wij passen het schema daarop aan. De keuze is gebaseerd op je doel (afstand), je streeftijd, je huidige ervaring en frequentie, én op hoe lang je schema duurt en hoeveel dagen per week je kunt trainen. Zo maken we een schema dat haalbaar is, beter aansluit bij jouw leven, en waar je zelf invloed op hebt.",
         "quote": "Wij voorkomen de meest gemaakte fout: te veel, te snel. Onze methode bouwt een onverwoestbaar fundament.",
         "visualization": "Visualisatie: De optimale trainingsbalans"
       },
@@ -335,6 +335,139 @@
             "Deze lopen vormen 60-70% van je wekelijkse volume"
           ],
           "proTip": "Veel lopers doen hun Base Runs te snel. Als je na afloop uitgeput bent, was het geen Base Run."
+        },
+        "mafLowHeartRate": {
+          "slug": "maf-lage-hartslag",
+          "title": "MAF (lage hartslag)",
+          "subtitle": "Bouw je basis op met rustige, duurzame trainingen.",
+          "description": "MAF staat voor \"Maximum Aerobic Function\". Je traint voornamelijk op een lage hartslag (aerobe zone) om je uithoudingsvermogen te vergroten en blessures te voorkomen. Het tempo voelt vaak opvallend rustig, maar juist die consistentie levert op lange termijn veel winst op.",
+          "benefits": [
+            "Sterkere aerobe basis zonder overbelasting",
+            "Betere vetverbranding en efficiëntere energiehuishouding",
+            "Minder kans op pijntjes door lage intensiteit",
+            "Ideaal als je (weer) rustig wilt opbouwen"
+          ],
+          "howTo": [
+            "Bepaal je MAF-hartslag (grove richtlijn: 180 - leeftijd, met correcties)",
+            "Loop je duurlopen onder of rond die hartslag (Z2-achtig)",
+            "Plan 1-2 korte, rustige sessies extra i.p.v. intensiteit",
+            "Her-test elke 3-4 weken: zelfde hartslag → sneller tempo = progressie"
+          ],
+          "proTip": "Gebruik een hartslagmeter en accepteer dat je tempo in het begin laag is. Na een paar weken wordt dit vaak vanzelf sneller."
+        },
+        "polarized8020": {
+          "slug": "8020-polarized",
+          "title": "80/20 (Polarized)",
+          "subtitle": "80% rustig, 20% hard: slimme balans voor progressie.",
+          "description": "De 80/20 (polarized) methode verdeelt je training in veel rustige kilometers en een kleinere dosis hoge intensiteit. Door het grootste deel echt rustig te houden, kun je de 20% kwaliteitstraining beter uitvoeren en herstel je sneller.",
+          "benefits": [
+            "Meer progressie met minder vermoeidheid",
+            "Betere kwaliteit in tempo/interval trainingen",
+            "Duidelijke structuur: easy days easy, hard days hard",
+            "Past goed bij veel afstanden (5 km t/m marathon)"
+          ],
+          "howTo": [
+            "Houd ~80% van je looptijd in een rustige zone (praten moet kunnen)",
+            "Plan 1-2 intensieve sessies per week (tempo/interval) afhankelijk van niveau",
+            "Voeg een lange duurloop toe als je richting 21,1 km / 42,2 km traint",
+            "Check je verdeling: veel lopers maken 'rustig' per ongeluk te snel"
+          ],
+          "proTip": "Als je twijfelt: ga langzamer op je rustige dagen. Dat is meestal de snelste route naar fitter worden."
+        },
+        "runWalkGalloway": {
+          "slug": "run-walk-galloway",
+          "title": "Run-Walk (Galloway)",
+          "subtitle": "Hardlopen met wandelpauzes voor controle en duurzaamheid.",
+          "description": "De Run-Walk methode (Galloway) combineert hardlopen met geplande wandelmomenten, bijvoorbeeld 3 minuten lopen / 1 minuut wandelen. Dat houdt je belasting beheersbaar, helpt bij herstel en maakt lange afstanden haalbaar — vooral bij (her)start en langere doelen.",
+          "benefits": [
+            "Minder belasting op pezen en gewrichten",
+            "Constanter tempo en minder 'instorten' in de slotfase",
+            "Goed bij opbouw, herstart of vermoeidheidsgevoeligheid",
+            "Effectief voor lange duurlopen en marathondoelen"
+          ],
+          "howTo": [
+            "Kies een simpele verhouding (bijv. 3:1 of 4:1) en houd die strak aan",
+            "Start conservatief: liever te makkelijk dan te zwaar",
+            "Gebruik Run-Walk in lange duurlopen en op drukke weken",
+            "Bouw geleidelijk: langer lopen, korter wandelen, of hogere totale duur"
+          ],
+          "proTip": "Begin met wandelen vóórdat je moe bent. Het effect zit juist in preventief doseren."
+        },
+        "jackDanielsPaceZones": {
+          "slug": "jack-daniels-tempozones",
+          "title": "Jack Daniels (tempozones)",
+          "subtitle": "Train met nauwkeurige tempozones op basis van je niveau.",
+          "description": "De methode van Jack Daniels gebruikt trainingszones (E, M, T, I, R) die je afleidt uit je huidige prestatie. Daarmee train je heel gericht: rustig wanneer het rustig moet, en specifiek wanneer het hard moet.",
+          "benefits": [
+            "Zeer gericht trainen met duidelijke tempo’s",
+            "Goede opbouw richting PR-doelen",
+            "Balans tussen volume en kwaliteit",
+            "Helpt om 'te hard gaan' te voorkomen door concrete zones"
+          ],
+          "howTo": [
+            "Bepaal je zones via een recente race of test (VDOT-achtig)",
+            "Plan 1 kwaliteitssessie (T/I/R) per week en 1 lange duurloop (E/M)",
+            "Houd easy runs écht easy (E) voor herstel",
+            "Herbereken zones na duidelijke progressie (bijv. elke 4-6 weken)"
+          ],
+          "proTip": "Tempo’s voelen soms 'te langzaam' op goede dagen — blijf bij de zone. Consistentie wint van pieken."
+        },
+        "lydiardPeriodized": {
+          "slug": "lydiard-fasegericht",
+          "title": "Lydiard (fasegericht)",
+          "subtitle": "Periodisering: basis → kracht → snelheid → taper.",
+          "description": "Lydiard werkt met duidelijke fases. Je bouwt eerst een sterke aerobe basis (veel rustige kilometers), daarna voeg je heuvel/kracht toe, en pas later intensieve snelheid. Dit is vooral geschikt voor lopers die planmatig willen pieken.",
+          "benefits": [
+            "Sterke basis voordat intensiteit toeneemt",
+            "Logische periodisering richting een piekweek",
+            "Minder kans op overbelasting door gefaseerde opbouw",
+            "Ideaal voor middellange en lange afstanden"
+          ],
+          "howTo": [
+            "Fase 1: aerobe basis (veel Z2, lange duurloop)",
+            "Fase 2: heuvels/kracht (heuveltraining, strides, techniek)",
+            "Fase 3: snelheid/tempo (interval en threshold)",
+            "Fase 4: taper (volume omlaag, scherpte behouden)"
+          ],
+          "proTip": "Sla de basisfase niet over. Als je daar te kort op zit, voel je dat later in de zware weken."
+        },
+        "hansonsMethod": {
+          "slug": "hansons",
+          "title": "Hansons",
+          "subtitle": "Consistent volume met een relatief kortere lange duurloop.",
+          "description": "Hansons is een marathon- (en halve marathon-) aanpak met hoge consistentie: veel middel-lange trainingen door de week en een lange duurloop die vaak korter is dan bij klassieke schema’s. Het idee: je arriveert al vermoeid aan de lange duurloop en traint zo race-specifiek.",
+          "benefits": [
+            "Sterke wedstrijdspecifieke conditie door consistent volume",
+            "Minder extreem lange duurlopen dan traditionele marathonplannen",
+            "Veel structuur en herhaalbare weken",
+            "Past goed bij lopers met 4-6 trainingen per week"
+          ],
+          "howTo": [
+            "Plan meerdere middel-lange duurlopen door de week",
+            "Voeg 1 tempo-/threshold sessie toe en 1 snelheid/interval sessie",
+            "Houd herstelruns echt rustig",
+            "Bewaak herstel: slaap en rustige dagen zijn essentieel"
+          ],
+          "proTip": "Hansons voelt 'altijd een beetje vermoeid'. Dat is de bedoeling — maar als je pijntjes krijgt, schaal dan eerst intensiteit terug."
+        },
+        "pfitzingerMethod": {
+          "slug": "pfitzinger",
+          "title": "Pfitzinger",
+          "subtitle": "Hoger volume en kwaliteit voor ervaren marathonlopers.",
+          "description": "Pfitzinger (P&D) is een intensieve aanpak met relatief hoog weekvolume, lange duurlopen en stevige midweek runs. Het is bedoeld voor ervaren lopers die veel trainingsdagen aankunnen en gericht willen pieken richting een marathon.",
+          "benefits": [
+            "Zeer sterke aerobe ontwikkeling door volume",
+            "Race-specifieke prikkel via lange duurlopen en midweek ‘medium long runs’",
+            "Duidelijke progressie en opbouw naar piekweken",
+            "Geschikt voor prestatiegerichte marathon doelen"
+          ],
+          "howTo": [
+            "Zorg voor 5+ trainingsdagen per week voordat je start",
+            "Plan 1 lange duurloop, 1 medium long run en 1 kwaliteitssessie per week",
+            "Gebruik rustige dagen actief als herstel (E-tempo)",
+            "Neem deload-weken serieus om overtraining te voorkomen"
+          ],
+          "proTip": "Dit plan is niet ‘even proberen’. Als je herstel niet op orde is, kies liever een duurzamer methode."
         }
       }
     },
@@ -554,6 +687,57 @@
     "stepRecentSubtitle": "Het nulpunt voor jouw blueprint",
     "stepPlanningSubtitle": "Jouw agenda, jouw succes",
     "stepCheckoutSubtitle": "Laatste stap naar de finish",
+    "trainingMethod": {
+      "question": "Welke trainingsmethode wil je volgen?",
+      "subtitle": "Kies wat het beste bij jou past. Methodes die niet geschikt zijn, worden grijs weergegeven.",
+      "moreInfo": "Meer info",
+      "moreInfoAriaLabel": "Meer info over {method}",
+      "recommended": "Aanbevolen",
+      "error": "Selecteer een trainingsmethode",
+      "disabled": {
+        "tooBeginner": "Vereist meer ervaring",
+        "tooAdvanced": "Niet geschikt voor jouw niveau",
+        "tooShortDistance": "Niet geschikt voor korte afstanden",
+        "tooIntense": "Te intensief voor jouw huidige gezondheid",
+        "needsPerformance": "Vereist prestatiegericht doel",
+        "needsMoreDays": "Vereist meer trainingsdagen per week",
+        "recovering": "Niet geschikt tijdens herstel"
+      },
+      "methods": {
+        "gebalanceerd": {
+          "name": "Gebalanceerd",
+          "description": "Een evenwichtige mix van duurlopen, tempo en herstel. Geschikt voor de meeste lopers."
+        },
+        "eighty20polarized": {
+          "name": "80/20 (Polarized)",
+          "description": "80% rustige duurlopen, 20% intensieve training. Bewezen effectief voor prestatieverbetering."
+        },
+        "maflagehartslag": {
+          "name": "MAF (lage hartslag)",
+          "description": "Trainen op lage hartslag voor duurzaam uithoudingsvermogen. Ideaal voor beginners en herstel."
+        },
+        "runwalkgalloway": {
+          "name": "Run-Walk (Galloway)",
+          "description": "Afwisseling tussen hardlopen en wandelen. Perfect voor beginners en lange afstanden."
+        },
+        "jackdanielstempozones": {
+          "name": "Jack Daniels (tempozones)",
+          "description": "Gestructureerde tempozones voor precieze training. Voor gevorderde lopers met prestatiegericht doel."
+        },
+        "lydiardfasegericht": {
+          "name": "Lydiard (fasegericht)",
+          "description": "Fasegerichte opbouw met focus op basis, kracht en piek. Voor ervaren langeafstandlopers."
+        },
+        "hansons": {
+          "name": "Hansons",
+          "description": "Hoge trainingsfrequentie met focus op consistentie. Voor gevorderde marathonlopers."
+        },
+        "pfitzinger": {
+          "name": "Pfitzinger",
+          "description": "Zeer intensieve marathonmethode met hoge volume. Alleen voor ervaren lopers."
+        }
+      }
+    },
     "usps": {
       "safeTraining": {
         "title": "Blessurebewust",

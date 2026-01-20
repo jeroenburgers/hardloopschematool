@@ -58,10 +58,10 @@ export function StepTrainingWeeks({
   const errorMessage = toolTranslations.checkout.errorWeeks
   const weeksColsClass =
     availableOptions.length >= 5
-      ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-5"
+      ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-5"
       : availableOptions.length === 4
-        ? "grid-cols-2 sm:grid-cols-4"
-        : "grid-cols-2 sm:grid-cols-3"
+        ? "grid-cols-1 sm:grid-cols-2 lg:grid-cols-4"
+        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
 
   return (
     <div className="space-y-3 sm:space-y-4">
@@ -98,9 +98,9 @@ export function StepTrainingWeeks({
               onChange={() => onWeeksChange(weeks)}
               error={error && !isSelected}
             >
-              <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[60px]">
+              <div className="flex flex-col items-start justify-center w-full min-h-[50px] sm:min-h-[55px] md:min-h-[60px]">
                 <div className="flex items-center justify-between gap-2 sm:gap-3 w-full">
-                  <span className="text-xs sm:text-sm font-semibold">
+                  <span className="text-xs sm:text-xs md:text-sm font-semibold">
                     {weeks} {weeksLabel}
                   </span>
                   {formattedPrice && (
