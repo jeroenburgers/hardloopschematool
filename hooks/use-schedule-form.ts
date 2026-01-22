@@ -3,7 +3,13 @@
 import { useState, useMemo, useEffect, useRef } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/i18n"
-import type { ScheduleFormData, Level, Goal as GoalType, PersonalInfo } from "@/lib/types/schedule"
+import type {
+  ScheduleFormData,
+  Level,
+  Goal as GoalType,
+  PersonalInfo,
+  TrainingMethod,
+} from "@/lib/types/schedule"
 
 /**
  * Custom hook for managing schedule form state
@@ -68,6 +74,7 @@ export function useScheduleForm({
     const rawWeeks = sessionStorage.getItem("initialTrainingWeeks")
     const parsedWeeks = rawWeeks ? Number(rawWeeks) : NaN
     const storedWeeks = Number.isFinite(parsedWeeks) ? parsedWeeks : null
+    const storedTrainingMethod = sessionStorage.getItem("initialTrainingMethod")
 
     if (storedGoal && !formData.goal && !hasAppliedInitialGoal.current) {
       setFormData((prev) => ({ ...prev, goal: storedGoal }))
@@ -87,6 +94,11 @@ export function useScheduleForm({
     ) {
       setFormData((prev) => ({ ...prev, trainingWeeks: storedWeeks }))
       sessionStorage.removeItem("initialTrainingWeeks")
+    }
+
+    if (storedTrainingMethod && !formData.trainingMethod) {
+      setFormData((prev) => ({ ...prev, trainingMethod: storedTrainingMethod as TrainingMethod }))
+      sessionStorage.removeItem("initialTrainingMethod")
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

@@ -25,7 +25,6 @@ import { Step5Performance } from "./steps/step-5-performance"
 import { Step6Planning } from "./steps/step-6-planning"
 import { Step7Checkout } from "./steps/step-7-checkout"
 import { useAnalytics } from "@/hooks/use-analytics"
-import { generateScheduleFromFormData } from "@/lib/services/schedule/gemini-service"
 
 /**
  * Schedule Tool Orchestrator
@@ -112,22 +111,11 @@ function ScheduleToolContent() {
     }
 
     setLoading(true)
-    try {
-      const schedule = await generateScheduleFromFormData(formData)
-      // TODO: Handle successful schedule generation (e.g., navigate to results page, show schedule, etc.)
-      console.log("Generated schedule:", schedule)
-      // For now, show preview modal as fallback
-      setIsPreviewOpen(true)
-      trackModalOpened()
-    } catch (error) {
-      // TODO: Show error message to user
-      console.error("Error generating schedule:", error)
-      // For now, show preview modal as fallback
-      setIsPreviewOpen(true)
-      trackModalOpened()
-    } finally {
-      setLoading(false)
-    }
+    // TODO: Handle schedule generation (e.g., navigate to results page, show schedule, etc.)
+    // For now, show preview modal
+    setIsPreviewOpen(true)
+    trackModalOpened()
+    setLoading(false)
   }
 
   const handleNext = () => {

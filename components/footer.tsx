@@ -34,12 +34,19 @@ export function Footer() {
     { href: routes.trainingTypes, label: t("footer.navigation.trainingTypes") },
   ]
 
+  const schemaItems = [
+    { href: "/5km-hardloopschema", label: "5km Hardloopschema" },
+    { href: "/10km-hardloopschema", label: "10km Hardloopschema" },
+    { href: "/5km-pr-hardloopschema", label: "5km PR Schema" },
+    { href: "/marathon-hardloopschema", label: "Marathon Schema" },
+  ]
+
   return (
     <footer className="bg-gray-900 dark:bg-zinc-950 text-gray-400 dark:text-zinc-300 py-16 border-t border-gray-800 dark:border-zinc-800 no-print">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           {/* Logo and Description */}
-          <div className="col-span-1 md:col-span-2">
+          <div>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center">
                 <Zap className="w-5 h-5 text-white" fill="currentColor" strokeWidth={2} />
@@ -58,6 +65,25 @@ export function Footer() {
             </h4>
             <ul className="space-y-4 text-sm font-medium">
               {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="hover:text-orange-500 dark:hover:text-orange-500 transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Example Schedules */}
+          <div>
+            <h4 className="text-white dark:text-zinc-100 font-bold mb-6">
+              {t("footer.schedules.title") || "Voorbeeldschema's"}
+            </h4>
+            <ul className="space-y-4 text-sm font-medium">
+              {schemaItems.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}

@@ -96,10 +96,14 @@
     "nav": {
       "method": "Onze methode",
       "trainingTypes": "Trainingsvormen",
-      "createSchedule": "Schema maken"
+      "createSchedule": "Schema maken",
+      "exampleSchedules": "Voorbeeldschema's"
     }
   },
   "footer": {
+    "schedules": {
+      "title": "Voorbeeldschema's"
+    },
     "description": "Wij maken professioneel hardloopadvies toegankelijk voor iedereen door middel van geavanceerde methodieken.",
     "navigation": {
       "title": "Navigatie",
@@ -154,6 +158,7 @@
       }
     },
     "trainingTypes": {
+      "badge": "Trainingsbibliotheek",
       "title": "Onze",
       "titleHighlight": "Trainingsvormen",
       "description": "Geen enkele training is hetzelfde. Leer meer over de verschillende bouwstenen van jouw persoonlijke schema.",
@@ -475,6 +480,12 @@
       "title": "Hardloopschema maken",
       "description": "Maak nu je eigen gepersonaliseerde hardloopschema.",
       "content": "Vul het formulier in om je eigen gepersonaliseerde hardloopschema te genereren. We houden rekening met je doelen, niveau en beschikbaarheid."
+    },
+    "exampleSchedules": {
+      "badge": "Voorbeelden",
+      "title": "Gratis Hardloopschema",
+      "titleHighlight": "Voorbeelden",
+      "description": "Bekijk gratis voorbeelden van professionele hardloopschema's voor 5km, 10km en marathon. Download complete trainingsschema's met weekoverzicht, trainingsdetails en coach strategie. Perfect als startpunt voor jouw hardloopdoelen."
     }
   },
   "language": {
