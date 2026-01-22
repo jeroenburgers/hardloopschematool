@@ -42,7 +42,7 @@ function ScheduleToolContent() {
   const { trackStep, trackModalOpened, trackModalClosed, trackCompleted } = useAnalytics()
 
   const [currentStep, setCurrentStep] = useState(1)
-  const loading = false
+  const [loading, setLoading] = useState(false)
   const [showValidation, setShowValidation] = useState(false)
   const [isPreviewOpen, setIsPreviewOpen] = useState(false)
   const trackedStepsRef = useRef<Set<number>>(new Set())
@@ -104,10 +104,18 @@ function ScheduleToolContent() {
     }
   }, [currentStep, getLogicalStep, steps, shouldSkipStep5, trackStep, trackCompleted])
 
-  const handleGenerate = () => {
-    // Tool is in preview: show informative modal instead of generating output.
+  const handleGenerate = async () => {
+    if (!isValid) {
+      setShowValidation(true)
+      return
+    }
+
+    setLoading(true)
+    // TODO: Handle schedule generation (e.g., navigate to results page, show schedule, etc.)
+    // For now, show preview modal
     setIsPreviewOpen(true)
     trackModalOpened()
+    setLoading(false)
   }
 
   const handleNext = () => {

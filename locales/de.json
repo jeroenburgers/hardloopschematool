@@ -96,7 +96,8 @@
     "nav": {
       "method": "Unsere Methode",
       "trainingTypes": "Trainingsformen",
-      "createSchedule": "Plan erstellen"
+      "createSchedule": "Plan erstellen",
+      "exampleSchedules": "Beispielpläne"
     }
   },
   "footer": {
@@ -106,6 +107,9 @@
       "home": "Startseite",
       "method": "Unsere Methode",
       "trainingTypes": "Trainingsformen"
+    },
+    "schedules": {
+      "title": "Beispielpläne"
     },
     "copyright": "© 2026 Hardloopschematool.nl. Alle Rechte vorbehalten."
   },
@@ -154,6 +158,7 @@
       }
     },
     "trainingTypes": {
+      "badge": "Trainingsbibliothek",
       "title": "Unsere",
       "titleHighlight": "Trainingsformen",
       "description": "Kein Training ist gleich. Erfahren Sie mehr über die verschiedenen Bausteine Ihres persönlichen Plans.",
@@ -475,6 +480,12 @@
       "title": "Plan erstellen",
       "description": "Erstellen Sie jetzt Ihren eigenen personalisierten Laufplan.",
       "content": "Füllen Sie das Formular aus, um Ihren eigenen personalisierten Laufplan zu erstellen. Wir berücksichtigen Ihre Ziele, Ihr Niveau und Ihre Verfügbarkeit."
+    },
+    "exampleSchedules": {
+      "badge": "Beispiele",
+      "title": "Kostenlose Laufpläne",
+      "titleHighlight": "Beispiele",
+      "description": "Sehen Sie sich kostenlose Beispiele für professionelle Laufpläne für 5 km, 10 km und Marathon an. Laden Sie vollständige Trainingspläne mit Wochenübersicht, Trainingsdetails und Trainerstrategie herunter. Perfekt als Ausgangspunkt für Ihre Laufziele."
     }
   },
   "language": {

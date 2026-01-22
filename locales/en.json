@@ -96,7 +96,8 @@
     "nav": {
       "method": "Our method",
       "trainingTypes": "Training types",
-      "createSchedule": "Create schedule"
+      "createSchedule": "Create schedule",
+      "exampleSchedules": "Example schedules"
     }
   },
   "footer": {
@@ -107,6 +108,9 @@
       "method": "Our Method",
       "trainingTypes": "Training Types",
       "trainingTypes": "Training Types"
+    },
+    "schedules": {
+      "title": "Example Schedules"
     },
     "copyright": "© 2026 Hardloopschematool.nl. All rights reserved."
   },
@@ -155,6 +159,7 @@
       }
     },
     "trainingTypes": {
+      "badge": "Training Library",
       "title": "Our",
       "titleHighlight": "Training Types",
       "description": "No training is the same. Learn more about the different building blocks of your personal schedule.",
@@ -476,6 +481,12 @@
       "title": "Create schedule",
       "description": "Create your own personalized running schedule now.",
       "content": "Fill in the form to generate your own personalized running schedule. We take into account your goals, level, and availability."
+    },
+    "exampleSchedules": {
+      "badge": "Examples",
+      "title": "Free Running Schedule",
+      "titleHighlight": "Examples",
+      "description": "View free examples of professional running schedules for 5km, 10km and marathon. Download complete training schedules with weekly overview, training details and coach strategy. Perfect as a starting point for your running goals."
     }
   },
   "language": {

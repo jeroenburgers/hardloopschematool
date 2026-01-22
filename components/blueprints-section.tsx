@@ -5,11 +5,16 @@ import { useCallback } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { routeSlugs } from "@/lib/i18n/routes"
 import type { Goal, Level } from "@/lib/types/schedule"
+import { schedule5km } from "@/lib/data/example-schedules/5km-schedule"
+import { schedule10km } from "@/lib/data/example-schedules/10km-schedule"
+import { schedule5kmPr } from "@/lib/data/example-schedules/5km-pr-schedule"
+import { scheduleMarathon } from "@/lib/data/example-schedules/marathon-schedule"
 
 type BlueprintPreset = {
   goal: Goal
   level: Level
   trainingWeeks: number
+  trainingMethod?: string
 }
 
 function applyBlueprintPreset(preset: BlueprintPreset) {
@@ -17,6 +22,9 @@ function applyBlueprintPreset(preset: BlueprintPreset) {
   sessionStorage.setItem("initialGoal", preset.goal)
   sessionStorage.setItem("initialLevel", preset.level)
   sessionStorage.setItem("initialTrainingWeeks", String(preset.trainingWeeks))
+  if (preset.trainingMethod) {
+    sessionStorage.setItem("initialTrainingMethod", preset.trainingMethod)
+  }
 }
 
 export function BlueprintsSection() {
@@ -24,56 +32,91 @@ export function BlueprintsSection() {
   const { t, locale } = useLanguage()
 
   const createScheduleHref = `/${routeSlugs[locale].createSchedule}`
-  const methodHref = `/${routeSlugs[locale].method}`
 
   const blueprints = [
     {
       key: "startToRun5k",
       tag: t("home.blueprints.tagMostChosen"),
       level: "Starter" as Level,
-      title: t("home.blueprints.items.startToRun5k.title"),
-      description: t("home.blueprints.items.startToRun5k.description"),
-      weeks: 10,
+      title: schedule5km.title,
+      usps: [
+        "Gebalanceerde methode voor beginners",
+        "3 trainingen per week",
+        "10 weken gestructureerde opbouw",
+      ],
+      weeks: schedule5km.summary.totalWeeks,
       success: t("home.blueprints.items.startToRun5k.success"),
-      preset: { goal: "5 kilometer" as Goal, level: "Starter" as Level, trainingWeeks: 10 },
+      preset: {
+        goal: "5 kilometer" as Goal,
+        level: "Starter" as Level,
+        trainingWeeks: schedule5km.summary.totalWeeks,
+        trainingMethod: "Gebalanceerd",
+      },
       showDetails: true,
+      schemaHref: "/5km-hardloopschema",
     },
     {
       key: "fast5kPr",
       tag: undefined,
       level: "Gevorderd" as Level,
-      title: t("home.blueprints.items.fast5kPr.title"),
-      description: t("home.blueprints.items.fast5kPr.description"),
-      weeks: 8,
+      title: schedule5kmPr.title,
+      usps: [
+        "Jack Daniels tempozones methodiek",
+        "12 weken gerichte PR-training",
+        "Systematische VO2-max verbetering",
+      ],
+      weeks: schedule5kmPr.summary.totalWeeks,
       success: t("home.blueprints.items.fast5kPr.success"),
-      preset: { goal: "5 kilometer" as Goal, level: "Gevorderd" as Level, trainingWeeks: 8 },
+      preset: {
+        goal: "5 kilometer" as Goal,
+        level: "Gevorderd" as Level,
+        trainingWeeks: schedule5kmPr.summary.totalWeeks,
+        trainingMethod: "Jack Daniels (tempozones)",
+      },
       showDetails: true,
+      schemaHref: "/5km-pr-hardloopschema",
     },
     {
       key: "debut10k",
       tag: t("home.blueprints.tagMostChosen"),
       level: "Gemiddeld" as Level,
-      title: t("home.blueprints.items.debut10k.title"),
-      description: t("home.blueprints.items.debut10k.description"),
-      weeks: 12,
+      title: schedule10km.title,
+      usps: [
+        "Gebalanceerde progressieve opbouw",
+        "10 weken naar je eerste 10km",
+        "3 trainingen per week",
+      ],
+      weeks: schedule10km.summary.totalWeeks,
       success: t("home.blueprints.items.debut10k.success"),
-      preset: { goal: "10 kilometer" as Goal, level: "Gemiddeld" as Level, trainingWeeks: 12 },
+      preset: {
+        goal: "10 kilometer" as Goal,
+        level: "Gemiddeld" as Level,
+        trainingWeeks: schedule10km.summary.totalWeeks,
+        trainingMethod: "Gebalanceerd",
+      },
       showDetails: true,
+      schemaHref: "/10km-hardloopschema",
     },
     {
       key: "fullMarathon",
       tag: undefined,
       level: "Expert" as Level,
-      title: t("home.blueprints.items.fullMarathon.title"),
-      description: t("home.blueprints.items.fullMarathon.description"),
-      weeks: 16,
+      title: scheduleMarathon.title,
+      usps: [
+        "16 weken complete voorbereiding",
+        "4-5 trainingen per week",
+        "Gebalanceerde volume-opbouw",
+      ],
+      weeks: scheduleMarathon.summary.totalWeeks,
       success: t("home.blueprints.items.fullMarathon.success"),
       preset: {
         goal: "Marathon (42,2 kilometer)" as Goal,
         level: "Expert" as Level,
-        trainingWeeks: 16,
+        trainingWeeks: scheduleMarathon.summary.totalWeeks,
+        trainingMethod: "Gebalanceerd",
       },
       showDetails: true,
+      schemaHref: "/marathon-hardloopschema",
     },
   ] as const
 
@@ -115,12 +158,22 @@ export function BlueprintsSection() {
                 </span>
               </div>
 
-              <h3 className="text-xl font-bold text-zinc-950 dark:text-zinc-50 mb-2 leading-tight">
+              <h3 className="text-xl font-bold text-zinc-950 dark:text-zinc-50 mb-4 leading-tight">
                 {bp.title}
               </h3>
-              <p className="text-sm text-zinc-500 dark:text-zinc-300 font-medium leading-relaxed mb-6 flex-1">
-                {bp.description}
-              </p>
+              <ul className="space-y-2 mb-6 flex-1 min-h-[72px]">
+                {bp.usps.map((usp, index) => (
+                  <li
+                    key={index}
+                    className="flex items-start gap-2 text-sm text-zinc-600 dark:text-zinc-300"
+                  >
+                    <span className="text-orange-600 dark:text-orange-500 mt-0.5 flex-shrink-0">
+                      •
+                    </span>
+                    <span className="font-medium">{usp}</span>
+                  </li>
+                ))}
+              </ul>
 
               <div className="space-y-3 mb-8">
                 <div className="flex justify-between items-center text-[10px] font-semibold tracking-wide text-zinc-500 dark:text-zinc-300 border-b border-zinc-200/70 dark:border-zinc-800/70 pb-2">
@@ -145,9 +198,9 @@ export function BlueprintsSection() {
                 >
                   {t("home.blueprints.primaryCta")}
                 </button>
-                {bp.showDetails && (
+                {bp.showDetails && bp.schemaHref && (
                   <a
-                    href={methodHref}
+                    href={bp.schemaHref}
                     className="block w-full text-center py-4 bg-white dark:bg-zinc-950 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 rounded-2xl font-semibold text-sm hover:text-zinc-950 dark:hover:text-zinc-50 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-zinc-950"
                   >
                     {t("home.blueprints.secondaryCta")}
