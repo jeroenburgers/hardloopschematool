@@ -20,14 +20,41 @@ export type TrainingMethod =
   | "Hansons"
   | "Pfitzinger"
 
+export interface WorkoutDetails {
+  warmup?: { distance?: string; duration?: string; description: string }
+  interval?: {
+    reps: number
+    distancePerRep?: string
+    durationPerRep?: string
+    targetPace: string
+    recovery: string
+  }
+  mainBody?: {
+    distance?: string
+    duration?: string
+    targetPace?: string
+    description: string
+  }
+  strides?: { count: number; description: string }
+  cooldown?: { distance?: string; duration?: string; description: string }
+
+  // De finishing touches:
+  technicalData: {
+    rpe: number // Schaal 1-10 (gevoelswaarde)
+    trainingEffect: string // bijv. "VO2-Max verbetering"
+    surface?: string // bijv. "Baan", "Weg", "Bos"
+  }
+}
+
 export interface TrainingDay {
   day: string
   date?: string
   type: string
   description: string
   intensity: string
-  duration?: string
-  distance?: string
+  duration: string // Always required for route planning
+  distance: string // Always required for route planning
+  workoutDetails?: WorkoutDetails
 }
 
 export interface TrainingWeek {
