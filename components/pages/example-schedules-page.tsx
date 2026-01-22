@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { useMemo, useCallback } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useLanguage } from "@/components/language-provider"

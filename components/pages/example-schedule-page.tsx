@@ -21,8 +21,6 @@ import {
   Play,
 } from "lucide-react"
 import type { RunningSchedule, TrainingDay } from "@/lib/types/schedule"
-import { useLanguage } from "@/components/language-provider"
-import { getRoutes } from "@/lib/i18n/routes"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
@@ -76,7 +74,6 @@ function InteractiveWeekView({ schedule }: { schedule: RunningSchedule }) {
 
     const pages: (number | "ellipsis")[] = []
     const current = currentWeekIndex
-    const showEllipsis = totalWeeks > maxVisible
 
     if (current < 3) {
       // Show first pages
@@ -475,13 +472,6 @@ function WorkoutDetailsCard({ day }: { day: TrainingDay }) {
   ].filter(Boolean)
   const lastItem = items[items.length - 1]
 
-  const getRpeColor = (rpe: number) => {
-    if (rpe <= 3) return "bg-green-500"
-    if (rpe <= 5) return "bg-yellow-500"
-    if (rpe <= 7) return "bg-orange-500"
-    return "bg-orange-600"
-  }
-
   return (
     <div className="pt-6">
       <div className="space-y-0">
@@ -681,15 +671,7 @@ function TechnicalDataFooter({
   )
 }
 
-function InteractiveHero({
-  schedule,
-  createScheduleHref,
-  seoH1,
-}: {
-  schedule: RunningSchedule
-  createScheduleHref: string
-  seoH1: string
-}) {
+function InteractiveHero({ schedule, seoH1 }: { schedule: RunningSchedule; seoH1: string }) {
   const [currentStep, setCurrentStep] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
@@ -945,9 +927,6 @@ function InteractiveHero({
 }
 
 export function ExampleSchedulePage({ schedule }: ExampleSchedulePageProps) {
-  const { locale } = useLanguage()
-  const routes = getRoutes(locale)
-  const createScheduleHref = `/${routes.createSchedule}`
   const [viewMode, setViewMode] = useState<"interactive" | "list">("interactive")
 
   // Determine SEO-friendly H1 text based on schedule
@@ -977,11 +956,7 @@ export function ExampleSchedulePage({ schedule }: ExampleSchedulePageProps) {
           </div>
 
           {/* Interactive Hero Wizard */}
-          <InteractiveHero
-            schedule={schedule}
-            createScheduleHref={createScheduleHref}
-            seoH1={seoH1}
-          />
+          <InteractiveHero schedule={schedule} seoH1={seoH1} />
 
           {/* Weeks Section - Interactive or List View */}
           <section className="mt-12 sm:mt-24">
