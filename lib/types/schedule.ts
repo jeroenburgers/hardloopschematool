@@ -61,11 +61,35 @@ export interface TrainingWeek {
   weekNumber: number
   focus: string
   days: TrainingDay[]
+  weekSummary: {
+    totalDistance: string // Totale afstand van alle trainingen in deze week
+    totalDuration: string // Totale duur van alle trainingen in deze week
+    trainingDays: number // Aantal trainingsdagen in deze week
+  }
+}
+
+export interface RunnerProfile {
+  experience: string // Ervaring/niveau (bijv. "Starter", "Gemiddeld", "Gevorderd")
+  currentFitness: string // Huidige fitheidssituatie gebaseerd op recente prestaties
+  healthStatus: string // Blessurestatus en belastbaarheid
+  trainingHistory: string // Huidige trainingsfrequentie en achtergrond
+  strengths: string[] // Sterke punten van de loper
+  considerations: string[] // Aandachtspunten en beperkingen
+  motivation: string // Doel en motivatie
 }
 
 export interface RunningSchedule {
   title: string
   overview: string
+  runnerProfile: RunnerProfile // Profiel van de loper gebaseerd op input
+  summary: {
+    goal: string // Het doel van het schema (bijv. "10 kilometer", "Marathon")
+    targetDistance: string // De doelafstand (bijv. "10 km", "42.2 km")
+    duration: string // Aantal weken (bijv. "12 weken")
+    trainingMethod: string // De gebruikte trainingsmethode
+    totalWeeks: number // Totaal aantal weken
+    coachStrategy: string // De strategie achter het schema (opbouw, focus, aanpak)
+  }
   weeks: TrainingWeek[]
 }
 
