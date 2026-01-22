@@ -25,6 +25,7 @@ import { Step5Performance } from "./steps/step-5-performance"
 import { Step6Planning } from "./steps/step-6-planning"
 import { Step7Checkout } from "./steps/step-7-checkout"
 import { useAnalytics } from "@/hooks/use-analytics"
+import { generateScheduleFromFormData } from "@/lib/services/schedule/gemini-service"
 
 /**
  * Schedule Tool Orchestrator
@@ -42,7 +43,7 @@ function ScheduleToolContent() {
   const { trackStep, trackModalOpened, trackModalClosed, trackCompleted } = useAnalytics()
 
   const [currentStep, setCurrentStep] = useState(1)
-  const loading = false
+  const [loading, setLoading] = useState(false)
   const [showValidation, setShowValidation] = useState(false)
   const [isPreviewOpen, setIsPreviewOpen] = useState(false)
   const trackedStepsRef = useRef<Set<number>>(new Set())
@@ -104,10 +105,29 @@ function ScheduleToolContent() {
     }
   }, [currentStep, getLogicalStep, steps, shouldSkipStep5, trackStep, trackCompleted])
 
-  const handleGenerate = () => {
-    // Tool is in preview: show informative modal instead of generating output.
-    setIsPreviewOpen(true)
-    trackModalOpened()
+  const handleGenerate = async () => {
+    if (!isValid) {
+      setShowValidation(true)
+      return
+    }
+
+    setLoading(true)
+    try {
+      const schedule = await generateScheduleFromFormData(formData)
+      // TODO: Handle successful schedule generation (e.g., navigate to results page, show schedule, etc.)
+      console.log("Generated schedule:", schedule)
+      // For now, show preview modal as fallback
+      setIsPreviewOpen(true)
+      trackModalOpened()
+    } catch (error) {
+      // TODO: Show error message to user
+      console.error("Error generating schedule:", error)
+      // For now, show preview modal as fallback
+      setIsPreviewOpen(true)
+      trackModalOpened()
+    } finally {
+      setLoading(false)
+    }
   }
 
   const handleNext = () => {

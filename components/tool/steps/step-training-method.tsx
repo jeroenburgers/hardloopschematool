@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useMemo, useState, type MouseEvent, type KeyboardEvent } from "react"
 import { useLanguage } from "@/components/language-provider"
 import { translations } from "@/lib/i18n"
 import type { TrainingMethod, Goal, Level } from "@/lib/types/schedule"
@@ -248,7 +248,7 @@ export function StepTrainingMethod({
       .replace(/^gebalanceerd/, "gebalanceerd")
   }
 
-  const openMethodModal = (method: TrainingMethod, e: React.MouseEvent) => {
+  const openMethodModal = (method: TrainingMethod, e: MouseEvent | KeyboardEvent) => {
     e.stopPropagation()
     setSelectedMethodForModal(method)
   }
@@ -306,9 +306,16 @@ export function StepTrainingMethod({
                     </span>
                   )}
                   {option.enabled && (
-                    <button
-                      type="button"
+                    <span
                       onClick={(e) => openMethodModal(option.value, e)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault()
+                          openMethodModal(option.value, e)
+                        }
+                      }}
+                      role="button"
+                      tabIndex={0}
                       className={`mt-1 sm:mt-1.5 text-[10px] min-[375px]:text-[11px] sm:text-[11px] md:text-xs font-semibold underline underline-offset-4 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/60 focus-visible:ring-offset-2 whitespace-nowrap flex-shrink-0 transition-colors ${
                         isSelected
                           ? "text-zinc-300 hover:text-white dark:text-zinc-300 dark:hover:text-white decoration-zinc-500 dark:decoration-zinc-500 hover:decoration-zinc-300 dark:hover:decoration-zinc-300"
@@ -317,7 +324,7 @@ export function StepTrainingMethod({
                       aria-label={moreInfoAriaLabel.replace("{method}", methodLabel)}
                     >
                       {moreInfoLabel}
-                    </button>
+                    </span>
                   )}
                 </div>
               </RadioButton>
