@@ -39,7 +39,7 @@ function ScheduleToolContent() {
   const { locale } = useLanguage()
   const toolTranslations = translations[locale].tool
   const { formData, isValidStep } = useScheduleFormContext()
-  const { trackStep, trackModalOpened, trackModalClosed, trackCompleted } = useAnalytics()
+  const { trackStep, trackModalClosed, trackCompleted } = useAnalytics()
 
   const [currentStep, setCurrentStep] = useState(1)
   const [loading, setLoading] = useState(false)
@@ -111,11 +111,37 @@ function ScheduleToolContent() {
     }
 
     setLoading(true)
-    // TODO: Handle schedule generation (e.g., navigate to results page, show schedule, etc.)
-    // For now, show preview modal
-    setIsPreviewOpen(true)
-    trackModalOpened()
-    setLoading(false)
+    try {
+      const response = await fetch("/api/generate-schedule", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.error || "Failed to generate schedule")
+      }
+
+      const data = await response.json()
+      if (data.success && data.scheduleId) {
+        // Redirect to the schedule page
+        window.location.href = `/schema/${data.scheduleId}`
+      } else {
+        throw new Error("Invalid response from server")
+      }
+    } catch (error) {
+      console.error("Error generating schedule:", error)
+      setLoading(false)
+      // Show error to user
+      alert(
+        error instanceof Error
+          ? error.message
+          : "Er is een fout opgetreden bij het genereren van het schema.",
+      )
+    }
   }
 
   const handleNext = () => {

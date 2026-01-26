@@ -1,9 +1,13 @@
+import { GoogleGenAI } from "@google/genai"
 import type { IScheduleService } from "./schedule-service-interface"
 import type { RunningSchedule, ScheduleFormData } from "@/lib/types/schedule"
 
+const GEMINI_API_KEY = "AIzaSyAsL1FU40_hJmA46FhjzSvt-2PGBIHEPX4"
+const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY })
+
 /**
  * Build a structured prompt for Gemini using all schedule form values.
- * No API call is made here; this helper just prepares the input payload.
+ * This is the comprehensive prompt builder from the remote commit.
  */
 export function buildGeminiPrompt(formData: ScheduleFormData): string {
   const format = (value: string | number | undefined) =>
@@ -45,7 +49,7 @@ export function buildGeminiPrompt(formData: ScheduleFormData): string {
     ],
     "Jack Daniels (tempozones)": [
       "Trainingstypes: Easy (E), Threshold (T), Interval (I), Repetition (R), Marathon (M).",
-      "Max 2 kwaliteitstrainingen per week; tempo’s strikt berekenen en volgen.",
+      "Max 2 kwaliteitstrainingen per week; tempo's strikt berekenen en volgen.",
       "Verdeling: ±70% Easy, ±30% kwaliteit.",
       "Opbouw: eerst Threshold-volume, daarna Interval en Repetition toevoegen.",
       "Taper: volume omlaag, intensiteit behouden.",
@@ -136,6 +140,18 @@ export function buildGeminiPrompt(formData: ScheduleFormData): string {
     "- Geef altijd een concrete waarde (bijv. '45 minuten', '8 kilometer') of een range (bijv. '40-50 minuten', '7-9 km').",
     "- Voor intervaltrainingen: geef de totale duur en totale afstand van de hele training (inclusief warmup en cooldown).",
     "",
+    "KRITIEK - Intensity waarden (VERPLICHT):",
+    "- De 'intensity' veld MOET exact één van deze waarden zijn (in logische volgorde): 'Zeer licht', 'Licht', 'Matig', 'Zwaar', 'Zeer zwaar', 'Piek'.",
+    "- Gebruik GEEN andere waarden zoals 'lauw', 'laag', 'gemiddeld', 'hoog', 'maximaal', etc.",
+    "- Mapping richtlijnen (in oplopende intensiteit):",
+    "  * Zeer licht: Actief herstel, zeer rustige wandel/loop, RPE 1-2",
+    "  * Licht: Rustige duurloop, Zone 1-2, praattempo, RPE 3-4",
+    "  * Matig: Gematigde inspanning, tempo-run, Zone 3, RPE 5-6",
+    "  * Zwaar: Intensieve training, interval, tempo, Zone 4, RPE 7-8",
+    "  * Zeer zwaar: Zeer intensieve training, zware intervallen, Zone 5, RPE 9",
+    "  * Piek: Maximale inspanning, wedstrijd, all-out, RPE 10",
+    "- Controleer ALTIJD dat je exact één van de 6 toegestane waarden gebruikt.",
+    "",
     "KRITIEK - Consistentie tussen duration/distance en workoutDetails:",
     "- De 'duration' en 'distance' op trainingniveau MOETEN overeenkomen met de som van alle duration/distance waarden in workoutDetails.",
     "- Als workoutDetails warmup (5 min), interval (20 min), en cooldown (5 min) bevat, dan moet duration = '30 minuten' (5+20+5).",
@@ -202,11 +218,8 @@ export function buildGeminiPrompt(formData: ScheduleFormData): string {
     "- WeekNumber moet sequentieel zijn: 1, 2, 3, 4, ... tot en met totalWeeks.",
     "- Geen samenvattingen of voorbeelden - genereer elke week volledig met alle dagen.",
     "",
-    "WeekSummary per week (verplicht voor elke week):",
-    '- "totalDistance": som van alle afstanden in die week (bijv. "32 km", "45-50 km").',
-    '- "totalDuration": som van alle duur in die week (bijv. "4.5 uur", "5-6 uur").',
-    '- "trainingDays": aantal trainingsdagen in die week (als nummer).',
-    "- Bereken weekSummary door alle trainingen in die week op te tellen.",
+    "- Titel in de gekozen taal; maak het kort maar specifiek voor het doel.",
+    "- Overview: korte samenvatting (max 3 zinnen) met de gekozen methode en belangrijkste accenten.",
     "- Houd rekening met herstel bij pijntjes/herstellend/snel vermoeid; vermijd te veel intensiteit.",
     "- Respecteer max aantal dagen per week en totale weken; voorkom overbelasting.",
     "- Pas intensiteit aan op ervaring en doel (Recreatief vs Prestatiegericht).",
@@ -234,15 +247,206 @@ export function buildGeminiPrompt(formData: ScheduleFormData): string {
  * SOLAR: Separation of Concerns - handles only schedule generation logic
  */
 class GeminiScheduleService implements IScheduleService {
-  async generateSchedule(formData: ScheduleFormData): Promise<RunningSchedule> {
-    // TODO: Implement actual Gemini API integration
-    // For now we only build the prompt and stop; no request is made yet.
+  async generateSchedule(formData: ScheduleFormData, retryCount = 0): Promise<RunningSchedule> {
     const prompt = buildGeminiPrompt(formData)
+    const maxRetries = 3
 
-    // Placeholder implementation (keeps current behavior non-functional on purpose)
-    throw new Error(
-      `Gemini service not yet implemented. Generated prompt for future use:\n\n${prompt}`,
-    )
+    try {
+      const response = await ai.models.generateContent({
+        model: "gemini-3-flash-preview",
+        contents: prompt,
+      })
+
+      const generatedText = response.text || ""
+
+      if (!generatedText) {
+        // Retry if no content generated
+        if (retryCount < maxRetries - 1) {
+          console.warn(
+            `No content generated from Gemini API, retrying... (attempt ${retryCount + 1}/${maxRetries})`,
+          )
+          // Wait a bit before retrying (exponential backoff)
+          await new Promise((resolve) => setTimeout(resolve, 1000 * (retryCount + 1)))
+          return this.generateSchedule(formData, retryCount + 1)
+        }
+        throw new Error("No content generated from Gemini API after multiple attempts")
+      }
+
+      // Parse the JSON response from Gemini
+      const schedule = this.parseScheduleResponse(generatedText)
+      return schedule
+    } catch (error) {
+      // Retry on error if we haven't exceeded max retries
+      if (retryCount < maxRetries - 1 && error instanceof Error) {
+        console.warn(
+          `Error calling Gemini API, retrying... (attempt ${retryCount + 1}/${maxRetries}):`,
+          error.message,
+        )
+        // Wait a bit before retrying (exponential backoff)
+        await new Promise((resolve) => setTimeout(resolve, 1000 * (retryCount + 1)))
+        return this.generateSchedule(formData, retryCount + 1)
+      }
+      console.error("Error calling Gemini API after all retries:", error)
+      throw error
+    }
+  }
+
+  private parseScheduleResponse(text: string): RunningSchedule {
+    // Try to extract JSON from the response
+    // Gemini might wrap JSON in markdown code blocks or add extra text
+    let jsonText = text.trim()
+
+    // Remove markdown code blocks if present
+    jsonText = jsonText.replace(/```json\n?/g, "").replace(/```\n?/g, "")
+
+    // Try to find JSON object in the text
+    const jsonMatch = jsonText.match(/\{[\s\S]*\}/)
+    if (jsonMatch) {
+      jsonText = jsonMatch[0]
+    }
+
+    try {
+      const parsed = JSON.parse(jsonText) as RunningSchedule
+
+      // Validate the structure
+      if (!parsed.title || !parsed.overview || !Array.isArray(parsed.weeks)) {
+        throw new Error("Invalid schedule structure from Gemini")
+      }
+
+      // Ensure runnerProfile exists and has correct structure
+      if (!parsed.runnerProfile) {
+        parsed.runnerProfile = {
+          experience: "",
+          currentFitness: "",
+          healthStatus: "",
+          trainingHistory: "",
+          strengths: [],
+          considerations: [],
+          motivation: "",
+        }
+      } else {
+        parsed.runnerProfile = {
+          experience: parsed.runnerProfile.experience || "",
+          currentFitness: parsed.runnerProfile.currentFitness || "",
+          healthStatus: parsed.runnerProfile.healthStatus || "",
+          trainingHistory: parsed.runnerProfile.trainingHistory || "",
+          strengths: Array.isArray(parsed.runnerProfile.strengths)
+            ? parsed.runnerProfile.strengths
+            : [],
+          considerations: Array.isArray(parsed.runnerProfile.considerations)
+            ? parsed.runnerProfile.considerations
+            : [],
+          motivation: parsed.runnerProfile.motivation || "",
+        }
+      }
+
+      // Ensure summary exists and has correct structure
+      if (!parsed.summary) {
+        parsed.summary = {
+          goal: "",
+          targetDistance: "",
+          duration: "",
+          trainingMethod: "",
+          totalWeeks: parsed.weeks.length || 0,
+          coachStrategy: "",
+        }
+      } else {
+        parsed.summary = {
+          goal: parsed.summary.goal || "",
+          targetDistance: parsed.summary.targetDistance || "",
+          duration: parsed.summary.duration || "",
+          trainingMethod: parsed.summary.trainingMethod || "",
+          totalWeeks: parsed.summary.totalWeeks || parsed.weeks.length || 0,
+          coachStrategy: parsed.summary.coachStrategy || "",
+        }
+      }
+
+      // Normalize intensity values to standardized values
+      const normalizeIntensity = (intensity: string): string => {
+        const lower = intensity.toLowerCase().trim()
+        // Map common variations to standardized values (in logische volgorde)
+        if (
+          lower.includes("zeer laag") ||
+          lower.includes("zeer licht") ||
+          lower === "actief herstel"
+        ) {
+          return "Zeer licht"
+        }
+        if (
+          lower.includes("laag") ||
+          lower.includes("licht") ||
+          lower.includes("lauw") ||
+          lower.includes("rustig") ||
+          lower === "easy"
+        ) {
+          return "Licht"
+        }
+        if (
+          lower.includes("gemiddeld") ||
+          lower.includes("matig") ||
+          lower.includes("moderate") ||
+          lower.includes("tempo")
+        ) {
+          return "Matig"
+        }
+        if (
+          lower.includes("hoog") ||
+          lower.includes("zwaar") ||
+          lower.includes("intensief") ||
+          lower.includes("hard")
+        ) {
+          return "Zwaar"
+        }
+        if (
+          lower.includes("zeer hoog") ||
+          lower.includes("zeer zwaar") ||
+          lower.includes("maximaal") ||
+          lower.includes("extreem")
+        ) {
+          return "Zeer zwaar"
+        }
+        if (
+          lower.includes("piek") ||
+          lower.includes("wedstrijd") ||
+          lower.includes("race") ||
+          lower === "max"
+        ) {
+          return "Piek"
+        }
+        // Default fallback based on common patterns
+        if (lower.includes("interval") || lower.includes("sprint")) {
+          return "Zwaar"
+        }
+        if (lower.includes("duurloop") || lower.includes("long run")) {
+          return "Licht"
+        }
+        // If we can't determine, default to "Matig"
+        return "Matig"
+      }
+
+      // Ensure all weeks have the correct structure
+      parsed.weeks = parsed.weeks.map((week, index) => ({
+        weekNumber: week.weekNumber ?? index + 1,
+        focus: week.focus || `Week ${index + 1}`,
+        days: (week.days || []).map((day) => ({
+          ...day,
+          intensity: normalizeIntensity(day.intensity || "Gemiddeld"),
+        })),
+        weekSummary: week.weekSummary || {
+          totalDistance: "",
+          totalDuration: "",
+          trainingDays: week.days?.length || 0,
+        },
+      })) as RunningSchedule["weeks"]
+
+      return parsed
+    } catch (error) {
+      console.error("Error parsing Gemini response:", error)
+      console.error("Response text:", text)
+      throw new Error(
+        `Failed to parse schedule from Gemini response: ${error instanceof Error ? error.message : "Unknown error"}`,
+      )
+    }
   }
 }
 

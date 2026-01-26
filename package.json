@@ -18,6 +18,9 @@
     "format:check": "pnpm exec prettier --check .",
     "fix": "pnpm exec eslint . --fix && pnpm exec prettier --write .",
     "generate-favicons": "node scripts/generate-favicons.mjs",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -26,6 +29,9 @@
     "@radix-ui/react-label": "^2.1.8",
     "@radix-ui/react-select": "^2.2.6",
     "@radix-ui/react-slot": "^1.2.4",
+    "@google/genai": "^1.0.0",
+    "@prisma/client": "^6.1.0",
+    "@prisma/extension-accelerate": "^2.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
@@ -40,6 +46,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "prisma": "^6.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.1",
     "eslint-config-prettier": "^9.1.0",

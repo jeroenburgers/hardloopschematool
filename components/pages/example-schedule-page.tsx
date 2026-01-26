@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 import {
   ArrowLeft,
   Target,
@@ -26,13 +27,24 @@ import { Footer } from "@/components/footer"
 
 interface ExampleSchedulePageProps {
   schedule: RunningSchedule
+  showDates?: boolean // Optionally show dates (for generated schedules)
 }
 
 const intensityColors: Record<string, string> = {
-  "Zeer licht": "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400",
-  Licht: "bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400",
-  Matig: "bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400",
-  Zwaar: "bg-orange-200 text-orange-700 dark:bg-orange-900/50 dark:text-orange-300",
+  // Standardized intensity values (in logische volgorde)
+  "Zeer licht": "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+  Licht: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+  Matig: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
+  Zwaar: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+  "Zeer zwaar": "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
+  Piek: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+  // Fallback for old values (backward compatibility)
+  "Zeer laag": "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+  Laag: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+  Gemiddeld: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400",
+  Hoog: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+  "Zeer hoog": "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
+  Maximaal: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
 }
 
 function formatDate(dateString?: string): string {
@@ -47,7 +59,13 @@ function hasWorkoutContent(day: TrainingDay): boolean {
   return !!(warmup || interval || mainBody || strides || cooldown)
 }
 
-function InteractiveWeekView({ schedule }: { schedule: RunningSchedule }) {
+function InteractiveWeekView({
+  schedule,
+  showDates = false,
+}: {
+  schedule: RunningSchedule
+  showDates?: boolean
+}) {
   const [currentWeekIndex, setCurrentWeekIndex] = useState(0)
   const currentWeek = schedule.weeks[currentWeekIndex]
 
@@ -191,34 +209,36 @@ function InteractiveWeekView({ schedule }: { schedule: RunningSchedule }) {
             </div>
 
             {/* Week Summary Stats */}
-            <div className="flex gap-3 sm:gap-6 lg:gap-8 flex-shrink-0 mt-4 lg:mt-0">
-              <div className="text-center lg:text-right min-w-[60px] sm:min-w-[80px]">
-                <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
-                  Afstand
+            {"weekSummary" in currentWeek && currentWeek.weekSummary && (
+              <div className="flex gap-3 sm:gap-6 lg:gap-8 flex-shrink-0 mt-4 lg:mt-0">
+                <div className="text-center lg:text-right min-w-[60px] sm:min-w-[80px]">
+                  <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
+                    Afstand
+                  </div>
+                  <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
+                    {currentWeek.weekSummary.totalDistance}
+                  </div>
                 </div>
-                <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
-                  {currentWeek.weekSummary.totalDistance}
+                <div className="w-px bg-zinc-200 dark:bg-zinc-800"></div>
+                <div className="text-center lg:text-right min-w-[70px] sm:min-w-[100px]">
+                  <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
+                    Duur
+                  </div>
+                  <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
+                    {currentWeek.weekSummary.totalDuration}
+                  </div>
+                </div>
+                <div className="w-px bg-zinc-200 dark:bg-zinc-800"></div>
+                <div className="text-center lg:text-right min-w-[50px] sm:min-w-[60px]">
+                  <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
+                    Dagen
+                  </div>
+                  <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
+                    {currentWeek.weekSummary.trainingDays}
+                  </div>
                 </div>
               </div>
-              <div className="w-px bg-zinc-200 dark:bg-zinc-800"></div>
-              <div className="text-center lg:text-right min-w-[70px] sm:min-w-[100px]">
-                <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
-                  Duur
-                </div>
-                <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
-                  {currentWeek.weekSummary.totalDuration}
-                </div>
-              </div>
-              <div className="w-px bg-zinc-200 dark:bg-zinc-800"></div>
-              <div className="text-center lg:text-right min-w-[50px] sm:min-w-[60px]">
-                <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
-                  Dagen
-                </div>
-                <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
-                  {currentWeek.weekSummary.trainingDays}
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </div>
 
@@ -255,15 +275,16 @@ function InteractiveWeekView({ schedule }: { schedule: RunningSchedule }) {
                             {day.intensity}
                           </span>
                         </div>
-                        {day.date && (
+                        {showDates && day.date ? (
                           <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
                             {day.day} • {formatDate(day.date)}
                           </div>
-                        )}
-                        {!day.date && day.day && (
-                          <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
-                            {day.day}
-                          </div>
+                        ) : (
+                          day.day && (
+                            <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+                              {day.day}
+                            </div>
+                          )
                         )}
                         {day.description && (
                           <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed mt-1">
@@ -308,7 +329,13 @@ function InteractiveWeekView({ schedule }: { schedule: RunningSchedule }) {
   )
 }
 
-function ListScheduleView({ schedule }: { schedule: RunningSchedule }) {
+function ListScheduleView({
+  schedule,
+  showDates = false,
+}: {
+  schedule: RunningSchedule
+  showDates?: boolean
+}) {
   return (
     <div className="space-y-12 sm:space-y-20">
       {schedule.weeks.map((week) => (
@@ -335,34 +362,36 @@ function ListScheduleView({ schedule }: { schedule: RunningSchedule }) {
               </div>
 
               {/* Week Summary Stats */}
-              <div className="flex gap-3 sm:gap-6 lg:gap-8 flex-shrink-0 mt-4 lg:mt-0">
-                <div className="text-center lg:text-right min-w-[60px] sm:min-w-[80px]">
-                  <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
-                    Afstand
+              {"weekSummary" in week && week.weekSummary && (
+                <div className="flex gap-3 sm:gap-6 lg:gap-8 flex-shrink-0 mt-4 lg:mt-0">
+                  <div className="text-center lg:text-right min-w-[60px] sm:min-w-[80px]">
+                    <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
+                      Afstand
+                    </div>
+                    <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
+                      {week.weekSummary.totalDistance}
+                    </div>
                   </div>
-                  <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
-                    {week.weekSummary.totalDistance}
+                  <div className="w-px bg-zinc-200 dark:bg-zinc-800"></div>
+                  <div className="text-center lg:text-right min-w-[70px] sm:min-w-[100px]">
+                    <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
+                      Duur
+                    </div>
+                    <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
+                      {week.weekSummary.totalDuration}
+                    </div>
+                  </div>
+                  <div className="w-px bg-zinc-200 dark:bg-zinc-800"></div>
+                  <div className="text-center lg:text-right min-w-[50px] sm:min-w-[60px]">
+                    <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
+                      Dagen
+                    </div>
+                    <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
+                      {week.weekSummary.trainingDays}
+                    </div>
                   </div>
                 </div>
-                <div className="w-px bg-zinc-200 dark:bg-zinc-800"></div>
-                <div className="text-center lg:text-right min-w-[70px] sm:min-w-[100px]">
-                  <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
-                    Duur
-                  </div>
-                  <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
-                    {week.weekSummary.totalDuration}
-                  </div>
-                </div>
-                <div className="w-px bg-zinc-200 dark:bg-zinc-800"></div>
-                <div className="text-center lg:text-right min-w-[50px] sm:min-w-[60px]">
-                  <div className="text-[10px] sm:text-xs font-black text-zinc-400 dark:text-zinc-500 uppercase tracking-widest mb-1 sm:mb-2">
-                    Dagen
-                  </div>
-                  <div className="text-lg sm:text-2xl font-black text-zinc-950 dark:text-zinc-50">
-                    {week.weekSummary.trainingDays}
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           </div>
 
@@ -399,15 +428,16 @@ function ListScheduleView({ schedule }: { schedule: RunningSchedule }) {
                               {day.intensity}
                             </span>
                           </div>
-                          {day.date && (
+                          {showDates && day.date ? (
                             <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
                               {day.day} • {formatDate(day.date)}
                             </div>
-                          )}
-                          {!day.date && day.day && (
-                            <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
-                              {day.day}
-                            </div>
+                          ) : (
+                            day.day && (
+                              <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
+                                {day.day}
+                              </div>
+                            )
                           )}
                           {day.description && (
                             <p className="text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed mt-1">
@@ -636,6 +666,23 @@ function WorkoutDetailsCard({ day }: { day: TrainingDay }) {
   )
 }
 
+function BackLink() {
+  const pathname = usePathname()
+  const isGeneratedSchedule = pathname?.startsWith("/schema/") ?? false
+
+  return (
+    <div className="mb-8 sm:mb-12">
+      <Link
+        href={isGeneratedSchedule ? "/schema-maken" : "/voorbeeldschemas"}
+        className="inline-flex items-center gap-3 text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 font-black uppercase tracking-widest text-[10px] transition-colors"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        {isGeneratedSchedule ? "Nieuw schema maken" : "Voorbeeldschema&apos;s"}
+      </Link>
+    </div>
+  )
+}
+
 function TechnicalDataFooter({
   technicalData,
 }: {
@@ -675,6 +722,9 @@ function InteractiveHero({ schedule, seoH1 }: { schedule: RunningSchedule; seoH1
   const [currentStep, setCurrentStep] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
+  const hasSummary = "summary" in schedule && schedule.summary
+  const hasRunnerProfile = "runnerProfile" in schedule && schedule.runnerProfile
+
   const steps = [
     {
       id: "title",
@@ -683,88 +733,106 @@ function InteractiveHero({ schedule, seoH1 }: { schedule: RunningSchedule; seoH1
       content: schedule.overview,
       color: "from-orange-500 to-orange-600",
     },
-    {
-      id: "summary",
-      icon: Target,
-      title: "Schema Details",
-      content: (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-3 sm:mt-4 md:mt-6">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
-            <div className="text-[9px] sm:text-[10px] md:text-xs font-black text-white/70 uppercase tracking-widest mb-1.5 sm:mb-2">
-              Doel
-            </div>
-            <div className="text-lg sm:text-xl md:text-2xl font-black text-white break-words">
-              {schedule.summary.goal}
-            </div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
-            <div className="text-[9px] sm:text-[10px] md:text-xs font-black text-white/70 uppercase tracking-widest mb-1.5 sm:mb-2">
-              Afstand
-            </div>
-            <div className="text-lg sm:text-xl md:text-2xl font-black text-white break-words">
-              {schedule.summary.targetDistance}
-            </div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
-            <div className="text-[9px] sm:text-[10px] md:text-xs font-black text-white/70 uppercase tracking-widest mb-1.5 sm:mb-2">
-              Duur
-            </div>
-            <div className="text-lg sm:text-xl md:text-2xl font-black text-white break-words">
-              {schedule.summary.duration}
-            </div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
-            <div className="text-[9px] sm:text-[10px] md:text-xs font-black text-white/70 uppercase tracking-widest mb-1.5 sm:mb-2">
-              Methode
-            </div>
-            <div className="text-lg sm:text-xl md:text-2xl font-black text-white break-words">
-              {schedule.summary.trainingMethod}
-            </div>
-          </div>
-        </div>
-      ),
-      color: "from-blue-500 to-blue-600",
-    },
-    {
-      id: "profile",
-      icon: User,
-      title: "Lopersprofiel",
-      content: (
-        <div className="space-y-2.5 sm:space-y-3 md:space-y-4 mt-3 sm:mt-4 md:mt-6">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
-            <div className="text-[10px] sm:text-xs md:text-sm font-bold text-white/80 mb-1.5 sm:mb-2">
-              Ervaring
-            </div>
-            <div className="text-xs sm:text-sm md:text-base text-white leading-relaxed break-words">
-              {schedule.runnerProfile.experience}
-            </div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
-            <div className="text-[10px] sm:text-xs md:text-sm font-bold text-white/80 mb-1.5 sm:mb-2">
-              Motivatie
-            </div>
-            <div className="text-xs sm:text-sm md:text-base text-white leading-relaxed break-words">
-              {schedule.runnerProfile.motivation}
-            </div>
-          </div>
-        </div>
-      ),
-      color: "from-emerald-500 to-emerald-600",
-    },
-    {
-      id: "strategy",
-      icon: TrendingUp,
-      title: "Coach Strategie",
-      content: (
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20 mt-3 sm:mt-4 md:mt-6">
-          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white leading-relaxed break-words">
-            {schedule.summary.coachStrategy}
-          </p>
-        </div>
-      ),
-      color: "from-purple-500 to-purple-600",
-    },
-  ]
+    ...(hasSummary
+      ? [
+          {
+            id: "summary",
+            icon: Target,
+            title: "Schema Details",
+            content: (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mt-3 sm:mt-4 md:mt-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
+                  <div className="text-[9px] sm:text-[10px] md:text-xs font-black text-white/70 uppercase tracking-widest mb-1.5 sm:mb-2">
+                    Doel
+                  </div>
+                  <div className="text-lg sm:text-xl md:text-2xl font-black text-white break-words">
+                    {schedule.summary.goal}
+                  </div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
+                  <div className="text-[9px] sm:text-[10px] md:text-xs font-black text-white/70 uppercase tracking-widest mb-1.5 sm:mb-2">
+                    Afstand
+                  </div>
+                  <div className="text-lg sm:text-xl md:text-2xl font-black text-white break-words">
+                    {schedule.summary.targetDistance}
+                  </div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
+                  <div className="text-[9px] sm:text-[10px] md:text-xs font-black text-white/70 uppercase tracking-widest mb-1.5 sm:mb-2">
+                    Duur
+                  </div>
+                  <div className="text-lg sm:text-xl md:text-2xl font-black text-white break-words">
+                    {schedule.summary.duration}
+                  </div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
+                  <div className="text-[9px] sm:text-[10px] md:text-xs font-black text-white/70 uppercase tracking-widest mb-1.5 sm:mb-2">
+                    Methode
+                  </div>
+                  <div className="text-lg sm:text-xl md:text-2xl font-black text-white break-words">
+                    {schedule.summary.trainingMethod}
+                  </div>
+                </div>
+              </div>
+            ),
+            color: "from-blue-500 to-blue-600",
+          },
+        ]
+      : []),
+    ...(hasRunnerProfile
+      ? [
+          {
+            id: "profile",
+            icon: User,
+            title: "Lopersprofiel",
+            content: (
+              <div className="space-y-2.5 sm:space-y-3 md:space-y-4 mt-3 sm:mt-4 md:mt-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
+                  <div className="text-[10px] sm:text-xs md:text-sm font-bold text-white/80 mb-1.5 sm:mb-2">
+                    Ervaring
+                  </div>
+                  <div className="text-xs sm:text-sm md:text-base text-white leading-relaxed break-words">
+                    {schedule.runnerProfile.experience}
+                  </div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20">
+                  <div className="text-[10px] sm:text-xs md:text-sm font-bold text-white/80 mb-1.5 sm:mb-2">
+                    Motivatie
+                  </div>
+                  <div className="text-xs sm:text-sm md:text-base text-white leading-relaxed break-words">
+                    {schedule.runnerProfile.motivation}
+                  </div>
+                </div>
+              </div>
+            ),
+            color: "from-emerald-500 to-emerald-600",
+          },
+        ]
+      : []),
+    ...(hasSummary && schedule.summary.coachStrategy
+      ? [
+          {
+            id: "strategy",
+            icon: TrendingUp,
+            title: "Coach Strategie",
+            content: (
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg sm:rounded-xl md:rounded-2xl p-3 sm:p-4 md:p-6 border border-white/20 mt-3 sm:mt-4 md:mt-6">
+                <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white leading-relaxed break-words">
+                  {schedule.summary.coachStrategy}
+                </p>
+              </div>
+            ),
+            color: "from-purple-500 to-purple-600",
+          },
+        ]
+      : []),
+  ] as Array<{
+    id: string
+    icon: typeof Sparkles
+    title: string
+    content: string | React.ReactNode
+    color: string
+  }>
 
   const handleNext = () => {
     if (currentStep < steps.length - 1 && !isAnimating) {
@@ -926,18 +994,33 @@ function InteractiveHero({ schedule, seoH1 }: { schedule: RunningSchedule; seoH1
   )
 }
 
-export function ExampleSchedulePage({ schedule }: ExampleSchedulePageProps) {
+export function ExampleSchedulePage({ schedule, showDates = false }: ExampleSchedulePageProps) {
   const [viewMode, setViewMode] = useState<"interactive" | "list">("interactive")
+  const pathname = usePathname()
+  // Show dates for generated schedules (URL starts with /schema/)
+  const shouldShowDates = showDates || (pathname?.startsWith("/schema/") ?? false)
 
   // Determine SEO-friendly H1 text based on schedule
-  const targetDistance = schedule.summary.targetDistance.toLowerCase()
-  const is5km = targetDistance.includes("5") || schedule.summary.goal.toLowerCase().includes("5")
-  const is10km = targetDistance.includes("10") || schedule.summary.goal.toLowerCase().includes("10")
+  // Handle schedules that might not have summary field
+  const hasSummary = "summary" in schedule && schedule.summary
+  const targetDistance = hasSummary
+    ? schedule.summary.targetDistance?.toLowerCase() || ""
+    : schedule.title.toLowerCase()
+  const is5km =
+    targetDistance.includes("5") ||
+    (hasSummary && schedule.summary.goal?.toLowerCase().includes("5")) ||
+    schedule.title.toLowerCase().includes("5")
+  const is10km =
+    targetDistance.includes("10") ||
+    (hasSummary && schedule.summary.goal?.toLowerCase().includes("10")) ||
+    schedule.title.toLowerCase().includes("10")
   const seoH1 = is5km
     ? "5km Hardloopschema"
     : is10km
       ? "10km Hardloopschema"
-      : `${schedule.summary.targetDistance} Hardloopschema`
+      : hasSummary && schedule.summary.targetDistance
+        ? `${schedule.summary.targetDistance} Hardloopschema`
+        : schedule.title
 
   return (
     <div className="min-h-screen">
@@ -945,15 +1028,7 @@ export function ExampleSchedulePage({ schedule }: ExampleSchedulePageProps) {
       <div className="pt-20 sm:pt-32 pb-16 sm:pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Link */}
-          <div className="mb-8 sm:mb-12">
-            <Link
-              href="/voorbeeldschemas"
-              className="inline-flex items-center gap-3 text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 font-black uppercase tracking-widest text-[10px] transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Voorbeeldschema&apos;s
-            </Link>
-          </div>
+          <BackLink />
 
           {/* Interactive Hero Wizard */}
           <InteractiveHero schedule={schedule} seoH1={seoH1} />
@@ -996,9 +1071,9 @@ export function ExampleSchedulePage({ schedule }: ExampleSchedulePageProps) {
             </div>
 
             {viewMode === "interactive" ? (
-              <InteractiveWeekView schedule={schedule} />
+              <InteractiveWeekView schedule={schedule} showDates={shouldShowDates} />
             ) : (
-              <ListScheduleView schedule={schedule} />
+              <ListScheduleView schedule={schedule} showDates={shouldShowDates} />
             )}
           </section>
         </div>

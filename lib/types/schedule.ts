@@ -20,6 +20,8 @@ export type TrainingMethod =
   | "Hansons"
   | "Pfitzinger"
 
+export type Intensity = "Zeer licht" | "Licht" | "Matig" | "Zwaar" | "Zeer zwaar" | "Piek"
+
 export interface WorkoutDetails {
   warmup?: { distance?: string; duration?: string; description: string }
   interval?: {
@@ -51,7 +53,7 @@ export interface TrainingDay {
   date?: string
   type: string
   description: string
-  intensity: string
+  intensity: Intensity // Standardized intensity value
   duration: string // Always required for route planning
   distance: string // Always required for route planning
   workoutDetails?: WorkoutDetails

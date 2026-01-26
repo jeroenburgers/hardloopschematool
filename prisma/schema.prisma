@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Schedule {
+  id        String   @id @default(uuid())
+  title     String
+  overview  String
+  weeks     Json     // Array of TrainingWeek objects
+  runnerProfile Json? // RunnerProfile object (from Gemini)
+  summary   Json?    // Summary object (from Gemini)
+  
+  // Metadata from form data (for querying/filtering)
+  goal            String?  // e.g., "5 kilometer", "10 kilometer", "Marathon"
+  focus           String?  // "Recreatief" or "Prestatiegericht"
+  targetTime      String?  // Streeftijd
+  level           String?  // "Starter", "Beginner", "Gemiddeld", "Gevorderd", "Expert"
+  frequency       String?  // Huidige trainingsfrequentie
+  health          String?  // Blessure / belastbaarheid
+  recentDistance  String?  // Recente afstand
+  recentTime      String?  // Recente tijd
+  startDate       String?  // Startdatum
+  targetDays      Int?     // Max trainingsdagen per week
+  trainingWeeks   Int?     // Schema duur (weken)
+  planningMode    String?  // "Automatisch" or "Zelf inplannen"
+  selectedDays    Json?    // Array of preferred days
+  language        String?  // "nl", "en", "de"
+  gender          String?  // "Man", "Vrouw", "Geen voorkeur"
+  ageGroup        String?  // Leeftijdscategorie
+  trainingMethod  String?  // e.g., "Gebalanceerd", "80/20 (Polarized)", "MAF"
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("schedules")
+}
